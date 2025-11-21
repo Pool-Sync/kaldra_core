@@ -1,0 +1,45 @@
+{
+    "transitions": {
+        "duration": {
+            "instant": "",
+            "fast": "",
+            "normal": "",
+            "slow": "",
+            "slower": ""
+        },
+        "timing": {
+            "linear": "",
+            "ease": "",
+            "ease_in": "",
+            "ease_out": "",
+            "ease_in_out": "",
+            "bounce": "",
+            "elastic": ""
+        }
+    },
+    "animations": {
+        "fade_in": "",
+        "fade_out": "",
+        "slide_in": "",
+        "slide_out": "",
+        "scale_in": "",
+        "scale_out": "",
+        "spin": "",
+        "pulse": "",
+        "tw369_wave": "",
+        "delta_pulse": ""
+    },
+    "blur": {
+        "none": "",
+        "sm": "",
+        "md": "",
+        "lg": "",
+        "xl": ""
+    },
+    "backdrop": {
+        "blur_sm": "",
+        "blur_md": "",
+        "blur_lg": "",
+        "opacity": ""
+    }
+}

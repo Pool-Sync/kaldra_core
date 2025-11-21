@@ -1,0 +1,20 @@
+{
+    "version": "0.1.0",
+    "bias_score": {
+        "range": [
+            0.0,
+            1.0
+        ],
+        "thresholds": {
+            "neutral": 0.3,
+            "concern": 0.6,
+            "critical": 0.8
+        }
+    },
+    "labels": [
+        "negative",
+        "neutral",
+        "positive",
+        "extreme"
+    ]
+}

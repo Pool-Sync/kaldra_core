@@ -1,0 +1,45 @@
+{
+    "fonts": {
+        "primary": "",
+        "secondary": "",
+        "mono": "",
+        "display": ""
+    },
+    "sizes": {
+        "xs": "",
+        "sm": "",
+        "md": "",
+        "base": "",
+        "lg": "",
+        "xl": "",
+        "2xl": "",
+        "3xl": "",
+        "4xl": "",
+        "5xl": "",
+        "6xl": ""
+    },
+    "weights": {
+        "thin": "",
+        "light": "",
+        "normal": "",
+        "medium": "",
+        "semibold": "",
+        "bold": "",
+        "extrabold": "",
+        "black": ""
+    },
+    "lineHeights": {
+        "tight": "",
+        "normal": "",
+        "relaxed": "",
+        "loose": ""
+    },
+    "letterSpacing": {
+        "tighter": "",
+        "tight": "",
+        "normal": "",
+        "wide": "",
+        "wider": "",
+        "widest": ""
+    }
+}

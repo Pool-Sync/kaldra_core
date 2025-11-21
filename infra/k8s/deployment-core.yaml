@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kaldra-core
+  namespace: kaldra
+  labels:
+    app: kaldra-core
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kaldra-core
+  template:
+    metadata:
+      labels:
+        app: kaldra-core
+    spec:
+      containers:
+      - name: kaldra-core
+        image: kaldra-core:latest  # Placeholder - replace with actual registry image
+        ports:
+        - containerPort: 9000
+        env:
+        - name: ENV
+          value: "production"
+        - name: KALDRA_LOG_LEVEL
+          value: "INFO"
+        # Placeholder - add resource limits, health checks, etc.

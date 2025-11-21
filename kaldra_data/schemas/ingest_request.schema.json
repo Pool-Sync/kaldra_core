@@ -1,0 +1,6 @@
+{
+    "type": "object",
+    "description": "Schema for ingestion requests",
+    "properties": {},
+    "required": []
+}

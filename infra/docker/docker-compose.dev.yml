@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  kaldra-core:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.core
+    container_name: kaldra-core
+    environment:
+      - ENV=dev
+      - KALDRA_LOG_LEVEL=INFO
+    networks:
+      - kaldra-network
+    # Placeholder - add volumes, ports as needed
+
+  kaldra-api:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.api
+    container_name: kaldra-api
+    ports:
+      - "8000:8000"
+    environment:
+      - ENV=dev
+      - API_PORT=8000
+      - CORE_SERVICE_URL=http://kaldra-core:9000
+    depends_on:
+      - kaldra-core
+    networks:
+      - kaldra-network
+    # Placeholder - add volumes as needed
+
+networks:
+  kaldra-network:
+    driver: bridge

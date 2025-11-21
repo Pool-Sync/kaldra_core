@@ -1,0 +1,18 @@
+# Dockerfile for KALDRA API Gateway
+# Placeholder - to be implemented with actual build steps
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Copy API module
+COPY kaldra_api/ /app/kaldra_api/
+
+# Install dependencies (placeholder)
+# RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose API port
+EXPOSE 8000
+
+# Placeholder entrypoint
+CMD ["echo", "KALDRA API Gateway container - placeholder"]

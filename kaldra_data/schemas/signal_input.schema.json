@@ -1,0 +1,6 @@
+{
+    "type": "object",
+    "description": "Schema for signal input data",
+    "properties": {},
+    "required": []
+}

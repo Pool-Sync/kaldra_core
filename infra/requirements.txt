@@ -1,0 +1,11 @@
+numpy==2.1.0
+scipy==1.14.0
+
+fastapi==0.115.0
+uvicorn[standard]==0.30.0
+pydantic==2.8.2
+
+# Testes
+pytest==8.3.0
+
+# Logging / utilitários adicionais podem ser adicionados aqui futuramente

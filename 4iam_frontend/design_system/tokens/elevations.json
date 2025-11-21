@@ -1,0 +1,26 @@
+{
+    "shadows": {
+        "none": "",
+        "sm": "",
+        "md": "",
+        "lg": "",
+        "xl": "",
+        "2xl": "",
+        "inner": ""
+    },
+    "elevation": {
+        "level_0": "",
+        "level_1": "",
+        "level_2": "",
+        "level_3": "",
+        "level_4": "",
+        "level_5": ""
+    },
+    "component": {
+        "card": "",
+        "modal": "",
+        "dropdown": "",
+        "tooltip": "",
+        "button_hover": ""
+    }
+}

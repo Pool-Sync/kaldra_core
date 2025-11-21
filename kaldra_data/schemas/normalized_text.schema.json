@@ -1,0 +1,6 @@
+{
+    "type": "object",
+    "description": "Schema for normalized text data",
+    "properties": {},
+    "required": []
+}

@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* KALDRA Design System Tokens (placeholders) */
+:root {
+    /* Brand Colors */
+    --kaldra-primary: ;
+    --kaldra-secondary: ;
+    --kaldra-accent: ;
+
+    /* KALDRA Signature Colors */
+    --kaldra-delta144: ;
+    --kaldra-tw369-3: ;
+    --kaldra-tw369-6: ;
+    --kaldra-tw369-9: ;
+    --kaldra-kindra: ;
+    --kaldra-polarity-positive: ;
+    --kaldra-polarity-negative: ;
+    --kaldra-metasinal: ;
+
+    /* Semantic Colors */
+    --kaldra-success: ;
+    --kaldra-warning: ;
+    --kaldra-error: ;
+    --kaldra-info: ;
+}

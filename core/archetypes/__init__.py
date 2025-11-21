@@ -1,22 +1,9 @@
 """
-KALDRA Core - Archetypes Module
-================================
+KALDRA — Estrutura Base do Módulo
 
-This module contains the Delta144 archetype system implementation.
+Este arquivo faz parte da implementação estrutural do sistema KALDRA.
+A lógica será implementada nos próximos passos. Não adicionar funções
+além dos stubs determinados por este prompt.
 """
 
-from .delta144_engine import (
-    Delta144Engine,
-    Archetype,
-    ArchetypeState,
-    Modifier,
-    StateInferenceResult,
-)
-
-__all__ = [
-    "Delta144Engine",
-    "Archetype",
-    "ArchetypeState",
-    "Modifier",
-    "StateInferenceResult",
-]
+# TODO: implementar este módulo conforme a especificação do KALDRA

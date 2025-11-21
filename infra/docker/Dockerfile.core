@@ -1,0 +1,19 @@
+# Dockerfile for KALDRA Core
+# Placeholder - to be implemented with actual build steps
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Copy core module
+COPY core/ /app/core/
+COPY data/ /app/data/
+
+# Install dependencies (placeholder)
+# RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose port for internal communication
+EXPOSE 9000
+
+# Placeholder entrypoint
+CMD ["echo", "KALDRA Core container - placeholder"]

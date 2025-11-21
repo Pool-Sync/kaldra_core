@@ -1,0 +1,30 @@
+name: KALDRA CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    # Placeholder - add actual linting and testing steps
+    - name: Install dependencies
+      run: echo "Install dependencies placeholder"
+    
+    - name: Run linting
+      run: echo "Run linting placeholder"
+    
+    - name: Run tests
+      run: echo "Run tests placeholder"

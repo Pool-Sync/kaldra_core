@@ -1,0 +1,32 @@
+name: KALDRA Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    
+    # Placeholder - add actual registry login
+    - name: Login to Container Registry
+      run: echo "Login to registry placeholder"
+    
+    # Placeholder - build and push images
+    - name: Build and push kaldra-core
+      run: echo "Build and push kaldra-core placeholder"
+    
+    - name: Build and push kaldra-api
+      run: echo "Build and push kaldra-api placeholder"
+    
+    # Placeholder - trigger deployment
+    - name: Trigger deployment
+      run: echo "Trigger deployment placeholder"

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kaldra
+  labels:
+    name: kaldra
+    environment: production

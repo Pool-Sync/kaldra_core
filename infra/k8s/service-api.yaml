@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kaldra-api
+  namespace: kaldra
+  labels:
+    app: kaldra-api
+spec:
+  type: LoadBalancer  # Placeholder - adjust based on actual infrastructure
+  ports:
+  - port: 80
+    targetPort: 8000
+    protocol: TCP
+    name: http
+  selector:
+    app: kaldra-api

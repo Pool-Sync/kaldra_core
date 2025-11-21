@@ -1,0 +1,66 @@
+{
+    "brand": {
+        "primary": "",
+        "secondary": "",
+        "accent": "",
+        "background": "",
+        "foreground": ""
+    },
+    "semantic": {
+        "success": "",
+        "warning": "",
+        "error": "",
+        "info": ""
+    },
+    "kaldra_signature": {
+        "delta144": "",
+        "tw369_3": "",
+        "tw369_6": "",
+        "tw369_9": "",
+        "kindra": "",
+        "polarity_positive": "",
+        "polarity_negative": "",
+        "metasinal": ""
+    },
+    "archetypes": {
+        "archetype_1": "",
+        "archetype_2": "",
+        "archetype_3": "",
+        "archetype_4": "",
+        "archetype_5": "",
+        "archetype_6": "",
+        "archetype_7": "",
+        "archetype_8": "",
+        "archetype_9": "",
+        "archetype_10": "",
+        "archetype_11": "",
+        "archetype_12": ""
+    },
+    "neutral": {
+        "white": "",
+        "gray_50": "",
+        "gray_100": "",
+        "gray_200": "",
+        "gray_300": "",
+        "gray_400": "",
+        "gray_500": "",
+        "gray_600": "",
+        "gray_700": "",
+        "gray_800": "",
+        "gray_900": "",
+        "black": ""
+    },
+    "opacity": {
+        "0": "",
+        "10": "",
+        "20": "",
+        "30": "",
+        "40": "",
+        "50": "",
+        "60": "",
+        "70": "",
+        "80": "",
+        "90": "",
+        "100": ""
+    }
+}

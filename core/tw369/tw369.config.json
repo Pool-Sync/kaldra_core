@@ -1,0 +1,16 @@
+{
+    "version": "0.1.0",
+    "tw": {
+        "clamp_min": 0.0,
+        "clamp_max": 1.0,
+        "low_threshold": 0.3,
+        "high_threshold": 0.7
+    },
+    "painleve": {
+        "eps": 1e-8
+    },
+    "guard": {
+        "base_lambda": 1.0,
+        "base_tau": 1.0
+    }
+}

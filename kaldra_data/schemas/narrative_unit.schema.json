@@ -1,0 +1,6 @@
+{
+    "type": "object",
+    "description": "Schema for narrative unit data",
+    "properties": {},
+    "required": []
+}
