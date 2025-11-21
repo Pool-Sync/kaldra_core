@@ -6,7 +6,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from kaldra_core.kaldra_engine import generate_kaldra_signal
+from kaldra_engine.kaldra_engine import generate_kaldra_signal
 
 
 def main() -> None:

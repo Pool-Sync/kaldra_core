@@ -1,4 +1,4 @@
-from kaldra_core.kaldra_engine.postprocessing import build_explanation
+from kaldra_engine.postprocessing import build_explanation
 
 
 def test_build_explanation_runs():

@@ -1,5 +1,5 @@
-from kaldra_core.apps.safeguard.narrative_guard import evaluate_narrative_risk
-from kaldra_core.apps.safeguard.bias_monitor import monitor_bias_over_texts
+from apps.safeguard.narrative_guard import evaluate_narrative_risk
+from apps.safeguard.bias_monitor import monitor_bias_over_texts
 
 
 def test_evaluate_narrative_risk_runs():

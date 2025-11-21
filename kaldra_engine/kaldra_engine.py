@@ -7,12 +7,12 @@ from typing import Any, Dict
 
 import numpy as np
 
-from kaldra_core.core.bias import compute_bias_score_from_text, classify_bias
-from kaldra_core.core.tw369.core import compute_tw_instability_index
-from kaldra_core.core.tw369.tw_guard import tw_guard_regime
-from kaldra_core.core.kindras import infer_kindra_distribution
-from kaldra_core.core.meta import apply_meta_operators
-from kaldra_core.core.delta144 import infer_state
+from core.bias import compute_bias_score_from_text, classify_bias
+from core.tw369.core import compute_tw_instability_index
+from core.tw369.tw_guard import tw_guard_regime
+from core.kindras import infer_kindra_distribution
+from core.meta import apply_meta_operators
+from core.delta144 import infer_state
 
 from .preprocessing import simple_tokenize
 from .postprocessing import build_explanation

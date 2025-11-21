@@ -1,6 +1,6 @@
 import numpy as np
 
-from kaldra_core.core.delta144 import infer_state, evaluate_sequence_stability
+from core.delta144 import infer_state, evaluate_sequence_stability
 
 
 def test_infer_state_runs():

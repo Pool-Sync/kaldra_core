@@ -1,4 +1,4 @@
-from kaldra_core.kaldra_engine import generate_kaldra_signal
+from kaldra_engine.kaldra_engine import generate_kaldra_signal
 
 
 def test_generate_kaldra_signal_minimal():

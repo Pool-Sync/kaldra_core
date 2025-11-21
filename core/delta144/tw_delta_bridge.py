@@ -7,8 +7,8 @@ from __future__ import annotations
 from typing import Any, Dict, List
 import numpy as np
 
-from kaldra_core.core.tw369.core import compute_tw_instability_index
-from kaldra_core.core.tw369.tw_guard import tw_guard_regime, compute_tw_adjustments
+from core.tw369.core import compute_tw_instability_index
+from core.tw369.tw_guard import tw_guard_regime, compute_tw_adjustments
 
 from .api_adapter import evaluate_sequence_stability
 

@@ -5,7 +5,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
-from kaldra_core.kaldra_engine import generate_kaldra_signal
+from kaldra_engine.kaldra_engine import generate_kaldra_signal
 
 
 def monitor_bias_over_texts(texts: List[str]) -> List[Dict[str, Any]]:

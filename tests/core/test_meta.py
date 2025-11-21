@@ -1,6 +1,6 @@
 import numpy as np
 
-from kaldra_core.core.meta import apply_meta_operators
+from core.meta import apply_meta_operators
 
 
 def test_apply_meta_operators_runs():

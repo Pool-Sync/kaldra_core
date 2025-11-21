@@ -5,7 +5,7 @@ from __future__ import annotations
 
 from typing import Any, Dict
 
-from kaldra_core.kaldra_engine import generate_kaldra_signal
+from kaldra_engine.kaldra_engine import generate_kaldra_signal
 from .ingest import ingest_source
 
 

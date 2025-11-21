@@ -4,16 +4,17 @@ Validate that main KALDRA CORE modules can be imported.
 from __future__ import annotations
 
 
-def main() -> None:
+def main():
+    """Validate that core modules can be imported."""
     import importlib
 
     modules = [
-        "kaldra_core.core.tw369",
-        "kaldra_core.core.kindras",
-        "kaldra_core.core.bias",
-        "kaldra_core.core.meta",
-        "kaldra_core.core.delta144",
-        "kaldra_core.kaldra_engine",
+        "core.tw369",
+        "core.kindras",
+        "core.bias",
+        "core.meta",
+        "core.delta144",
+        "kaldra_engine.kaldra_engine",
     ]
 
     for m in modules:
