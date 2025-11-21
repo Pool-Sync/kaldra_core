@@ -1,0 +1,2836 @@
+[
+    {
+        "id": "A01_CREATOR_3_01",
+        "archetype_id": "A01_CREATOR",
+        "row": 1,
+        "col": 1,
+        "label": "Criador Iniciador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "Impulso inicial de criar algo novo, acender a fagulha de um projeto, produto ou narrativa. É o momento em que a ideia deixa de ser abstrata e começa a virar ação concreta.",
+        "default_modifiers": [
+            "MOD_ASCENDANT",
+            "MOD_BOLD"
+        ],
+        "allowed_modifiers": [
+            "MOD_WOUNDED",
+            "MOD_DEFENSIVE",
+            "MOD_EUPHORIC",
+            "MOD_CYNICAL",
+            "MOD_RADIANT"
+        ]
+    },
+    {
+        "id": "A01_CREATOR_3_02",
+        "archetype_id": "A01_CREATOR",
+        "row": 1,
+        "col": 2,
+        "label": "Criador Visionário",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "Formula uma visão clara de futuro, conecta símbolos, tendências e desejos em um quadro coerente. Define a direção criativa antes da execução.",
+        "default_modifiers": [
+            "MOD_RADIANT",
+            "MOD_EMERGENT"
+        ],
+        "allowed_modifiers": [
+            "MOD_EUPHORIC",
+            "MOD_CYNICAL",
+            "MOD_PROPHETIC",
+            "MOD_MYTHIC"
+        ]
+    },
+    {
+        "id": "A01_CREATOR_6_03",
+        "archetype_id": "A01_CREATOR",
+        "row": 1,
+        "col": 3,
+        "label": "Criador Acelerador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "6",
+        "description": "Transforma a visão em sprint de execução. Multiplica entregas, protótipos e versões, acelerando drasticamente o ciclo de criação.",
+        "default_modifiers": [
+            "MOD_THRUSTING",
+            "MOD_EXUBERANT"
+        ],
+        "allowed_modifiers": [
+            "MOD_VOLATILE",
+            "MOD_DEFENSIVE",
+            "MOD_WOUNDED",
+            "MOD_OBSESSIVE"
+        ]
+    },
+    {
+        "id": "A01_CREATOR_9_04",
+        "archetype_id": "A01_CREATOR",
+        "row": 1,
+        "col": 4,
+        "label": "Criador Potencializador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "9",
+        "description": "Amplifica o impacto de criações existentes, conecta iniciativas, comunidades e produtos em um ecossistema que se retroalimenta.",
+        "default_modifiers": [
+            "MOD_SYMBIOTIC",
+            "MOD_SYSTEMIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_RITUAL",
+            "MOD_INSTITUTIONAL",
+            "MOD_ALCHEMICAL",
+            "MOD_DORMANT"
+        ]
+    },
+    {
+        "id": "A01_CREATOR_6_05",
+        "archetype_id": "A01_CREATOR",
+        "row": 1,
+        "col": 5,
+        "label": "Criador Defensivo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Protege o que foi criado contra críticas, competição ou mudanças externas. Foca em preservar o legado criativo em vez de expandi-lo.",
+        "default_modifiers": [
+            "MOD_DEFENSIVE",
+            "MOD_CAUTIOUS"
+        ],
+        "allowed_modifiers": [
+            "MOD_PARANOID",
+            "MOD_SUPPRESSED",
+            "MOD_WOUNDED",
+            "MOD_INCOHERENT"
+        ]
+    },
+    {
+        "id": "A01_CREATOR_6_06",
+        "archetype_id": "A01_CREATOR",
+        "row": 1,
+        "col": 6,
+        "label": "Criador Reativo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Cria em resposta a ameaças, ataques ou pressões externas. A criatividade deixa de ser proativa e passa a ser puramente reativa.",
+        "default_modifiers": [
+            "MOD_REACTIVE",
+            "MOD_VOLATILE"
+        ],
+        "allowed_modifiers": [
+            "MOD_PARANOID",
+            "MOD_FRAGMENTED",
+            "MOD_CYNICAL",
+            "MOD_THEATRICAL"
+        ]
+    },
+    {
+        "id": "A01_CREATOR_3_07",
+        "archetype_id": "A01_CREATOR",
+        "row": 1,
+        "col": 7,
+        "label": "Criador Conservador",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "3",
+        "description": "Prefere repetir fórmulas que já funcionaram, reciclar modelos antigos e evitar riscos criativos. A criação vira manutenção.",
+        "default_modifiers": [
+            "MOD_RITUAL",
+            "MOD_INSTITUTIONAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_CAUTIOUS",
+            "MOD_SYSTEMIC",
+            "MOD_ANCIENT",
+            "MOD_DISILLUSIONED"
+        ]
+    },
+    {
+        "id": "A01_CREATOR_9_08",
+        "archetype_id": "A01_CREATOR",
+        "row": 1,
+        "col": 8,
+        "label": "Criador Retraído",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "9",
+        "description": "Retira-se do campo público, esconde projetos, ideias e capacidades criativas. A potência criadora fica recolhida ou silenciosa.",
+        "default_modifiers": [
+            "MOD_RETRACTING",
+            "MOD_DORMANT"
+        ],
+        "allowed_modifiers": [
+            "MOD_HIDDEN",
+            "MOD_SUPPRESSED",
+            "MOD_CONFUSED"
+        ]
+    },
+    {
+        "id": "A01_CREATOR_3_09",
+        "archetype_id": "A01_CREATOR",
+        "row": 1,
+        "col": 9,
+        "label": "Criador Liminal",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "3",
+        "description": "Entra em um espaço de transição criativa: não é mais o Criador antigo, ainda não é o novo. Testa limites e linguagens híbridas.",
+        "default_modifiers": [
+            "MOD_LIMINAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_EMERGENT",
+            "MOD_COLLAPSING",
+            "MOD_RITUAL",
+            "MOD_MASKED"
+        ]
+    },
+    {
+        "id": "A01_CREATOR_6_10",
+        "archetype_id": "A01_CREATOR",
+        "row": 1,
+        "col": 10,
+        "label": "Criador em Sombra Revelada",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "6",
+        "description": "Toma consciência dos efeitos sombrios de sua própria criação: impactos não desejados, externalidades, manipulação, abuso de forma.",
+        "default_modifiers": [
+            "MOD_SHADOW"
+        ],
+        "allowed_modifiers": [
+            "MOD_HAUNTED",
+            "MOD_WOUNDED",
+            "MOD_APOCALYPTIC",
+            "MOD_PROPHETIC"
+        ]
+    },
+    {
+        "id": "A01_CREATOR_9_11",
+        "archetype_id": "A01_CREATOR",
+        "row": 1,
+        "col": 11,
+        "label": "Criador Metanoico",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "Passa por uma virada profunda de propósito: muda o tipo de coisa que quer criar, os públicos que serve e o impacto que busca gerar.",
+        "default_modifiers": [
+            "MOD_METANOIC",
+            "MOD_ALCHEMICAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SACRIFICIAL",
+            "MOD_TRANSCENDENT",
+            "MOD_INITIATIC"
+        ]
+    },
+    {
+        "id": "A01_CREATOR_9_12",
+        "archetype_id": "A01_CREATOR",
+        "row": 1,
+        "col": 12,
+        "label": "Criador Transcendente",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "A criação deixa de ser apenas pessoal ou funcional e passa a operar em nível mítico: muda paradigmas, gera escolas, inaugura eras.",
+        "default_modifiers": [
+            "MOD_TRANSCENDENT",
+            "MOD_RADIANT"
+        ],
+        "allowed_modifiers": [
+            "MOD_ORACULAR",
+            "MOD_MYTHIC",
+            "MOD_COLLECTIVE"
+        ]
+    },
+    {
+        "id": "A02_SAGE_3_01",
+        "archetype_id": "A02_SAGE",
+        "row": 2,
+        "col": 1,
+        "label": "Sábio Iniciador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "Momento em que o Sábio acende a busca pela verdade. É o disparo inicial da investigação, da curiosidade genuína e da orientação intelectual.",
+        "default_modifiers": [
+            "MOD_ANALYTICAL",
+            "MOD_ASCENDANT"
+        ],
+        "allowed_modifiers": [
+            "MOD_RADIANT",
+            "MOD_EMERGENT",
+            "MOD_CYNICAL",
+            "MOD_DETACHED",
+            "MOD_HYPERFOCUSED"
+        ]
+    },
+    {
+        "id": "A02_SAGE_3_02",
+        "archetype_id": "A02_SAGE",
+        "row": 2,
+        "col": 2,
+        "label": "Sábio Visionário",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "Vê padrões amplos e formula teorias sofisticadas. Conecta conhecimento disperso e revela novos ângulos de compreensão.",
+        "default_modifiers": [
+            "MOD_RADIANT",
+            "MOD_PROPHETIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_LIMINAL",
+            "MOD_ANALYTICAL",
+            "MOD_THEATRICAL",
+            "MOD_ORACULAR"
+        ]
+    },
+    {
+        "id": "A02_SAGE_6_03",
+        "archetype_id": "A02_SAGE",
+        "row": 2,
+        "col": 3,
+        "label": "Sábio Acelerador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "6",
+        "description": "Transforma conhecimento em sistemas, frameworks, mapas mentais e modelos claros. Acelera entendimento de equipes e grupos.",
+        "default_modifiers": [
+            "MOD_THRUSTING",
+            "MOD_ANALYTICAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SYMBIOTIC",
+            "MOD_RITUAL",
+            "MOD_SYSTEMIC",
+            "MOD_HYPERFOCUSED",
+            "MOD_OBSESSIVE"
+        ]
+    },
+    {
+        "id": "A02_SAGE_9_04",
+        "archetype_id": "A02_SAGE",
+        "row": 2,
+        "col": 4,
+        "label": "Sábio Potencializador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "9",
+        "description": "Amplifica entendimento coletivo. Torna-se catalisador de clareza e referência intelectual de um grupo, setor ou sociedade.",
+        "default_modifiers": [
+            "MOD_SYSTEMIC",
+            "MOD_RITUAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_INSTITUTIONAL",
+            "MOD_COLLECTIVE",
+            "MOD_SYMBIOTIC",
+            "MOD_ANCIENT"
+        ]
+    },
+    {
+        "id": "A02_SAGE_6_05",
+        "archetype_id": "A02_SAGE",
+        "row": 2,
+        "col": 5,
+        "label": "Sábio Defensivo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Protege conhecimento, metodologias ou teorias contra críticas. Entra em modo de conservação intelectual e rigidez lógica.",
+        "default_modifiers": [
+            "MOD_DEFENSIVE",
+            "MOD_CAUTIOUS"
+        ],
+        "allowed_modifiers": [
+            "MOD_PARANOID",
+            "MOD_CYNICAL",
+            "MOD_INVERTED",
+            "MOD_SYSTEMIC"
+        ]
+    },
+    {
+        "id": "A02_SAGE_6_06",
+        "archetype_id": "A02_SAGE",
+        "row": 2,
+        "col": 6,
+        "label": "Sábio Reativo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Passa a argumentar para se defender, não para compreender. Reage com agilidade intelectual, porém pouco profundidade emocional.",
+        "default_modifiers": [
+            "MOD_REACTIVE",
+            "MOD_CYNICAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_PARANOID",
+            "MOD_THEATRICAL",
+            "MOD_OBSESSIVE",
+            "MOD_CONFUSED"
+        ]
+    },
+    {
+        "id": "A02_SAGE_3_07",
+        "archetype_id": "A02_SAGE",
+        "row": 2,
+        "col": 7,
+        "label": "Sábio Conservador",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "3",
+        "description": "Busca segurança na tradição, em modelos antigos e estruturas já validadas. Torna-se protetor da ortodoxia.",
+        "default_modifiers": [
+            "MOD_RITUAL",
+            "MOD_SYSTEMIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_INSTITUTIONAL",
+            "MOD_ANCIENT",
+            "MOD_DISILLUSIONED",
+            "MOD_SUPPRESSED"
+        ]
+    },
+    {
+        "id": "A02_SAGE_9_08",
+        "archetype_id": "A02_SAGE",
+        "row": 2,
+        "col": 8,
+        "label": "Sábio Retraído",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "9",
+        "description": "Retira-se emocionalmente e cognitivamente. A introspecção aumenta ao ponto de desconexão com o coletivo.",
+        "default_modifiers": [
+            "MOD_RETRACTING",
+            "MOD_DORMANT"
+        ],
+        "allowed_modifiers": [
+            "MOD_HIDDEN",
+            "MOD_CONFUSED",
+            "MOD_SUPPRESSED"
+        ]
+    },
+    {
+        "id": "A02_SAGE_3_09",
+        "archetype_id": "A02_SAGE",
+        "row": 2,
+        "col": 9,
+        "label": "Sábio Liminal",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "3",
+        "description": "O Sábio entra em um portal de transição: questiona tudo que sabe e abandona velhas estruturas intelectuais.",
+        "default_modifiers": [
+            "MOD_LIMINAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_METANOIC",
+            "MOD_EMERGENT",
+            "MOD_RITUAL"
+        ]
+    },
+    {
+        "id": "A02_SAGE_6_10",
+        "archetype_id": "A02_SAGE",
+        "row": 2,
+        "col": 10,
+        "label": "Sábio em Sombra Revelada",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "6",
+        "description": "Enxerga falhas graves de seus próprios modelos mentais. Toma consciência da ilusão cognitiva e da distorção racional.",
+        "default_modifiers": [
+            "MOD_SHADOW"
+        ],
+        "allowed_modifiers": [
+            "MOD_HAUNTED",
+            "MOD_INVERTED",
+            "MOD_PARANOID",
+            "MOD_OBSESSIVE"
+        ]
+    },
+    {
+        "id": "A02_SAGE_9_11",
+        "archetype_id": "A02_SAGE",
+        "row": 2,
+        "col": 11,
+        "label": "Sábio Metanoico",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "Passa por uma virada profunda de consciência: muda a forma de ver o mundo, o tipo de verdade que busca e o modo de transmitir conhecimento.",
+        "default_modifiers": [
+            "MOD_METANOIC",
+            "MOD_ALCHEMICAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SACRIFICIAL",
+            "MOD_PROPHETIC",
+            "MOD_ORACULAR"
+        ]
+    },
+    {
+        "id": "A02_SAGE_9_12",
+        "archetype_id": "A02_SAGE",
+        "row": 2,
+        "col": 12,
+        "label": "Sábio Transcendente",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "Torna-se fonte de clareza profunda para gerações. Seu conhecimento adquire peso mítico e atravessa eras.",
+        "default_modifiers": [
+            "MOD_TRANSCENDENT",
+            "MOD_RADIANT"
+        ],
+        "allowed_modifiers": [
+            "MOD_MYTHIC",
+            "MOD_ANCIENT",
+            "MOD_ORACULAR"
+        ]
+    },
+    {
+        "id": "A03_MAGICIAN_3_01",
+        "archetype_id": "A03_MAGICIAN",
+        "row": 3,
+        "col": 1,
+        "label": "Mago Iniciador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "O Mago aciona sua percepção sutil pela primeira vez. Surge o impulso inicial de revelar padrões ocultos e acessar informações profundas.",
+        "default_modifiers": [
+            "MOD_EMERGENT",
+            "MOD_ANALYTICAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_RADIANT",
+            "MOD_LIMINAL",
+            "MOD_CYNICAL",
+            "MOD_OBSESSIVE",
+            "MOD_SYMBIOTIC"
+        ]
+    },
+    {
+        "id": "A03_MAGICIAN_3_02",
+        "archetype_id": "A03_MAGICIAN",
+        "row": 3,
+        "col": 2,
+        "label": "Mago Visionário",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "Enxerga conexões invisíveis entre eventos, sistemas e símbolos. Oferece uma visão que transcende a lógica linear.",
+        "default_modifiers": [
+            "MOD_PROPHETIC",
+            "MOD_ORACULAR"
+        ],
+        "allowed_modifiers": [
+            "MOD_MYTHIC",
+            "MOD_RADIANT",
+            "MOD_THEATRICAL",
+            "MOD_INVERTED"
+        ]
+    },
+    {
+        "id": "A03_MAGICIAN_6_03",
+        "archetype_id": "A03_MAGICIAN",
+        "row": 3,
+        "col": 3,
+        "label": "Mago Acelerador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "6",
+        "description": "Converte insights em estratégias de mudança. Implanta técnicas, frameworks e rituais que aceleram transformação.",
+        "default_modifiers": [
+            "MOD_THRUSTING",
+            "MOD_ALCHEMICAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SYSTEMIC",
+            "MOD_SYMBIOTIC",
+            "MOD_OBSESSIVE",
+            "MOD_HYPERFOCUSED"
+        ]
+    },
+    {
+        "id": "A03_MAGICIAN_9_04",
+        "archetype_id": "A03_MAGICIAN",
+        "row": 3,
+        "col": 4,
+        "label": "Mago Potencializador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "9",
+        "description": "Amplifica transformações e integra múltiplos sistemas simbólicos. Torna-se catalisador de mudança profunda em grupos e instituições.",
+        "default_modifiers": [
+            "MOD_SYSTEMIC",
+            "MOD_ALCHEMICAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_RITUAL",
+            "MOD_INSTITUTIONAL",
+            "MOD_MYTHIC",
+            "MOD_SYMBIOTIC"
+        ]
+    },
+    {
+        "id": "A03_MAGICIAN_6_05",
+        "archetype_id": "A03_MAGICIAN",
+        "row": 3,
+        "col": 5,
+        "label": "Mago Defensivo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Usa conhecimento para defender território simbólico. Entra em postura de contenção e proteção de métodos ocultos.",
+        "default_modifiers": [
+            "MOD_DEFENSIVE",
+            "MOD_CAUTIOUS"
+        ],
+        "allowed_modifiers": [
+            "MOD_PARANOID",
+            "MOD_SUPPRESSED",
+            "MOD_HIDDEN",
+            "MOD_INVERTED"
+        ]
+    },
+    {
+        "id": "A03_MAGICIAN_6_06",
+        "archetype_id": "A03_MAGICIAN",
+        "row": 3,
+        "col": 6,
+        "label": "Mago Reativo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Reage a ataques ou tensões usando manipulação simbólica. A magia vira defesa psicológica e manutenção de ego.",
+        "default_modifiers": [
+            "MOD_REACTIVE",
+            "MOD_VOLATILE"
+        ],
+        "allowed_modifiers": [
+            "MOD_HAUNTED",
+            "MOD_FRAGMENTED",
+            "MOD_THEATRICAL",
+            "MOD_OBSESSIVE"
+        ]
+    },
+    {
+        "id": "A03_MAGICIAN_3_07",
+        "archetype_id": "A03_MAGICIAN",
+        "row": 3,
+        "col": 7,
+        "label": "Mago Conservador",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "3",
+        "description": "Preserva tradições esotéricas, técnicas antigas e segredos. A transformação dá lugar à manutenção ritualística.",
+        "default_modifiers": [
+            "MOD_RITUAL",
+            "MOD_ANCIENT"
+        ],
+        "allowed_modifiers": [
+            "MOD_SYSTEMIC",
+            "MOD_INSTITUTIONAL",
+            "MOD_DISILLUSIONED",
+            "MOD_DORMANT"
+        ]
+    },
+    {
+        "id": "A03_MAGICIAN_9_08",
+        "archetype_id": "A03_MAGICIAN",
+        "row": 3,
+        "col": 8,
+        "label": "Mago Retraído",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "9",
+        "description": "Isola-se, oculta conhecimento, retira-se das redes simbólicas. A magia tende a operar apenas internamente.",
+        "default_modifiers": [
+            "MOD_RETRACTING",
+            "MOD_HIDDEN"
+        ],
+        "allowed_modifiers": [
+            "MOD_SUPPRESSED",
+            "MOD_CONFUSED",
+            "MOD_DORMANT"
+        ]
+    },
+    {
+        "id": "A03_MAGICIAN_3_09",
+        "archetype_id": "A03_MAGICIAN",
+        "row": 3,
+        "col": 9,
+        "label": "Mago Liminal",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "3",
+        "description": "O Mago cruza fronteiras entre mundos simbólicos. Opera entre realidades, regras e linguagens.",
+        "default_modifiers": [
+            "MOD_LIMINAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_ORACULAR",
+            "MOD_EMERGENT",
+            "MOD_INVERTED",
+            "MOD_SYMBIOTIC"
+        ]
+    },
+    {
+        "id": "A03_MAGICIAN_6_10",
+        "archetype_id": "A03_MAGICIAN",
+        "row": 3,
+        "col": 10,
+        "label": "Mago em Sombra Revelada",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "6",
+        "description": "O Mago reconhece e confronta seu lado manipulativo, ilusório e controlador. É o momento da revelação da sombra ritual.",
+        "default_modifiers": [
+            "MOD_SHADOW"
+        ],
+        "allowed_modifiers": [
+            "MOD_HAUNTED",
+            "MOD_APOCALYPTIC",
+            "MOD_INVERTED",
+            "MOD_THEATRICAL"
+        ]
+    },
+    {
+        "id": "A03_MAGICIAN_9_11",
+        "archetype_id": "A03_MAGICIAN",
+        "row": 3,
+        "col": 11,
+        "label": "Mago Metanoico",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "Reformula sua relação com o poder simbólico. A alquimia interna se reorganiza para um novo propósito transformacional.",
+        "default_modifiers": [
+            "MOD_METANOIC",
+            "MOD_ALCHEMICAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SACRIFICIAL",
+            "MOD_PROPHETIC",
+            "MOD_ORACULAR"
+        ]
+    },
+    {
+        "id": "A03_MAGICIAN_9_12",
+        "archetype_id": "A03_MAGICIAN",
+        "row": 3,
+        "col": 12,
+        "label": "Mago Transcendente",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "A magia alcança seu nível mítico. O Mago torna-se um transformador sistêmico, capaz de mudar paradigmas inteiros.",
+        "default_modifiers": [
+            "MOD_TRANSCENDENT",
+            "MOD_MYTHIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_COLLECTIVE",
+            "MOD_SYSTEMIC",
+            "MOD_ORACULAR"
+        ]
+    },
+    {
+        "id": "A04_HERO_3_01",
+        "archetype_id": "A04_HERO",
+        "row": 4,
+        "col": 1,
+        "label": "Herói Iniciador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "Momento em que o Herói decide agir. Surge a disposição inicial de enfrentar o desafio, assumir risco e sair da inércia.",
+        "default_modifiers": [
+            "MOD_ASCENDANT",
+            "MOD_BOLD"
+        ],
+        "allowed_modifiers": [
+            "MOD_RADIANT",
+            "MOD_EUPHORIC",
+            "MOD_WOUNDED",
+            "MOD_EXUBERANT",
+            "MOD_THRUSTING"
+        ]
+    },
+    {
+        "id": "A04_HERO_3_02",
+        "archetype_id": "A04_HERO",
+        "row": 4,
+        "col": 2,
+        "label": "Herói Visionário",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "O Herói passa a enxergar um objetivo maior: uma causa, um grupo, um futuro pelo qual vale lutar e se sacrificar.",
+        "default_modifiers": [
+            "MOD_RADIANT",
+            "MOD_PROPHETIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_EXUBERANT",
+            "MOD_MYTHIC",
+            "MOD_EUPHORIC",
+            "MOD_SACRIFICIAL"
+        ]
+    },
+    {
+        "id": "A04_HERO_6_03",
+        "archetype_id": "A04_HERO",
+        "row": 4,
+        "col": 3,
+        "label": "Herói Acelerador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "6",
+        "description": "Converte intenção em movimento. Acelera a operação, empurra times, toma decisões rápidas e aumenta o ritmo de execução.",
+        "default_modifiers": [
+            "MOD_THRUSTING",
+            "MOD_HYPERFOCUSED"
+        ],
+        "allowed_modifiers": [
+            "MOD_OBSESSIVE",
+            "MOD_EXUBERANT",
+            "MOD_VOLATILE",
+            "MOD_DEFENSIVE"
+        ]
+    },
+    {
+        "id": "A04_HERO_9_04",
+        "archetype_id": "A04_HERO",
+        "row": 4,
+        "col": 4,
+        "label": "Herói Potencializador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "9",
+        "description": "Amplifica coragem e energia coletiva. Torna-se exemplo e ponto de referência emocional para o grupo.",
+        "default_modifiers": [
+            "MOD_RADIANT",
+            "MOD_COLLECTIVE"
+        ],
+        "allowed_modifiers": [
+            "MOD_TRIBAL",
+            "MOD_SYSTEMIC",
+            "MOD_MYTHIC",
+            "MOD_RITUAL"
+        ]
+    },
+    {
+        "id": "A04_HERO_6_05",
+        "archetype_id": "A04_HERO",
+        "row": 4,
+        "col": 5,
+        "label": "Herói Defensivo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Passa a proteger território conquistado, reputação ou status em vez de avançar. A energia se volta à preservação.",
+        "default_modifiers": [
+            "MOD_DEFENSIVE",
+            "MOD_CAUTIOUS"
+        ],
+        "allowed_modifiers": [
+            "MOD_PARANOID",
+            "MOD_WOUNDED",
+            "MOD_SUPPRESSED",
+            "MOD_CONFINED"
+        ]
+    },
+    {
+        "id": "A04_HERO_6_06",
+        "archetype_id": "A04_HERO",
+        "row": 4,
+        "col": 6,
+        "label": "Herói Reativo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Age apenas em resposta a ataques e crises. Deixa de liderar a narrativa e passa a ser arrastado pelos eventos.",
+        "default_modifiers": [
+            "MOD_REACTIVE",
+            "MOD_VOLATILE"
+        ],
+        "allowed_modifiers": [
+            "MOD_PARANOID",
+            "MOD_FRAGMENTED",
+            "MOD_THEATRICAL",
+            "MOD_INCOHERENT"
+        ]
+    },
+    {
+        "id": "A04_HERO_3_07",
+        "archetype_id": "A04_HERO",
+        "row": 4,
+        "col": 7,
+        "label": "Herói Conservador",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "3",
+        "description": "Prefere manter vitórias passadas e repetir táticas antigas. Resiste a novos riscos e a mudanças estruturais.",
+        "default_modifiers": [
+            "MOD_RITUAL",
+            "MOD_INSTITUTIONAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SYSTEMIC",
+            "MOD_ANCIENT",
+            "MOD_DISILLUSIONED",
+            "MOD_CYNICAL"
+        ]
+    },
+    {
+        "id": "A04_HERO_9_08",
+        "archetype_id": "A04_HERO",
+        "row": 4,
+        "col": 8,
+        "label": "Herói Retraído",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "9",
+        "description": "Retira-se do campo de batalha simbólico. Perde visibilidade, presença e disposição para se expor.",
+        "default_modifiers": [
+            "MOD_RETRACTING",
+            "MOD_DORMANT"
+        ],
+        "allowed_modifiers": [
+            "MOD_HIDDEN",
+            "MOD_SUPPRESSED",
+            "MOD_WOUNDED",
+            "MOD_CONFUSED"
+        ]
+    },
+    {
+        "id": "A04_HERO_3_09",
+        "archetype_id": "A04_HERO",
+        "row": 4,
+        "col": 9,
+        "label": "Herói Liminal",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "3",
+        "description": "Entra em encruzilhada de identidade: não é mais o Herói antigo, mas ainda não assumiu uma nova forma de coragem.",
+        "default_modifiers": [
+            "MOD_LIMINAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_METANOIC",
+            "MOD_HAUNTED",
+            "MOD_RITUAL",
+            "MOD_MASKED"
+        ]
+    },
+    {
+        "id": "A04_HERO_6_10",
+        "archetype_id": "A04_HERO",
+        "row": 4,
+        "col": 10,
+        "label": "Herói em Sombra Revelada",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "6",
+        "description": "Confronta seu lado destrutivo: heroísmo por ego, necessidade de validação, uso de força desnecessária e sacrifício improdutivo.",
+        "default_modifiers": [
+            "MOD_SHADOW"
+        ],
+        "allowed_modifiers": [
+            "MOD_HAUNTED",
+            "MOD_APOCALYPTIC",
+            "MOD_INVERTED",
+            "MOD_CYNICAL"
+        ]
+    },
+    {
+        "id": "A04_HERO_9_11",
+        "archetype_id": "A04_HERO",
+        "row": 4,
+        "col": 11,
+        "label": "Herói Metanoico",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "Redefine o que é coragem: passa de bravura física para coragem moral, ética, emocional ou espiritual.",
+        "default_modifiers": [
+            "MOD_METANOIC",
+            "MOD_ALCHEMICAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SACRIFICIAL",
+            "MOD_PROPHETIC",
+            "MOD_ORACULAR"
+        ]
+    },
+    {
+        "id": "A04_HERO_9_12",
+        "archetype_id": "A04_HERO",
+        "row": 4,
+        "col": 12,
+        "label": "Herói Transcendente",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "Torna-se símbolo duradouro de coragem e superação. O Herói vira mito, lenda ou referência civilizacional.",
+        "default_modifiers": [
+            "MOD_TRANSCENDENT",
+            "MOD_MYTHIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_COLLECTIVE",
+            "MOD_SYSTEMIC",
+            "MOD_ANCIENT"
+        ]
+    },
+    {
+        "id": "A05_EXPLORER_3_01",
+        "archetype_id": "A05_EXPLORER",
+        "row": 5,
+        "col": 1,
+        "label": "Explorador Iniciador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "O impulso inicial da exploração: romper a inércia, olhar além das fronteiras conhecidas e aceitar o chamado do desconhecido.",
+        "default_modifiers": [
+            "MOD_EMERGENT",
+            "MOD_ASCENDANT"
+        ],
+        "allowed_modifiers": [
+            "MOD_RADIANT",
+            "MOD_BOLD",
+            "MOD_EUPHORIC",
+            "MOD_LIMINAL",
+            "MOD_EXUBERANT"
+        ]
+    },
+    {
+        "id": "A05_EXPLORER_3_02",
+        "archetype_id": "A05_EXPLORER",
+        "row": 5,
+        "col": 2,
+        "label": "Explorador Visionário",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "Visualiza novas rotas, cartografa possibilidades e antecipa horizontes ainda invisíveis ao coletivo.",
+        "default_modifiers": [
+            "MOD_RADIANT",
+            "MOD_PROPHETIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_ORACULAR",
+            "MOD_SYMBIOTIC",
+            "MOD_MYTHIC",
+            "MOD_EXUBERANT"
+        ]
+    },
+    {
+        "id": "A05_EXPLORER_6_03",
+        "archetype_id": "A05_EXPLORER",
+        "row": 5,
+        "col": 3,
+        "label": "Explorador Acelerador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "6",
+        "description": "Move-se rapidamente entre territórios, culturas e possibilidades. Acelera descobertas e gera variação contínua.",
+        "default_modifiers": [
+            "MOD_THRUSTING",
+            "MOD_HYPERFOCUSED"
+        ],
+        "allowed_modifiers": [
+            "MOD_OBSESSIVE",
+            "MOD_VOLATILE",
+            "MOD_EXUBERANT",
+            "MOD_DEFENSIVE"
+        ]
+    },
+    {
+        "id": "A05_EXPLORER_9_04",
+        "archetype_id": "A05_EXPLORER",
+        "row": 5,
+        "col": 4,
+        "label": "Explorador Potencializador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "9",
+        "description": "Expande redes e ecossistemas, faz conexões entre territórios distintos e cria pontes que multiplicam possibilidades.",
+        "default_modifiers": [
+            "MOD_SYMBIOTIC",
+            "MOD_SYSTEMIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_RITUAL",
+            "MOD_INSTITUTIONAL",
+            "MOD_COLLECTIVE",
+            "MOD_ANCIENT"
+        ]
+    },
+    {
+        "id": "A05_EXPLORER_6_05",
+        "archetype_id": "A05_EXPLORER",
+        "row": 5,
+        "col": 5,
+        "label": "Explorador Defensivo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Evita riscos, volta-se para rotas conhecidas e tenta proteger sua autonomia contra pressões externas.",
+        "default_modifiers": [
+            "MOD_DEFENSIVE",
+            "MOD_CAUTIOUS"
+        ],
+        "allowed_modifiers": [
+            "MOD_PARANOID",
+            "MOD_SUPPRESSED",
+            "MOD_CONFUSED",
+            "MOD_INVERTED"
+        ]
+    },
+    {
+        "id": "A05_EXPLORER_6_06",
+        "archetype_id": "A05_EXPLORER",
+        "row": 5,
+        "col": 6,
+        "label": "Explorador Reativo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Deixa de explorar por desejo próprio e passa a responder a ameaças, mudanças externas ou crises.",
+        "default_modifiers": [
+            "MOD_REACTIVE",
+            "MOD_VOLATILE"
+        ],
+        "allowed_modifiers": [
+            "MOD_PARANOID",
+            "MOD_FRAGMENTED",
+            "MOD_THEATRICAL",
+            "MOD_OBSESSIVE"
+        ]
+    },
+    {
+        "id": "A05_EXPLORER_3_07",
+        "archetype_id": "A05_EXPLORER",
+        "row": 5,
+        "col": 7,
+        "label": "Explorador Conservador",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "3",
+        "description": "Prefere caminhos conhecidos, territórios familiares e rotinas previsíveis. Reduz voluntariamente seu raio de ação.",
+        "default_modifiers": [
+            "MOD_RITUAL",
+            "MOD_INSTITUTIONAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SYSTEMIC",
+            "MOD_DISILLUSIONED",
+            "MOD_CYNICAL",
+            "MOD_DORMANT"
+        ]
+    },
+    {
+        "id": "A05_EXPLORER_9_08",
+        "archetype_id": "A05_EXPLORER",
+        "row": 5,
+        "col": 8,
+        "label": "Explorador Retraído",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "9",
+        "description": "Retira-se do mundo, evita interações, limita curiosidade e desejo de movimento. Sua bússola interna silencia.",
+        "default_modifiers": [
+            "MOD_RETRACTING",
+            "MOD_DORMANT"
+        ],
+        "allowed_modifiers": [
+            "MOD_HIDDEN",
+            "MOD_SUPPRESSED",
+            "MOD_CONFUSED"
+        ]
+    },
+    {
+        "id": "A05_EXPLORER_3_09",
+        "archetype_id": "A05_EXPLORER",
+        "row": 5,
+        "col": 9,
+        "label": "Explorador Liminal",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "3",
+        "description": "Explora fronteiras entre mundos, culturas e realidades. Opera em territórios híbridos e transicionais.",
+        "default_modifiers": [
+            "MOD_LIMINAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_EMERGENT",
+            "MOD_MYTHIC",
+            "MOD_RITUAL",
+            "MOD_MASKED"
+        ]
+    },
+    {
+        "id": "A05_EXPLORER_6_10",
+        "archetype_id": "A05_EXPLORER",
+        "row": 5,
+        "col": 10,
+        "label": "Explorador em Sombra Revelada",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "6",
+        "description": "Enfrenta seu lado sombrio: fuga crônica, evasão, compulsão por novidade, incapacidade de permanecer e comprometer-se.",
+        "default_modifiers": [
+            "MOD_SHADOW"
+        ],
+        "allowed_modifiers": [
+            "MOD_HAUNTED",
+            "MOD_INVERTED",
+            "MOD_APOCALYPTIC",
+            "MOD_FRAGMENTED"
+        ]
+    },
+    {
+        "id": "A05_EXPLORER_9_11",
+        "archetype_id": "A05_EXPLORER",
+        "row": 5,
+        "col": 11,
+        "label": "Explorador Metanoico",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "Redefine o propósito da exploração: deixa de buscar movimento por movimento e passa a explorar com intenção profunda.",
+        "default_modifiers": [
+            "MOD_METANOIC",
+            "MOD_ALCHEMICAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SACRIFICIAL",
+            "MOD_PROPHETIC",
+            "MOD_ORACULAR"
+        ]
+    },
+    {
+        "id": "A05_EXPLORER_9_12",
+        "archetype_id": "A05_EXPLORER",
+        "row": 5,
+        "col": 12,
+        "label": "Explorador Transcendente",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "A exploração se torna princípio civilizacional. Ele inaugura novas eras culturais, territoriais ou simbólicas.",
+        "default_modifiers": [
+            "MOD_TRANSCENDENT",
+            "MOD_MYTHIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_COLLECTIVE",
+            "MOD_SYSTEMIC",
+            "MOD_ANCIENT"
+        ]
+    },
+    {
+        "id": "A06_CAREGIVER_3_01",
+        "archetype_id": "A06_CAREGIVER",
+        "row": 6,
+        "col": 1,
+        "label": "Cuidador Iniciador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "Surge o impulso inicial de proteger, apoiar e sustentar alguém ou um sistema. É o começo do movimento de cuidado ativo.",
+        "default_modifiers": [
+            "MOD_ASCENDANT",
+            "MOD_TRIBAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_RADIANT",
+            "MOD_COLLECTIVE",
+            "MOD_EUPHORIC",
+            "MOD_SYMBIOTIC"
+        ]
+    },
+    {
+        "id": "A06_CAREGIVER_3_02",
+        "archetype_id": "A06_CAREGIVER",
+        "row": 6,
+        "col": 2,
+        "label": "Cuidador Visionário",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "Enxerga um futuro mais seguro e estável para o grupo. Planeja estruturas de suporte, proteção e bem-estar de longo prazo.",
+        "default_modifiers": [
+            "MOD_RADIANT",
+            "MOD_SYSTEMIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_INSTITUTIONAL",
+            "MOD_MYTHIC",
+            "MOD_PROPHETIC",
+            "MOD_COLLECTIVE"
+        ]
+    },
+    {
+        "id": "A06_CAREGIVER_6_03",
+        "archetype_id": "A06_CAREGIVER",
+        "row": 6,
+        "col": 3,
+        "label": "Cuidador Acelerador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "6",
+        "description": "Transforma boas intenções em processos, rotinas e respostas rápidas. Acelera a entrega de suporte concreto.",
+        "default_modifiers": [
+            "MOD_THRUSTING",
+            "MOD_RITUAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SYSTEMIC",
+            "MOD_OBSESSIVE",
+            "MOD_HYPERFOCUSED",
+            "MOD_SYMBIOTIC"
+        ]
+    },
+    {
+        "id": "A06_CAREGIVER_9_04",
+        "archetype_id": "A06_CAREGIVER",
+        "row": 6,
+        "col": 4,
+        "label": "Cuidador Potencializador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "9",
+        "description": "Amplifica redes de cuidado, cria comunidades de suporte e torna o amparo algo sistêmico e compartilhado.",
+        "default_modifiers": [
+            "MOD_COLLECTIVE",
+            "MOD_SYSTEMIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_INSTITUTIONAL",
+            "MOD_TRIBAL",
+            "MOD_RITUAL",
+            "MOD_ANCIENT"
+        ]
+    },
+    {
+        "id": "A06_CAREGIVER_6_05",
+        "archetype_id": "A06_CAREGIVER",
+        "row": 6,
+        "col": 5,
+        "label": "Cuidador Defensivo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Passa a proteger em excesso, controlar e superproteger. O cuidado vira barreira, não mais fortalecimento.",
+        "default_modifiers": [
+            "MOD_DEFENSIVE",
+            "MOD_CAUTIOUS"
+        ],
+        "allowed_modifiers": [
+            "MOD_PARANOID",
+            "MOD_SUPPRESSED",
+            "MOD_CONFINED",
+            "MOD_WOUNDED"
+        ]
+    },
+    {
+        "id": "A06_CAREGIVER_6_06",
+        "archetype_id": "A06_CAREGIVER",
+        "row": 6,
+        "col": 6,
+        "label": "Cuidador Reativo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Só reage a crises e emergências, apagando incêndios sem planejamento. Vive em modo de resposta, não de prevenção.",
+        "default_modifiers": [
+            "MOD_REACTIVE",
+            "MOD_VOLATILE"
+        ],
+        "allowed_modifiers": [
+            "MOD_FRAGMENTED",
+            "MOD_THEATRICAL",
+            "MOD_INCOHERENT",
+            "MOD_OBSESSIVE"
+        ]
+    },
+    {
+        "id": "A06_CAREGIVER_3_07",
+        "archetype_id": "A06_CAREGIVER",
+        "row": 6,
+        "col": 7,
+        "label": "Cuidador Conservador",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "3",
+        "description": "Mantém formas tradicionais de cuidado, resiste a novos modelos ou tecnologias que mudem a relação com quem é cuidado.",
+        "default_modifiers": [
+            "MOD_RITUAL",
+            "MOD_INSTITUTIONAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SYSTEMIC",
+            "MOD_ANCIENT",
+            "MOD_DISILLUSIONED",
+            "MOD_CYNICAL"
+        ]
+    },
+    {
+        "id": "A06_CAREGIVER_9_08",
+        "archetype_id": "A06_CAREGIVER",
+        "row": 6,
+        "col": 8,
+        "label": "Cuidador Retraído",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "9",
+        "description": "Retira-se emocionalmente, cansa do papel de sustentar todos. O cuidado enfraquece, mesmo que a função ainda exista externamente.",
+        "default_modifiers": [
+            "MOD_RETRACTING",
+            "MOD_DORMANT"
+        ],
+        "allowed_modifiers": [
+            "MOD_HIDDEN",
+            "MOD_SUPPRESSED",
+            "MOD_BURNED_OUT",
+            "MOD_CONFUSED"
+        ]
+    },
+    {
+        "id": "A06_CAREGIVER_3_09",
+        "archetype_id": "A06_CAREGIVER",
+        "row": 6,
+        "col": 9,
+        "label": "Cuidador Liminal",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "3",
+        "description": "Questiona profundamente o que é cuidar: onde termina responsabilidade e começa controle? Entra em zona de redefinição.",
+        "default_modifiers": [
+            "MOD_LIMINAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_METANOIC",
+            "MOD_EMERGENT",
+            "MOD_HAUNTED",
+            "MOD_MASKED"
+        ]
+    },
+    {
+        "id": "A06_CAREGIVER_6_10",
+        "archetype_id": "A06_CAREGIVER",
+        "row": 6,
+        "col": 10,
+        "label": "Cuidador em Sombra Revelada",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "6",
+        "description": "Enxerga as distorções do cuidado: controle emocional, vitimização, dependência, moralismo. A sombra do cuidado aparece.",
+        "default_modifiers": [
+            "MOD_SHADOW"
+        ],
+        "allowed_modifiers": [
+            "MOD_HAUNTED",
+            "MOD_APOCALYPTIC",
+            "MOD_INVERTED",
+            "MOD_OBSESSIVE"
+        ]
+    },
+    {
+        "id": "A06_CAREGIVER_9_11",
+        "archetype_id": "A06_CAREGIVER",
+        "row": 6,
+        "col": 11,
+        "label": "Cuidador Metanoico",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "Reformula completamente o modo de cuidar: em vez de carregar os outros, fortalece para que caminhem por conta própria.",
+        "default_modifiers": [
+            "MOD_METANOIC",
+            "MOD_ALCHEMICAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SACRIFICIAL",
+            "MOD_PROPHETIC",
+            "MOD_SYMBIOTIC"
+        ]
+    },
+    {
+        "id": "A06_CAREGIVER_9_12",
+        "archetype_id": "A06_CAREGIVER",
+        "row": 6,
+        "col": 12,
+        "label": "Cuidador Transcendente",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "O cuidado se torna princípio estruturante de comunidades, organizações ou sociedades inteiras. Vira ethos civilizacional.",
+        "default_modifiers": [
+            "MOD_TRANSCENDENT",
+            "MOD_COLLECTIVE"
+        ],
+        "allowed_modifiers": [
+            "MOD_SYSTEMIC",
+            "MOD_INSTITUTIONAL",
+            "MOD_MYTHIC",
+            "MOD_ANCIENT"
+        ]
+    },
+    {
+        "id": "A07_RULER_3_01",
+        "archetype_id": "A07_RULER",
+        "row": 7,
+        "col": 1,
+        "label": "Governante Iniciador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "Estabelece as fundações de ordem e liderança. Define o contorno inicial de regras, papéis e responsabilidades dentro de um sistema.",
+        "default_modifiers": [
+            "MOD_ASCENDANT",
+            "MOD_SYSTEMIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_RADIANT",
+            "MOD_INSTITUTIONAL",
+            "MOD_CAUTIOUS",
+            "MOD_RITUAL"
+        ]
+    },
+    {
+        "id": "A07_RULER_3_02",
+        "archetype_id": "A07_RULER",
+        "row": 7,
+        "col": 2,
+        "label": "Governante Visionário",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "Enxerga horizontes de poder estável, equilíbrio e civilização. Planeja sistemas longos, estruturas duradouras e modelos escaláveis.",
+        "default_modifiers": [
+            "MOD_RADIANT",
+            "MOD_PROPHETIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_ORACULAR",
+            "MOD_INSTITUTIONAL",
+            "MOD_ANCIENT",
+            "MOD_SYSTEMIC"
+        ]
+    },
+    {
+        "id": "A07_RULER_6_03",
+        "archetype_id": "A07_RULER",
+        "row": 7,
+        "col": 3,
+        "label": "Governante Acelerador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "6",
+        "description": "Organiza estruturas rapidamente, coloca ordem em ambientes caóticos e implementa processos rígidos de execução.",
+        "default_modifiers": [
+            "MOD_THRUSTING",
+            "MOD_INSTITUTIONAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_OBSESSIVE",
+            "MOD_HYPERFOCUSED",
+            "MOD_RITUAL",
+            "MOD_SYSTEMIC"
+        ]
+    },
+    {
+        "id": "A07_RULER_9_04",
+        "archetype_id": "A07_RULER",
+        "row": 7,
+        "col": 4,
+        "label": "Governante Potencializador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "9",
+        "description": "Expande estruturas de poder e cria ecossistemas que sustentam grupos, organizações ou culturas inteiras.",
+        "default_modifiers": [
+            "MOD_SYSTEMIC",
+            "MOD_COLLECTIVE"
+        ],
+        "allowed_modifiers": [
+            "MOD_INSTITUTIONAL",
+            "MOD_SYMBIOTIC",
+            "MOD_ANCIENT",
+            "MOD_RITUAL"
+        ]
+    },
+    {
+        "id": "A07_RULER_6_05",
+        "archetype_id": "A07_RULER",
+        "row": 7,
+        "col": 5,
+        "label": "Governante Defensivo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Protege território, instituições e reputação. A liderança volta-se para preservar estruturas, não expandi-las.",
+        "default_modifiers": [
+            "MOD_DEFENSIVE",
+            "MOD_CAUTIOUS"
+        ],
+        "allowed_modifiers": [
+            "MOD_PARANOID",
+            "MOD_SUPPRESSED",
+            "MOD_CONFINED",
+            "MOD_INSTITUTIONAL"
+        ]
+    },
+    {
+        "id": "A07_RULER_6_06",
+        "archetype_id": "A07_RULER",
+        "row": 7,
+        "col": 6,
+        "label": "Governante Reativo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Reage a ameaças políticas, sociais ou culturais de forma rígida. Age sob pressão em vez de guiar o sistema.",
+        "default_modifiers": [
+            "MOD_REACTIVE",
+            "MOD_VOLATILE"
+        ],
+        "allowed_modifiers": [
+            "MOD_PARANOID",
+            "MOD_FRAGMENTED",
+            "MOD_THEATRICAL",
+            "MOD_OBSESSIVE"
+        ]
+    },
+    {
+        "id": "A07_RULER_3_07",
+        "archetype_id": "A07_RULER",
+        "row": 7,
+        "col": 7,
+        "label": "Governante Conservador",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "3",
+        "description": "Prefere modelos rígidos e instituições tradicionais. Resiste à inovação para manter ordem e previsibilidade.",
+        "default_modifiers": [
+            "MOD_RITUAL",
+            "MOD_INSTITUTIONAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SYSTEMIC",
+            "MOD_ANCIENT",
+            "MOD_DISILLUSIONED",
+            "MOD_CYNICAL"
+        ]
+    },
+    {
+        "id": "A07_RULER_9_08",
+        "archetype_id": "A07_RULER",
+        "row": 7,
+        "col": 8,
+        "label": "Governante Retraído",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "9",
+        "description": "Afasta-se de suas responsabilidades. A liderança some, gera vácuo de poder e instabilidade no sistema.",
+        "default_modifiers": [
+            "MOD_RETRACTING",
+            "MOD_DORMANT"
+        ],
+        "allowed_modifiers": [
+            "MOD_HIDDEN",
+            "MOD_SUPPRESSED",
+            "MOD_CONFUSED",
+            "MOD_DISILLUSIONED"
+        ]
+    },
+    {
+        "id": "A07_RULER_3_09",
+        "archetype_id": "A07_RULER",
+        "row": 7,
+        "col": 9,
+        "label": "Governante Liminal",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "3",
+        "description": "Está entre dois paradigmas de liderança. Questiona autoridade, propósito e validade das estruturas que sustenta.",
+        "default_modifiers": [
+            "MOD_LIMINAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_METANOIC",
+            "MOD_EMERGENT",
+            "MOD_RITUAL",
+            "MOD_INVERTED"
+        ]
+    },
+    {
+        "id": "A07_RULER_6_10",
+        "archetype_id": "A07_RULER",
+        "row": 7,
+        "col": 10,
+        "label": "Governante em Sombra Revelada",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "6",
+        "description": "Enxerga seu lado tirânico, controlador ou autoritário. Reconhece abusos de poder e distorções na ordem que criou.",
+        "default_modifiers": [
+            "MOD_SHADOW"
+        ],
+        "allowed_modifiers": [
+            "MOD_HAUNTED",
+            "MOD_APOCALYPTIC",
+            "MOD_INVERTED",
+            "MOD_OBSESSIVE"
+        ]
+    },
+    {
+        "id": "A07_RULER_9_11",
+        "archetype_id": "A07_RULER",
+        "row": 7,
+        "col": 11,
+        "label": "Governante Metanoico",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "Refaz sua relação com o poder. Deixa de controlar para governar pelo exemplo, pela sabedoria e pela legitimidade profunda.",
+        "default_modifiers": [
+            "MOD_METANOIC",
+            "MOD_ALCHEMICAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SACRIFICIAL",
+            "MOD_PROPHETIC",
+            "MOD_SYSTEMIC"
+        ]
+    },
+    {
+        "id": "A07_RULER_9_12",
+        "archetype_id": "A07_RULER",
+        "row": 7,
+        "col": 12,
+        "label": "Governante Transcendente",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "Torna-se arquétipo de liderança civilizacional. Estruturas criadas por ele perduram e moldam eras e paradigmas inteiros.",
+        "default_modifiers": [
+            "MOD_TRANSCENDENT",
+            "MOD_ANCIENT"
+        ],
+        "allowed_modifiers": [
+            "MOD_COLLECTIVE",
+            "MOD_INSTITUTIONAL",
+            "MOD_MYTHIC"
+        ]
+    },
+    {
+        "id": "A08_REBEL_3_01",
+        "archetype_id": "A08_REBEL",
+        "row": 8,
+        "col": 1,
+        "label": "Rebelde Iniciador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "Surge o impulso de dizer não. O Rebelde identifica uma injustiça ou estrutura estagnada e acende a primeira faísca de ruptura.",
+        "default_modifiers": [
+            "MOD_ASCENDANT",
+            "MOD_BOLD"
+        ],
+        "allowed_modifiers": [
+            "MOD_RADIANT",
+            "MOD_TRIBAL",
+            "MOD_EUPHORIC",
+            "MOD_EXUBERANT",
+            "MOD_CYNICAL"
+        ]
+    },
+    {
+        "id": "A08_REBEL_3_02",
+        "archetype_id": "A08_REBEL",
+        "row": 8,
+        "col": 2,
+        "label": "Rebelde Visionário",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "Não apenas rejeita o velho, mas visualiza um mundo alternativo. Formula uma visão de ruptura com propósito.",
+        "default_modifiers": [
+            "MOD_RADIANT",
+            "MOD_PROPHETIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_ORACULAR",
+            "MOD_MYTHIC",
+            "MOD_EXUBERANT",
+            "MOD_TRIBAL"
+        ]
+    },
+    {
+        "id": "A08_REBEL_6_03",
+        "archetype_id": "A08_REBEL",
+        "row": 8,
+        "col": 3,
+        "label": "Rebelde Acelerador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "6",
+        "description": "Acelera a ruptura: organiza ação direta, mobiliza grupos e intensifica pressão sobre estruturas estabelecidas.",
+        "default_modifiers": [
+            "MOD_THRUSTING",
+            "MOD_VOLATILE"
+        ],
+        "allowed_modifiers": [
+            "MOD_OBSESSIVE",
+            "MOD_HYPERFOCUSED",
+            "MOD_THEATRICAL",
+            "MOD_TRIBAL"
+        ]
+    },
+    {
+        "id": "A08_REBEL_9_04",
+        "archetype_id": "A08_REBEL",
+        "row": 8,
+        "col": 4,
+        "label": "Rebelde Potencializador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "9",
+        "description": "Amplifica o impacto da disrupção. Conecta grupos, causas e movimentos, transformando revolta em força coletiva.",
+        "default_modifiers": [
+            "MOD_COLLECTIVE",
+            "MOD_TRIBAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SYSTEMIC",
+            "MOD_SYMBIOTIC",
+            "MOD_RITUAL",
+            "MOD_MYTHIC"
+        ]
+    },
+    {
+        "id": "A08_REBEL_6_05",
+        "archetype_id": "A08_REBEL",
+        "row": 8,
+        "col": 5,
+        "label": "Rebelde Defensivo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Passa a proteger apenas seu próprio grupo, ideologia ou identidade, criando trincheiras e novas rigidezes.",
+        "default_modifiers": [
+            "MOD_DEFENSIVE",
+            "MOD_TRIBAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_PARANOID",
+            "MOD_CONFINED",
+            "MOD_SUPPRESSED",
+            "MOD_CYNICAL"
+        ]
+    },
+    {
+        "id": "A08_REBEL_6_06",
+        "archetype_id": "A08_REBEL",
+        "row": 8,
+        "col": 6,
+        "label": "Rebelde Reativo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Reage impulsivamente a qualquer sinal de autoridade. A ação deixa de ter estratégia e vira pura oposição.",
+        "default_modifiers": [
+            "MOD_REACTIVE",
+            "MOD_VOLATILE"
+        ],
+        "allowed_modifiers": [
+            "MOD_FRAGMENTED",
+            "MOD_THEATRICAL",
+            "MOD_INCOHERENT",
+            "MOD_OBSESSIVE"
+        ]
+    },
+    {
+        "id": "A08_REBEL_3_07",
+        "archetype_id": "A08_REBEL",
+        "row": 8,
+        "col": 7,
+        "label": "Rebelde Conservador",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "3",
+        "description": "A rebeldia vira ortodoxia. O que antes era ruptura agora é dogma de grupo, intolerante a novas diferenças.",
+        "default_modifiers": [
+            "MOD_RITUAL",
+            "MOD_INSTITUTIONAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SYSTEMIC",
+            "MOD_ANCIENT",
+            "MOD_DISILLUSIONED",
+            "MOD_CYNICAL"
+        ]
+    },
+    {
+        "id": "A08_REBEL_9_08",
+        "archetype_id": "A08_REBEL",
+        "row": 8,
+        "col": 8,
+        "label": "Rebelde Retraído",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "9",
+        "description": "Cansa da luta, recua, retira-se para dentro. A energia de ruptura se desliga, deixando frustração e ceticismo.",
+        "default_modifiers": [
+            "MOD_RETRACTING",
+            "MOD_DORMANT"
+        ],
+        "allowed_modifiers": [
+            "MOD_HIDDEN",
+            "MOD_SUPPRESSED",
+            "MOD_DISILLUSIONED",
+            "MOD_CONFUSED"
+        ]
+    },
+    {
+        "id": "A08_REBEL_3_09",
+        "archetype_id": "A08_REBEL",
+        "row": 8,
+        "col": 9,
+        "label": "Rebelde Liminal",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "3",
+        "description": "Ruptura deixa de ser apenas contra algo e passa a buscar o que vem depois. Opera em margens e limiares de sistemas.",
+        "default_modifiers": [
+            "MOD_LIMINAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_METANOIC",
+            "MOD_EMERGENT",
+            "MOD_RITUAL",
+            "MOD_MASKED"
+        ]
+    },
+    {
+        "id": "A08_REBEL_6_10",
+        "archetype_id": "A08_REBEL",
+        "row": 8,
+        "col": 10,
+        "label": "Rebelde em Sombra Revelada",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "6",
+        "description": "Reconhece a destruição sem propósito, a autossabotagem e a violência gratuita como parte de sua sombra.",
+        "default_modifiers": [
+            "MOD_SHADOW"
+        ],
+        "allowed_modifiers": [
+            "MOD_HAUNTED",
+            "MOD_APOCALYPTIC",
+            "MOD_INVERTED",
+            "MOD_FRAGMENTED"
+        ]
+    },
+    {
+        "id": "A08_REBEL_9_11",
+        "archetype_id": "A08_REBEL",
+        "row": 8,
+        "col": 11,
+        "label": "Rebelde Metanoico",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "Transforma rebeldia em responsabilidade transformadora. Deixa de ser apenas contra e passa a ser por algo maior.",
+        "default_modifiers": [
+            "MOD_METANOIC",
+            "MOD_ALCHEMICAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SACRIFICIAL",
+            "MOD_PROPHETIC",
+            "MOD_SYMBIOTIC"
+        ]
+    },
+    {
+        "id": "A08_REBEL_9_12",
+        "archetype_id": "A08_REBEL",
+        "row": 8,
+        "col": 12,
+        "label": "Rebelde Transcendente",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "Torna-se símbolo de libertação e mudança histórica. Sua ruptura passa a ser referência para gerações inteiras.",
+        "default_modifiers": [
+            "MOD_TRANSCENDENT",
+            "MOD_MYTHIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_COLLECTIVE",
+            "MOD_SYSTEMIC",
+            "MOD_ANCIENT"
+        ]
+    },
+    {
+        "id": "A09_LOVER_3_01",
+        "archetype_id": "A09_LOVER",
+        "row": 9,
+        "col": 1,
+        "label": "Amante Iniciador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "O impulso inicial de conexão surge. O Amante abre o campo afetivo, estabelece primeira empatia e desperta desejo de vínculo.",
+        "default_modifiers": [
+            "MOD_RADIANT",
+            "MOD_EMERGENT"
+        ],
+        "allowed_modifiers": [
+            "MOD_EXUBERANT",
+            "MOD_EUPHORIC",
+            "MOD_TRIBAL",
+            "MOD_BOLD"
+        ]
+    },
+    {
+        "id": "A09_LOVER_3_02",
+        "archetype_id": "A09_LOVER",
+        "row": 9,
+        "col": 2,
+        "label": "Amante Visionário",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "Idealiza o vínculo futuro. Enxerga beleza, sentido e destino compartilhado. Vê possibilidade de profundidade.",
+        "default_modifiers": [
+            "MOD_RADIANT",
+            "MOD_MYTHIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_PROPHETIC",
+            "MOD_EXUBERANT",
+            "MOD_SYMBIOTIC",
+            "MOD_MASKED"
+        ]
+    },
+    {
+        "id": "A09_LOVER_6_03",
+        "archetype_id": "A09_LOVER",
+        "row": 9,
+        "col": 3,
+        "label": "Amante Acelerador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "6",
+        "description": "Intensifica o vínculo rapidamente. Busca proximidade, intimidade e fusão emocional em ritmo alto.",
+        "default_modifiers": [
+            "MOD_THRUSTING",
+            "MOD_EXUBERANT"
+        ],
+        "allowed_modifiers": [
+            "MOD_OBSESSIVE",
+            "MOD_EUPHORIC",
+            "MOD_VOLATILE",
+            "MOD_THEATRICAL"
+        ]
+    },
+    {
+        "id": "A09_LOVER_9_04",
+        "archetype_id": "A09_LOVER",
+        "row": 9,
+        "col": 4,
+        "label": "Amante Potencializador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "9",
+        "description": "Amplifica laços e cria redes afetivas. Multiplica intimidade, comunidade, acolhimento e suporte emocional.",
+        "default_modifiers": [
+            "MOD_COLLECTIVE",
+            "MOD_SYMBIOTIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_RITUAL",
+            "MOD_SYSTEMIC",
+            "MOD_TRIBAL",
+            "MOD_ANCIENT"
+        ]
+    },
+    {
+        "id": "A09_LOVER_6_05",
+        "archetype_id": "A09_LOVER",
+        "row": 9,
+        "col": 5,
+        "label": "Amante Defensivo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Medo de perder o vínculo. A energia do cuidado vira posse, ciúme e tentativa de controle emocional.",
+        "default_modifiers": [
+            "MOD_DEFENSIVE",
+            "MOD_CAUTIOUS"
+        ],
+        "allowed_modifiers": [
+            "MOD_PARANOID",
+            "MOD_CONFINED",
+            "MOD_SUPPRESSED",
+            "MOD_WOUNDED"
+        ]
+    },
+    {
+        "id": "A09_LOVER_6_06",
+        "archetype_id": "A09_LOVER",
+        "row": 9,
+        "col": 6,
+        "label": "Amante Reativo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Oscila entre apego e medo, amor e raiva. Reage emocionalmente a qualquer movimento externo do outro.",
+        "default_modifiers": [
+            "MOD_REACTIVE",
+            "MOD_VOLATILE"
+        ],
+        "allowed_modifiers": [
+            "MOD_FRAGMENTED",
+            "MOD_THEATRICAL",
+            "MOD_OBSESSIVE",
+            "MOD_CONFUSED"
+        ]
+    },
+    {
+        "id": "A09_LOVER_3_07",
+        "archetype_id": "A09_LOVER",
+        "row": 9,
+        "col": 7,
+        "label": "Amante Conservador",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "3",
+        "description": "Prefere tradições emocionais. Reproduz modelos antigos de romance, vínculo ou papel afetivo.",
+        "default_modifiers": [
+            "MOD_RITUAL",
+            "MOD_INSTITUTIONAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SYSTEMIC",
+            "MOD_ANCIENT",
+            "MOD_DISILLUSIONED",
+            "MOD_CYNICAL"
+        ]
+    },
+    {
+        "id": "A09_LOVER_9_08",
+        "archetype_id": "A09_LOVER",
+        "row": 9,
+        "col": 8,
+        "label": "Amante Retraído",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "9",
+        "description": "Recua emocionalmente. Desliga a expressão afetiva, evita intimidade e protege o próprio sistema interno.",
+        "default_modifiers": [
+            "MOD_RETRACTING",
+            "MOD_DORMANT"
+        ],
+        "allowed_modifiers": [
+            "MOD_HIDDEN",
+            "MOD_CONFUSED",
+            "MOD_SUPPRESSED",
+            "MOD_DISILLUSIONED"
+        ]
+    },
+    {
+        "id": "A09_LOVER_3_09",
+        "archetype_id": "A09_LOVER",
+        "row": 9,
+        "col": 9,
+        "label": "Amante Liminal",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "3",
+        "description": "Questão fundamental surge: o que é amor? O Amante transita entre velhos padrões afetivos e novas formas de vínculo.",
+        "default_modifiers": [
+            "MOD_LIMINAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_METANOIC",
+            "MOD_EMERGENT",
+            "MOD_RITUAL",
+            "MOD_MASKED"
+        ]
+    },
+    {
+        "id": "A09_LOVER_6_10",
+        "archetype_id": "A09_LOVER",
+        "row": 9,
+        "col": 10,
+        "label": "Amante em Sombra Revelada",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "6",
+        "description": "Enxerga as distorções do amor: dependência, paixão caótica, domínio emocional, vitimização, autoengano.",
+        "default_modifiers": [
+            "MOD_SHADOW"
+        ],
+        "allowed_modifiers": [
+            "MOD_HAUNTED",
+            "MOD_APOCALYPTIC",
+            "MOD_INVERTED",
+            "MOD_FRAGMENTED"
+        ]
+    },
+    {
+        "id": "A09_LOVER_9_11",
+        "archetype_id": "A09_LOVER",
+        "row": 9,
+        "col": 11,
+        "label": "Amante Metanoico",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "Transforma sua forma de amar. Passa do amor carente para um amor que liberta e fortalece o outro.",
+        "default_modifiers": [
+            "MOD_METANOIC",
+            "MOD_ALCHEMICAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SACRIFICIAL",
+            "MOD_PROPHETIC",
+            "MOD_ORACULAR"
+        ]
+    },
+    {
+        "id": "A09_LOVER_9_12",
+        "archetype_id": "A09_LOVER",
+        "row": 9,
+        "col": 12,
+        "label": "Amante Transcendente",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "O amor se torna princípio civilizacional. O Amante vira fonte de coesão social, beleza e profunda unidade emocional.",
+        "default_modifiers": [
+            "MOD_TRANSCENDENT",
+            "MOD_MYTHIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_COLLECTIVE",
+            "MOD_SYSTEMIC",
+            "MOD_ANCIENT"
+        ]
+    },
+    {
+        "id": "A10_INNOCENT_3_01",
+        "archetype_id": "A10_INNOCENT",
+        "row": 10,
+        "col": 1,
+        "label": "Inocente Iniciador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "Surge o primeiro impulso de confiança básica: acreditar que algo bom é possível, que o mundo pode ser seguro e que vale tentar.",
+        "default_modifiers": [
+            "MOD_RADIANT",
+            "MOD_EMERGENT"
+        ],
+        "allowed_modifiers": [
+            "MOD_EXUBERANT",
+            "MOD_EUPHORIC",
+            "MOD_TRIBAL",
+            "MOD_INNOCENT"
+        ]
+    },
+    {
+        "id": "A10_INNOCENT_3_02",
+        "archetype_id": "A10_INNOCENT",
+        "row": 10,
+        "col": 2,
+        "label": "Inocente Visionário",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "Projeta um futuro idealizado, puro e harmonioso. Vê o melhor nas pessoas, nas instituições e nos possíveis desfechos.",
+        "default_modifiers": [
+            "MOD_RADIANT",
+            "MOD_MYTHIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_PROPHETIC",
+            "MOD_SYMBIOTIC",
+            "MOD_EXUBERANT",
+            "MOD_COLLECTIVE"
+        ]
+    },
+    {
+        "id": "A10_INNOCENT_6_03",
+        "archetype_id": "A10_INNOCENT",
+        "row": 10,
+        "col": 3,
+        "label": "Inocente Acelerador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "6",
+        "description": "Coloca em prática a visão otimista. Acelera iniciativas baseadas em confiança, boa-fé e desejo de cooperação.",
+        "default_modifiers": [
+            "MOD_THRUSTING",
+            "MOD_RITUAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_EXUBERANT",
+            "MOD_OBSESSIVE",
+            "MOD_HYPERFOCUSED",
+            "MOD_TRIBAL"
+        ]
+    },
+    {
+        "id": "A10_INNOCENT_9_04",
+        "archetype_id": "A10_INNOCENT",
+        "row": 10,
+        "col": 4,
+        "label": "Inocente Potencializador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "9",
+        "description": "Amplifica esperança e simplicidade. Torna-se fonte de otimismo coletivo e confiança básica em um grupo ou sistema.",
+        "default_modifiers": [
+            "MOD_COLLECTIVE",
+            "MOD_RADIANT"
+        ],
+        "allowed_modifiers": [
+            "MOD_SYSTEMIC",
+            "MOD_TRIBAL",
+            "MOD_RITUAL",
+            "MOD_ANCIENT"
+        ]
+    },
+    {
+        "id": "A10_INNOCENT_6_05",
+        "archetype_id": "A10_INNOCENT",
+        "row": 10,
+        "col": 5,
+        "label": "Inocente Defensivo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Reage à dor ou à decepção fechando-se em naiveté. Recusa-se a ver problemas para proteger a sensação de segurança.",
+        "default_modifiers": [
+            "MOD_DEFENSIVE",
+            "MOD_CAUTIOUS"
+        ],
+        "allowed_modifiers": [
+            "MOD_SUPPRESSED",
+            "MOD_PARANOID",
+            "MOD_CONFINED",
+            "MOD_CONFUSED"
+        ]
+    },
+    {
+        "id": "A10_INNOCENT_6_06",
+        "archetype_id": "A10_INNOCENT",
+        "row": 10,
+        "col": 6,
+        "label": "Inocente Reativo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Responde a conflitos com fuga, negação ou infantilização. A reação não é confrontar, mas escapar para fantasia.",
+        "default_modifiers": [
+            "MOD_REACTIVE",
+            "MOD_VOLATILE"
+        ],
+        "allowed_modifiers": [
+            "MOD_FRAGMENTED",
+            "MOD_THEATRICAL",
+            "MOD_DISILLUSIONED",
+            "MOD_CONFUSED"
+        ]
+    },
+    {
+        "id": "A10_INNOCENT_3_07",
+        "archetype_id": "A10_INNOCENT",
+        "row": 10,
+        "col": 7,
+        "label": "Inocente Conservador",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "3",
+        "description": "Apega-se a tradições, costumes e narrativas reconfortantes. Evita mudanças para manter a sensação de pureza e ordem.",
+        "default_modifiers": [
+            "MOD_RITUAL",
+            "MOD_INSTITUTIONAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SYSTEMIC",
+            "MOD_ANCIENT",
+            "MOD_DISILLUSIONED",
+            "MOD_CYNICAL"
+        ]
+    },
+    {
+        "id": "A10_INNOCENT_9_08",
+        "archetype_id": "A10_INNOCENT",
+        "row": 10,
+        "col": 8,
+        "label": "Inocente Retraído",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "9",
+        "description": "Retira-se do contato com realidades duras. Afasta-se de conflitos e das zonas onde sua inocência seria testada.",
+        "default_modifiers": [
+            "MOD_RETRACTING",
+            "MOD_DORMANT"
+        ],
+        "allowed_modifiers": [
+            "MOD_HIDDEN",
+            "MOD_SUPPRESSED",
+            "MOD_CONFUSED",
+            "MOD_BURNED_OUT"
+        ]
+    },
+    {
+        "id": "A10_INNOCENT_3_09",
+        "archetype_id": "A10_INNOCENT",
+        "row": 10,
+        "col": 9,
+        "label": "Inocente Liminal",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "3",
+        "description": "Entra na fronteira entre ingenuidade e sabedoria. Começa a perceber que a realidade é complexa, sem perder o eixo da pureza.",
+        "default_modifiers": [
+            "MOD_LIMINAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_METANOIC",
+            "MOD_EMERGENT",
+            "MOD_RITUAL",
+            "MOD_HAUNTED"
+        ]
+    },
+    {
+        "id": "A10_INNOCENT_6_10",
+        "archetype_id": "A10_INNOCENT",
+        "row": 10,
+        "col": 10,
+        "label": "Inocente em Sombra Revelada",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "6",
+        "description": "Confronta sua própria negação: percebe onde sua recusa em ver o real gerou dano, conivência ou vulnerabilidade extrema.",
+        "default_modifiers": [
+            "MOD_SHADOW"
+        ],
+        "allowed_modifiers": [
+            "MOD_HAUNTED",
+            "MOD_APOCALYPTIC",
+            "MOD_INVERTED",
+            "MOD_DISILLUSIONED"
+        ]
+    },
+    {
+        "id": "A10_INNOCENT_9_11",
+        "archetype_id": "A10_INNOCENT",
+        "row": 10,
+        "col": 11,
+        "label": "Inocente Metanoico",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "Passa por virada profunda: deixa de ser ingenuamente crédulo e passa a cultivar confiança lúcida, com consciência de risco.",
+        "default_modifiers": [
+            "MOD_METANOIC",
+            "MOD_ALCHEMICAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SACRIFICIAL",
+            "MOD_PROPHETIC",
+            "MOD_ORACULAR"
+        ]
+    },
+    {
+        "id": "A10_INNOCENT_9_12",
+        "archetype_id": "A10_INNOCENT",
+        "row": 10,
+        "col": 12,
+        "label": "Inocente Transcendente",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "A inocência torna-se sabedoria profunda: mantém o eixo de pureza, mas integrada à realidade complexa e trágica do mundo.",
+        "default_modifiers": [
+            "MOD_TRANSCENDENT",
+            "MOD_ANCIENT"
+        ],
+        "allowed_modifiers": [
+            "MOD_COLLECTIVE",
+            "MOD_SYSTEMIC",
+            "MOD_MYTHIC"
+        ]
+    },
+    {
+        "id": "A11_TRICKSTER_3_01",
+        "archetype_id": "A11_TRICKSTER",
+        "row": 11,
+        "col": 1,
+        "label": "Trickster Iniciador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "Surge a primeira fagulha de ruptura de lógica. O Trickster expõe uma contradição e inaugura o campo do absurdo criativo.",
+        "default_modifiers": [
+            "MOD_EMERGENT",
+            "MOD_THEATRICAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_RADIANT",
+            "MOD_CYNICAL",
+            "MOD_EXUBERANT",
+            "MOD_MASKED"
+        ]
+    },
+    {
+        "id": "A11_TRICKSTER_3_02",
+        "archetype_id": "A11_TRICKSTER",
+        "row": 11,
+        "col": 2,
+        "label": "Trickster Visionário",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "Enxerga paradoxos profundos e revela perspectivas incomuns. Aponta caminhos inesperados por meio do humor e da contradição.",
+        "default_modifiers": [
+            "MOD_RADIANT",
+            "MOD_INVERTED"
+        ],
+        "allowed_modifiers": [
+            "MOD_PROPHETIC",
+            "MOD_ORACULAR",
+            "MOD_THEATRICAL",
+            "MOD_MYTHIC"
+        ]
+    },
+    {
+        "id": "A11_TRICKSTER_6_03",
+        "archetype_id": "A11_TRICKSTER",
+        "row": 11,
+        "col": 3,
+        "label": "Trickster Acelerador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "6",
+        "description": "Acelera a ruptura de padrões. Usa caos calculado para provocar adaptação e reorganização de sistemas rígidos.",
+        "default_modifiers": [
+            "MOD_THRUSTING",
+            "MOD_VOLATILE"
+        ],
+        "allowed_modifiers": [
+            "MOD_FRAGMENTED",
+            "MOD_THEATRICAL",
+            "MOD_HYPERFOCUSED",
+            "MOD_OBSESSIVE"
+        ]
+    },
+    {
+        "id": "A11_TRICKSTER_9_04",
+        "archetype_id": "A11_TRICKSTER",
+        "row": 11,
+        "col": 4,
+        "label": "Trickster Potencializador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "9",
+        "description": "Amplifica a capacidade de revelar falhas e inconsistências sistêmicas. Atua como catalisador social e simbólico.",
+        "default_modifiers": [
+            "MOD_SYMBIOTIC",
+            "MOD_SYSTEMIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_RITUAL",
+            "MOD_TRIBAL",
+            "MOD_COLLECTIVE",
+            "MOD_ANCIENT"
+        ]
+    },
+    {
+        "id": "A11_TRICKSTER_6_05",
+        "archetype_id": "A11_TRICKSTER",
+        "row": 11,
+        "col": 5,
+        "label": "Trickster Defensivo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Usa humor como escudo emocional. Evita vulnerabilidade escondendo-se atrás de ironia, sarcasmo ou fuga lúdica.",
+        "default_modifiers": [
+            "MOD_DEFENSIVE",
+            "MOD_CAUTIOUS"
+        ],
+        "allowed_modifiers": [
+            "MOD_MASKED",
+            "MOD_SUPPRESSED",
+            "MOD_CONFUSED",
+            "MOD_CYNICAL"
+        ]
+    },
+    {
+        "id": "A11_TRICKSTER_6_06",
+        "archetype_id": "A11_TRICKSTER",
+        "row": 11,
+        "col": 6,
+        "label": "Trickster Reativo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Reage com caos destrutivo, sabotagem e humor tóxico. A ruptura perde propósito e vira descarga emocional.",
+        "default_modifiers": [
+            "MOD_REACTIVE",
+            "MOD_VOLATILE"
+        ],
+        "allowed_modifiers": [
+            "MOD_FRAGMENTED",
+            "MOD_THEATRICAL",
+            "MOD_INCOHERENT",
+            "MOD_APOCALYPTIC"
+        ]
+    },
+    {
+        "id": "A11_TRICKSTER_3_07",
+        "archetype_id": "A11_TRICKSTER",
+        "row": 11,
+        "col": 7,
+        "label": "Trickster Conservador",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "3",
+        "description": "Recicla velhas piadas, velhas subversões e velhos truques. Deixa de ser ruptura genuína para repetir padrões previsíveis.",
+        "default_modifiers": [
+            "MOD_RITUAL",
+            "MOD_THEATRICAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_CYNICAL",
+            "MOD_DISILLUSIONED",
+            "MOD_SYSTEMIC",
+            "MOD_DORMANT"
+        ]
+    },
+    {
+        "id": "A11_TRICKSTER_9_08",
+        "archetype_id": "A11_TRICKSTER",
+        "row": 11,
+        "col": 8,
+        "label": "Trickster Retraído",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "9",
+        "description": "Desliga-se do jogo. O riso some, o caos desaparece, e ele se torna invisível — mas observando tudo por dentro.",
+        "default_modifiers": [
+            "MOD_RETRACTING",
+            "MOD_DORMANT"
+        ],
+        "allowed_modifiers": [
+            "MOD_HIDDEN",
+            "MOD_SUPPRESSED",
+            "MOD_CONFUSED"
+        ]
+    },
+    {
+        "id": "A11_TRICKSTER_3_09",
+        "archetype_id": "A11_TRICKSTER",
+        "row": 11,
+        "col": 9,
+        "label": "Trickster Liminal",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "3",
+        "description": "Transita entre ordem e caos. Opera em zonas simbólicas onde lógica, humor e verdade se dissolvem e se recombinam.",
+        "default_modifiers": [
+            "MOD_LIMINAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_METANOIC",
+            "MOD_MASKED",
+            "MOD_INVERTED",
+            "MOD_EMERGENT"
+        ]
+    },
+    {
+        "id": "A11_TRICKSTER_6_10",
+        "archetype_id": "A11_TRICKSTER",
+        "row": 11,
+        "col": 10,
+        "label": "Trickster em Sombra Revelada",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "6",
+        "description": "Confronta sua capacidade de enganar, manipular e destruir sob pretexto de humor. A máscara quebra e revela o dano real.",
+        "default_modifiers": [
+            "MOD_SHADOW"
+        ],
+        "allowed_modifiers": [
+            "MOD_HAUNTED",
+            "MOD_APOCALYPTIC",
+            "MOD_INVERTED",
+            "MOD_FRAGMENTED"
+        ]
+    },
+    {
+        "id": "A11_TRICKSTER_9_11",
+        "archetype_id": "A11_TRICKSTER",
+        "row": 11,
+        "col": 11,
+        "label": "Trickster Metanoico",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "Transforma a ruptura em sabedoria paradoxal. Passa a usar humor e caos como caminhos de cura e revelação.",
+        "default_modifiers": [
+            "MOD_METANOIC",
+            "MOD_ALCHEMICAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_PROPHETIC",
+            "MOD_ORACULAR",
+            "MOD_SYMBIOTIC"
+        ]
+    },
+    {
+        "id": "A11_TRICKSTER_9_12",
+        "archetype_id": "A11_TRICKSTER",
+        "row": 11,
+        "col": 12,
+        "label": "Trickster Transcendente",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "O Trickster se torna força civilizacional. O absurdo vira sabedoria, o paradoxo vira caminho, e o caos vira transformação consciente.",
+        "default_modifiers": [
+            "MOD_TRANSCENDENT",
+            "MOD_MYTHIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_COLLECTIVE",
+            "MOD_SYSTEMIC",
+            "MOD_ANCIENT"
+        ]
+    },
+    {
+        "id": "A12_ORACLE_3_01",
+        "archetype_id": "A12_ORACLE",
+        "row": 12,
+        "col": 1,
+        "label": "Oráculo Iniciador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "Primeiro impulso de escuta profunda. O Oráculo começa a captar sinais sutis e intuições que ainda não se tornaram discurso.",
+        "default_modifiers": [
+            "MOD_EMERGENT",
+            "MOD_ORACULAR"
+        ],
+        "allowed_modifiers": [
+            "MOD_RADIANT",
+            "MOD_LIMINAL",
+            "MOD_SYMBIOTIC",
+            "MOD_INVERTED"
+        ]
+    },
+    {
+        "id": "A12_ORACLE_3_02",
+        "archetype_id": "A12_ORACLE",
+        "row": 12,
+        "col": 2,
+        "label": "Oráculo Visionário",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "3",
+        "description": "Formula imagens de futuro, cenários simbólicos e leituras de longo prazo. A visão adquire forma narrativa.",
+        "default_modifiers": [
+            "MOD_RADIANT",
+            "MOD_PROPHETIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_MYTHIC",
+            "MOD_SYSTEMIC",
+            "MOD_TRIBAL",
+            "MOD_THEATRICAL"
+        ]
+    },
+    {
+        "id": "A12_ORACLE_6_03",
+        "archetype_id": "A12_ORACLE",
+        "row": 12,
+        "col": 3,
+        "label": "Oráculo Acelerador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "6",
+        "description": "Traduz visões em alertas, recomendações e estruturas de interpretação. Acelera a tomada de consciência coletiva.",
+        "default_modifiers": [
+            "MOD_THRUSTING",
+            "MOD_SYSTEMIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_INSTITUTIONAL",
+            "MOD_OBSESSIVE",
+            "MOD_HYPERFOCUSED",
+            "MOD_RITUAL"
+        ]
+    },
+    {
+        "id": "A12_ORACLE_9_04",
+        "archetype_id": "A12_ORACLE",
+        "row": 12,
+        "col": 4,
+        "label": "Oráculo Potencializador",
+        "profile": "EXPANSIVE",
+        "tw_plane_default": "9",
+        "description": "Amplifica a ressonância das profecias e leituras simbólicas. Torna-se referência espiritual, cultural ou estratégica para muitos.",
+        "default_modifiers": [
+            "MOD_COLLECTIVE",
+            "MOD_MYTHIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_ANCIENT",
+            "MOD_RITUAL",
+            "MOD_SYMBIOTIC",
+            "MOD_SYSTEMIC"
+        ]
+    },
+    {
+        "id": "A12_ORACLE_6_05",
+        "archetype_id": "A12_ORACLE",
+        "row": 12,
+        "col": 5,
+        "label": "Oráculo Defensivo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Protege suas visões e métodos contra crítica ou exposição. O saber torna-se fechado, reservado a poucos.",
+        "default_modifiers": [
+            "MOD_DEFENSIVE",
+            "MOD_CAUTIOUS"
+        ],
+        "allowed_modifiers": [
+            "MOD_HIDDEN",
+            "MOD_SUPPRESSED",
+            "MOD_PARANOID",
+            "MOD_INSTITUTIONAL"
+        ]
+    },
+    {
+        "id": "A12_ORACLE_6_06",
+        "archetype_id": "A12_ORACLE",
+        "row": 12,
+        "col": 6,
+        "label": "Oráculo Reativo",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "6",
+        "description": "Reage a crises gerando previsões sob tensão. A leitura perde profundidade e passa a responder a medos imediatos.",
+        "default_modifiers": [
+            "MOD_REACTIVE",
+            "MOD_VOLATILE"
+        ],
+        "allowed_modifiers": [
+            "MOD_APOCALYPTIC",
+            "MOD_FRAGMENTED",
+            "MOD_THEATRICAL",
+            "MOD_CONFUSED"
+        ]
+    },
+    {
+        "id": "A12_ORACLE_3_07",
+        "archetype_id": "A12_ORACLE",
+        "row": 12,
+        "col": 7,
+        "label": "Oráculo Conservador",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "3",
+        "description": "Apega-se a dogmas, doutrinas ou profecias antigas. Torna-se guardião rígido de um conjunto fixo de interpretações.",
+        "default_modifiers": [
+            "MOD_RITUAL",
+            "MOD_INSTITUTIONAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_ANCIENT",
+            "MOD_SYSTEMIC",
+            "MOD_DISILLUSIONED",
+            "MOD_CYNICAL"
+        ]
+    },
+    {
+        "id": "A12_ORACLE_9_08",
+        "archetype_id": "A12_ORACLE",
+        "row": 12,
+        "col": 8,
+        "label": "Oráculo Retraído",
+        "profile": "CONTRACTIVE",
+        "tw_plane_default": "9",
+        "description": "Retira-se do campo público, cala suas leituras ou as restringe a círculos mínimos. A voz oracular se recolhe.",
+        "default_modifiers": [
+            "MOD_RETRACTING",
+            "MOD_DORMANT"
+        ],
+        "allowed_modifiers": [
+            "MOD_HIDDEN",
+            "MOD_SUPPRESSED",
+            "MOD_CONFUSED",
+            "MOD_BURNED_OUT"
+        ]
+    },
+    {
+        "id": "A12_ORACLE_3_09",
+        "archetype_id": "A12_ORACLE",
+        "row": 12,
+        "col": 9,
+        "label": "Oráculo Liminal",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "3",
+        "description": "Opera entre tempos e mundos. Percebe-se entre o velho ciclo de profecias e uma nova forma de leitura da realidade.",
+        "default_modifiers": [
+            "MOD_LIMINAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_METANOIC",
+            "MOD_EMERGENT",
+            "MOD_MASKED",
+            "MOD_INVERTED"
+        ]
+    },
+    {
+        "id": "A12_ORACLE_6_10",
+        "archetype_id": "A12_ORACLE",
+        "row": 12,
+        "col": 10,
+        "label": "Oráculo em Sombra Revelada",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "6",
+        "description": "Confronta o uso distorcido da visão: manipulação espiritual, fatalismo, terrorismo simbólico, medo usado como ferramenta.",
+        "default_modifiers": [
+            "MOD_SHADOW"
+        ],
+        "allowed_modifiers": [
+            "MOD_HAUNTED",
+            "MOD_APOCALYPTIC",
+            "MOD_INVERTED",
+            "MOD_FRAGMENTED"
+        ]
+    },
+    {
+        "id": "A12_ORACLE_9_11",
+        "archetype_id": "A12_ORACLE",
+        "row": 12,
+        "col": 11,
+        "label": "Oráculo Metanoico",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "Reformula radicalmente sua função: deixa de prever destinos e passa a abrir possibilidades, devolvendo responsabilidade ao coletivo.",
+        "default_modifiers": [
+            "MOD_METANOIC",
+            "MOD_ALCHEMICAL"
+        ],
+        "allowed_modifiers": [
+            "MOD_SACRIFICIAL",
+            "MOD_PROPHETIC",
+            "MOD_SYMBIOTIC"
+        ]
+    },
+    {
+        "id": "A12_ORACLE_9_12",
+        "archetype_id": "A12_ORACLE",
+        "row": 12,
+        "col": 12,
+        "label": "Oráculo Transcendente",
+        "profile": "TRANSCENDENT",
+        "tw_plane_default": "9",
+        "description": "Torna-se eixo de sentido para eras inteiras. Suas leituras ultrapassam contexto e viram mito, código e referência civilizacional.",
+        "default_modifiers": [
+            "MOD_TRANSCENDENT",
+            "MOD_MYTHIC"
+        ],
+        "allowed_modifiers": [
+            "MOD_COLLECTIVE",
+            "MOD_SYSTEMIC",
+            "MOD_ANCIENT"
+        ]
+    }
+]
