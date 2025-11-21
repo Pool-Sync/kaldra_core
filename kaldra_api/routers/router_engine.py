@@ -9,7 +9,7 @@ from typing import Any, Dict
 
 from fastapi import APIRouter, HTTPException
 
-from kaldra_core.kaldra_engine import generate_kaldra_signal
+from kaldra_engine.kaldra_engine import generate_kaldra_signal
 
 from ..schemas.signal import KaldraSignalRequest, KaldraSignalResponse
 
