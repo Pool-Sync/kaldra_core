@@ -2,7 +2,7 @@
 "use client";
 
 import { useState } from "react";
-import { useKaldraSignal } from "@/app/lib/api/hooks";
+import { useKaldraSignal } from "@/app/lib/hooks/useKaldraSignal";
 import { KaldraSignalCard } from "@/components/kaldra/KaldraSignalCard";
 import { KaldraSignalDistribution } from "@/components/kaldra/KaldraSignalDistribution";
 
