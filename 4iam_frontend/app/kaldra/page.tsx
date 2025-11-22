@@ -7,7 +7,7 @@ export default function KaldraPlaygroundPage() {
     const [text, setText] = useState(
         "The CEO is optimistic about revenue growth"
     );
-    const { data, loading, error, run } = useKaldraSignal();
+    const { data, isLoading, error, run } = useKaldraSignal();
 
     return (
         <main className="max-w-3xl mx-auto py-10 space-y-6">
@@ -21,10 +21,10 @@ export default function KaldraPlaygroundPage() {
 
             <button
                 onClick={() => run(text)}
-                disabled={loading}
+                disabled={isLoading}
                 className="px-4 py-2 rounded-lg border"
             >
-                {loading ? "Gerando sinal..." : "Gerar KALDRA Signal"}
+                {isLoading ? "Gerando sinal..." : "Gerar KALDRA Signal"}
             </button>
 
             {error && (
