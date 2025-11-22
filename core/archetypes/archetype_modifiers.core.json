@@ -1,1 +1,586 @@
-{}
+[
+    {
+        "id": "MOD_WOUNDED",
+        "label": "Ferido",
+        "category": "FERIDA_SOMBRA_FRATURA",
+        "description": "Arquétipo que carrega dor ativa, trauma ou dano recente. Age a partir de feridas não integradas.",
+        "tw_alignment": [
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_REBORN",
+        "label": "Renascente",
+        "category": "EXPANSAO_ASCENSAO_IMPULSO",
+        "description": "Arquétipo que passou por colapso ou morte simbólica e está voltando à vida em uma nova forma.",
+        "tw_alignment": [
+            "3",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_SHADOW",
+        "label": "Sombrio",
+        "category": "FERIDA_SOMBRA_FRATURA",
+        "description": "Arquétipo que opera pela sombra: manipulação, repressão, distorção ou negação de sua função original.",
+        "tw_alignment": [
+            "6",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_COLLECTIVE",
+        "label": "Coletivo",
+        "category": "COLETIVO_SISTEMICO_ORGANICO",
+        "description": "Arquétipo que deixou de ser apenas individual e passou a operar como campo coletivo, grupo ou instituição.",
+        "tw_alignment": [
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_FRAGMENTED",
+        "label": "Fragmentado",
+        "category": "FERIDA_SOMBRA_FRATURA",
+        "description": "Arquétipo dividido em partes desconectadas: discurso, emoção e ação não se alinham entre si.",
+        "tw_alignment": [
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_CYNICAL",
+        "label": "Cínico",
+        "category": "MENTAL_PSICOLOGICO_CINICO",
+        "description": "Arquétipo que perdeu a inocência e a fé; lê o mundo com ironia, suspeita e descrença.",
+        "tw_alignment": [
+            "3",
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_EUPHORIC",
+        "label": "Eufórico",
+        "category": "EXPANSAO_ASCENSAO_IMPULSO",
+        "description": "Arquétipo em estado de excitação e otimismo extremo, com tendência a subestimar riscos.",
+        "tw_alignment": [
+            "3",
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_ASCENDANT",
+        "label": "Ascendente",
+        "category": "EXPANSAO_ASCENSAO_IMPULSO",
+        "description": "Arquétipo em curva de alta: ganhando poder, influência e espaço simbólico.",
+        "tw_alignment": [
+            "3",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_DESCENDANT",
+        "label": "Descendente",
+        "category": "CONTRACAO_QUEDA_DEFESA",
+        "description": "Arquétipo em curva de queda: perdendo relevância, autoridade ou energia.",
+        "tw_alignment": [
+            "6",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_VOLATILE",
+        "label": "Volátil",
+        "category": "CONTRACAO_QUEDA_DEFESA",
+        "description": "Arquétipo instável, com mudanças bruscas de humor, direção ou narrativa.",
+        "tw_alignment": [
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_HAUNTED",
+        "label": "Assombrado",
+        "category": "FERIDA_SOMBRA_FRATURA",
+        "description": "Arquétipo preso a memórias, erros ou traumas passados que continuam influenciando o presente.",
+        "tw_alignment": [
+            "6",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_BURNED_OUT",
+        "label": "Exaurido",
+        "category": "FERIDA_SOMBRA_FRATURA",
+        "description": "Arquétipo que perdeu energia vital; continua funcionando por inércia ou obrigação.",
+        "tw_alignment": [
+            "6",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_PARANOID",
+        "label": "Paranoico",
+        "category": "FERIDA_SOMBRA_FRATURA",
+        "description": "Arquétipo dominado por vigilância extrema, medo de ameaça e fantasia de perseguição.",
+        "tw_alignment": [
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_COLLAPSING",
+        "label": "Colapsante",
+        "category": "FERIDA_SOMBRA_FRATURA",
+        "description": "Arquétipo em processo de desintegração; a estrutura simbólica já começou a ruir.",
+        "tw_alignment": [
+            "6",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_SUPPRESSED",
+        "label": "Suprimido",
+        "category": "FERIDA_SOMBRA_FRATURA",
+        "description": "Arquétipo que tenta emergir, mas é abafado por forças internas ou externas.",
+        "tw_alignment": [
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_HIDDEN",
+        "label": "Oculto",
+        "category": "FERIDA_SOMBRA_FRATURA",
+        "description": "Arquétipo ativo nos bastidores, mas não reconhecido explicitamente na narrativa.",
+        "tw_alignment": [
+            "6",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_RADIANT",
+        "label": "Radiante",
+        "category": "EXPANSAO_ASCENSAO_IMPULSO",
+        "description": "Arquétipo que irradia carisma, confiança e magnetismo; contagia o ambiente.",
+        "tw_alignment": [
+            "3",
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_EMERGENT",
+        "label": "Emergente",
+        "category": "EXPANSAO_ASCENSAO_IMPULSO",
+        "description": "Arquétipo que está nascendo ou ganhando forma; sinais ainda sutis, mas em aceleração.",
+        "tw_alignment": [
+            "3",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_THRUSTING",
+        "label": "Impulsionador",
+        "category": "EXPANSAO_ASCENSAO_IMPULSO",
+        "description": "Arquétipo que empurra a narrativa para frente com força, iniciativa e urgência.",
+        "tw_alignment": [
+            "3",
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_BOLD",
+        "label": "Ousado",
+        "category": "EXPANSAO_ASCENSAO_IMPULSO",
+        "description": "Arquétipo disposto a arriscar reputação, recursos ou estabilidade em nome de visão ou desejo.",
+        "tw_alignment": [
+            "3"
+        ]
+    },
+    {
+        "id": "MOD_INVINCIBLE",
+        "label": "Invencível",
+        "category": "EXPANSAO_ASCENSAO_IMPULSO",
+        "description": "Arquétipo que se percebe acima de falhas ou limites; sensação de imunidade ao erro.",
+        "tw_alignment": [
+            "3"
+        ]
+    },
+    {
+        "id": "MOD_EXUBERANT",
+        "label": "Exuberante",
+        "category": "EXPANSAO_ASCENSAO_IMPULSO",
+        "description": "Arquétipo que exagera na expressão, celebração e demonstração de poder ou sucesso.",
+        "tw_alignment": [
+            "3",
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_DEFENSIVE",
+        "label": "Defensivo",
+        "category": "CONTRACAO_QUEDA_DEFESA",
+        "description": "Arquétipo que age principalmente para se proteger, preservar território ou justificar decisões passadas.",
+        "tw_alignment": [
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_REACTIVE",
+        "label": "Reativo",
+        "category": "CONTRACAO_QUEDA_DEFESA",
+        "description": "Arquétipo que responde a estímulos externos sem estratégia clara, apenas reagindo à pressão.",
+        "tw_alignment": [
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_RETRACTING",
+        "label": "Retraído",
+        "category": "CONTRACAO_QUEDA_DEFESA",
+        "description": "Arquétipo que recolhe energia, visibilidade ou compromisso; encolhe no campo simbólico.",
+        "tw_alignment": [
+            "6",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_CONFINED",
+        "label": "Confinado",
+        "category": "CONTRACAO_QUEDA_DEFESA",
+        "description": "Arquétipo limitado por regras, dívidas, contratos ou contextos que o impedem de agir plenamente.",
+        "tw_alignment": [
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_CAUTIOUS",
+        "label": "Cauteloso",
+        "category": "CONTRACAO_QUEDA_DEFESA",
+        "description": "Arquétipo que prioriza segurança, prudência e controle de risco acima de crescimento.",
+        "tw_alignment": [
+            "3",
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_WATCHFUL",
+        "label": "Vigilante",
+        "category": "CONTRACAO_QUEDA_DEFESA",
+        "description": "Arquétipo atento a sinais de ameaça; observa mais do que age.",
+        "tw_alignment": [
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_DORMANT",
+        "label": "Dormente",
+        "category": "CONTRACAO_QUEDA_DEFESA",
+        "description": "Arquétipo presente, mas inativo; pode ser reativado por gatilhos específicos.",
+        "tw_alignment": [
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_TRIBAL",
+        "label": "Tribal",
+        "category": "COLETIVO_SISTEMICO_ORGANICO",
+        "description": "Arquétipo que opera com forte senso de clã, nós versus eles, lealdade interna e exclusão externa.",
+        "tw_alignment": [
+            "6",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_SYMBIOTIC",
+        "label": "Simbiótico",
+        "category": "COLETIVO_SISTEMICO_ORGANICO",
+        "description": "Arquétipo que só faz sentido em relação a outro; relações de interdependência forte.",
+        "tw_alignment": [
+            "6",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_SYSTEMIC",
+        "label": "Sistêmico",
+        "category": "COLETIVO_SISTEMICO_ORGANICO",
+        "description": "Arquétipo que atua como parte de uma rede maior: estruturas, instituições, ecossistemas.",
+        "tw_alignment": [
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_RITUAL",
+        "label": "Ritual",
+        "category": "COLETIVO_SISTEMICO_ORGANICO",
+        "description": "Arquétipo que se manifesta por padrões repetitivos, cerimônias, processos e protocolos.",
+        "tw_alignment": [
+            "6",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_INSTITUTIONAL",
+        "label": "Institucional",
+        "category": "COLETIVO_SISTEMICO_ORGANICO",
+        "description": "Arquétipo incorporado em organizações formais: empresas, governos, igrejas, exércitos.",
+        "tw_alignment": [
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_MYTHIC",
+        "label": "Mítico",
+        "category": "COLETIVO_SISTEMICO_ORGANICO",
+        "description": "Arquétipo que ganhou status de mito fundador, lenda interna ou narrativa épica.",
+        "tw_alignment": [
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_ANCIENT",
+        "label": "Ancestral",
+        "category": "COLETIVO_SISTEMICO_ORGANICO",
+        "description": "Arquétipo muito antigo, ligado à tradição, linhagem ou memória profunda de um grupo.",
+        "tw_alignment": [
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_DISILLUSIONED",
+        "label": "Desiludido",
+        "category": "MENTAL_PSICOLOGICO_CINICO",
+        "description": "Arquétipo que perdeu crença em ideais; age com realismo frio ou amargura.",
+        "tw_alignment": [
+            "3",
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_ANALYTICAL",
+        "label": "Analítico",
+        "category": "MENTAL_PSICOLOGICO_CINICO",
+        "description": "Arquétipo que privilegia análise racional, decomposição de problemas e lógica.",
+        "tw_alignment": [
+            "3"
+        ]
+    },
+    {
+        "id": "MOD_OBSESSIVE",
+        "label": "Obsessivo",
+        "category": "MENTAL_PSICOLOGICO_CINICO",
+        "description": "Arquétipo fixado em um ponto, ideia ou meta, com dificuldade de soltar o controle.",
+        "tw_alignment": [
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_DETACHED",
+        "label": "Desapegado",
+        "category": "MENTAL_PSICOLOGICO_CINICO",
+        "description": "Arquétipo que observa à distância, sem se envolver emocionalmente.",
+        "tw_alignment": [
+            "3",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_INVERTED",
+        "label": "Invertido",
+        "category": "MENTAL_PSICOLOGICO_CINICO",
+        "description": "Arquétipo operando de forma contrária à sua função clássica; luz e sombra trocam de lugar.",
+        "tw_alignment": [
+            "6",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_INCOHERENT",
+        "label": "Incoerente",
+        "category": "MENTAL_PSICOLOGICO_CINICO",
+        "description": "Arquétipo com narrativa quebrada: o discurso não se alinha às ações nem à identidade declarada.",
+        "tw_alignment": [
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_CONFUSED",
+        "label": "Confuso",
+        "category": "MENTAL_PSICOLOGICO_CINICO",
+        "description": "Arquétipo sem clareza de finalidade, direção ou papel; mistura mensagens e sinais.",
+        "tw_alignment": [
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_HYPERFOCUSED",
+        "label": "Hiperfocado",
+        "category": "MENTAL_PSICOLOGICO_CINICO",
+        "description": "Arquétipo com foco extremo em um objetivo específico, ignorando contexto e efeitos colaterais.",
+        "tw_alignment": [
+            "3",
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_TRANSCENDENT",
+        "label": "Transcendente",
+        "category": "ORDALIA_METANOIA_TRANSCENDENCIA",
+        "description": "Arquétipo que supera seu próprio limite; atua a partir de um plano mais alto de consciência.",
+        "tw_alignment": [
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_ALCHEMICAL",
+        "label": "Alquímico",
+        "category": "ORDALIA_METANOIA_TRANSCENDENCIA",
+        "description": "Arquétipo que transforma dor, caos ou crise em ouro simbólico: aprendizado, inovação, despertar.",
+        "tw_alignment": [
+            "6",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_METANOIC",
+        "label": "Metanoico",
+        "category": "ORDALIA_METANOIA_TRANSCENDENCIA",
+        "description": "Arquétipo em processo de mudança radical de mente, valores ou propósito.",
+        "tw_alignment": [
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_LIMINAL",
+        "label": "Liminal",
+        "category": "ORDALIA_METANOIA_TRANSCENDENCIA",
+        "description": "Arquétipo em zona de limiar: não é mais o que era, ainda não é o que será.",
+        "tw_alignment": [
+            "3",
+            "6",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_SACRIFICIAL",
+        "label": "Sacrificial",
+        "category": "ORDALIA_METANOIA_TRANSCENDENCIA",
+        "description": "Arquétipo que aceita perder algo importante (status, segurança, vantagem) para atravessar um portal maior.",
+        "tw_alignment": [
+            "6",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_PROPHETIC",
+        "label": "Profético",
+        "category": "ORDALIA_METANOIA_TRANSCENDENCIA",
+        "description": "Arquétipo que enxerga e anuncia futuros possíveis, desejáveis ou ameaçadores.",
+        "tw_alignment": [
+            "3",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_INITIATIC",
+        "label": "Iniciático",
+        "category": "ORDALIA_METANOIA_TRANSCENDENCIA",
+        "description": "Arquétipo que conduz ou vive rituais de iniciação, testes, provas e travessias.",
+        "tw_alignment": [
+            "6",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_ORACULAR",
+        "label": "Oracular",
+        "category": "ORDALIA_METANOIA_TRANSCENDENCIA",
+        "description": "Arquétipo que fala em códigos, símbolos ou visões; não entrega respostas diretas.",
+        "tw_alignment": [
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_APOCALYPTIC",
+        "label": "Apocalíptico",
+        "category": "ORDALIA_METANOIA_TRANSCENDENCIA",
+        "description": "Arquétipo que opera em narrativas de fim de ciclo, colapso total ou revelação extrema.",
+        "tw_alignment": [
+            "6",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_MASKED",
+        "label": "Mascarado",
+        "category": "MASCARA_PERFORMATIVO_SIMULACRO",
+        "description": "Arquétipo que esconde sua verdadeira intenção atrás de outra persona ou narrativa.",
+        "tw_alignment": [
+            "3",
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_PERFORMATIVE",
+        "label": "Performativo",
+        "category": "MASCARA_PERFORMATIVO_SIMULACRO",
+        "description": "Arquétipo que age mais para ser visto do que para transformar a realidade; foco na performance.",
+        "tw_alignment": [
+            "3",
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_THEATRICAL",
+        "label": "Teatral",
+        "category": "MASCARA_PERFORMATIVO_SIMULACRO",
+        "description": "Arquétipo que dramatiza emoções, crises e vitórias; exagera para causar impacto.",
+        "tw_alignment": [
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_SIMULATED",
+        "label": "Simulado",
+        "category": "MASCARA_PERFORMATIVO_SIMULACRO",
+        "description": "Arquétipo artificialmente construído, mantido por script, mídia ou aparato tecnológico.",
+        "tw_alignment": [
+            "3",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_PUPPET",
+        "label": "Fantochado",
+        "category": "MASCARA_PERFORMATIVO_SIMULACRO",
+        "description": "Arquétipo controlado por outra força: conselheiros ocultos, grupos de interesse, algoritmos.",
+        "tw_alignment": [
+            "6",
+            "9"
+        ]
+    },
+    {
+        "id": "MOD_INFLATED",
+        "label": "Inflado",
+        "category": "MASCARA_PERFORMATIVO_SIMULACRO",
+        "description": "Arquétipo com ego ampliado além da realidade; imagem maior do que entrega real.",
+        "tw_alignment": [
+            "3"
+        ]
+    },
+    {
+        "id": "MOD_FACADE",
+        "label": "Fachada",
+        "category": "MASCARA_PERFORMATIVO_SIMULACRO",
+        "description": "Arquétipo que mantém aparência de integridade ou sucesso, enquanto a estrutura interna está comprometida.",
+        "tw_alignment": [
+            "3",
+            "6"
+        ]
+    },
+    {
+        "id": "MOD_INNOCENT",
+        "label": "Inocente",
+        "category": "EXPANSAO_ASCENSAO_IMPULSO",
+        "description": "Arquétipo que opera com pureza, confiança básica e otimismo genuíno.",
+        "tw_alignment": [
+            "3"
+        ]
+    }
+]
