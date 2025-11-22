@@ -1,16 +1,12 @@
 // app/alpha/page.tsx
 "use client";
 
-import { useState } from "react";
 import { useKaldraSignal } from "@/app/lib/hooks/useKaldraSignal";
 import { KaldraSignalCard } from "@/components/kaldra/KaldraSignalCard";
 import { KaldraSignalDistribution } from "@/components/kaldra/KaldraSignalDistribution";
 
 export default function AlphaPage() {
-    const [input, setInput] = useState(
-        "Exemplo de earnings call para o KALDRA-ALPHA.",
-    );
-    const { text, setText, data, isLoading, error, run } = useKaldraSignal(input);
+    const { text, setText, data, isLoading, error, run } = useKaldraSignal();
 
     return (
         <main className="flex flex-col gap-6 p-6">
@@ -30,11 +26,9 @@ export default function AlphaPage() {
                     </label>
                     <textarea
                         className="h-40 w-full rounded-xl border border-slate-800 bg-slate-950/80 p-3 text-sm text-slate-100 outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-                        value={text || input}
-                        onChange={(e) => {
-                            setText(e.target.value);
-                            setInput(e.target.value);
-                        }}
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
+                        placeholder="Exemplo de earnings call para o KALDRA-ALPHA."
                     />
                     <button
                         type="button"
