@@ -117,6 +117,10 @@ export interface ApiError {
 
 // --- KALDRA CORE Signal Types (synced with backend schema) ---
 
+export interface KaldraSignalRequest {
+    text: string;
+}
+
 export type KaldraTWRegime = "STABLE" | "CRITICAL" | "UNSTABLE";
 
 export interface KaldraSignal {
@@ -133,3 +137,6 @@ export interface KaldraSignal {
     bias_label?: string;
     narrative_risk?: string;
 }
+
+// Alias for compatibility
+export type KaldraSignalResponse = KaldraSignal;

@@ -21,14 +21,16 @@ export const API_ENDPOINTS: Record<ServiceKey, { basePath: string }> = {
  */
 export const API_CONFIG = {
     // Base URL for API Gateway (will be used when switching to real API)
-    baseUrl: process.env.NEXT_PUBLIC_KALDRA_API_BASE_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000',
+    baseUrl: process.env.NEXT_PUBLIC_KALDRA_API_URL ||
+        process.env.NEXT_PUBLIC_API_URL ||
+        'http://localhost:8000',
 
     // Timeout for API requests (ms)
     timeout: 15000,
     timeoutMs: 15000,
 
     // Enable mock mode (true = use mocks, false = use real API)
-    useMocks: process.env.NEXT_PUBLIC_USE_MOCKS === 'true' || true,
+    useMocks: process.env.NEXT_PUBLIC_USE_MOCKS === 'true',
 
     // Retry configuration
     retry: {
