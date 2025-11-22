@@ -1,6 +1,7 @@
+
 import numpy as np
 
-from core.kindras import infer_kindra_distribution
+from src.kindras import infer_kindra_distribution
 
 
 def test_infer_kindra_distribution_runs():

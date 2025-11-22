@@ -1,4 +1,4 @@
-from apps.product.product_analyzer import analyze_product_text
+from src.apps.product.product_analyzer import analyze_product_text
 
 
 def test_analyze_product_text_runs():

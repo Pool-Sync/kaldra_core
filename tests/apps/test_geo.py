@@ -1,4 +1,4 @@
-from apps.geo.geo_analyzer import analyze_geopolitical_text
+from src.apps.geo.geo_analyzer import analyze_geopolitical_text
 
 
 def test_analyze_geopolitical_text_runs():

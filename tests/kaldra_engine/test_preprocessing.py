@@ -1,4 +1,4 @@
-from kaldra_engine.preprocessing import simple_tokenize
+from src.kaldra_engine.preprocessing import simple_tokenize
 
 
 def test_simple_tokenize_runs():

@@ -26,3 +26,7 @@ ARCHETYPES_12_FILE = ARCHETYPES_SCHEMA / "archetypes_12.json"
 MODIFIERS_FILE = ARCHETYPES_SCHEMA / "archetype_modifiers.json"
 
 KINDRAS_48_FILE = KINDRAS_SCHEMA / "kindra_vectors_48.json"
+
+# TW369 Configuration
+TW_ORACLE_CONFIG_FILE = TW369_SCHEMA / "tw369_planes.json"
+

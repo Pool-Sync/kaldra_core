@@ -25,6 +25,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Any, Tuple
 
 import json
+import numpy as np
 import math
 
 
@@ -87,6 +88,7 @@ class StateInferenceResult:
     state: ArchetypeState
     active_modifiers: List[Modifier]
     scores: Dict[str, Any]
+    probs: Optional[List[float]] = None  # Vetor de probabilidades (144)
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -94,6 +96,7 @@ class StateInferenceResult:
             "state": asdict(self.state),
             "active_modifiers": [asdict(m) for m in self.active_modifiers],
             "scores": self.scores,
+            "probs": self.probs,
         }
 
 
@@ -235,6 +238,51 @@ class Delta144Engine:
     # ---------------------------------------------------------------------
     # Inferência de estado Δ144
     # ---------------------------------------------------------------------
+
+    def infer_from_vector(self, vector: np.ndarray) -> StateInferenceResult:
+        """
+        Simula inferência a partir de um vetor de embedding (mock/placeholder).
+        Gera probabilidades pseudo-aleatórias (mas determinísticas pelo vetor)
+        para os 144 estados e retorna o estado dominante.
+        """
+        # Seed determinística baseada na soma do vetor para consistência
+        seed = int(np.abs(vector.sum()) * 10000) % (2**32)
+        rng = np.random.RandomState(seed)
+        
+        # Gera probabilidades aleatórias para 144 estados
+        raw_probs = rng.rand(144)
+        probs = list(raw_probs / raw_probs.sum())
+        
+        # Escolhe o vencedor
+        winner_idx = int(np.argmax(probs))
+        
+        # Mapeia índice linear (0-143) para estado
+        # Assumindo ordem de carga (não garantida, mas ok para mock)
+        all_states = list(self.states.values())
+        # Ordenar para garantir determinismo
+        all_states.sort(key=lambda s: (s.row, s.col))
+        
+        if winner_idx < len(all_states):
+            winner_state = all_states[winner_idx]
+        else:
+            winner_state = all_states[0]
+            
+        winner_archetype = self.archetypes[winner_state.archetype_id]
+        
+        # Scores simulados
+        scores = {
+            "plane_scores": {"3": 0.33, "6": 0.33, "9": 0.33},
+            "profile_scores": {"EXPANSIVE": 0.33, "CONTRACTIVE": 0.33, "TRANSCENDENT": 0.33},
+            "chosen_state_score": probs[winner_idx]
+        }
+        
+        return StateInferenceResult(
+            archetype=winner_archetype,
+            state=winner_state,
+            active_modifiers=[], # Sem modifiers no mock básico
+            scores=scores,
+            probs=probs
+        )
 
     def infer_state(
         self,

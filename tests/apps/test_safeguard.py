@@ -1,5 +1,5 @@
-from apps.safeguard.narrative_guard import evaluate_narrative_risk
-from apps.safeguard.bias_monitor import monitor_bias_over_texts
+from src.apps.safeguard.narrative_guard import evaluate_narrative_risk
+from src.apps.safeguard.bias_monitor import monitor_bias_over_texts
 
 
 def test_evaluate_narrative_risk_runs():
