@@ -28,6 +28,13 @@ import json
 import math
 
 
+from ..config import (
+    ARCHETYPES_12_FILE,
+    DELTA144_STATES_FILE,
+    MODIFIERS_FILE,
+)
+
+
 # ---------------------------------------------------------------------------
 # Dataclasses básicas
 # ---------------------------------------------------------------------------
@@ -167,8 +174,7 @@ class Delta144Engine:
 
     Exemplo de uso:
 
-        base_dir = Path("kaldra/core/archetypes")
-        engine = Delta144Engine.from_default_files(base_dir)
+        engine = Delta144Engine.from_default_files()
 
         result = engine.infer_state(
             archetype_id="A07_RULER",
@@ -200,23 +206,13 @@ class Delta144Engine:
     # ---------------------------------------------------------------------
 
     @classmethod
-    def from_default_files(cls, base_dir: Path) -> "Delta144Engine":
+    def from_default_files(cls) -> "Delta144Engine":
         """
-        Carrega a engine a partir dos arquivos padrão:
-
-        - archetypes_12.core.json
-        - delta144_states.core.json
-        - archetype_modifiers.core.json
-
-        Espera-se que estes arquivos estejam em `base_dir`.
+        Carrega a engine a partir dos arquivos padrão definidos em src/config.py.
         """
-        archetypes_path = base_dir / "archetypes_12.core.json"
-        states_path = base_dir / "delta144_states.core.json"
-        modifiers_path = base_dir / "archetype_modifiers.core.json"
-
-        archetypes = load_archetypes(archetypes_path)
-        states = load_states(states_path)
-        modifiers = load_modifiers(modifiers_path)
+        archetypes = load_archetypes(ARCHETYPES_12_FILE)
+        states = load_states(DELTA144_STATES_FILE)
+        modifiers = load_modifiers(MODIFIERS_FILE)
 
         return cls(archetypes=archetypes, states=states, modifiers=modifiers)
 
@@ -451,13 +447,12 @@ if __name__ == "__main__":
     """
     Uso rápido de linha de comando:
 
-    python -m kaldra.core.archetypes.delta144_engine
+    python -m src.archetypes.delta144_engine
 
-    (assumindo que este arquivo está em kaldra/core/archetypes/
-     e que os JSONs padrão existem no mesmo diretório.)
+    (assumindo que este arquivo está em src/archetypes/
+     e que os JSONs padrão existem em schema/archetypes/)
     """
-    base = Path(__file__).resolve().parent
-    engine = Delta144Engine.from_default_files(base)
+    engine = Delta144Engine.from_default_files()
 
     # Exemplo: inferir estado para o Governante
     result = engine.infer_state(
@@ -472,3 +467,4 @@ if __name__ == "__main__":
     )
 
     print(json.dumps(result.to_dict(), indent=2, ensure_ascii=False))
+

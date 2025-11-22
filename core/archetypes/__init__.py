@@ -1,9 +1,13 @@
 """
-KALDRA — Estrutura Base do Módulo
+Shim de compatibilidade temporário para Delta144Engine.
 
-Este arquivo faz parte da implementação estrutural do sistema KALDRA.
-A lógica será implementada nos próximos passos. Não adicionar funções
-além dos stubs determinados por este prompt.
+Permite:
+    from kaldra_core.core.archetypes import Delta144Engine
+
+enquanto migramos para:
+    from kaldra_core.src.archetypes import Delta144Engine
 """
 
-# TODO: implementar este módulo conforme a especificação do KALDRA
+from ...src.archetypes import Delta144Engine
+
+__all__ = ["Delta144Engine"]
