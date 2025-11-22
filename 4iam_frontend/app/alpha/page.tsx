@@ -40,7 +40,7 @@ export default function AlphaPage() {
                     </button>
                     {error && (
                         <p className="text-xs text-red-400 mt-1">
-                            {error.message || "Unexpected error"}
+                            {error}
                         </p>
                     )}
                 </div>
