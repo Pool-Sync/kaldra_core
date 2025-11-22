@@ -270,8 +270,8 @@ export function getAllMockSignals(): ExplorerSignal[] {
 /**
  * Get mock signal by ID
  */
-export function getMockSignalById(id: string): ExplorerSignal | undefined {
-    return explorerMockSignals.find(signal => signal.id === id);
+export function getMockSignalById(id: string): ExplorerSignal | null {
+    return explorerMockSignals.find(signal => signal.id === id) || null;
 }
 
 /**
