@@ -13,10 +13,8 @@ from kaldra_engine.kaldra_engine import generate_kaldra_signal
 
 from ..schemas.signal import KaldraSignalRequest, KaldraSignalResponse
 
-router = APIRouter(
-    prefix="/engine",
-    tags=["engine"],
-)
+router = APIRouter()
+
 
 
 @router.post(
