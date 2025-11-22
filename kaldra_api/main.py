@@ -1,9 +1,11 @@
 """
-KALDRA API — Main FastAPI application.
+KALDRA API Gateway — Main Entry Point
+FastAPI application serving KALDRA Engine endpoints.
 """
 from __future__ import annotations
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 # Import routers
 from .routers import (
@@ -15,9 +17,26 @@ from .routers import (
     router_safeguard
 )
 
+# Initialize FastAPI app
 app = FastAPI(
     title="KALDRA API Gateway",
+    description="REST API for KALDRA symbolic intelligence engine",
     version="0.1.0",
+)
+
+# Configure CORS
+origins = [
+    "http://localhost:3000",
+    "http://localhost:8000",
+    "https://4iam-frontend.vercel.app",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 

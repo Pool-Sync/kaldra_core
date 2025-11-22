@@ -12,7 +12,7 @@ async function handleResponse(res: Response): Promise<KaldraSignalResponse> {
 export async function generateKaldraSignal(
     payload: KaldraSignalRequest
 ): Promise<KaldraSignalResponse> {
-    const url = `${API_CONFIG.baseUrl}/engine/kaldra/signal`;
+    const url = `${API_CONFIG.baseUrl}/engine/engine/kaldra/signal`;
 
     const res = await fetch(url, {
         method: "POST",
