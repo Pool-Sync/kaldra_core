@@ -13,7 +13,7 @@ services:
     plan: starter  # Free tier, upgrade to standard/pro as needed
     
     # Docker build configuration
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: Dockerfile
     dockerContext: .
     
     # Auto-deploy on git push
