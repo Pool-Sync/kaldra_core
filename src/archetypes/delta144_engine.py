@@ -91,9 +91,19 @@ class StateInferenceResult:
     probs: Optional[List[float]] = None  # Vetor de probabilidades (144)
 
     def to_dict(self) -> Dict[str, Any]:
+        """Convert to dictionary for API serialization."""
         return {
-            "archetype": asdict(self.archetype),
-            "state": asdict(self.state),
+            "archetype": {
+                "id": self.archetype.id,
+                "label": self.archetype.label,
+                "essence": self.archetype.essence,
+            },
+            "state": {
+                "id": self.state.id,
+                "label": self.state.label,
+                "profile": self.state.profile,
+                "description": self.state.description,
+            },
             "active_modifiers": [asdict(m) for m in self.active_modifiers],
             "scores": self.scores,
             "probs": self.probs,
@@ -194,22 +204,44 @@ class Delta144Engine:
         archetypes: Dict[str, Archetype],
         states: Dict[str, ArchetypeState],
         modifiers: Dict[str, Modifier],
+        d_ctx: int = 256,
     ) -> None:
         self.archetypes = archetypes
         self.states = states
         self.modifiers = modifiers
+        self.d_ctx = d_ctx
 
         # índice rápido: arquétipo → lista de estados
         self._states_by_archetype: Dict[str, List[ArchetypeState]] = {}
         for s in self.states.values():
             self._states_by_archetype.setdefault(s.archetype_id, []).append(s)
+            
+        # Inicializa embeddings dos estados (simulação semântica)
+        self._state_embeddings: Dict[str, np.ndarray] = {}
+        self._init_state_embeddings()
+
+    def _init_state_embeddings(self):
+        """
+        Gera embeddings de referência para cada um dos 144 estados.
+        Em prod, usaria um modelo de NLP. Aqui, usa RNG determinístico baseado na descrição.
+        """
+        for s in self.states.values():
+            # Seed baseada no texto descritivo do estado
+            seed_text = f"{s.label}_{s.profile}_{s.description}"
+            seed = sum(ord(c) for c in seed_text) % (2**32)
+            rng = np.random.RandomState(seed)
+            
+            # Gera vetor d_ctx-d normalizado
+            vec = rng.randn(self.d_ctx)
+            vec = vec / np.linalg.norm(vec)
+            self._state_embeddings[s.id] = vec
 
     # ---------------------------------------------------------------------
     # Fábricas / loading
     # ---------------------------------------------------------------------
 
     @classmethod
-    def from_default_files(cls) -> "Delta144Engine":
+    def from_default_files(cls, d_ctx: int = 256) -> "Delta144Engine":
         """
         Carrega a engine a partir dos arquivos padrão definidos em src/config.py.
         """
@@ -217,7 +249,7 @@ class Delta144Engine:
         states = load_states(DELTA144_STATES_FILE)
         modifiers = load_modifiers(MODIFIERS_FILE)
 
-        return cls(archetypes=archetypes, states=states, modifiers=modifiers)
+        return cls(archetypes=archetypes, states=states, modifiers=modifiers, d_ctx=d_ctx)
 
     # ---------------------------------------------------------------------
     # Getters básicos
@@ -241,47 +273,59 @@ class Delta144Engine:
 
     def infer_from_vector(self, vector: np.ndarray) -> StateInferenceResult:
         """
-        Simula inferência a partir de um vetor de embedding (mock/placeholder).
-        Gera probabilidades pseudo-aleatórias (mas determinísticas pelo vetor)
-        para os 144 estados e retorna o estado dominante.
+        Realiza inferência semântica comparando o vetor de entrada com os
+        embeddings de referência dos 144 estados.
         """
-        # Seed determinística baseada na soma do vetor para consistência
-        seed = int(np.abs(vector.sum()) * 10000) % (2**32)
-        rng = np.random.RandomState(seed)
+        # Normaliza vetor de entrada
+        norm = np.linalg.norm(vector)
+        if norm > 0:
+            query_vec = vector / norm
+        else:
+            query_vec = vector
+
+        # Calcula similaridade (dot product) com todos os estados
+        scores = []
+        state_ids = []
         
-        # Gera probabilidades aleatórias para 144 estados
-        raw_probs = rng.rand(144)
-        probs = list(raw_probs / raw_probs.sum())
+        # Ordenar estados para consistência
+        sorted_states = sorted(self.states.values(), key=lambda s: s.id)
+        
+        for s in sorted_states:
+            ref_vec = self._state_embeddings.get(s.id)
+            if ref_vec is None:
+                sim = 0.0
+            else:
+                sim = float(np.dot(query_vec, ref_vec))
+            scores.append(sim)
+            state_ids.append(s.id)
+            
+        scores_np = np.array(scores)
+        
+        # Softmax com temperatura para gerar probabilidades
+        temperature = 0.1  # Baixa temperatura para aguçar a decisão
+        exp_scores = np.exp(scores_np / temperature)
+        probs = exp_scores / exp_scores.sum()
         
         # Escolhe o vencedor
         winner_idx = int(np.argmax(probs))
-        
-        # Mapeia índice linear (0-143) para estado
-        # Assumindo ordem de carga (não garantida, mas ok para mock)
-        all_states = list(self.states.values())
-        # Ordenar para garantir determinismo
-        all_states.sort(key=lambda s: (s.row, s.col))
-        
-        if winner_idx < len(all_states):
-            winner_state = all_states[winner_idx]
-        else:
-            winner_state = all_states[0]
-            
+        winner_state_id = state_ids[winner_idx]
+        winner_state = self.states[winner_state_id]
         winner_archetype = self.archetypes[winner_state.archetype_id]
         
-        # Scores simulados
-        scores = {
-            "plane_scores": {"3": 0.33, "6": 0.33, "9": 0.33},
+        # Scores detalhados para debug/trace
+        scores_dict = {
+            "plane_scores": {"3": 0.33, "6": 0.33, "9": 0.33}, # Placeholder, poderia ser derivado
             "profile_scores": {"EXPANSIVE": 0.33, "CONTRACTIVE": 0.33, "TRANSCENDENT": 0.33},
-            "chosen_state_score": probs[winner_idx]
+            "chosen_state_score": float(probs[winner_idx]),
+            "similarity": float(scores_np[winner_idx])
         }
         
         return StateInferenceResult(
             archetype=winner_archetype,
             state=winner_state,
-            active_modifiers=[], # Sem modifiers no mock básico
-            scores=scores,
-            probs=probs
+            active_modifiers=[], # Modifiers requerem lógica adicional de contexto
+            scores=scores_dict,
+            probs=probs.tolist()
         )
 
     def infer_state(

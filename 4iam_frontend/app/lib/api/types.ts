@@ -121,22 +121,41 @@ export interface KaldraSignalRequest {
     text: string;
 }
 
-export type KaldraTWRegime = "STABLE" | "CRITICAL" | "UNSTABLE";
+export type KaldraTWRegime = "STABLE" | "ANOMALY";
 
-export interface KaldraSignal {
-    archetype: string;
-    delta_state: string;
-    tw_regime: KaldraTWRegime;
-    kindra_distribution: Record<string, number>;
-    bias_score: number;
+/**
+ * KALDRA Signal Response from Master Engine V2
+ * Updated to reflect Phase 4 API enrichment (bias, narrative risk, real Delta144 state)
+ */
+export interface KaldraSignalResponse {
+    // Delta144 Archetype & State
+    archetype: string;              // Real archetype ID (e.g., "A07_RULER")
+    delta_state: string;            // Real state ID (e.g., "A07_05")
+
+    // TW-Painlevé Oracle
+    tw_regime: KaldraTWRegime;      // "STABLE" or "ANOMALY"
+
+    // Kindra Cultural Modulation (top-5 states)
+    kindra_distribution: Array<{
+        state_index: number;
+        prob: number;
+    }>;
+
+    // Bias Engine
+    bias_score: number;             // 0.0 - 1.0
+    bias_label: string | null;      // e.g., "neutral", "moderate", "extreme"
+
+    // Narrative Risk (heuristic v0.1)
+    narrative_risk: number;         // 0.0 - 1.0
+
+    // Epistemic Limiter
+    confidence: number;             // 0.0 - 1.0
+    explanation: string;            // e.g., "Master Engine V2: OK"
+
+    // Meta Modifiers (future use)
     meta_modifiers: Record<string, number[]>;
-    confidence: number;
-    explanation: string;
-
-    // campos adicionais opcionais, retornados pelo backend
-    bias_label?: string;
-    narrative_risk?: string;
 }
 
 // Alias for compatibility
-export type KaldraSignalResponse = KaldraSignal;
+export type KaldraSignal = KaldraSignalResponse;
+

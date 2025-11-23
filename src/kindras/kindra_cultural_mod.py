@@ -1,6 +1,9 @@
+import json
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+
+from src.config import KINDRAS_48_FILE
 
 class KaldraKindraCulturalMod(nn.Module):
     """
@@ -28,15 +31,61 @@ class KaldraKindraCulturalMod(nn.Module):
         })
         
         # Matriz de mapeamento 48 (Kindras) → 144 (Estados Δ144)
-        # Inicializada com valores pequenos para começar com modulação suave
+        # Inicializada via schema (semântica) ou ruído se falhar
         self.M = nn.ParameterDict({
             p: nn.Parameter(torch.randn(48, 144) * 0.01)
             for p in ["3", "6", "9"]
         })
         
+        # Tenta carregar inicialização semântica
+        self._init_semantic_matrix()
+
         # Pesos globais de cada plano (lambda_p), aprendíveis
         # Inicializados para resultar em ~0.5 após sigmoide
         self.lambda_raw = nn.Parameter(torch.zeros(3))
+
+    def _init_semantic_matrix(self):
+        """
+        Carrega o schema JSON e inicializa a matriz M com embeddings simulados
+        baseados nas descrições dos vetores Kindra.
+        """
+        try:
+            with open(KINDRAS_48_FILE, "r", encoding="utf-8") as f:
+                vectors_data = json.load(f)
+            
+            # Garante que temos 48 vetores
+            if len(vectors_data) != 48:
+                print(f"Warning: Expected 48 vectors in schema, found {len(vectors_data)}")
+                return
+
+            # Para cada plano, geramos uma projeção "semântica"
+            # Em prod, isso seria: embedding_model.encode(description)
+            # Aqui, usamos um RNG determinístico seeded pelo texto da descrição
+            
+            for p in ["3", "6", "9"]:
+                with torch.no_grad():
+                    # Criar tensor temporário
+                    semantic_M = torch.zeros(48, 144)
+                    
+                    for i, vec_def in enumerate(vectors_data):
+                        # Seed baseada no texto da definição + plano
+                        seed_text = f"{vec_def['objective_definition']}_{vec_def['narrative_role']}_{p}"
+                        seed = sum(ord(c) for c in seed_text)
+                        
+                        rng = torch.Generator().manual_seed(seed)
+                        
+                        # Gera vetor 144-d "semântico"
+                        # Escala 0.05 para não saturar
+                        semantic_M[i] = torch.randn(144, generator=rng) * 0.05
+                    
+                    # Atualiza o parâmetro
+                    self.M[p].copy_(semantic_M)
+                    
+            # print("Kindra Cultural Mod: Semantic initialization complete.")
+            
+        except Exception as e:
+            print(f"Warning: Failed to load Kindra schema for initialization: {e}")
+            # Mantém inicialização aleatória do __init__
 
     def lambdas(self) -> torch.Tensor:
         """Retorna os pesos λ_p de cada plano no intervalo (0, 1)."""

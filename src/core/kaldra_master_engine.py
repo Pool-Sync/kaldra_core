@@ -16,6 +16,7 @@ class KaldraSignal:
     tw_trigger: bool
     tw_stats: Optional[TWStats]
     epistemic: EpistemicDecision
+    delta_state: Optional[Any] = None  # Dict with archetype+state from Delta144
 
 class KaldraMasterEngineV2:
     """
@@ -34,7 +35,7 @@ class KaldraMasterEngineV2:
         tau: float = 0.65,
         tw_config: Optional[TWConfig] = None,
     ):
-        self.delta = delta_engine or Delta144Engine.from_default_files()
+        self.delta = delta_engine or Delta144Engine.from_default_files(d_ctx=d_ctx)
         self.kindra_mod = KaldraKindraCulturalMod(d_ctx=d_ctx)
         self.tau_layer = EpistemicLimiter(tau=tau)
         self.tw_oracle = TWPainleveOracle(config=tw_config or TWConfig())
@@ -82,4 +83,5 @@ class KaldraMasterEngineV2:
             tw_trigger=tw_trigger,
             tw_stats=tw_stats,
             epistemic=epistemic,
+            delta_state=result.to_dict(),  # Include Delta144 state snapshot
         )
