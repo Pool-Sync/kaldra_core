@@ -10,7 +10,7 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Install system dependencies for PyTorch and NumPy
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
@@ -20,7 +20,9 @@ COPY requirements.txt .
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire application
+# Copy application code
+# .dockerignore filters out: .git, .venv, node_modules, __pycache__, etc.
+# Includes: src/, kaldra_api/, kaldra_data/, schema/, data/
 COPY . .
 
 # Create non-root user for security
