@@ -60,3 +60,25 @@ services:
       # Uvicorn workers (adjust based on plan)
       - key: WEB_CONCURRENCY
         value: "2"
+
+# ============================================
+# KALDRA Data Lab - Cron Jobs (Workers)
+# ============================================
+# Example configuration for scheduled news ingestion.
+# Uncomment and configure in Render Dashboard to enable.
+#
+# - type: cron
+#   name: kaldra-news-ingest-worker
+#   env: docker
+#   region: oregon
+#   plan: starter
+#   schedule: "0 */4 * * *"  # Run every 4 hours
+#   dockerfilePath: ./Dockerfile
+#   envVars:
+#     - key: KALDRA_ENV
+#       value: production
+#     - key: MEDIASTACK_API_KEY
+#       sync: false
+#     - key: GNEWS_API_KEY
+#       sync: false
+#   startCommand: "python scripts/run_news_ingest.py --query 'Artificial Intelligence' --limit 100"
