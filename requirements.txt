@@ -16,7 +16,7 @@ torch==2.9.1
 numpy==2.3.5
 
 # ===== Testing (optional for production, but good to have) =====
-pytest==9.0.1
+pytest==8.3.3
 pytest-asyncio==0.24.0
 
 # ===== Utilities =====
