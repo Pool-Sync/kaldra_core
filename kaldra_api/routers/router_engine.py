@@ -109,7 +109,7 @@ def generate_signal(
             kindra_distribution=kindra_distribution,
             bias_score=bias_score,
             meta_modifiers={},
-            confidence=float(signal.epistemic.confidence),
+            confidence=float(signal.epistemic.confidence) if signal.epistemic.confidence is not None else 0.0,
             explanation=f"Master Engine V2: {signal.epistemic.status}",
             bias_label=bias_label,
             narrative_risk=narrative_risk,
