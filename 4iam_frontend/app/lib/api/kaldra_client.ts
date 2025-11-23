@@ -1,6 +1,26 @@
 /**
  * KALDRA API Client
- * Supports both mock and real API modes via environment variables
+ * 
+ * Supports both mock and real API modes via environment variables.
+ * 
+ * **Environment Variables**:
+ * - `NEXT_PUBLIC_KALDRA_API_MODE`: "mock" or "real" (default: "mock")
+ * - `NEXT_PUBLIC_KALDRA_API_URL`: Backend API URL (default: "http://localhost:8000")
+ * 
+ * **Features**:
+ * - Automatic mode switching (mock/real)
+ * - Retry logic with exponential backoff (3 retries: 1s, 2s, 4s)
+ * - 15-second timeout per request
+ * - Automatic fallback to mock data if real API fails
+ * - Comprehensive logging for debugging
+ * 
+ * **Production Ready**:
+ * - ✅ Error handling
+ * - ✅ Network resilience
+ * - ✅ Graceful degradation
+ * - ✅ Type-safe responses
+ * 
+ * @module kaldra_client
  */
 
 import { KaldraSignalResponse } from "./types";
@@ -18,8 +38,8 @@ export class ApiError extends Error {
 // Configuration from environment variables
 const API_MODE = process.env.NEXT_PUBLIC_KALDRA_API_MODE || "mock";
 const API_URL = process.env.NEXT_PUBLIC_KALDRA_API_URL || "http://localhost:8000";
-const TIMEOUT_MS = 15000;
-const MAX_RETRIES = 3;
+const TIMEOUT_MS = 15000; // 15 seconds
+const MAX_RETRIES = 3; // 3 retry attempts
 
 /**
  * Sleep utility for retry backoff
