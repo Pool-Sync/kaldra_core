@@ -1,0 +1,62 @@
+# ============================================
+# KALDRA Backend - Render.com Configuration
+# ============================================
+# This file defines the infrastructure for deploying
+# the KALDRA API Gateway on Render.com
+
+services:
+  # KALDRA API Gateway Service
+  - type: web
+    name: kaldra-api
+    runtime: docker
+    region: oregon  # Change to your preferred region
+    plan: starter  # Free tier, upgrade to standard/pro as needed
+    
+    # Docker build configuration
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    
+    # Auto-deploy on git push
+    autoDeploy: true
+    
+    # Health check endpoint
+    healthCheckPath: /health
+    
+    # Environment variables (set values in Render dashboard)
+    envVars:
+      # Application environment
+      - key: KALDRA_ENV
+        value: production
+      
+      # News API Keys
+      - key: MEDIASTACK_API_KEY
+        sync: false  # Manual configuration in dashboard
+      
+      - key: GNEWS_API_KEY
+        sync: false
+      
+      # X/Twitter API Keys
+      - key: X_BEARER_TOKEN
+        sync: false
+      
+      - key: X_API_KEY
+        sync: false
+      
+      # YouTube API Key
+      - key: YOUTUBE_API_KEY
+        sync: false
+      
+      # Reddit API Keys
+      - key: REDDIT_CLIENT_ID
+        sync: false
+      
+      - key: REDDIT_CLIENT_SECRET
+        sync: false
+      
+      # Python environment
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      
+      # Uvicorn workers (adjust based on plan)
+      - key: WEB_CONCURRENCY
+        value: "2"
