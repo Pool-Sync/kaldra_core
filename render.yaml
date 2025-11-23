@@ -12,9 +12,9 @@ services:
     region: oregon  # Change to your preferred region
     plan: starter  # Free tier, upgrade to standard/pro as needed
     
-    # Docker build configuration
-    dockerfilePath: Dockerfile
-    dockerContext: .
+    # Docker build configuration (using defaults)
+    # dockerfilePath: ./Dockerfile
+    # dockerContext: .
     
     # Auto-deploy on git push
     autoDeploy: true
