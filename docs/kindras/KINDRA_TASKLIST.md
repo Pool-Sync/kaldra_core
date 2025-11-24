@@ -10,43 +10,43 @@
 - [x] Finalizar scale_type e scale_direction
 
 ### ✔ Mapas Δ144
-- [ ] Criar `kindra_layer1_to_delta144_map.json`
-- [ ] Criar `kindra_layer2_to_delta144_map.json`
-- [ ] Criar `kindra_layer3_to_delta144_map.json`
+- [x] Criar `kindra_layer1_to_delta144_map.json`
+- [x] Criar `kindra_layer2_to_delta144_map.json`
+- [x] Criar `kindra_layer3_to_delta144_map.json`
 
 ### ✔ Loaders
-- [ ] Implementar loader L1
-- [ ] Implementar loader L2
-- [ ] Implementar loader L3
+- [x] Implementar loader L1
+- [x] Implementar loader L2
+- [x] Implementar loader L3
 
 ### ✔ Scoring
-- [ ] Scoring L1
-- [ ] Scoring L2
-- [ ] Scoring L3
+- [x] Scoring L1
+- [x] Scoring L2
+- [x] Scoring L3
 
 ### ✔ Bridges Δ144
-- [ ] Bridge L1
-- [ ] Bridge L2
-- [ ] Bridge L3
+- [x] Bridge L1
+- [x] Bridge L2
+- [x] Bridge L3
 
 ### ✔ TW369 Integration
-- [ ] TWState final
-- [ ] Integração com Δ144
-- [ ] Consumo dos 3 layers no motor temporal
+- [x] TWState final
+- [x] Integração com Δ144
+- [x] Consumo dos 3 layers no motor temporal
 
 ### ✔ KALDRA Engine Pipeline
-- [ ] Implementar pipeline
-- [ ] Preparar score final
-- [ ] Conectar ao Bias Engine, Kindras, Δ144
+- [x] Implementar pipeline
+- [x] Preparar score final
+- [x] Conectar ao Bias Engine, Kindras, Δ144
 
 ### ✔ Testes
-- [ ] Testes de loaders
-- [ ] Testes de scorers
-- [ ] Testes de bridges
-- [ ] Testes TW369
-- [ ] Testes do pipeline
+- [x] Testes de loaders
+- [x] Testes de scorers
+- [x] Testes de bridges
+- [x] Testes TW369
+- [x] Testes do pipeline
 
 ### ✔ Documentação Final
-- [ ] Developer Guide
-- [ ] Δ144 Integration Manual
-- [ ] Test Reference
+- [x] Developer Guide
+- [x] Δ144 Integration Manual
+- [x] Test Reference

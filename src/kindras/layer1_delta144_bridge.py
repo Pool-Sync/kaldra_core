@@ -1,0 +1,67 @@
+import json
+import os
+from typing import Dict, List
+
+class Layer1Delta144Bridge:
+    """
+    Connects Layer 1 (Cultural Macro) vectors to Δ144 states.
+    Uses the mapping file to adjust state probabilities based on vector scores.
+    """
+
+    def __init__(self, map_file_path: str):
+        self.map_file_path = map_file_path
+        self.mapping = self._load_mapping()
+
+    def _load_mapping(self) -> Dict[str, Dict[str, List[str]]]:
+        if not os.path.exists(self.map_file_path):
+            raise FileNotFoundError(f"Mapping file not found: {self.map_file_path}")
+        with open(self.map_file_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+
+    def apply(self, base_distribution: Dict[str, float], kindra_scores: Dict[str, float]) -> Dict[str, float]:
+        """
+        Adjusts the Δ144 distribution based on Kindra Layer 1 scores.
+
+        Args:
+            base_distribution: Dict of {state_id: probability/intensity}.
+            kindra_scores: Dict of {vector_id: score (-1.0 to 1.0)}.
+
+        Returns:
+            Dict[str, float]: Adjusted distribution.
+        """
+        adjusted = base_distribution.copy()
+        
+        # Tuning factor for impact. 0.1 means a full 1.0 score changes probability by ~10% (multiplicative)
+        # This can be calibrated later.
+        IMPACT_FACTOR = 0.2 
+
+        for vector_id, score in kindra_scores.items():
+            if vector_id not in self.mapping:
+                continue
+            
+            if score == 0:
+                continue
+
+            map_data = self.mapping[vector_id]
+            boost_targets = map_data.get('boost', [])
+            suppress_targets = map_data.get('suppress', [])
+
+            # Logic:
+            # If score > 0: Boost 'boost' list, Suppress 'suppress' list
+            # If score < 0: Boost 'suppress' list, Suppress 'boost' list (Inversion)
+            
+            effective_boost = boost_targets if score > 0 else suppress_targets
+            effective_suppress = suppress_targets if score > 0 else boost_targets
+            abs_score = abs(score)
+
+            for target in effective_boost:
+                if target in adjusted:
+                    adjusted[target] *= (1 + (abs_score * IMPACT_FACTOR))
+            
+            for target in effective_suppress:
+                if target in adjusted:
+                    adjusted[target] *= (1 - (abs_score * IMPACT_FACTOR))
+                    if adjusted[target] < 0:
+                        adjusted[target] = 0.0
+
+        return adjusted
