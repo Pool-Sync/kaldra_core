@@ -1,1 +1,27 @@
-{}
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/docs/api/page": "app/docs/api/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/alpha/[slug]/page": "app/alpha/[slug]/page.js",
+  "/docs/architecture/page": "app/docs/architecture/page.js",
+  "/docs/philosophy/page": "app/docs/philosophy/page.js",
+  "/geo/page": "app/geo/page.js",
+  "/geo/[slug]/page": "app/geo/[slug]/page.js",
+  "/kaldra/dashboard/page": "app/kaldra/dashboard/page.js",
+  "/kaldra/meta_symbols/page": "app/kaldra/meta_symbols/page.js",
+  "/alpha/page": "app/alpha/page.js",
+  "/api/kaldra/[...handlers]/route": "app/api/kaldra/[...handlers]/route.js",
+  "/kaldra/page": "app/kaldra/page.js",
+  "/kaldra/modifiers/page": "app/kaldra/modifiers/page.js",
+  "/kaldra/polarities/page": "app/kaldra/polarities/page.js",
+  "/kaldra/delta144/page": "app/kaldra/delta144/page.js",
+  "/insights/page": "app/insights/page.js",
+  "/signals/page": "app/signals/page.js",
+  "/page": "app/page.js",
+  "/kaldra/kindras/page": "app/kaldra/kindras/page.js",
+  "/safeguard/[slug]/page": "app/safeguard/[slug]/page.js",
+  "/safeguard/page": "app/safeguard/page.js",
+  "/product/[slug]/page": "app/product/[slug]/page.js",
+  "/product/page": "app/product/page.js",
+  "/(explorer)/explorer/page": "app/(explorer)/explorer/page.js"
+}
