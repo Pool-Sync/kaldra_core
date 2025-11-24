@@ -87,4 +87,11 @@ Once deployed, verify the integration:
 
 ---
 
+## Referências Relacionadas
+- `docs/ENV_REFERENCE_FRONTEND.md` — Referência completa de envs.
+- `docs/FRONTEND_STRUCTURE_CHECKLIST.md` — Checklist estrutural antes do deploy.
+- `docs/PRODUCTION_NOTES.md` — Notas de operação em produção.
+
+---
+
 **Maintained by**: 4IAM.AI Engineering Team

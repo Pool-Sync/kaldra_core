@@ -81,4 +81,11 @@ The `kaldra_client.ts` implements a robust strategy for production reliability:
 
 ---
 
+## 7. Docs Relacionados
+- `DEPLOY_FRONTEND_VERCEL.md` — Passo-a-passo de deploy.
+- `ENV_REFERENCE_FRONTEND.md` — Matriz de envs por ambiente.
+- `FRONTEND_STRUCTURE_CHECKLIST.md` — Checklist para integridade do frontend.
+
+---
+
 **Maintained by**: 4IAM.AI Engineering Team
