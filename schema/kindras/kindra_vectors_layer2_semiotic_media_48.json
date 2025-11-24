@@ -1,0 +1,818 @@
+[
+    {
+        "id": "E01",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "SEMIOTIC_INTENSITY",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = multimodal, rich media expression; low = predominantly single-channel, low richness",
+        "weight": 1.0,
+        "short_name": "Riqueza de Mídia",
+        "objective_definition": "Grau em que a cultura de comunicação usa múltiplos modos (texto, voz, vídeo, imagem, gesto) em narrativas cotidianas.",
+        "examples": [
+            "Plataformas com vídeo curto + texto + meme",
+            "comunicação apenas por e-mail corporativo (baixo)"
+        ],
+        "narrative_role": "Define quantos canais simultâneos um arquétipo pode ocupar; maior riqueza de mídia acelera difusão e intensifica contraste narrativo."
+    },
+    {
+        "id": "E02",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "SEMIOTIC_INTENSITY",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = headlines and hooks are hyperbolic; low = neutras, descritivas",
+        "weight": 1.0,
+        "short_name": "Intensidade de Headline",
+        "objective_definition": "Nível de dramatização, força e exagero linguístico em títulos, manchetes e chamadas.",
+        "examples": [
+            "tabloides sensacionalistas (alto)",
+            "boletins técnicos de órgão regulador (baixo)"
+        ],
+        "narrative_role": "Amplifica ou reduz a força percebida de qualquer evento; altera a leitura de gravidade e urgência de arquétipos em ação."
+    },
+    {
+        "id": "E03",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "SEMIOTIC_INTENSITY",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = preferência por conteúdos muito curtos; low = aceitação de formatos longos",
+        "weight": 1.0,
+        "short_name": "Tolerância a Duração de Conteúdo",
+        "objective_definition": "Comprimento típico de conteúdo que as audiências estão dispostas a consumir (segundos, minutos, horas).",
+        "examples": [
+            "TikTok e Reels (alta preferência por conteúdos curtíssimos)",
+            "podcasts de 2h, ensaios longos (alta tolerância a duração)"
+        ],
+        "narrative_role": "Controla o espaço disponível para desenvolvimento arquetípico; formatos curtos favorecem simplificações e estereótipos."
+    },
+    {
+        "id": "E04",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "SEMIOTIC_INTENSITY",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = altíssima cadência de posts e interações; low = baixa frequência de publicação",
+        "weight": 1.0,
+        "short_name": "Cadência de Publicação",
+        "objective_definition": "Frequência média com que mensagens, posts, vídeos e atualizações são publicados em canais principais.",
+        "examples": [
+            "influencers com múltiplos posts diários",
+            "boletins trimestrais formais (baixa cadência)"
+        ],
+        "narrative_role": "Afeta o tempo de vida de um arquétipo na timeline; cadência alta gera saturação e esquecimento rápido."
+    },
+    {
+        "id": "E05",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "SEMIOTIC_INTENSITY",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = comunicação altamente roteirizada; low = comunicação espontânea",
+        "weight": 1.0,
+        "short_name": "Grau de Roteirização",
+        "objective_definition": "Proporção de mensagens mediáticas que seguem scripts rígidos versus improvisos e falas espontâneas.",
+        "examples": [
+            "discursos oficiais com teleprompter (alto)",
+            "lives informais sem roteiro (baixo)"
+        ],
+        "narrative_role": "Define quanto espaço existe para vazamento de sombra genuína; baixa roteirização favorece slips arquetípicos autênticos."
+    },
+    {
+        "id": "E06",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "SEMIOTIC_INTENSITY",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = uso frequente de humor e meme; low = discurso predominantemente sério",
+        "weight": 1.0,
+        "short_name": "Memeificação do Discurso",
+        "objective_definition": "Grau em que narrativas sérias são deslocadas para formato de memes, piadas e conteúdos humorísticos.",
+        "examples": [
+            "Twitter/X com política em formato de meme",
+            "relatórios anuais de banco central (baixo)"
+        ],
+        "narrative_role": "Pode desarmar tensões, mas também banalizar crises; obscurece a fronteira entre tragédia e comédia na leitura arquetípica."
+    },
+    {
+        "id": "E07",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "SEMIOTIC_INTENSITY",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = visualidade altamente estilizada; low = visualidade crua, mínima",
+        "weight": 1.0,
+        "short_name": "Complexidade Visual",
+        "objective_definition": "Nível médio de design, edição e estilização visual em peças de comunicação.",
+        "examples": [
+            "campanhas publicitárias cinematográficas",
+            "prints de texto bruto sem design (baixo)"
+        ],
+        "narrative_role": "Complexidade visual pode sofisticar ou mascarar arquétipos; estilos minimalistas expõem mais o conteúdo bruto."
+    },
+    {
+        "id": "E08",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "SEMIOTIC_INTENSITY",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = alta densidade de símbolos por mensagem; low = comunicação literal, pouco simbólica",
+        "weight": 1.0,
+        "short_name": "Densidade Simbólica",
+        "objective_definition": "Quantidade de metáforas, ícones, referências culturais e camadas simbólicas usadas em cada mensagem.",
+        "examples": [
+            "propaganda política com bandeiras, hinos e cores fortes",
+            "manuais técnicos diretos (baixo)"
+        ],
+        "narrative_role": "Aumenta o espaço para sobreposição de arquétipos e leituras múltiplas; eleva a complexidade interpretativa."
+    },
+    {
+        "id": "S09",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "MEDIA_STRUCTURE",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = segmentação de audiência extremamente fina; low = comunicação massiva e indiferenciada",
+        "weight": 1.0,
+        "short_name": "Granularidade de Segmentação",
+        "objective_definition": "Nível de refinamento com que públicos são segmentados por dados demográficos, comportamentais e psicográficos.",
+        "examples": [
+            "campanhas ultra segmentadas em ads digitais",
+            "TV aberta com mensagem única nacional (baixo)"
+        ],
+        "narrative_role": "Permite que o mesmo arquétipo seja encenado de forma diferente para múltiplos públicos, gerando realidades paralelas."
+    },
+    {
+        "id": "S10",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "MEDIA_STRUCTURE",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = relação midiática calorosa, próxima; low = relação fria, distanciada",
+        "weight": 1.0,
+        "short_name": "Calor Para-Social",
+        "objective_definition": "Grau em que audiências sentem relação pessoal com figuras mediáticas, influenciadores e marcas.",
+        "examples": [
+            "streamers com chat íntimo",
+            "âncoras formais de telejornal tradicional (baixo)"
+        ],
+        "narrative_role": "Permite que arquétipos de Amante, Cuidador e Herói se encarnem em figuras midiáticas com forte vínculo afetivo."
+    },
+    {
+        "id": "S11",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "MEDIA_STRUCTURE",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = poucos nodos influenciadores concentram atenção; low = rede distribuída",
+        "weight": 1.0,
+        "short_name": "Centralidade de Influencers",
+        "objective_definition": "Medida de quanto a atenção é concentrada em poucos criadores/vozes versus distribuída em muitos pequenos nós.",
+        "examples": [
+            "mercados com mega celebridades centrais",
+            "comunidades descentralizadas em fóruns (baixo)"
+        ],
+        "narrative_role": "Quanto maior a centralidade, mais alguns arquétipos dominantes podem capturar e moldar narrativas inteiras."
+    },
+    {
+        "id": "S12",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "MEDIA_STRUCTURE",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = conteúdo ancorado em comunidades; low = comunicação broadcast sem comunidade real",
+        "weight": 1.0,
+        "short_name": "Profundidade Comunitária",
+        "objective_definition": "Nível em que narrativas mediáticas são sustentadas por comunidades ativas ao invés de audiências passivas.",
+        "examples": [
+            "subreddits engajados, discords ativos",
+            "plateias de TV passivas (baixo)"
+        ],
+        "narrative_role": "Comunidades profundas sustentam arquétipos por longos períodos e resistem a tentativas externas de ressignificação."
+    },
+    {
+        "id": "S13",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "MEDIA_STRUCTURE",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = moderação rígida; low = moderação mínima",
+        "weight": 1.0,
+        "short_name": "Rigor de Moderação",
+        "objective_definition": "Nível de controle, filtragem e remoção de conteúdos por parte de plataformas e veículos.",
+        "examples": [
+            "plataformas com regras estritas e bans frequentes",
+            "chans/quase-sem-moderacao (baixo)"
+        ],
+        "narrative_role": "Afeta a sobrevivência de arquétipos extremos (sombra profunda) e limita ou amplia polarização discursiva."
+    },
+    {
+        "id": "S14",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "MEDIA_STRUCTURE",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = forte reciprocidade de interação; low = comunicação unidirecional",
+        "weight": 1.0,
+        "short_name": "Reciprocidade Interativa",
+        "objective_definition": "Grau em que o público responde, comenta, remix, e é respondido de volta.",
+        "examples": [
+            "criadores que respondem a quase todos os comentários",
+            "broadcast unidirecional de rádio/TV (baixo)"
+        ],
+        "narrative_role": "Maior reciprocidade permite co-criação narrativa, diluindo a separação entre emissor e audiência."
+    },
+    {
+        "id": "S15",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "MEDIA_STRUCTURE",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = fronteira borrada entre eu público e privado; low = fronteira rígida",
+        "weight": 1.0,
+        "short_name": "Porosidade do Self Público",
+        "objective_definition": "Grau em que indivíduos expõem vulnerabilidades, bastidores e intimidade em canais públicos.",
+        "examples": [
+            "vlogs confessionais, oversharing",
+            "figuras que só aparecem em contextos formais (baixo)"
+        ],
+        "narrative_role": "Permite que arquétipos de Ferido, Vulnerável ou Confessor apareçam diretamente na mídia."
+    },
+    {
+        "id": "S16",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "MEDIA_STRUCTURE",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = threads caóticas, com múltiplos subplots; low = conversas lineares",
+        "weight": 1.0,
+        "short_name": "Complexidade de Threads",
+        "objective_definition": "Nível de ramificação, resposta encadeada e diálogo cruzado nas conversas mediadas.",
+        "examples": [
+            "threads gigantes em fóruns com replies aninhados",
+            "comentário único sem resposta (baixo)"
+        ],
+        "narrative_role": "Complexidade de thread permite múltiplos arquétipos coexistirem, colidirem e gerarem novas narrativas emergentes."
+    },
+    {
+        "id": "P17",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "ATTENTION_DYNAMICS",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = mídia controlada por poucos grupos; low = ecossistema altamente distribuído",
+        "weight": 1.0,
+        "short_name": "Concentração de Propriedade Midiática",
+        "objective_definition": "Grau de concentração de veículos em conglomerados, famílias ou estados.",
+        "examples": [
+            "poucos grupos controlam TV, rádio e jornais",
+            "ecossistema de mídia independente e fragmentado"
+        ],
+        "narrative_role": "Alta concentração facilita alinhamento de arquétipos oficiais; baixa concentração favorece contranarrativas."
+    },
+    {
+        "id": "P18",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "ATTENTION_DYNAMICS",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = forte independência editorial; low = dependência de interesses externos",
+        "weight": 1.0,
+        "short_name": "Independência Editorial",
+        "objective_definition": "Nível de autonomia dos veículos na definição de pauta e enquadramento.",
+        "examples": [
+            "jornais com firewall forte entre editorial e anunciante",
+            "mídia capturada por governo ou corporações (baixo)"
+        ],
+        "narrative_role": "Determina se arquétipos críticos (Outlaw, Bobo, Profeta) têm espaço para atuar publicamente."
+    },
+    {
+        "id": "P19",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "ATTENTION_DYNAMICS",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = gatekeepers fortes; low = portas abertas para publicação",
+        "weight": 1.0,
+        "short_name": "Força de Gatekeeping",
+        "objective_definition": "Grau em que poucas instâncias decidem o que entra ou não no espaço público.",
+        "examples": [
+            "TV aberta com poucas curadorias centrais",
+            "plataformas onde qualquer um publica (baixo)"
+        ],
+        "narrative_role": "Gatekeeping alto protege narrativas estáveis; gatekeeping baixo permite enxurrada de arquétipos emergentes."
+    },
+    {
+        "id": "P20",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "ATTENTION_DYNAMICS",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = algoritmos definem quase tudo; low = curadoria humana dominante",
+        "weight": 1.0,
+        "short_name": "Centralidade Algorítmica",
+        "objective_definition": "Grau em que algoritmos de recomendação e ranking moldam o que é visto e o que some.",
+        "examples": [
+            "feeds 100% algorítmicos",
+            "curadoria editorial manual (baixo)"
+        ],
+        "narrative_role": "Algoritmos podem amplificar arquétipos por critérios opacos (engajamento, polêmica) e distorcer paisagens simbólicas."
+    },
+    {
+        "id": "P21",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "ATTENTION_DYNAMICS",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = enquadramentos de nós vs eles constantes; low = enquadramentos integrativos",
+        "weight": 1.0,
+        "short_name": "Nivel de Polarização Midiática",
+        "objective_definition": "Frequência e intensidade com que narrativas são apresentadas em termos polarizados.",
+        "examples": [
+            "red vs blue, esquerda vs direita",
+            "cobertura que enfatiza nuances e zonas cinzentas (baixo)"
+        ],
+        "narrative_role": "Polarização fortalece arquétipos de Guerreiro, Inimigo e Mártir, enfraquecendo Integradores."
+    },
+    {
+        "id": "P22",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "ATTENTION_DYNAMICS",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = conflito como frame padrão; low = cooperação/solução como foco",
+        "weight": 1.0,
+        "short_name": "Estilo de Enquadramento de Conflito",
+        "objective_definition": "Tendência de narrativas a enfatizar choque, confronto e drama versus resolução.",
+        "examples": [
+            "debates transformados em ringues",
+            "cobertura focada em construção de consenso (baixo)"
+        ],
+        "narrative_role": "Pode aprisionar o sistema em ciclos de confronto narrativo, mesmo quando a realidade é menos extrema."
+    },
+    {
+        "id": "P23",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "ATTENTION_DYNAMICS",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = fact-checking presente e valorizado; low = quase inexistente",
+        "weight": 1.0,
+        "short_name": "Prevalência de Fact-Checking",
+        "objective_definition": "Grau em que checagem de fatos é prática institucionalizada e com visibilidade.",
+        "examples": [
+            "plataformas com labels de verificação",
+            "ecossistemas onde rumores circulam sem contraponto (baixo)"
+        ],
+        "narrative_role": "Afeta a vida útil de arquétipos baseados em desinformação; reduz ou amplifica boatos estruturais."
+    },
+    {
+        "id": "P24",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "ATTENTION_DYNAMICS",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = spin e PR fortemente incorporados; low = comunicação direta sem envernizamento",
+        "weight": 1.0,
+        "short_name": "Penetração de PR / Spin",
+        "objective_definition": "Nível em que relações públicas e gestão de imagem permeiam discursos públicos.",
+        "examples": [
+            "coletivas com mensagens ensaiadas",
+            "comunicação crua de insiders (baixo)"
+        ],
+        "narrative_role": "Aumenta a presença de arquétipos Mascarados, Performativos e de Fachada na superfície mediática."
+    },
+    {
+        "id": "T25",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "NARRATIVE_RHYTHM",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = ciclos de notícia curtíssimos; low = ciclos longos, com memórias persistentes",
+        "weight": 1.0,
+        "short_name": "Comprimento do Ciclo de Notícias",
+        "objective_definition": "Duração típica de permanência de um tema no centro da cobertura.",
+        "examples": [
+            "tópicos que duram horas/dias",
+            "temas que ficam anos em pauta"
+        ],
+        "narrative_role": "Controla o tempo disponível para maturação de arquétipos; ciclos curtos favorecem volatilidade simbólica."
+    },
+    {
+        "id": "T26",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "NARRATIVE_RHYTHM",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = cobertura em tempo real; low = cobertura assíncrona e lenta",
+        "weight": 1.0,
+        "short_name": "Intensidade de Tempo Real",
+        "objective_definition": "Presença de transmissão ao vivo, atualizações minuto a minuto e streams contínuos.",
+        "examples": [
+            "cobertura ao vivo de crises",
+            "releases semanais (baixo)"
+        ],
+        "narrative_role": "Tempo real reduz espaço de reflexão, favorecendo decisões narrativas impulsivas e reativas."
+    },
+    {
+        "id": "T27",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "NARRATIVE_RHYTHM",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = forte sincronização entre eventos físicos e narrativas online; low = grande defasagem",
+        "weight": 1.0,
+        "short_name": "Aderência Evento–Narrativa",
+        "objective_definition": "Quão rapidamente eventos offline ganham representação narrativa online.",
+        "examples": [
+            "protestos transmitidos ao vivo",
+            "relatos que aparecem semanas depois (baixo)"
+        ],
+        "narrative_role": "Alta aderência amplifica a capacidade da multidão de reagir quase em tempo real a mudanças arquetípicas."
+    },
+    {
+        "id": "T28",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "NARRATIVE_RHYTHM",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = forte delay e latência; low = baixa latência",
+        "weight": 1.0,
+        "short_name": "Latência de Narrativização",
+        "objective_definition": "Intervalo entre um evento acontecer e receber um enquadramento narrativo consistente.",
+        "examples": [
+            "processos históricos interpretados décadas depois (alto)",
+            "análises instantâneas logo após um anúncio (baixo)"
+        ],
+        "narrative_role": "Latência alta permite reescrita posterior; latência baixa congela rapidamente versões iniciais, mesmo incompletas."
+    },
+    {
+        "id": "T29",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "NARRATIVE_RHYTHM",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = mídia fortemente guiada por ciclos sazonais; low = pauta contínua",
+        "weight": 1.0,
+        "short_name": "Sazonalidade Narrativa",
+        "objective_definition": "Dependência da pauta de ciclos previsíveis (eleições, festas, temporadas).",
+        "examples": [
+            "cobertura anual de certos rituais",
+            "plataformas sempre-on sem foco em sazonalidade (baixo)"
+        ],
+        "narrative_role": "Sazonalidade forte reforça arquétipos recorrentes, criando mitologias cíclicas."
+    },
+    {
+        "id": "T30",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "NARRATIVE_RHYTHM",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = aceitação de pausas, hiatus e silêncio; low = exigência de fluxo contínuo",
+        "weight": 1.0,
+        "short_name": "Espaço para Hiatos",
+        "objective_definition": "Tolerância do sistema a períodos sem atualizações ou falas públicas.",
+        "examples": [
+            "criadores que podem sumir por um tempo",
+            "obrigação de postar diariamente (baixo)"
+        ],
+        "narrative_role": "Hiatos permitem Metanoia e Fermento; ausência de hiatos força continuidade performática."
+    },
+    {
+        "id": "T31",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "NARRATIVE_RHYTHM",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = pressão constante por novidade; low = tolerância a repetição e lentidão",
+        "weight": 1.0,
+        "short_name": "Fome de Novidade",
+        "objective_definition": "Nível de exigência do sistema por temas novos versus aprofundar os mesmos temas.",
+        "examples": [
+            "timelines que pedem algo novo sempre",
+            "revistas com dossiês longos sobre poucos assuntos"
+        ],
+        "narrative_role": "Fome alta fragmenta narrativas e reduz profundidade; fome baixa permite arcos longos e coerentes."
+    },
+    {
+        "id": "T32",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "NARRATIVE_RHYTHM",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = forte presença de narrativas especulativas de futuro; low = foco no presente/passado",
+        "weight": 1.0,
+        "short_name": "Projeção Futurista Mediática",
+        "objective_definition": "Proporção de conteúdos dedicados a cenários, futurologia, tendências e prognósticos.",
+        "examples": [
+            "cultura tech com muitos reports de futuro",
+            "mídia focada em retrospetivas históricas (baixo)"
+        ],
+        "narrative_role": "Amplifica arquétipos Visionários, Proféticos e Mágicos, preparando o campo para mudanças estruturais."
+    },
+    {
+        "id": "R33",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "DISTORTION_AMPLIFICATION",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = riscos sempre enquadrados de forma sensacionalista; low = abordagens sóbrias",
+        "weight": 1.0,
+        "short_name": "Sensacionalismo de Risco",
+        "objective_definition": "Grau de exagero mediático ao comunicar perigos, ameaças e crises.",
+        "examples": [
+            "cobertura que usa termos apocalípticos",
+            "relatórios técnicos com linguagem neutra (baixo)"
+        ],
+        "narrative_role": "Sensacionalismo distorce a percepção de TW-drift; ruído pode parecer colapso e vice-versa."
+    },
+    {
+        "id": "R34",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "DISTORTION_AMPLIFICATION",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = alto uso de clickbait; low = títulos informativos sem isca",
+        "weight": 1.0,
+        "short_name": "Prevalência de Clickbait",
+        "objective_definition": "Frequência de títulos e thumbnails desenhados para enganar ou superprometer.",
+        "examples": [
+            "YouTube com thumbnails chocantes",
+            "relatórios institucionais (baixo)"
+        ],
+        "narrative_role": "Aumenta o ruído narrativo e a desconfiança; arquétipos de Bobo Cínico e Trickster ganham força."
+    },
+    {
+        "id": "R35",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "DISTORTION_AMPLIFICATION",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = tolerância alta a boatos; low = boatos rapidamente corrigidos ou punidos",
+        "weight": 1.0,
+        "short_name": "Tolerância a Rumores",
+        "objective_definition": "Nível em que rumores podem circular sem sanção social ou institucional.",
+        "examples": [
+            "grupos de mensagem com repasse constante",
+            "ambientes onde boatos desmentidos geram forte custo (baixo)"
+        ],
+        "narrative_role": "Permite que arquétipos Fantasmáticos, Paranoicos e Conspiratórios ganhem campo."
+    },
+    {
+        "id": "R36",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "DISTORTION_AMPLIFICATION",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = teorias conspiratórias comuns; low = baixa penetração",
+        "weight": 1.0,
+        "short_name": "Penetração Conspiratória",
+        "objective_definition": "Presença de narrativas conspiratórias como explicação dominante de eventos.",
+        "examples": [
+            "ecos de QAnon, anti-ciência, etc.",
+            "sociedades com confiança alta em instituições (baixo)"
+        ],
+        "narrative_role": "Reconfigura arquétipos de Governante, Sábio e Inocente em vilões ocultos ou títeres."
+    },
+    {
+        "id": "R37",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "DISTORTION_AMPLIFICATION",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = adoção rápida de formatos experimentais; low = apego a formatos clássicos",
+        "weight": 1.0,
+        "short_name": "Apetite por Formatos Experimentais",
+        "objective_definition": "Vontade de tentar novos formatos narrativos (VR, AR, interativos, AI-generated).",
+        "examples": [
+            "plataformas que testam experiências imersivas",
+            "jornais impressos tradicionais (baixo)"
+        ],
+        "narrative_role": "Abre canais novos para arquétipos emergentes, mas pode diluir sentido em ruído de inovação vazia."
+    },
+    {
+        "id": "R38",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "DISTORTION_AMPLIFICATION",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = medo forte de backlash; low = pouca percepção de risco reputacional",
+        "weight": 1.0,
+        "short_name": "Sensibilidade a Backlash",
+        "objective_definition": "Nível em que criadores e marcas calculam risco de reação negativa antes de publicar.",
+        "examples": [
+            "ambientes com cultura de cancelamento forte",
+            "espaços de nicho onde quase não há repercussão (baixo)"
+        ],
+        "narrative_role": "Limita arquétipos Outlaw e Trickster; fortalece arquétipos cuidadosos e conciliadores."
+    },
+    {
+        "id": "R39",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "DISTORTION_AMPLIFICATION",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = narrativas muito estáveis; low = narrativas voláteis",
+        "weight": 1.0,
+        "short_name": "Estabilidade Narrativa Midiática",
+        "objective_definition": "Grau de coerência e continuidade entre narrativas ao longo do tempo.",
+        "examples": [
+            "veículos que mantêm linhas editoriais por décadas",
+            "plataformas onde cada semana há um novo meta (baixo)"
+        ],
+        "narrative_role": "Estabilidade alta favorece arquétipos Guardiões e Conservadores; instabilidade favorece Trickster e Fermento."
+    },
+    {
+        "id": "R40",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "DISTORTION_AMPLIFICATION",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = alta consciência de risco reputacional mediático; low = baixa",
+        "weight": 1.0,
+        "short_name": "Consciência de Risco de Imagem",
+        "objective_definition": "Grau em que atores antecipam o impacto de exposição mediática na própria reputação.",
+        "examples": [
+            "empresas com equipes de crise de imagem",
+            "agentes que falam sem filtro algum (baixo)"
+        ],
+        "narrative_role": "Afeta a disposição para assumir papéis de Herói arriscado ou Bobo radical em público."
+    },
+    {
+        "id": "M41",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "FRAMING_NARRATIVE",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = uso intenso de frames míticos; low = linguagem estritamente secular/técnica",
+        "weight": 1.0,
+        "short_name": "Uso de Frames Míticos na Mídia",
+        "objective_definition": "Frequência com que narrativas são enquadradas em termos de heróis, vilões, jornadas, apocalipses e redenção.",
+        "examples": [
+            "cobertura política como batalha épica",
+            "relatos puramente burocráticos (baixo)"
+        ],
+        "narrative_role": "Torna arquétipos explícitos; reduz ambiguidade, mas pode simplificar demais complexidades estruturais."
+    },
+    {
+        "id": "M42",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "FRAMING_NARRATIVE",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = logos e ícones dominam; low = pouca importância a símbolos visuais",
+        "weight": 1.0,
+        "short_name": "Centralidade de Logos e Ícones",
+        "objective_definition": "Importância de marcas visuais, escudos, brasões e avatars na estrutura de comunicação.",
+        "examples": [
+            "times esportivos, partidos, bandeiras",
+            "plataformas sem identidade visual forte (baixo)"
+        ],
+        "narrative_role": "Concentra arquétipos em poucos signos visuais que representam coletivos inteiros."
+    },
+    {
+        "id": "M43",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "FRAMING_NARRATIVE",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = moralização constante de eventos; low = descrição neutra",
+        "weight": 1.0,
+        "short_name": "Frequência de Enquadramento Moral",
+        "objective_definition": "Proporção de narrativas mediáticas que explicitamente julgam certo/errado, culpa/inocência.",
+        "examples": [
+            "talk shows moralizantes",
+            "notas técnicas sem valor moral explícito (baixo)"
+        ],
+        "narrative_role": "Eleva a presença de Juiz, Guardião e Profeta; reduz espaço para análise puramente estratégica."
+    },
+    {
+        "id": "M44",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "FRAMING_NARRATIVE",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = discurso de destino, inevitabilidade, profecia; low = contingência e escolha",
+        "weight": 1.0,
+        "short_name": "Ritualização de Destino",
+        "objective_definition": "Uso de narrativas que colocam eventos como predestinados, cármicos ou inevitáveis.",
+        "examples": [
+            "retórica de 'era para ser assim'",
+            "análises focadas em decisões e alternativas (baixo)"
+        ],
+        "narrative_role": "Diminui agency percebida, deslocando responsabilidade para forças supra-humanas."
+    },
+    {
+        "id": "M45",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "FRAMING_NARRATIVE",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = alto volume de conteúdo espiritual/esotérico; low = quase nulo",
+        "weight": 1.0,
+        "short_name": "Canalização de Conteúdo Espiritual",
+        "objective_definition": "Presença de astrologia, religiões, esoterismo e metafísica nas medições principais.",
+        "examples": [
+            "jornais com horóscopo diário",
+            "jornais puramente técnicos (baixo)"
+        ],
+        "narrative_role": "Abre portas para arquétipos Místicos, Proféticos e Oraculares no espaço público."
+    },
+    {
+        "id": "M46",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "FRAMING_NARRATIVE",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = muitos ensaios e análises profundas; low = conteúdo superficial e rápido",
+        "weight": 1.0,
+        "short_name": "Profundidade Filosófica da Mídia",
+        "objective_definition": "Quantidade de espaço concedido a reflexão filosófica, análise crítica e long-form.",
+        "examples": [
+            "revistas de ideias, long-reads",
+            "clipes de 15s sem contexto (baixo)"
+        ],
+        "narrative_role": "Permite atuação plena de Sábios e Filósofos; sem essa camada, arquétipos reflexivos ficam comprimidos."
+    },
+    {
+        "id": "M47",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "FRAMING_NARRATIVE",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = forte contraste tradição vs inovação; low = narrativa pouco focada nisso",
+        "weight": 1.0,
+        "short_name": "Enquadramento Tradição vs Ruptura",
+        "objective_definition": "Frequência com que narrativas são construídas como preservação versus revolução.",
+        "examples": [
+            "debates entre conservadores e progressistas",
+            "discussões técnicas sem esse eixo (baixo)"
+        ],
+        "narrative_role": "Expõe choque entre Guardiões e Fermento; torna explícito o conflito entre continuidade e metamorfose."
+    },
+    {
+        "id": "M48",
+        "layer": "L2_SEMIOTIC_MEDIA",
+        "domain": "FRAMING_NARRATIVE",
+        "tw_plane": "6",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = narrativa de identidade altamente coesa; low = identidade fragmentada",
+        "weight": 1.0,
+        "short_name": "Coerência Narrativa de Identidade",
+        "objective_definition": "Nível em que a mídia apresenta um 'nós' consistente, com valores e história claros.",
+        "examples": [
+            "nações com mitos fundacionais fortes na mídia",
+            "discurso público fragmentado em múltiplas tribos (baixo)"
+        ],
+        "narrative_role": "Coerência alta facilita mobilização coletiva; fragmentação dificulta criação de narrativas compartilhadas."
+    }
+]

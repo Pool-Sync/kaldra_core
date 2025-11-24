@@ -582,5 +582,14 @@
         "tw_alignment": [
             "3"
         ]
+    },
+    {
+        "id": "MOD_INTEGRATED",
+        "label": "Integrado",
+        "category": "ORDALIA_METANOIA_TRANSCENDENCIA",
+        "description": "Arquétipo que unificou suas polaridades e contradições; opera com total coerência e estabilidade interna.",
+        "tw_alignment": [
+            "9"
+        ]
     }
 ]

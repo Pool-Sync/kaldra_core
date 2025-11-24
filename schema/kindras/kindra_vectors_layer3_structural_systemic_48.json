@@ -1,0 +1,818 @@
+[
+    {
+        "id": "E01",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "EXPRESSIVE_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = expressão emocional institucionalmente encorajada; low = institucionalmente desencorajada",
+        "weight": 1.0,
+        "short_name": "Regime de Expressão Emocional",
+        "objective_definition": "Grau em que escolas, empresas, mídia e religião estruturam normas formais para expressão ou repressão de emoções.",
+        "examples": [
+            "programas escolares socioemocionais",
+            "corporações que exigem neutralidade afetiva"
+        ],
+        "narrative_role": "Define o fundo estrutural que permite ou bloqueia a emergência de arquétipos emocionais como Amante, Cuidador e Inocente."
+    },
+    {
+        "id": "E02",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "EXPRESSIVE_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = forte padronização de linguagem formal; low = alta tolerância a registros híbridos",
+        "weight": 1.0,
+        "short_name": "Padronização de Registro Linguístico",
+        "objective_definition": "Nível de controle institucional sobre sotaques, gírias e registros aceitos em contextos de prestígio.",
+        "examples": [
+            "telejornais com norma padrão rígida",
+            "plataformas que aceitam fala híbrida e dialetos"
+        ],
+        "narrative_role": "Modula quais vozes arquetípicas podem alcançar o centro da narrativa sem serem silenciadas."
+    },
+    {
+        "id": "E03",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "EXPRESSIVE_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = acesso amplo a ferramentas de criação; low = acesso restrito",
+        "weight": 1.0,
+        "short_name": "Infraestrutura de Difusão Expressiva",
+        "objective_definition": "Disponibilidade estrutural de ferramentas de criação audiovisual, estúdios, software e formação.",
+        "examples": [
+            "políticas públicas de cultura digital",
+            "monopólio de poucos estúdios"
+        ],
+        "narrative_role": "Determina quantos atores podem manifestar arquétipos criativos em escala sistêmica."
+    },
+    {
+        "id": "E04",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "EXPRESSIVE_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = forte cobrança performática; low = baixa cobrança",
+        "weight": 1.0,
+        "short_name": "Normas de Performance Pública",
+        "objective_definition": "Expectativa estrutural de carisma, storytelling e espetáculo em posições de visibilidade.",
+        "examples": [
+            "políticos treinados em media training",
+            "líderes técnicos com comunicação minimalista"
+        ],
+        "narrative_role": "Aumenta peso de arquétipos Performativos e Mascarados; reduz valor de Sábios silenciosos."
+    },
+    {
+        "id": "E05",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "EXPRESSIVE_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = emoções explicitamente consideradas em políticas; low = totalmente ignoradas",
+        "weight": 1.0,
+        "short_name": "Codificação de Emoções em Políticas",
+        "objective_definition": "Grau em que legislações e normas incorporam o impacto emocional como variável explícita.",
+        "examples": [
+            "leis anti-assédio emocional",
+            "ambientes regulatórios focados apenas em métricas financeiras"
+        ],
+        "narrative_role": "Integra ou exclui a camada afetiva da narrativa estrutural, influenciando feridas coletivas."
+    },
+    {
+        "id": "E06",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "EXPRESSIVE_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = filtragem intensa de conteúdo sensível; low = exposição ampla",
+        "weight": 1.0,
+        "short_name": "Regulação de Conteúdo Sensível",
+        "objective_definition": "Nível estrutural de censura ou proteção em torno de conteúdos emocionalmente gatilho.",
+        "examples": [
+            "classificação indicativa rígida",
+            "fluxo irrestrito de conteúdo extremo"
+        ],
+        "narrative_role": "Altera a paisagem de sombra disponível à consciência coletiva."
+    },
+    {
+        "id": "E07",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "EXPRESSIVE_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = alta institucionalização; low = cultura sobretudo informal",
+        "weight": 1.0,
+        "short_name": "Formalização de Artes e Cultura",
+        "objective_definition": "Grau em que artes e expressão simbólica estão integradas ao aparato institucional.",
+        "examples": [
+            "academias de arte oficiais",
+            "cenas artísticas underground sem apoio"
+        ],
+        "narrative_role": "Define se arquétipos artísticos operam do centro ou da periferia do sistema."
+    },
+    {
+        "id": "E08",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "EXPRESSIVE_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = ecossistemas estruturais para arte+tech; low = separação rígida",
+        "weight": 1.0,
+        "short_name": "Integração Entre Arte e Tecnologia",
+        "objective_definition": "Presença de políticas, laboratórios e infraestrutura que cruzam expressão estética e tecnologia.",
+        "examples": [
+            "media labs públicos",
+            "sistemas educacionais que separam totalmente STEM e artes"
+        ],
+        "narrative_role": "Abre caminho para arquétipos Mago e Criador em escala sistêmica, modulando inovação simbólica."
+    },
+    {
+        "id": "S09",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "SOCIAL_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = redes comunitárias densas institucionalizadas; low = laços fracos predominantes",
+        "weight": 1.0,
+        "short_name": "Arquitetura de Vínculo Social",
+        "objective_definition": "Existência de estruturas formais para associações, clubes, sindicatos e organizações de base.",
+        "examples": [
+            "sindicatos fortes",
+            "bairros sem organizações locais"
+        ],
+        "narrative_role": "Sustenta arquétipos de Cuidador, Guardião Comunitário e Rebelde Organizado."
+    },
+    {
+        "id": "S10",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "SOCIAL_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = estruturas formais de acolhimento; low = ausência de mecanismos",
+        "weight": 1.0,
+        "short_name": "Mecanismos Estruturais de Inclusão",
+        "objective_definition": "Presença de políticas e instituições voltadas à inclusão de novos membros e minorias.",
+        "examples": [
+            "políticas de ação afirmativa",
+            "estrutura sem protocolos de inclusão"
+        ],
+        "narrative_role": "Define se o sistema permite entrada de novos arquétipos ou protege elites identitárias."
+    },
+    {
+        "id": "S11",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "SOCIAL_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = hierarquias formais rígidas; low = horizontalidade institucional",
+        "weight": 1.0,
+        "short_name": "Rigidez de Hierarquia Social",
+        "objective_definition": "Força das hierarquias organizacionais e sociais codificadas em normas.",
+        "examples": [
+            "exércitos, burocracias clássicas",
+            "organizações em rede horizontal"
+        ],
+        "narrative_role": "Modula alcance de Governantes e Servos; define barreiras para o Trickster e o Outlaw."
+    },
+    {
+        "id": "S12",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "SOCIAL_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = estado de bem-estar robusto; low = cuidado individualizado",
+        "weight": 1.0,
+        "short_name": "Infraestrutura de Cuidado Social",
+        "objective_definition": "Nível de institucionalização do cuidado (saúde, assistência, proteção social).",
+        "examples": [
+            "welfare states",
+            "países sem rede de proteção"
+        ],
+        "narrative_role": "Sustenta ou fragiliza o arquétipo Cuidador em nível sistêmico."
+    },
+    {
+        "id": "S13",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "SOCIAL_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = múltiplas instâncias formais; low = resolução informal ou violenta",
+        "weight": 1.0,
+        "short_name": "Sistemas de Mediação de Conflito",
+        "objective_definition": "Existência de conselhos, ouvidorias, tribunais comunitários e mecanismos de mediação.",
+        "examples": [
+            "justiça restaurativa institucionalizada",
+            "resolução via violência ou clientelismo"
+        ],
+        "narrative_role": "Define se conflitos arquetípicos são processados como drama, guerra ou aprendizado."
+    },
+    {
+        "id": "S14",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "SOCIAL_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = canais formais de ascensão; low = mobilidade bloqueada",
+        "weight": 1.0,
+        "short_name": "Estrutura de Mobilidade Social",
+        "objective_definition": "Caminhos estruturais disponíveis para mudança de classe, status e papel social.",
+        "examples": [
+            "sistemas de educação pública forte",
+            "estruturas com barreiras quase intransponíveis"
+        ],
+        "narrative_role": "Afeta potência do arquétipo Herói de Ascensão versus arquétipos de Resentimento."
+    },
+    {
+        "id": "S15",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "SOCIAL_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = redes paralelas muito fortes; low = redes informais fracas",
+        "weight": 1.0,
+        "short_name": "Presença de Redes Informais",
+        "objective_definition": "Força de redes de parentesco, favores, jeitinhos e pactos invisíveis.",
+        "examples": [
+            "clientelismo, compadrio",
+            "sociedades de contrato formal predominante"
+        ],
+        "narrative_role": "Cria um palco subterrâneo para arquétipos de Trickster, Corruptor e Padrinho."
+    },
+    {
+        "id": "S16",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "SOCIAL_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = ONGs e associações em todo território; low = concentração em poucos centros",
+        "weight": 1.0,
+        "short_name": "Capilaridade de Organizações Sociais",
+        "objective_definition": "Distribuição territorial de organizações sociais com capacidade de ação local.",
+        "examples": [
+            "redes de comunidades de base",
+            "centros urbanos hiperconcentrados"
+        ],
+        "narrative_role": "Define se arquétipos de Guardião Local e Cuidador Territorial conseguem operar amplamente."
+    },
+    {
+        "id": "P17",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "POWER_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = separação forte; low = fusão de poderes",
+        "weight": 1.0,
+        "short_name": "Arquitetura de Separação de Poderes",
+        "objective_definition": "Grau de separação entre poderes executivo, legislativo, judiciário e mídias estruturais.",
+        "examples": [
+            "democracias consolidadas",
+            "regimes com poder concentrado"
+        ],
+        "narrative_role": "Determina se o arquétipo Governante é contrabalançado por Juiz e Guardião Institucional."
+    },
+    {
+        "id": "P18",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "POWER_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = burocracia densa; low = estado mínimo",
+        "weight": 1.0,
+        "short_name": "Profundidade de Estado Administrativo",
+        "objective_definition": "Complexidade, alcance e especialização do aparato estatal.",
+        "examples": [
+            "estados providência europeus",
+            "microestados com governo enxuto"
+        ],
+        "narrative_role": "Define potência de arquétipos de Guardião Sistêmico e Burocrata versus Empreendedor Outlaw."
+    },
+    {
+        "id": "P19",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "POWER_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = hibridização intensa; low = separação clara",
+        "weight": 1.0,
+        "short_name": "Integração entre Estado e Mercado",
+        "objective_definition": "Nível de interpenetração estrutural entre políticas públicas e interesses corporativos.",
+        "examples": [
+            "capitalismo de estado",
+            "mercados com regulação distante"
+        ],
+        "narrative_role": "Cria arquétipos híbridos de Governante-Corporativo e Mago Financeiro com poder ampliado."
+    },
+    {
+        "id": "P20",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "POWER_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = aparato onipresente; low = presença mínima",
+        "weight": 1.0,
+        "short_name": "Penetração de Aparatos de Segurança",
+        "objective_definition": "Força e capilaridade de forças policiais, militares e de vigilância.",
+        "examples": [
+            "estados de segurança nacional",
+            "sociedades com polícia comunitária leve"
+        ],
+        "narrative_role": "Fortalece arquétipos de Guardião Armado e Sombra Repressiva; impacta Medo Coletivo."
+    },
+    {
+        "id": "P21",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "POWER_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = alta integração em blocos; low = isolamento",
+        "weight": 1.0,
+        "short_name": "Estrutura de Governança Supra-Nacional",
+        "objective_definition": "Integração formal em alianças, blocos regionais e organismos globais.",
+        "examples": [
+            "UE, OTAN, blocos econômicos",
+            "países isolados ou não alinhados"
+        ],
+        "narrative_role": "Insere arquétipos de Império, Aliança e Cidade-Mundo na matriz Δ144."
+    },
+    {
+        "id": "P22",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "POWER_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = decisões críticas mediadas por algoritmos; low = processos inteiramente humanos",
+        "weight": 1.0,
+        "short_name": "Penetração de Governança Algorítmica",
+        "objective_definition": "Grau em que sistemas automatizados decidem acesso a crédito, justiça, trabalho e visibilidade.",
+        "examples": [
+            "credit scoring automatizado",
+            "processos manuais analógicos"
+        ],
+        "narrative_role": "Cria novos arquétipos de Oráculo Tecnológico e Máquina-Guardião no plano estrutural."
+    },
+    {
+        "id": "P23",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "POWER_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = corpo legal extenso e intrincado; low = código simples",
+        "weight": 1.0,
+        "short_name": "Complexidade de Sistema Legal",
+        "objective_definition": "Tamanho, densidade e granularidade do arcabouço jurídico.",
+        "examples": [
+            "sistemas com milhares de normas",
+            "códigos compactos minimalistas"
+        ],
+        "narrative_role": "Complexidade legal pode proteger ou sufocar arquétipos de Inovador e Fora-da-Lei Heroico."
+    },
+    {
+        "id": "P24",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "POWER_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = elites pouco permeáveis; low = acesso relativamente aberto",
+        "weight": 1.0,
+        "short_name": "Desigualdade de Acesso ao Poder",
+        "objective_definition": "Distância sistêmica entre cidadãos comuns e núcleos de decisão real.",
+        "examples": [
+            "sistemas com lobby fechado",
+            "modelos participativos robustos"
+        ],
+        "narrative_role": "Define distância entre arquétipos de Cidadão, Governante e Profeta; afeta quão críveis são narrativas de representação."
+    },
+    {
+        "id": "T25",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "TEMPORAL_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = horizontes de décadas; low = horizontes de meses/anos",
+        "weight": 1.0,
+        "short_name": "Horizonte de Planejamento Estrutural",
+        "objective_definition": "Escala temporal usada em decisões de infraestrutura, educação e política.",
+        "examples": [
+            "planos quinquenais ou de 30 anos",
+            "governos focados em ciclos eleitorais curtos"
+        ],
+        "narrative_role": "Define se arquétipos de Ancião Sábio e Guardião de Futuro têm espaço real de atuação."
+    },
+    {
+        "id": "T26",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "TEMPORAL_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = reformas difíceis e demoradas; low = reformas ágeis",
+        "weight": 1.0,
+        "short_name": "Latência de Reforma Estrutural",
+        "objective_definition": "Tempo médio necessário para mudar leis, instituições e arranjos estruturais.",
+        "examples": [
+            "constituições quase imutáveis",
+            "sistemas com reformas frequentes"
+        ],
+        "narrative_role": "Controla velocidade de mutação de arquétipos sistêmicos na Δ144."
+    },
+    {
+        "id": "T27",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "TEMPORAL_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = ciclos fortemente alinhados; low = ciclos desalinhados",
+        "weight": 1.0,
+        "short_name": "Sincronização de Ciclos Setoriais",
+        "objective_definition": "Grau de alinhamento temporal entre ciclos políticos, econômicos e culturais.",
+        "examples": [
+            "eleições coincidindo com ciclos fiscais",
+            "descompasso crônico entre política e economia"
+        ],
+        "narrative_role": "Alinhamento pode amplificar ondas arquetípicas de boom ou colapso simultâneo."
+    },
+    {
+        "id": "T28",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "TEMPORAL_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = narrativas duram gerações; low = narrativas trocam rápido",
+        "weight": 1.0,
+        "short_name": "Persistência de Narrativas Estruturais",
+        "objective_definition": "Duração típica de grandes narrativas identitárias, modelos de desenvolvimento ou mitos nacionais.",
+        "examples": [
+            "sonho americano",
+            "projetos nacionais curtos e instáveis"
+        ],
+        "narrative_role": "Regula quanto tempo arquétipos estruturais dominam o tabuleiro antes de serem substituídos."
+    },
+    {
+        "id": "T29",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "TEMPORAL_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = adoção tecnológica rápida sistêmica; low = lentidão estrutural",
+        "weight": 1.0,
+        "short_name": "Ritmo de Mudança Tecnológica Estrutural",
+        "objective_definition": "Velocidade com que inovações tecnológicas reestruturam transporte, energia e comunicação.",
+        "examples": [
+            "economias de alta digitalização",
+            "infraestrutura analógica persistente"
+        ],
+        "narrative_role": "Atua como motor do arquétipo Mago Tecno-Sistêmico e do Fermento Alquímico material."
+    },
+    {
+        "id": "T30",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "TEMPORAL_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = crises prolongadas; low = crises curtas",
+        "weight": 1.0,
+        "short_name": "Elasticidade de Tempo de Crise",
+        "objective_definition": "Duração média de estados de emergência, recessões, guerras e choques sistêmicos.",
+        "examples": [
+            "décadas perdidas",
+            "crises de curto prazo com recuperação rápida"
+        ],
+        "narrative_role": "Crises longas sedimentam arquétipos de Sobrevivente e Cínico Estrutural."
+    },
+    {
+        "id": "T31",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "TEMPORAL_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = possibilidade de pausas sistêmicas; low = máquina sem pausa",
+        "weight": 1.0,
+        "short_name": "Capacidade de Pausa Sistêmica",
+        "objective_definition": "Habilidade estrutural de desacelerar atividades para reorganização consciente.",
+        "examples": [
+            "feriados sistêmicos, sabáticos institucionais",
+            "sistemas que nunca param"
+        ],
+        "narrative_role": "Permite atuação de arquétipos Metanoicos e Iniciáticos em grande escala."
+    },
+    {
+        "id": "T32",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "TEMPORAL_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = calendários locais subordinados ao global; low = forte autonomia temporal",
+        "weight": 1.0,
+        "short_name": "Integração Entre Tempo Local e Global",
+        "objective_definition": "Grau em que ritmos locais são reconfigurados por mercados e infraestruturas globais.",
+        "examples": [
+            "mercados 24/7",
+            "comunidades com calendários tradicionais próprios"
+        ],
+        "narrative_role": "Tensiona arquétipos de Guardião da Tradição versus Arquétipos Cosmopolitas."
+    },
+    {
+        "id": "R33",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "RISK_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = múltiplas camadas de proteção; low = quase nenhuma",
+        "weight": 1.0,
+        "short_name": "Arquitetura de Gestão de Risco Sistêmico",
+        "objective_definition": "Existência de bancos centrais, agências de risco, protocolos de segurança e redundâncias.",
+        "examples": [
+            "Basel, agências reguladoras fortes",
+            "economias sem backstops"
+        ],
+        "narrative_role": "Define quão provável é que choques se tornem colapsos arquetípicos totais."
+    },
+    {
+        "id": "R34",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "RISK_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = muitos backups; low = pontos únicos de falha",
+        "weight": 1.0,
+        "short_name": "Redundância Infraestrutural",
+        "objective_definition": "Quantidade de caminhos alternativos para energia, dados, logística e comunicação.",
+        "examples": [
+            "grids elétricos interconectados",
+            "infraestruturas com single point of failure"
+        ],
+        "narrative_role": "Redundância protege arquétipos Guardiões; ausência aumenta papel do Fermento Caótico."
+    },
+    {
+        "id": "R35",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "RISK_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = alto risco crônico; low = risco baixo",
+        "weight": 1.0,
+        "short_name": "Exposição a Riscos Naturais Estruturais",
+        "objective_definition": "Vulnerabilidade estrutural a terremotos, enchentes, secas e pandemias.",
+        "examples": [
+            "cidades costeiras vulneráveis",
+            "regiões geologicamente estáveis"
+        ],
+        "narrative_role": "Cria pano de fundo para arquétipos de Catástrofe, Guardião Ambiental e Profeta Apocalíptico."
+    },
+    {
+        "id": "R36",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "RISK_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = alta capacidade de amortecer; low = baixa",
+        "weight": 1.0,
+        "short_name": "Capacidade de Absorção de Choques",
+        "objective_definition": "Capacidade fiscal, institucional e social de absorver crises grandes.",
+        "examples": [
+            "fundos soberanos, reservas",
+            "estados endividados sem margem"
+        ],
+        "narrative_role": "Determina se crises alimentam narrativa de Renascimento ou de Colapso Permanente."
+    },
+    {
+        "id": "R37",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "RISK_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = cadeias hiperconectadas globais; low = cadeias curtas locais",
+        "weight": 1.0,
+        "short_name": "Complexidade de Cadeias de Suprimento",
+        "objective_definition": "Complexidade e extensão geográfica das cadeias que sustentam o sistema.",
+        "examples": [
+            "produção global just-in-time",
+            "cadeias locais curtas"
+        ],
+        "narrative_role": "Aumenta vulnerabilidade a efeitos dominó arquetípicos em escala global."
+    },
+    {
+        "id": "R38",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "RISK_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = dependência extrema; low = baixa dependência",
+        "weight": 1.0,
+        "short_name": "Dependência de Tecnologias Críticas",
+        "objective_definition": "Grau em que a sobrevivência sistêmica depende de poucas tecnologias-chave.",
+        "examples": [
+            "chips avançados, infra digital",
+            "sistemas analógicos autopoiéticos"
+        ],
+        "narrative_role": "Magnifica o poder de arquétipos Tecno-Magos e de sabotadores simbólicos."
+    },
+    {
+        "id": "R39",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "RISK_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = reformas estruturais após crises; low = repetição cíclica",
+        "weight": 1.0,
+        "short_name": "Capacidade de Aprendizado Pós-Crise",
+        "objective_definition": "Habilidade do sistema em incorporar lições de crises em novas estruturas.",
+        "examples": [
+            "reformas pós-crise de 2008",
+            "retorno ao status quo após desastre"
+        ],
+        "narrative_role": "Ativa arquétipos Alquímicos e Metanoicos ou mantém padrão de loop traumático."
+    },
+    {
+        "id": "R40",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "RISK_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = seguros e redes amplas; low = indivíduos expostos",
+        "weight": 1.0,
+        "short_name": "Cobertura de Risco Social",
+        "objective_definition": "Nível de proteção contra perdas pessoais severas (saúde, emprego, moradia).",
+        "examples": [
+            "seguros universais",
+            "populações sem cobertura"
+        ],
+        "narrative_role": "Influencia diretamente medo estrutural, cinismo e disposição para risco arquetípico coletivo."
+    },
+    {
+        "id": "M41",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "MYTHIC_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = mitos oficiais codificados; low = ausência de mito comum",
+        "weight": 1.0,
+        "short_name": "Institucionalização de Narrativas Fundacionais",
+        "objective_definition": "Grau em que mitos fundacionais estão inscritos em constituições, hinos e curricula.",
+        "examples": [
+            "mitos nacionais explicitados em constituições",
+            "países sem narrativa comum clara"
+        ],
+        "narrative_role": "Define o palco para arquétipos de Herói Nacional, Fundador e Traidor."
+    },
+    {
+        "id": "M42",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "MYTHIC_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = museus, arquivos e comissões fortes; low = memória dispersa",
+        "weight": 1.0,
+        "short_name": "Presença de Instituições Guardiãs de Memória",
+        "objective_definition": "Estruturas dedicadas a preservar e narrar a história coletiva.",
+        "examples": [
+            "museus nacionais, arquivos públicos",
+            "ausência de arquivo público confiável"
+        ],
+        "narrative_role": "Protege arquétipos Ancião e Cronista; influencia disputas por narrativa histórica."
+    },
+    {
+        "id": "M43",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "MYTHIC_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = religião profundamente entrelaçada; low = secularização estrutural forte",
+        "weight": 1.0,
+        "short_name": "Integração de Espiritualidade no Sistema",
+        "objective_definition": "Nível em que instituições espirituais modulam leis, educação e política.",
+        "examples": [
+            "teocracias, estados confissionais",
+            "estados laicos sólidos"
+        ],
+        "narrative_role": "Amplifica arquétipos Sacerdote, Profeta e Mártir em nível estrutural."
+    },
+    {
+        "id": "M44",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "MYTHIC_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = múltiplas cosmovisões em choque; low = cosmovisão dominante estável",
+        "weight": 1.0,
+        "short_name": "Conflito Estrutural de Cosmos de Sentido",
+        "objective_definition": "Quantidade e força de sistemas de sentido concorrentes institucionalizados.",
+        "examples": [
+            "países com pluralismo religioso forte",
+            "sociedades com doutrina única hegemônica"
+        ],
+        "narrative_role": "Cria campo fértil para Fermento, Trickster Místico e guerras de narrativa metafísica."
+    },
+    {
+        "id": "M45",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "MYTHIC_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = humanidades fortemente presentes; low = foco quase exclusivo em técnica",
+        "weight": 1.0,
+        "short_name": "Profundidade de Educação Humanística",
+        "objective_definition": "Peso formal de filosofia, artes, história e literatura na formação estrutural.",
+        "examples": [
+            "universidades com núcleo humanístico obrigatório",
+            "currículos puramente técnicos"
+        ],
+        "narrative_role": "Sustenta arquétipos Sábio, Filósofo e Guardião de Sentido contra tecnocracia pura."
+    },
+    {
+        "id": "M46",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "MYTHIC_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = saberes locais incorporados; low = apagamento estrutural",
+        "weight": 1.0,
+        "short_name": "Integração de Narrativas Locais",
+        "objective_definition": "Nível de reconhecimento institucional de culturas indígenas, regionais e periféricas.",
+        "examples": [
+            "constituições plurinacionais",
+            "políticas que reprimem culturas locais"
+        ],
+        "narrative_role": "Determina se arquétipos locais entram na Δ144 ou permanecem como sombra marginal."
+    },
+    {
+        "id": "M47",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "MYTHIC_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = sistema gera novos heróis e sagas; low = reciclagem de mitos antigos",
+        "weight": 1.0,
+        "short_name": "Capacidade de Produção de Mitos Contemporâneos",
+        "objective_definition": "Habilidade estrutural de criar novos símbolos, heróis e narrativas épicas.",
+        "examples": [
+            "indústrias culturais potentes",
+            "sociedades que apenas importam mitos externos"
+        ],
+        "narrative_role": "Afeta renovação de arquétipos Heroicos, Visionários e Fundadores."
+    },
+    {
+        "id": "M48",
+        "layer": "L3_STRUCTURAL_SYSTEMIC",
+        "domain": "MYTHIC_SYSTEM",
+        "tw_plane": "9",
+        "archetype_link": [],
+        "scale_type": "spectrum",
+        "scale_direction": "high = identidade estruturada e reforçada; low = identidade fragmentada em bolhas",
+        "weight": 1.0,
+        "short_name": "Coerência Sistêmica de Identidade Coletiva",
+        "objective_definition": "Nível de alinhamento entre instituições, símbolos e práticas com uma identidade coletiva explícita.",
+        "examples": [
+            "projetos nacionais integradores",
+            "nações profundamente polarizadas em múltiplos \"nós\""
+        ],
+        "narrative_role": "Define se narrativas de união ou fratura dominam o campo arquetípico profundo."
+    }
+]

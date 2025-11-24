@@ -1,0 +1,831 @@
+[
+  {
+    "id": "E01",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "EXPRESSIVE",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = very emotionally expressive, low = emotionally restrained",
+    "weight": 1.0,
+    "short_name": "Expressividade Emocional",
+    "objective_definition": "Nível médio de demonstração explícita de emoções em interações públicas e privadas.",
+    "examples": [
+      "Brasil",
+      "Itália",
+      "Japão (baixo)",
+      "Finlândia (baixo)"
+    ],
+    "narrative_role": "Amplifica ou atenua a carga emocional percebida de qualquer arquétipo; em alta expressividade, sombra e luz aparecem com maior contraste narrativo."
+  },
+  {
+    "id": "E02",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "EXPRESSIVE",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = intense, forceful language, low = soft, mitigated language",
+    "weight": 1.0,
+    "short_name": "Intensidade da Linguagem",
+    "objective_definition": "Grau de força, assertividade e carga retórica na escolha de palavras e frases.",
+    "examples": [
+      "EUA (alta)",
+      "Israel (alta)",
+      "Tailândia (baixa)",
+      "Indonésia (baixa)"
+    ],
+    "narrative_role": "Define se narrativas tendem a ser diretas e enfáticas ou suaves e mitigadas, modulando a leitura de risco e convicção."
+  },
+  {
+    "id": "E03",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "EXPRESSIVE",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = fast narrative tempo, low = slow narrative tempo",
+    "weight": 1.0,
+    "short_name": "Velocidade Narrativa",
+    "objective_definition": "Ritmo típico com que informações, decisões e histórias são comunicadas.",
+    "examples": [
+      "EUA (rápida)",
+      "Nigéria (rápida)",
+      "Japão (lenta)",
+      "Suíça (lenta)"
+    ],
+    "narrative_role": "Controla o pacing das mudanças de estado; culturas de alta velocidade favorecem drifts rápidos e mutações arquetípicas mais frequentes."
+  },
+  {
+    "id": "E04",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "EXPRESSIVE",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = high interaction energy, low = calm, slow interaction",
+    "weight": 1.0,
+    "short_name": "Ritmo de Interação",
+    "objective_definition": "Nível médio de energia, variação de turno de fala e dinamismo em interações cotidianas.",
+    "examples": [
+      "Sales floors",
+      "startups early stage",
+      "monges em retiro (baixo)"
+    ],
+    "narrative_role": "Afeta a percepção de urgência e intensidade; ritmos altos tendem a amplificar estados expansivos e caóticos."
+  },
+  {
+    "id": "E05",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "EXPRESSIVE",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = improvisational, low = highly planned",
+    "weight": 1.0,
+    "short_name": "Espontaneidade",
+    "objective_definition": "Tendência cultural ao improviso versus planejamento rigoroso nas interações e decisões.",
+    "examples": [
+      "Brasil (alta)",
+      "Argentina (alta)",
+      "Alemanha (baixa)"
+    ],
+    "narrative_role": "Define o quanto narrativas podem desviar de scripts previstos, aumentando ou reduzindo o potencial de quebra de padrão."
+  },
+  {
+    "id": "E06",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "EXPRESSIVE",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = frequent use of humor/irony, low = mostly serious tone",
+    "weight": 1.0,
+    "short_name": "Humor e Ironia",
+    "objective_definition": "Presença e aceitabilidade de humor, sarcasmo e ironia em contextos inclusive formais.",
+    "examples": [
+      "Reino Unido",
+      "Brasil",
+      "Japão (baixo em contextos formais)"
+    ],
+    "narrative_role": "Pode suavizar estados tensos ou mascarar sombras; interfere na leitura direta de risco e seriedade."
+  },
+  {
+    "id": "E07",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "EXPRESSIVE",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = ornamental, metaphorical communication, low = minimalistic, direct communication",
+    "weight": 1.0,
+    "short_name": "Estética da Comunicação",
+    "objective_definition": "Preferência por comunicação ornamentada, metafórica ou minimalista e direta.",
+    "examples": [
+      "França (mais ornamental)",
+      "países nórdicos (mais minimalistas)"
+    ],
+    "narrative_role": "Altera como símbolos e arquétipos são encenados; culturas ornamentadas tendem a reforçar a camada simbólica explícita."
+  },
+  {
+    "id": "E08",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "EXPRESSIVE",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = highly sensory, low = abstract, low sensory salience",
+    "weight": 1.0,
+    "short_name": "Sensorialidade Cultural",
+    "objective_definition": "Grau em que a cultura privilegia experiência tátil, visual, sonora ou abstrata nas interações.",
+    "examples": [
+      "Brasil (alto tátil/visual)",
+      "culturas técnicas puras (mais abstratas)"
+    ],
+    "narrative_role": "Define a forma preferida de ancoragem simbólica; culturas altamente sensoriais respondem mais a imagens e rituais corporais."
+  },
+  {
+    "id": "S09",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "SOCIAL",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = strongly individualist, low = strongly collectivist",
+    "weight": 1.0,
+    "short_name": "Individualismo vs Coletivismo",
+    "objective_definition": "Peso relativo do indivíduo versus grupo nas decisões, responsabilidades e identidades.",
+    "examples": [
+      "EUA (individualista)",
+      "China (coletivista)",
+      "Brasil (misto)"
+    ],
+    "narrative_role": "Determina se a narrativa arquetípica é centrada em heróis individuais ou em entidades coletivas; influencia a leitura de responsabilidade e culpa."
+  },
+  {
+    "id": "S10",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "SOCIAL",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = warm, welcoming social climate, low = cold, distant",
+    "weight": 1.0,
+    "short_name": "Calor Social",
+    "objective_definition": "Grau de abertura, proximidade e acolhimento em interações iniciais.",
+    "examples": [
+      "Brasil (alto)",
+      "Itália (alto)",
+      "países nórdicos (baixo)"
+    ],
+    "narrative_role": "Modula a percepção de ameaça ou segurança em mudanças de narrativa; calor social pode amortecer choques arquetípicos."
+  },
+  {
+    "id": "S11",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "SOCIAL",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = large relational distance, low = low relational distance",
+    "weight": 1.0,
+    "short_name": "Distância Relacional",
+    "objective_definition": "Nível de distância aceitável entre estranhos, colegas, superiores e subordinados.",
+    "examples": [
+      "Japão (alta distância)",
+      "Holanda (baixa distância)"
+    ],
+    "narrative_role": "Afeta o alcance dos arquétipos de Governante, Herói e Cuidador; distância alta reforça hierarquias simbólicas."
+  },
+  {
+    "id": "S12",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "SOCIAL",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = strong, explicit hospitality norms, low = weak or minimal hospitality",
+    "weight": 1.0,
+    "short_name": "Estilo de Hospitalidade",
+    "objective_definition": "Padrões culturais de receber, acolher e cuidar de visitantes ou novos membros.",
+    "examples": [
+      "Brasil, México (alta hospitalidade)",
+      "culturas frias urbanas (baixa)"
+    ],
+    "narrative_role": "Influencia como o arquétipo do Cuidador se manifesta e como mudanças são aceitas ou rejeitadas pelo grupo."
+  },
+  {
+    "id": "S13",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "SOCIAL",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = tight emotional regulation, low = permissive emotional display",
+    "weight": 1.0,
+    "short_name": "Regulação Emocional Social",
+    "objective_definition": "Normas implícitas sobre quanta emoção pode ser demonstrada em público sem sanção social.",
+    "examples": [
+      "Japão (alta regulação)",
+      "Brasil (baixa regulação)"
+    ],
+    "narrative_role": "Interfere na visibilidade de crises; culturas muito reguladas mascaram estados de sombra por mais tempo."
+  },
+  {
+    "id": "S14",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "SOCIAL",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = relationship-oriented, low = task-oriented",
+    "weight": 1.0,
+    "short_name": "Orientação a Relações vs Tarefa",
+    "objective_definition": "Prioridade relativa atribuída a manter relações versus atingir resultados objetivos.",
+    "examples": [
+      "LatAm (relações)",
+      "Alemanha (tarefa)"
+    ],
+    "narrative_role": "Modula se conflitos narrativos são resolvidos por negociação afetiva ou por decisões técnicas."
+  },
+  {
+    "id": "S15",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "SOCIAL",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = high acceptable intimacy, low = low acceptable intimacy",
+    "weight": 1.0,
+    "short_name": "Limites de Intimidade",
+    "objective_definition": "Graus de proximidade física, abertura pessoal e partilha de vulnerabilidades aceitáveis.",
+    "examples": [
+      "Culturas latinas (alta intimidade)",
+      "Norte da Europa (baixa)"
+    ],
+    "narrative_role": "Define o quanto arquétipos como Amante, Cuidador e Bobo podem operar abertamente no espaço público."
+  },
+  {
+    "id": "S16",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "SOCIAL",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = overlapping, interruptive flow, low = strict turn-taking",
+    "weight": 1.0,
+    "short_name": "Fluxo Conversacional",
+    "objective_definition": "Padrão típico de alternância de fala, interrupção, sobreposição e tempo de resposta.",
+    "examples": [
+      "Brasil (interrupções frequentes)",
+      "Alemanha (turnos bem definidos)"
+    ],
+    "narrative_role": "Impacta o ritmo de construção de sentido coletivo e a velocidade com que um arquétipo domina a conversa."
+  },
+  {
+    "id": "P17",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "POWER",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = strong hierarchy, low = strong egalitarianism",
+    "weight": 1.0,
+    "short_name": "Hierarquia vs Igualitarismo",
+    "objective_definition": "Aceitação e expectativa de diferenças de poder entre níveis sociais e organizacionais.",
+    "examples": [
+      "Coreia do Sul (alta hierarquia)",
+      "Dinamarca (igualitária)"
+    ],
+    "narrative_role": "Define a força e o alcance do arquétipo do Governante e a legitimidade de decisões top-down."
+  },
+  {
+    "id": "P18",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "POWER",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = highly formal, low = informal",
+    "weight": 1.0,
+    "short_name": "Formalidade Estrutural",
+    "objective_definition": "Grau de formalidade em títulos, protocolos, linguagem e rituais organizacionais.",
+    "examples": [
+      "Japão, Alemanha (alta)",
+      "startups do Vale do Silício (baixa)"
+    ],
+    "narrative_role": "Modula como a mudança pode ser anunciada; ambientes formais tendem a codificar mais rigidamente transições arquetípicas."
+  },
+  {
+    "id": "P19",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "POWER",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = highly centralized, low = highly decentralized",
+    "weight": 1.0,
+    "short_name": "Centralização do Poder",
+    "objective_definition": "Concentração de decisão em poucos agentes versus distribuição ampla.",
+    "examples": [
+      "Conglomerados familiares",
+      "DAOs (baixa centralização)"
+    ],
+    "narrative_role": "Controla a capacidade de mudança rápida; mais centralização favorece drifts bruscos quando o núcleo muda."
+  },
+  {
+    "id": "P20",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "POWER",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = strong internalized authority, low = authority negotiated rationally",
+    "weight": 1.0,
+    "short_name": "Autoridade Internalizada",
+    "objective_definition": "Tendência a obedecer autoridades por hábito/cultura versus negociação racional explícita.",
+    "examples": [
+      "Culturas confucionistas",
+      "culturas altamente críticas ocidentais"
+    ],
+    "narrative_role": "Afeta a resistência a narrativas de Sábio, Governante e Profeta; alta internalização facilita alinhamento simbólico."
+  },
+  {
+    "id": "P21",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "POWER",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = high acceptance of open conflict, low = low acceptance",
+    "weight": 1.0,
+    "short_name": "Grau de Conflito Aceitável",
+    "objective_definition": "Nível de conflito aberto tolerado em debates, decisões e negociações.",
+    "examples": [
+      "Israel (alto)",
+      "Japão (baixo)"
+    ],
+    "narrative_role": "Define se o arquétipo do Herói/Outlaw se manifesta como confrontação ou como ajuste silencioso."
+  },
+  {
+    "id": "P22",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "POWER",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = direct feedback culture, low = indirect or avoided feedback",
+    "weight": 1.0,
+    "short_name": "Cultura de Feedback",
+    "objective_definition": "Modo dominante de dar e receber críticas, correções e avaliações.",
+    "examples": [
+      "EUA (feedback direto)",
+      "Ásia Oriental (feedback indireto)"
+    ],
+    "narrative_role": "Controla visibilidade de erros e fracassos; influencia como o Fermento Alquímico atua no sistema."
+  },
+  {
+    "id": "P23",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "POWER",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = fast decision cycles, low = slow decision cycles",
+    "weight": 1.0,
+    "short_name": "Velocidade de Decisão",
+    "objective_definition": "Tempo típico para deliberar, aprovar e implementar decisões importantes.",
+    "examples": [
+      "Startups (rápida)",
+      "Estado burocrático (lenta)"
+    ],
+    "narrative_role": "Interage com o TW369; velocidades altas aumentam a frequência de mutações narrativas, boas e ruins."
+  },
+  {
+    "id": "P24",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "POWER",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = high rule obedience, low = low rule obedience",
+    "weight": 1.0,
+    "short_name": "Obediência Cultural",
+    "objective_definition": "Tendência geral da população a cumprir regras, leis e normas sociais sem contestação explícita.",
+    "examples": [
+      "Singapura (alta)",
+      "culturas anárquicas informais (baixa)"
+    ],
+    "narrative_role": "Impacta a estabilidade do campo simbólico; alta obediência preserva narrativas mais tempo, baixa obediência acelera rupturas."
+  },
+  {
+    "id": "T25",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "TEMPORAL",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "categorical_spectrum",
+    "scale_direction": "orientation distributed between past, present and future emphasis",
+    "weight": 1.0,
+    "short_name": "Orientação Temporal",
+    "objective_definition": "Ênfase cultural em passado, presente ou futuro na tomada de decisão.",
+    "examples": [
+      "Japão (longo prazo)",
+      "EUA (curto/médio prazo)",
+      "culturas tradicionais (passado)"
+    ],
+    "narrative_role": "Define se os arquétipos operam com horizonte mítico, tático ou imediato."
+  },
+  {
+    "id": "T26",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "TEMPORAL",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = fast execution after decision, low = slow execution",
+    "weight": 1.0,
+    "short_name": "Velocidade de Execução",
+    "objective_definition": "Intervalo típico entre decidir e agir em planos concretos.",
+    "examples": [
+      "Tech startups (alta)",
+      "setor público tradicional (baixa)"
+    ],
+    "narrative_role": "Modula a latência entre insight arquetípico (9) e ação (3/6)."
+  },
+  {
+    "id": "T27",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "TEMPORAL",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = high importance of synchronization, low = low importance",
+    "weight": 1.0,
+    "short_name": "Sincronização Social",
+    "objective_definition": "Grau de importância atribuído à pontualidade, cronogramas e sincronias sociais.",
+    "examples": [
+      "Alemanha, Japão (alta)",
+      "Brasil (baixa)"
+    ],
+    "narrative_role": "Afeta previsibilidade de ciclos; baixa sincronização favorece narrativas caóticas mas flexíveis."
+  },
+  {
+    "id": "T28",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "TEMPORAL",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = high tolerance for waiting, low = low tolerance",
+    "weight": 1.0,
+    "short_name": "Percepção de Espera",
+    "objective_definition": "Tolerância média ao atraso em filas, respostas e entregas.",
+    "examples": [
+      "países latinos (alta tolerância)",
+      "Suíça (baixa)"
+    ],
+    "narrative_role": "Impacta a paciência com arquétipos em fase de incubação; baixa tolerância exige resultados rápidos."
+  },
+  {
+    "id": "T29",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "TEMPORAL",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = strongly cyclical culture, low = strongly linear culture",
+    "weight": 1.0,
+    "short_name": "Ciclicidade Cultural",
+    "objective_definition": "Força dos ciclos (festas, estações, ritos) na organização da vida social.",
+    "examples": [
+      "culturas agrícolas tradicionais",
+      "culturas hipermodernas urbanas (mais lineares)"
+    ],
+    "narrative_role": "Define a predisposição a narrativas de morte/renascimento e repetição mítica."
+  },
+  {
+    "id": "T30",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "TEMPORAL",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = high tolerance for silence, low = low tolerance",
+    "weight": 1.0,
+    "short_name": "Tolerância ao Silêncio",
+    "objective_definition": "Aceitação de pausas silenciosas em conversas e decisões.",
+    "examples": [
+      "Japão (alta)",
+      "EUA/Brasil (baixa)"
+    ],
+    "narrative_role": "Silêncio pode ser interpretado como reflexão, desaprovação ou fraqueza, conforme o vetor."
+  },
+  {
+    "id": "T31",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "TEMPORAL",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = constant high temporal pressure, low = low temporal pressure",
+    "weight": 1.0,
+    "short_name": "Pressão Temporal",
+    "objective_definition": "Sensação média de urgência contínua versus tempos largos.",
+    "examples": [
+      "centros financeiros globais (alta)",
+      "comunidades tradicionais rurais (baixa)"
+    ],
+    "narrative_role": "Aumenta a probabilidade de decisões em modo sombra e acelera quiralidade 3→6."
+  },
+  {
+    "id": "T32",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "TEMPORAL",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = predominantly positive future narrative, low = predominantly negative",
+    "weight": 1.0,
+    "short_name": "Narrativa de Futuro",
+    "objective_definition": "Visão dominante sobre o futuro: promissor, ameaçador, inevitável, aberto.",
+    "examples": [
+      "Silicon Valley (futuro promissor)",
+      "países em crise crônica (futuro ameaçador)"
+    ],
+    "narrative_role": "Enquadra o tom dos arquétipos visionários e dos discursos de mudança estrutural."
+  },
+  {
+    "id": "R33",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "RISK",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = strong risk aversion, low = low risk aversion",
+    "weight": 1.0,
+    "short_name": "Aversão ao Risco",
+    "objective_definition": "Grau em que incerteza e volatilidade são percebidas como ameaças a evitar.",
+    "examples": [
+      "Japão (alta)",
+      "EUA/Israel (baixa)"
+    ],
+    "narrative_role": "Define a facilidade com que narrativas de ruptura são aceitas ou rejeitadas; atua fortemente sobre Herói, Mago e Outlaw."
+  },
+  {
+    "id": "R34",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "RISK",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = strong control of uncertainty, low = low control",
+    "weight": 1.0,
+    "short_name": "Controle de Incerteza",
+    "objective_definition": "Preferência por regras, planos e contratos para reduzir o desconhecido.",
+    "examples": [
+      "Alemanha (alta)",
+      "startups early stage (baixa)"
+    ],
+    "narrative_role": "Interage com o TW369: quanto mais controle, menor a tolerância a drifts radicais."
+  },
+  {
+    "id": "R35",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "RISK",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = high rule flexibility, low = rigid rule application",
+    "weight": 1.0,
+    "short_name": "Flexibilidade de Regras",
+    "objective_definition": "Grau de rigidez ou maleabilidade na aplicação de normas.",
+    "examples": [
+      "países com alta informalidade (flexíveis)",
+      "países nórdicos (mais rígidos)"
+    ],
+    "narrative_role": "Define se a sombra se manifesta como corrupção, jeitinho ou repressão rígida."
+  },
+  {
+    "id": "R36",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "RISK",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = high tolerance for chaos, low = low tolerance",
+    "weight": 1.0,
+    "short_name": "Tolerância ao Caos",
+    "objective_definition": "Nível de conforto com ambientes desorganizados, ambíguos ou em rápida mudança.",
+    "examples": [
+      "mercados emergentes (alta)",
+      "ambientes altamente regulados (baixa)"
+    ],
+    "narrative_role": "Regula o quanto o Fermento Alquímico pode operar sem colapso total."
+  },
+  {
+    "id": "R37",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "RISK",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = culture of experimentation, low = low experimentation",
+    "weight": 1.0,
+    "short_name": "Cultura de Experimentação",
+    "objective_definition": "Abertura para testar, errar e iterar publicamente.",
+    "examples": [
+      "startups tech",
+      "órgãos públicos tradicionais (baixa)"
+    ],
+    "narrative_role": "Aumenta a prevalência de arquétipos criativos e heróicos em modo luz."
+  },
+  {
+    "id": "R38",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "RISK",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = high psychological safety, low = low psychological safety",
+    "weight": 1.0,
+    "short_name": "Segurança Psicológica",
+    "objective_definition": "Percepção de segurança ao expressar dúvidas, críticas e vulnerabilidades.",
+    "examples": [
+      "equipes modernas com liderança consciente",
+      "culturas punitivas (baixa)"
+    ],
+    "narrative_role": "Controla se crises internas viram narrativas de aprendizado ou de silêncio e colapso."
+  },
+  {
+    "id": "R39",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "RISK",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = high value on stability, low = low value on stability",
+    "weight": 1.0,
+    "short_name": "Narrativa de Estabilidade",
+    "objective_definition": "Valor atribuído à continuidade, previsibilidade e não mudança.",
+    "examples": [
+      "setor elétrico regulado",
+      "bancos tradicionais"
+    ],
+    "narrative_role": "Tende a reforçar arquétipos Guardião/Governante e a resistir ao Mago/Outlaw."
+  },
+  {
+    "id": "R40",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "RISK",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = strong face-preservation norm, low = weak",
+    "weight": 1.0,
+    "short_name": "Preservação da Face",
+    "objective_definition": "Importância de manter honra, reputação e coerência pública.",
+    "examples": [
+      "Leste Asiático (alta)",
+      "culturas mais cínicas (moderada/baixa)"
+    ],
+    "narrative_role": "Influencia como erros e fracassos são narrados; determina se haverá confissão, encobrimento ou teatralização da queda."
+  },
+  {
+    "id": "M41",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "MYTHIC",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = high mythic centrality, low = low mythic centrality",
+    "weight": 1.0,
+    "short_name": "Centralidade de Mitos",
+    "objective_definition": "Peso de narrativas míticas, religiosas ou fundacionais na vida cotidiana.",
+    "examples": [
+      "Índia (alta)",
+      "Estados laicos hipermodernos (baixa)"
+    ],
+    "narrative_role": "Fornece o pano de fundo simbólico para a atuação de todos os arquétipos; define se a realidade é vista como profana ou sagrada."
+  },
+  {
+    "id": "M42",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "MYTHIC",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = high sacrality of symbols, low = low sacrality",
+    "weight": 1.0,
+    "short_name": "Sacralidade de Símbolos",
+    "objective_definition": "Grau de reverência a bandeiras, rituais, insígnias, cargos e objetos simbólicos.",
+    "examples": [
+      "Exércitos, igrejas, monarquias",
+      "startups minimalistas (baixa)"
+    ],
+    "narrative_role": "Amplifica o impacto de gestos simbólicos; um pequeno desvio pode gerar grande choque narrativo."
+  },
+  {
+    "id": "M43",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "MYTHIC",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = rigid moral architecture, low = flexible/relativistic moral architecture",
+    "weight": 1.0,
+    "short_name": "Arquitetura Moral",
+    "objective_definition": "Estrutura dominante de certo/errado, dever, honra, culpa e virtude.",
+    "examples": [
+      "culturas religiosas fortes",
+      "culturas pragmáticas relativistas"
+    ],
+    "narrative_role": "Define o enquadramento moral de arquétipos; o mesmo ato pode ser visto como heroico ou criminoso."
+  },
+  {
+    "id": "M44",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "MYTHIC",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = strong destiny/fate narrative, low = strong free-will/control narrative",
+    "weight": 1.0,
+    "short_name": "Narrativa de Destino",
+    "objective_definition": "Crença coletiva predominante sobre destino, sorte, providência ou livre-arbítrio.",
+    "examples": [
+      "fatalismo em algumas culturas tradicionais",
+      "ethos de self-made em outras"
+    ],
+    "narrative_role": "Modula quanta responsabilidade o indivíduo/coletivo sente sobre a própria narrativa."
+  },
+  {
+    "id": "M45",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "MYTHIC",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = high everyday spirituality, low = low everyday spirituality",
+    "weight": 1.0,
+    "short_name": "Grau de Espiritualidade",
+    "objective_definition": "Presença de crenças e práticas espirituais na vida cotidiana.",
+    "examples": [
+      "Índia (alta)",
+      "países muito secularizados (baixa)"
+    ],
+    "narrative_role": "Abre ou fecha canais para arquétipos místicos, proféticos e visionários."
+  },
+  {
+    "id": "M46",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "MYTHIC",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = strong philosophical/introspective posture, low = strongly pragmatic posture",
+    "weight": 1.0,
+    "short_name": "Postura Filosófica",
+    "objective_definition": "Tendência geral ao pragmatismo ou à introspecção filosófica.",
+    "examples": [
+      "EUA (pragmático)",
+      "Alemanha/França (mais filosófico em certos meios)"
+    ],
+    "narrative_role": "Inclina narrativas para ação imediata ou reflexão prolongada; afeta o tempo de resposta a crises."
+  },
+  {
+    "id": "M47",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "MYTHIC",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = high tradition value, low = low tradition value",
+    "weight": 1.0,
+    "short_name": "Valorização da Tradição",
+    "objective_definition": "Força da continuidade de costumes, rituais e práticas ao longo de gerações.",
+    "examples": [
+      "monarquias, castas, clãs",
+      "sociedades hiper-modernas de ruptura"
+    ],
+    "narrative_role": "Define a inércia simbólica do sistema; alta tradição resiste fortemente ao Fermento Alquímico."
+  },
+  {
+    "id": "M48",
+    "layer": "L1_CULTURAL_MACRO",
+    "domain": "MYTHIC",
+    "tw_plane": "3",
+    "archetype_link": [],
+    "scale_type": "spectrum",
+    "scale_direction": "high = strong collective identity cohesion, low = fragmented identity",
+    "weight": 1.0,
+    "short_name": "Coesão de Identidade Coletiva",
+    "objective_definition": "Força da sensação de “nós” compartilhado em nível nacional, tribal ou organizacional.",
+    "examples": [
+      "nações com forte ethos nacional",
+      "empresas com cultura forte",
+      "sociedades fragmentadas (baixa)"
+    ],
+    "narrative_role": "Determina a facilidade com que narrativas se espalham ou se fragmentam; forte coesão pode acelerar tanto cura quanto colapso."
+  }
+]
