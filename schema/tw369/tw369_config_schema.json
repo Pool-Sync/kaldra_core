@@ -78,6 +78,17 @@
             "description": "Optional path or identifier pointing to the drift parameter set (e.g., 'schema/tw369/drift_parameters.json').",
             "default": "schema/tw369/drift_parameters.json"
         },
+        "drift_model": {
+            "type": "string",
+            "description": "Selects which drift model to use: 'model_a' (default), 'nonlinear', 'multiscale', 'stochastic'.",
+            "enum": [
+                "model_a",
+                "nonlinear",
+                "multiscale",
+                "stochastic"
+            ],
+            "default": "model_a"
+        },
         "notes": {
             "type": "string",
             "description": "Free-text field for documenting configuration rationale or experiment IDs."

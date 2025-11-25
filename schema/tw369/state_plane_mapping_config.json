@@ -1,0 +1,86 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "AdaptiveStatePlaneMappingConfig",
+    "description": "Configuration schema for adaptive state-plane mapping in TW369.",
+    "type": "object",
+    "properties": {
+        "enabled": {
+            "type": "boolean",
+            "description": "If false, the system should fall back to static mapping (L1→3, L2→6, L3→9).",
+            "default": true
+        },
+        "domains": {
+            "type": "object",
+            "description": "Domain-specific baseline plane weights.",
+            "additionalProperties": {
+                "type": "object",
+                "properties": {
+                    "plane3": {
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    "plane6": {
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    },
+                    "plane9": {
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    }
+                },
+                "required": [
+                    "plane3",
+                    "plane6",
+                    "plane9"
+                ],
+                "additionalProperties": false
+            }
+        },
+        "severity_thresholds": {
+            "type": "object",
+            "properties": {
+                "low": {
+                    "type": "number",
+                    "minimum": 0.0,
+                    "maximum": 1.0,
+                    "default": 0.3
+                },
+                "medium": {
+                    "type": "number",
+                    "minimum": 0.0,
+                    "maximum": 1.0,
+                    "default": 0.6
+                },
+                "high": {
+                    "type": "number",
+                    "minimum": 0.0,
+                    "maximum": 1.0,
+                    "default": 0.8
+                }
+            },
+            "required": [
+                "low",
+                "medium",
+                "high"
+            ],
+            "additionalProperties": false
+        },
+        "max_shift": {
+            "type": "number",
+            "description": "Maximum total weight that can be shifted between planes as a function of severity.",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "default": 0.3
+        }
+    },
+    "required": [
+        "enabled",
+        "domains",
+        "severity_thresholds",
+        "max_shift"
+    ],
+    "additionalProperties": false
+}

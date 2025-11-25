@@ -10,6 +10,15 @@ Implements temporal drift calculation based on tension gradients between planes.
 from typing import Dict, Any, Optional, Tuple
 from dataclasses import dataclass
 import math
+from src.tw369.painleve.painleve_filter import painleve_filter
+from src.tw369.advanced_drift_models import (
+    DriftModelConfig,
+    DriftState,
+    model_a_linear_drift,
+    model_b_nonlinear_drift,
+    model_c_multiscale_drift,
+    model_d_stochastic_drift,
+)
 
 
 @dataclass
@@ -43,6 +52,11 @@ class TW369Integrator:
         # State-to-plane mapping for Δ144 states
         # This is a simplified mapping - can be refined with actual Δ144 structure
         self._state_plane_mapping = self._initialize_state_plane_mapping()
+        
+        # Advanced drift model state
+        self._drift_state: Optional[DriftState] = None
+        self._drift_model: str = "model_a"
+        self._drift_model_config: DriftModelConfig = DriftModelConfig()
     
     def _initialize_state_plane_mapping(self) -> Dict[str, str]:
         """
@@ -154,6 +168,10 @@ class TW369Integrator:
         # Global instability index (mean tension)
         mean_tension = (tensions["3"] + tensions["6"] + tensions["9"]) / 3.0
         
+        if getattr(self, 'config', {}).get('use_painleve_filter', False):
+            mean_tension = self._apply_painleve_filter(mean_tension)
+            mean_tension = max(0.0, mean_tension)
+
         # Tracy-Widom-like normalization using exponential decay
         # Maps [0, ∞) → [0, 1)
         severity = 1.0 - math.exp(-mean_tension)
@@ -195,12 +213,55 @@ class TW369Integrator:
         # Use max to avoid division by zero
         k = max(1.0, abs(g_3_6) + abs(g_6_9) + abs(g_9_3))
         
-        # Compute normalized drift with severity modulation
-        drift = {
-            "plane3_to_6": (g_3_6 / k) * severity,
-            "plane6_to_9": (g_6_9 / k) * severity,
-            "plane9_to_3": (g_9_3 / k) * severity,
+        # Prepare gradients dict for model functions
+        gradients = {
+            "plane3_to_6": g_3_6,
+            "plane6_to_9": g_6_9,
+            "plane9_to_3": g_9_3,
         }
+
+        # Model A linear drift (always computed as baseline)
+        linear_drift = model_a_linear_drift(
+            gradients=gradients,
+            severity=severity,
+            normalization_k=k,
+        )
+
+        drift_model = self._drift_model
+        cfg = self._drift_model_config
+
+        if drift_model == "model_a":
+            drift = linear_drift
+
+        elif drift_model == "nonlinear" and cfg.nonlinear_enabled:
+            drift = model_b_nonlinear_drift(
+                gradients=gradients,
+                severity=severity,
+                cfg=cfg,
+                normalization_k=k,
+            )
+
+        elif drift_model == "multiscale" and cfg.multiscale_enabled:
+            # Use linear drift as base, then apply multiscale combination
+            eff_drift, new_state = model_c_multiscale_drift(
+                instantaneous_drift=linear_drift,
+                cfg=cfg,
+                prev_state=self._drift_state,
+            )
+            self._drift_state = new_state
+            drift = eff_drift
+
+        elif drift_model == "stochastic" and cfg.stochastic_enabled:
+            # Use linear drift as mean, then inject noise
+            drift = model_d_stochastic_drift(
+                base_drift=linear_drift,
+                severity=severity,
+                cfg=cfg,
+            )
+
+        else:
+            # Fallback: Model A
+            drift = linear_drift
         
         return drift
     
@@ -288,5 +349,47 @@ class TW369Integrator:
         loader = TW369ConfigLoader()
         self.config = loader.load(path)
         return self.config
+
+    def _configure_drift_model(self, drift_params: dict, config: dict | None = None) -> None:
+        """
+        Configure advanced drift model and parameters from drift_parameters.json and TW369 config.
+
+        - drift_params: loaded from schema/tw369/drift_parameters.json
+        - config: optional runtime config (tw369_config)
+        """
+        adv = drift_params.get("advanced_models", {})
+
+        nonlinear = adv.get("nonlinear", {})
+        multiscale = adv.get("multiscale", {})
+        stochastic = adv.get("stochastic", {})
+
+        self._drift_model_config = DriftModelConfig(
+            default_model=adv.get("default_model", "model_a"),
+            nonlinear_enabled=bool(nonlinear.get("enabled", False)),
+            nonlinear_exponent=float(nonlinear.get("exponent", 1.5)),
+            nonlinear_tanh_scale=float(nonlinear.get("tanh_scale", 1.0)),
+            nonlinear_mode=str(nonlinear.get("mode", "power_then_tanh")),
+            multiscale_enabled=bool(multiscale.get("enabled", False)),
+            multiscale_alpha=float(multiscale.get("short_term_alpha", 0.7)),
+            multiscale_beta=float(multiscale.get("long_term_beta", 0.3)),
+            stochastic_enabled=bool(stochastic.get("enabled", False)),
+            stochastic_base_sigma=float(stochastic.get("base_sigma", 0.05)),
+            stochastic_severity_scale=float(stochastic.get("severity_scale", 0.5)),
+            stochastic_seed=stochastic.get("random_seed", None),
+        )
+
+        drift_model = "model_a"
+        if config and "drift_model" in config:
+            drift_model = str(config["drift_model"])
+        else:
+            drift_model = self._drift_model_config.default_model
+
+        if drift_model not in ("model_a", "nonlinear", "multiscale", "stochastic"):
+            drift_model = "model_a"
+
+        self._drift_model = drift_model
+
+    def _apply_painleve_filter(self, instability_index: float) -> float:
+        return painleve_filter(instability_index)
 
 

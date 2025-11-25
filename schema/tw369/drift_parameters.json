@@ -56,5 +56,28 @@
             "description": "Plane 9 represents deep structural forces; receives flow from plane 6 (tension → structure).",
             "incoming_drift_key": "plane6_to_9"
         }
+    },
+    "advanced_models": {
+        "default_model": "model_a",
+        "nonlinear": {
+            "enabled": false,
+            "exponent": 1.5,
+            "tanh_scale": 1.0,
+            "mode": "power_then_tanh",
+            "notes": "Transforms gradients: g' = tanh(sign(g) * |g|^p / tanh_scale)."
+        },
+        "multiscale": {
+            "enabled": false,
+            "short_term_alpha": 0.7,
+            "long_term_beta": 0.3,
+            "notes": "Combines instantaneous drift with stored state: d_t = alpha * d_instant + (1-alpha) * d_prev."
+        },
+        "stochastic": {
+            "enabled": false,
+            "base_sigma": 0.05,
+            "severity_scale": 0.5,
+            "random_seed": null,
+            "notes": "Adds Gaussian noise with sigma = base_sigma * (1 + severity * severity_scale)."
+        }
     }
 }
