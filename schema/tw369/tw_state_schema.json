@@ -1,0 +1,40 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "TWState",
+    "description": "Schema for TW369 temporal state, integrating the three Kindra layers (planes 3, 6, 9). Mirrors TWState dataclass in src/tw369/tw369_integration.py.",
+    "type": "object",
+    "properties": {
+        "plane3_cultural_macro": {
+            "type": "object",
+            "description": "Kindra Layer 1 scores mapped to TW Plane 3 (Cultural Macro). Keys are vector IDs (e.g., 'E01', 'S09'), values are scores in [-1.0, 1.0].",
+            "additionalProperties": {
+                "type": "number"
+            }
+        },
+        "plane6_semiotic_media": {
+            "type": "object",
+            "description": "Kindra Layer 2 scores mapped to TW Plane 6 (Semiotic / Media). Keys are vector IDs (e.g., 'E01', 'S09'), values are scores in [-1.0, 1.0].",
+            "additionalProperties": {
+                "type": "number"
+            }
+        },
+        "plane9_structural_systemic": {
+            "type": "object",
+            "description": "Kindra Layer 3 scores mapped to TW Plane 9 (Structural / Systemic). Keys are vector IDs (e.g., 'E01', 'S09'), values are scores in [-1.0, 1.0].",
+            "additionalProperties": {
+                "type": "number"
+            }
+        },
+        "metadata": {
+            "type": "object",
+            "description": "Optional context metadata used to qualify this TW state (e.g., source, timestamp, scenario tags).",
+            "additionalProperties": true
+        }
+    },
+    "required": [
+        "plane3_cultural_macro",
+        "plane6_semiotic_media",
+        "plane9_structural_systemic"
+    ],
+    "additionalProperties": false
+}

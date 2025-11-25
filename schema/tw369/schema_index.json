@@ -1,0 +1,25 @@
+{
+    "version": "1.0",
+    "tw_state_schema": {
+        "path": "schema/tw369/tw_state_schema.json",
+        "version": "1.0"
+    },
+    "tw369_config_schema": {
+        "path": "schema/tw369/tw369_config_schema.json",
+        "version": "1.0"
+    },
+    "drift_parameters": {
+        "default": {
+            "path": "schema/tw369/drift_parameters.json",
+            "version": "1.0-default"
+        },
+        "conservative_v1": {
+            "path": "schema/tw369/drift_parameters_conservative_v1.json",
+            "version": "1.0-conservative"
+        },
+        "exploratory_v1": {
+            "path": "schema/tw369/drift_parameters_exploratory_v1.json",
+            "version": "1.0-exploratory"
+        }
+    }
+}
