@@ -40,7 +40,7 @@ E principalmente:
 
 ## 🔢 3. Quantas polaridades existem?
 
-Este arquivo contém **49 polaridades**, que representam:
+Este arquivo contém **48 polaridades**, que representam:
 
 | Dimensão | Quantidade | Exemplos |
 |----------|------------|----------|
@@ -58,7 +58,7 @@ Este arquivo contém **49 polaridades**, que representam:
 | **Jornada** | 4 | Chamado/Recusa, Teste/Retraimento, Sacrifício/Recompensa, Descida/Subida |
 | **Ética** | 3 | Dever/Evasão, Responsabilidade/Culpa, Integridade/Fragmentação |
 
-**Total: 49 polaridades**
+**Total: 48 polaridades**
 
 ---
 
@@ -161,11 +161,9 @@ Um mesmo estado pode ser interpretado de forma diferente dependendo da **ativaç
 
 ---
 
-## 🧨 8. Por que 49 polaridades?
+## 🧨 8. Por que 48 polaridades?
 
-Porque o KALDRA trabalha com:
-
-**49 = 7² (número sagrado)**
+O KALDRA trabalha com um mapeamento completo de tensões arquetípicas.
 
 Perfeito para:
 - Mapeamento completo de tensões arquetípicas
@@ -244,4 +242,4 @@ Muitas polaridades estão alinhadas a **múltiplos planos**, refletindo a nature
 ---
 
 **Última atualização:** 2025-11-22  
-**Versão:** 1.0 (49 polaridades)
+**Versão:** 1.0 (48 polaridades)

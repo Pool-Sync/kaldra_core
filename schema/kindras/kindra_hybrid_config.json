@@ -1,0 +1,41 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "KindraHybridConfig",
+    "description": "Configuration schema for Kindra hybrid scoring (LLM + Rule-Based mixing).",
+    "type": "object",
+    "properties": {
+        "enabled": {
+            "type": "boolean",
+            "description": "Enable hybrid scoring mode.",
+            "default": true
+        },
+        "alpha_global": {
+            "type": "number",
+            "description": "Global mixing ratio: score = alpha*llm + (1-alpha)*rule. Range [0,1].",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "default": 0.5
+        },
+        "alpha_layers": {
+            "type": "object",
+            "description": "Layer-specific alpha overrides. Keys are layer numbers ('1', '2', '3').",
+            "additionalProperties": {
+                "type": "number",
+                "minimum": 0.0,
+                "maximum": 1.0
+            },
+            "examples": [
+                {
+                    "1": 0.7,
+                    "2": 0.5,
+                    "3": 0.3
+                }
+            ]
+        }
+    },
+    "required": [
+        "enabled",
+        "alpha_global"
+    ],
+    "additionalProperties": false
+}

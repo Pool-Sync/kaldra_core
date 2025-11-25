@@ -88,7 +88,7 @@
 
 ### Polarities Verification
 
-- [ ] **Verify Polarities Count**
+- [x] **Verify Polarities Count**
   - **File**: `schema/archetypes/polarities.json`
   - **Owner**: TBD
   - **Dependencies**: None
@@ -288,6 +288,58 @@
   - **Owner**: Completed
   - **Dependencies**: Implementation complete ✅
   - **Output**: Complete technical documentation with mathematical formulations ✅
+  - **Completed**: 2025-11-25
+
+### Kindra LLM-Based Scoring ✅ COMPLETE
+
+- [x] **Implement LLM Scorer Module**
+  - **Files**:
+    - `src/kindras/kindra_llm_scorer.py` ✅
+    - `src/kindras/prompts/kindra_llm_prompt.json` ✅
+  - **Owner**: Completed
+  - **Dependencies**: Kindra infrastructure complete ✅
+  - **Output**: LLM-based scoring with fallback to rule-based ✅
+  - **Tests**: `tests/kindras/test_llm_scorer.py` (6 tests) ✅
+  - **Completed**: 2025-11-25
+
+- [x] **Integrate with Kindra Dispatcher**
+  - **File**: `src/kindras/scoring_dispatcher.py` ✅
+  - **Owner**: Completed
+  - **Dependencies**: LLM scorer implemented ✅
+  - **Output**: LLM mode in dispatcher with fallback ✅
+  - **Completed**: 2025-11-25
+
+- [x] **Document LLM Scoring**
+  - **File**: `docs/KINDRA_LLM_SCORING.md` ✅
+  - **Owner**: Completed
+  - **Dependencies**: Implementation complete ✅
+  - **Output**: Complete technical documentation with usage examples ✅
+  - **Completed**: 2025-11-25
+
+### Kindra Hybrid Scoring ✅ COMPLETE
+
+- [x] **Implement Hybrid Scorer Module**
+  - **Files**:
+    - `src/kindras/kindra_hybrid_scorer.py` ✅
+    - `schema/kindras/kindra_hybrid_config.json` ✅
+  - **Owner**: Completed
+  - **Dependencies**: LLM + Rule-Based scorers complete ✅
+  - **Output**: Configurable mixing (alpha * LLM + (1-alpha) * rule) ✅
+  - **Tests**: `tests/kindras/test_hybrid_scorer.py` (6 tests) ✅
+  - **Completed**: 2025-11-25
+
+- [x] **Integrate Hybrid Mode**
+  - **File**: `src/kindras/scoring_dispatcher.py` ✅
+  - **Owner**: Completed
+  - **Dependencies**: Hybrid scorer implemented ✅
+  - **Output**: Hybrid mode with global and layer-specific alpha ✅
+  - **Completed**: 2025-11-25
+
+- [x] **Document Hybrid Scoring**
+  - **File**: `docs/KINDRA_HYBRID_SCORING.md` ✅
+  - **Owner**: Completed
+  - **Dependencies**: Implementation complete ✅
+  - **Output**: Complete documentation with alpha selection guide ✅
   - **Completed**: 2025-11-25
 
 ### Structured Logging & Audit
@@ -612,7 +664,7 @@
 **Total Tasks**: 80+  
 **P0 (Critical)**: 10 tasks → **10/10 COMPLETE ✅**  
 **P1 (High)**: 20 tasks → **4/20 COMPLETE** (AI Scoring done)  
-**P2 (Medium)**: 30 tasks → **8/30 COMPLETE** (TW369 schemas + Adaptive Mapping + Advanced Drift done)  
+**P2 (Medium)**: 30 tasks → **14/30 COMPLETE** (TW369 schemas + Adaptive Mapping + Advanced Drift + LLM Scoring + Hybrid Scoring done)  
 **P3 (Long-term)**: 20+ tasks → **1/20+ COMPLETE** (Painlevé II done)
 
 **Completed Work**:
@@ -622,16 +674,20 @@
 - ✅ Sprint P2-1: Painlevé II Filter Implementation (12 tests)
 - ✅ Sprint P2-2: Adaptive State-Plane Mapping (6 tests)
 - ✅ Sprint P2-3: Advanced Drift Models (11 tests)
+- ✅ Sprint P2-4: Kindra LLM-Based Scoring (6 tests)
+- ✅ Sprint P2-5: Kindra Hybrid Scoring (6 tests)
 
-**System Status**: Production-ready (core + TW369 + Kindra scoring + Painlevé Filter + Adaptive Mapping + Advanced Drift)
+**System Status**: Production-ready (core + TW369 + Kindra scoring + Painlevé Filter + Adaptive Mapping + Advanced Drift + LLM Scoring + Hybrid Scoring)
 
-**Total Tests Passing**: 107/107
+**Total Tests Passing**: 119/119
 - 30 core tests
 - 19 TW369 tests
 - 29 Kindra scoring tests
 - 12 Painlevé tests
 - 6 Adaptive Mapping tests
 - 11 Advanced Drift tests
+- 6 LLM Scoring tests
+- 6 Hybrid Scoring tests
 
 **Estimated Timeline**:
 - v2.2: ✅ COMPLETE (2025-11-25)
@@ -646,4 +702,6 @@
 4. ✅ Complete Painlevé II Filter (P3/Sprint P2-1)
 5. ✅ Complete Adaptive State-Plane Mapping (P2/Sprint P2-2)
 6. ✅ Complete Advanced Drift Models (P2/Sprint P2-3)
-7. **NEW**: Sprint 1.4 - Documentation & Cleanup (P1)
+7. ✅ Complete Kindra LLM-Based Scoring (P2/Sprint P2-4)
+8. ✅ Complete Kindra Hybrid Scoring (P2/Sprint P2-5)
+9. **NEW**: Sprint 1.4 - Documentation & Cleanup (P1)

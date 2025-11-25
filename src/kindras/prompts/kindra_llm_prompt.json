@@ -1,0 +1,36 @@
+{
+    "task": "Score Kindra cultural vectors in [-1, 1].",
+    "instructions": [
+        "You MUST return only numeric scores.",
+        "You MUST clamp results internally.",
+        "Each score represents narrative cultural resonance.",
+        "Do NOT invent vector IDs.",
+        "Output MUST be a JSON object with keys = vector IDs."
+    ],
+    "examples": [
+        {
+            "context": {
+                "country": "BR",
+                "sector": "Tech"
+            },
+            "text": "A empresa anunciou inovação agressiva e discurso emocional alto.",
+            "expected_scores": {
+                "E01": 0.9,
+                "T25": 0.8,
+                "P17": -0.2
+            }
+        },
+        {
+            "context": {
+                "country": "US",
+                "sector": "Finance"
+            },
+            "text": "The bank announced conservative measures and risk mitigation strategies.",
+            "expected_scores": {
+                "E01": -0.3,
+                "T25": -0.5,
+                "P17": 0.7
+            }
+        }
+    ]
+}

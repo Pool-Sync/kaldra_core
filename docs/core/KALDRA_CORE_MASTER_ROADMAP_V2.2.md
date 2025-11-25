@@ -340,6 +340,89 @@ def score(self, context, vectors):
 
 ---
 
+### Sprint P2-4: Kindra LLM-Based Scoring
+
+**P2 — MEDIUM**
+
+**Objective**: Implement LLM-based Kindra scoring with fallback to rule-based
+
+**Files**:
+- `src/kindras/kindra_llm_scorer.py`
+- `src/kindras/prompts/kindra_llm_prompt.json`
+- `src/kindras/scoring_dispatcher.py` (modified)
+- `docs/KINDRA_LLM_SCORING.md`
+
+**Tasks**:
+1. **Implement LLM Scorer**
+   - Contextual prompt construction
+   - LLM inference integration
+   - Score parsing and clamping
+   - Fallback to rule-based
+
+2. **Create Prompt System**
+   - Few-shot examples
+   - Scoring instructions
+   - Output format specification
+
+3. **Integrate with Dispatcher**
+   - LLM mode support
+   - Fallback mechanisms
+   - Configuration handling
+
+**Deliverables**:
+- [x] LLM scorer module
+- [x] Prompt template system
+- [x] Dispatcher integration
+- [x] Unit tests (6 tests)
+- [x] Technical documentation
+
+**Status**: ✅ COMPLETED (Nov 2025)
+
+**Estimated Effort**: 2-3 days
+
+---
+
+### Sprint P2-5: Kindra Hybrid Scoring
+
+**P2 — MEDIUM**
+
+**Objective**: Implement hybrid scoring mixing LLM and rule-based with configurable alpha
+
+**Files**:
+- `src/kindras/kindra_hybrid_scorer.py`
+- `schema/kindras/kindra_hybrid_config.json`
+- `src/kindras/scoring_dispatcher.py` (modified)
+- `docs/KINDRA_HYBRID_SCORING.md`
+
+**Tasks**:
+1. **Implement Hybrid Scorer**
+   - Mixing formula: alpha * LLM + (1-alpha) * rule
+   - Global and layer-specific alpha
+   - Automatic clamping to [-1, 1]
+
+2. **Create Configuration Schema**
+   - Alpha parameters
+   - Layer overrides
+   - Validation rules
+
+3. **Integrate with Dispatcher**
+   - Hybrid mode support
+   - Configuration loading
+   - Seamless mode switching
+
+**Deliverables**:
+- [x] Hybrid scorer module
+- [x] Configuration schema
+- [x] Dispatcher integration
+- [x] Unit tests (6 tests)
+- [x] Technical documentation
+
+**Status**: ✅ COMPLETED (Nov 2025)
+
+**Estimated Effort**: 2-3 days
+
+---
+
 ### Sprint 1.4: Documentation & Cleanup (Week 4-5)
 
 **P1 — HIGH**
