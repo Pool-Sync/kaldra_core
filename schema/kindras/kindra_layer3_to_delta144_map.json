@@ -1,194 +1,530 @@
-{
-    "E01": {
-        "boost": [],
-        "suppress": []
+[
+    {
+        "id": "E01",
+        "boost": [
+            "Ruler",
+            "Judge"
+        ],
+        "suppress": [
+            "Jester",
+            "Explorer"
+        ]
     },
-    "E02": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "E02",
+        "boost": [
+            "Hero",
+            "Magician"
+        ],
+        "suppress": [
+            "Everyman",
+            "Innocent"
+        ]
     },
-    "E03": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "E03",
+        "boost": [
+            "Ruler",
+            "Magician"
+        ],
+        "suppress": [
+            "Hermit",
+            "Jester"
+        ]
     },
-    "E04": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "E04",
+        "boost": [
+            "Hero",
+            "Creator"
+        ],
+        "suppress": [
+            "Sage",
+            "Judge"
+        ]
     },
-    "E05": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "E05",
+        "boost": [
+            "Explorer",
+            "Trickster"
+        ],
+        "suppress": [
+            "Ruler",
+            "Judge"
+        ]
     },
-    "E06": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "E06",
+        "boost": [
+            "Outlaw",
+            "Hero"
+        ],
+        "suppress": [
+            "Innocent",
+            "Caregiver"
+        ]
     },
-    "E07": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "E07",
+        "boost": [
+            "Creator",
+            "Magician"
+        ],
+        "suppress": [
+            "Everyman",
+            "Judge"
+        ]
     },
-    "E08": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "E08",
+        "boost": [
+            "Lover",
+            "Creator"
+        ],
+        "suppress": [
+            "Sage",
+            "Ruler"
+        ]
     },
-    "S09": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "S09",
+        "boost": [
+            "Everyman",
+            "Caregiver"
+        ],
+        "suppress": [
+            "Outlaw",
+            "Trickster"
+        ]
     },
-    "S10": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "S10",
+        "boost": [
+            "Caregiver",
+            "Lover"
+        ],
+        "suppress": [
+            "Judge",
+            "Ruler"
+        ]
     },
-    "S11": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "S11",
+        "boost": [
+            "Ruler",
+            "Judge"
+        ],
+        "suppress": [
+            "Jester",
+            "Explorer"
+        ]
     },
-    "S12": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "S12",
+        "boost": [
+            "Innocent",
+            "Caregiver"
+        ],
+        "suppress": [
+            "Outlaw",
+            "Magician"
+        ]
     },
-    "S13": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "S13",
+        "boost": [
+            "Sage",
+            "Judge"
+        ],
+        "suppress": [
+            "Jester",
+            "Outlaw"
+        ]
     },
-    "S14": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "S14",
+        "boost": [
+            "Caregiver",
+            "Everyman"
+        ],
+        "suppress": [
+            "Outlaw",
+            "Hero"
+        ]
     },
-    "S15": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "S15",
+        "boost": [
+            "Lover",
+            "Caregiver"
+        ],
+        "suppress": [
+            "Sage",
+            "Judge"
+        ]
     },
-    "S16": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "S16",
+        "boost": [
+            "Hero",
+            "Explorer"
+        ],
+        "suppress": [
+            "Judge",
+            "Ruler"
+        ]
     },
-    "P17": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "P17",
+        "boost": [
+            "Ruler",
+            "Sage"
+        ],
+        "suppress": [
+            "Innocent",
+            "Explorer"
+        ]
     },
-    "P18": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "P18",
+        "boost": [
+            "Judge",
+            "Ruler"
+        ],
+        "suppress": [
+            "Jester",
+            "Trickster"
+        ]
     },
-    "P19": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "P19",
+        "boost": [
+            "Ruler",
+            "Magician"
+        ],
+        "suppress": [
+            "Everyman",
+            "Innocent"
+        ]
     },
-    "P20": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "P20",
+        "boost": [
+            "Sage",
+            "Judge"
+        ],
+        "suppress": [
+            "Trickster",
+            "Outlaw"
+        ]
     },
-    "P21": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "P21",
+        "boost": [
+            "Hero",
+            "Outlaw"
+        ],
+        "suppress": [
+            "Innocent",
+            "Caregiver"
+        ]
     },
-    "P22": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "P22",
+        "boost": [
+            "Judge",
+            "Sage"
+        ],
+        "suppress": [
+            "Jester",
+            "Magician"
+        ]
     },
-    "P23": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "P23",
+        "boost": [
+            "Hero",
+            "Explorer"
+        ],
+        "suppress": [
+            "Innocent",
+            "Sage"
+        ]
     },
-    "P24": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "P24",
+        "boost": [
+            "Caregiver",
+            "Ruler"
+        ],
+        "suppress": [
+            "Outlaw",
+            "Trickster"
+        ]
     },
-    "T25": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "T25",
+        "boost": [
+            "Sage",
+            "Magician"
+        ],
+        "suppress": [
+            "Jester",
+            "Outlaw"
+        ]
     },
-    "T26": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "T26",
+        "boost": [
+            "Hero",
+            "Outlaw"
+        ],
+        "suppress": [
+            "Judge",
+            "Innocent"
+        ]
     },
-    "T27": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "T27",
+        "boost": [
+            "Judge",
+            "Ruler"
+        ],
+        "suppress": [
+            "Jester",
+            "Trickster"
+        ]
     },
-    "T28": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "T28",
+        "boost": [
+            "Caregiver",
+            "Lover"
+        ],
+        "suppress": [
+            "Judge",
+            "Ruler"
+        ]
     },
-    "T29": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "T29",
+        "boost": [
+            "Innocent",
+            "Creator"
+        ],
+        "suppress": [
+            "Outlaw",
+            "Magician"
+        ]
     },
-    "T30": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "T30",
+        "boost": [
+            "Hermit",
+            "Sage"
+        ],
+        "suppress": [
+            "Hero",
+            "Jester"
+        ]
     },
-    "T31": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "T31",
+        "boost": [
+            "Hero",
+            "Outlaw"
+        ],
+        "suppress": [
+            "Innocent",
+            "Everyman"
+        ]
     },
-    "T32": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "T32",
+        "boost": [
+            "Magician",
+            "Hero"
+        ],
+        "suppress": [
+            "Judge",
+            "Ruler"
+        ]
     },
-    "R33": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "R33",
+        "boost": [
+            "Caregiver",
+            "Judge"
+        ],
+        "suppress": [
+            "Hero",
+            "Outlaw"
+        ]
     },
-    "R34": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "R34",
+        "boost": [
+            "Judge",
+            "Sage"
+        ],
+        "suppress": [
+            "Jester",
+            "Outlaw"
+        ]
     },
-    "R35": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "R35",
+        "boost": [
+            "Trickster",
+            "Outlaw"
+        ],
+        "suppress": [
+            "Ruler",
+            "Judge"
+        ]
     },
-    "R36": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "R36",
+        "boost": [
+            "Jester",
+            "Trickster"
+        ],
+        "suppress": [
+            "Ruler",
+            "Judge"
+        ]
     },
-    "R37": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "R37",
+        "boost": [
+            "Creator",
+            "Hero"
+        ],
+        "suppress": [
+            "Judge",
+            "Ruler"
+        ]
     },
-    "R38": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "R38",
+        "boost": [
+            "Caregiver",
+            "Everyman"
+        ],
+        "suppress": [
+            "Outlaw",
+            "Trickster"
+        ]
     },
-    "R39": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "R39",
+        "boost": [
+            "Ruler",
+            "Caregiver"
+        ],
+        "suppress": [
+            "Explorer",
+            "Outlaw"
+        ]
     },
-    "R40": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "R40",
+        "boost": [
+            "Sage",
+            "Judge"
+        ],
+        "suppress": [
+            "Jester",
+            "Trickster"
+        ]
     },
-    "M41": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "M41",
+        "boost": [
+            "Magician",
+            "Sage"
+        ],
+        "suppress": [
+            "Jester",
+            "Outlaw"
+        ]
     },
-    "M42": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "M42",
+        "boost": [
+            "Ruler",
+            "Creator"
+        ],
+        "suppress": [
+            "Trickster",
+            "Jester"
+        ]
     },
-    "M43": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "M43",
+        "boost": [
+            "Judge",
+            "Ruler"
+        ],
+        "suppress": [
+            "Outlaw",
+            "Explorer"
+        ]
     },
-    "M44": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "M44",
+        "boost": [
+            "Innocent",
+            "Magician"
+        ],
+        "suppress": [
+            "Judge",
+            "Ruler"
+        ]
     },
-    "M45": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "M45",
+        "boost": [
+            "Magician",
+            "Sage"
+        ],
+        "suppress": [
+            "Outlaw",
+            "Trickster"
+        ]
     },
-    "M46": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "M46",
+        "boost": [
+            "Sage",
+            "Creator"
+        ],
+        "suppress": [
+            "Hero",
+            "Outlaw"
+        ]
     },
-    "M47": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "M47",
+        "boost": [
+            "Ruler",
+            "Innocent"
+        ],
+        "suppress": [
+            "Trickster",
+            "Outlaw"
+        ]
     },
-    "M48": {
-        "boost": [],
-        "suppress": []
+    {
+        "id": "M48",
+        "boost": [
+            "Everyman",
+            "Caregiver"
+        ],
+        "suppress": [
+            "Magician",
+            "Outlaw"
+        ]
     }
-}
+]

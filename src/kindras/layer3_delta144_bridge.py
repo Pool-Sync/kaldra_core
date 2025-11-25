@@ -16,7 +16,9 @@ class Layer3Delta144Bridge:
         if not os.path.exists(self.map_file_path):
             raise FileNotFoundError(f"Mapping file not found: {self.map_file_path}")
         with open(self.map_file_path, 'r', encoding='utf-8') as f:
-            return json.load(f)
+            mapping_list = json.load(f)
+            # Convert list to dict indexed by vector ID
+            return {entry["id"]: entry for entry in mapping_list}
 
     def apply(self, base_distribution: Dict[str, float], kindra_scores: Dict[str, float]) -> Dict[str, float]:
         """
