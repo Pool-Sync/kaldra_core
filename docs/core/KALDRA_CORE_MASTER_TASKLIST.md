@@ -453,6 +453,32 @@
   - **Sections**: Overview, structure, categories, baselines, commands
   - **Completed**: 2025-11-26
 
+### Logging & Observability
+
+- [x] **Structured Logger Implementation**
+  - **File**: `src/core/kaldra_logger.py`
+  - **Owner**: Completed
+  - **Dependencies**: None
+  - **Output**: JSON-formatted logging system ✅
+  - **Features**: Event logging, timestamps, best-effort
+  - **Completed**: 2025-11-26
+
+- [x] **Audit Trail System**
+  - **File**: `src/core/audit_trail.py`
+  - **Owner**: Completed
+  - **Dependencies**: None
+  - **Output**: In-memory audit with JSONL export ✅
+  - **Features**: Inference tracking, export capability
+  - **Completed**: 2025-11-26
+
+- [x] **Master Engine Integration**
+  - **File**: `src/core/kaldra_master_engine.py`
+  - **Owner**: Completed
+  - **Dependencies**: Logger + Audit Trail complete ✅
+  - **Output**: Integrated logging and audit ✅
+  - **Features**: Request ID tracking, backward compatible
+  - **Completed**: 2025-11-26
+
 ### Story-Level Aggregation
 
 - [ ] **Design Story Schema**
@@ -667,7 +693,7 @@
 
 **Total Tasks**: 80+  
 **P0 (Critical)**: 10 tasks → **10/10 COMPLETE ✅**  
-**P1 (High)**: 20 tasks → **15/20 COMPLETE** (AI Scoring + Documentation + Legacy Cleanup + Testing Expansion + Testing Strategy done)  
+**P1 (High)**: 20 tasks → **18/20 COMPLETE** (AI Scoring + Documentation + Legacy Cleanup + Testing Expansion + Testing Strategy + Logging & Observability done)  
 **P2 (Medium)**: 30 tasks → **14/30 COMPLETE** (TW369 schemas + Adaptive Mapping + Advanced Drift + LLM Scoring + Hybrid Scoring done)  
 **P3 (Long-term)**: 20+ tasks → **1/20+ COMPLETE** (Painlevé II done)
 
@@ -684,6 +710,7 @@
 - ✅ Sprint 1.4: Legacy Cleanup (Files moved + Migration Guide)
 - ✅ Sprint 1.5: Testing Expansion (21 new tests: 8 integration + 3 stress + 10 edge cases)
 - ✅ Sprint 1.5: Testing Strategy Documentation (Complete guide created)
+- ✅ Sprint 2.1: Logging & Observability (Structured logging + Audit trail)
 
 **System Status**: Production-ready (core + TW369 + Kindra scoring + Painlevé Filter + Adaptive Mapping + Advanced Drift + LLM Scoring + Hybrid Scoring)
 

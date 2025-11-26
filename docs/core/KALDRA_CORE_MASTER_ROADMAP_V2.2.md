@@ -494,6 +494,39 @@ def score(self, context, vectors):
 
 ## PHASE 2: V2.3 — PRODUCTION HARDENING (6-8 weeks)
 
+### Sprint 2.1: Logging & Observability (Week 1) ✅ COMPLETED
+
+**P1 — HIGH**
+
+**Tasks**:
+1. **Structured Logging**
+   - Implement `KALDRALogger` with JSON output
+   - Add inference lifecycle events
+   - Request ID tracking with UUID
+
+2. **Audit Trail System**
+   - In-memory audit trail
+   - JSONL export capability
+   - Inference-level records
+
+3. **Master Engine Integration**
+   - Non-breaking API changes
+   - Best-effort logging (no exceptions)
+   - Backward compatibility preserved
+
+**Deliverables**:
+- [x] `src/core/kaldra_logger.py` (Structured logger)
+- [x] `src/core/audit_trail.py` (Audit trail system)
+- [x] Integration with `KaldraMasterEngineV2`
+- [x] All tests passing (21/21)
+- [x] Zero engine logic modifications
+
+**Status**: ✅ COMPLETED (Nov 2025)
+
+**Estimated Effort**: 3-5 days
+
+---
+
 **Goal**: Production-grade reliability, monitoring, and observability
 
 **Release Criteria**:
