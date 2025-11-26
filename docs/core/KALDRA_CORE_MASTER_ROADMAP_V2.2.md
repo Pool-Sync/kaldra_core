@@ -565,6 +565,46 @@ def score(self, context, vectors):
 
 ---
 
+### Sprint 2.3: Embedding Generation & Cache Layer (Week 3) ✅ COMPLETED
+
+**P2 — MEDIUM**
+
+**Objective**: Official embedding infrastructure with multi-provider support
+
+**Tasks**:
+1. **Embedding Cache Infrastructure**
+   - Implement `BaseEmbeddingCache` interface
+   - `InMemoryEmbeddingCache` for development/testing
+   - `RedisEmbeddingCache` for production (optional)
+   - Deterministic cache key generation
+
+2. **Embedding Generator**
+   - Multi-provider support:
+     - Sentence Transformers (fully implemented)
+     - OpenAI (skeleton via client injection)
+     - Cohere (skeleton via client injection)
+     - Custom (callback-based)
+   - L2 normalization (optional)
+   - Batch processing with caching
+
+3. **Integration & Examples**
+   - Usage examples (6 scenarios)
+   - Zero breaking changes
+   - Optional dependencies (graceful degradation)
+
+**Deliverables**:
+- [x] `src/core/embedding_cache.py` (Cache infrastructure)
+- [x] `src/core/embedding_generator.py` (Multi-provider generator)
+- [x] `examples/embedding_usage_examples.py` (Usage examples)
+- [x] Complete documentation (`docs/core/EMBEDDING_GENERATION_AND_CACHE_V2_3.md`)
+- [x] All existing tests passing (35/35)
+
+**Status**: ✅ COMPLETED (Nov 2025)
+
+**Estimated Effort**: 1 day
+
+---
+
 **Goal**: Production-grade reliability, monitoring, and observability
 
 **Release Criteria**:
