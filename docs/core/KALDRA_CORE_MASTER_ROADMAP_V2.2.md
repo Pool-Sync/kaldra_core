@@ -605,6 +605,42 @@ def score(self, context, vectors):
 
 ---
 
+### Sprint 2.4: Data Lab Integration (Week 4) ✅ COMPLETED
+
+**P2 — MEDIUM**
+
+**Objective**: Connect Embedding Generator to KALDRA Data Lab pipeline
+
+**Tasks**:
+1. **Embedding Router**
+   - Create `EmbeddingRouter` class
+   - Multi-provider support (ST, OpenAI, Cohere, Custom)
+   - Deterministic SHA256-based fallback
+   - Batch processing with chunking
+
+2. **Pipeline Integration**
+   - Bridge Data Lab and Embedding Generator
+   - Ensure backward compatibility
+   - Zero breaking changes
+
+3. **Examples & Documentation**
+   - 4 complete pipeline examples
+   - Full Data Lab → Embedding → Engine flow
+   - Architecture overview documentation
+
+**Deliverables**:
+- [x] `kaldra_data/transformation/embedding_router.py` (Embedding router)
+- [x] `kaldra_data/transformation/__init__.py` (Module exports)
+- [x] `examples/data_lab_embedding_pipeline.py` (4 examples)
+- [x] `docs/core/MASTER_ENGINE_AND_DATALAB_OVERVIEW.md` (Architecture doc)
+- [x] All existing tests passing (35/35)
+
+**Status**: ✅ COMPLETED (Nov 2025)
+
+**Estimated Effort**: 0.5 day
+
+---
+
 **Goal**: Production-grade reliability, monitoring, and observability
 
 **Release Criteria**:
