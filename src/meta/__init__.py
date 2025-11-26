@@ -1,8 +1,28 @@
 """
-KALDRA CORE — Meta Operators package.
+Meta Engine Routing Module
+
+Provides intelligent routing and orchestration for KALDRA engine variants.
 """
-from __future__ import annotations
 
-from .meta_router import apply_meta_operators
+from src.meta.engine_router import (
+    RoutingContext,
+    RoutingDecision,
+    MetaRouter,
+)
 
-__all__ = ["apply_meta_operators"]
+from src.meta.engine_orchestrator import (
+    OrchestrationConfig,
+    EngineResult,
+    OrchestrationResult,
+    MetaOrchestrator,
+)
+
+__all__ = [
+    "RoutingContext",
+    "RoutingDecision",
+    "MetaRouter",
+    "OrchestrationConfig",
+    "EngineResult",
+    "OrchestrationResult",
+    "MetaOrchestrator",
+]
