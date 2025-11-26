@@ -1,3 +1,6 @@
+# DEPRECATED — Legacy Kindra scoring (Option A original).
+# This module remains only for backward compatibility.
+# New scoring engines: Rule-Based v2, LLM-Based (Option B), Hybrid (Option C).
 """
 KALDRA CORE — Kindra scoring utilities.
 """

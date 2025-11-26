@@ -1,3 +1,5 @@
+# DEPRECATED — This file has been moved to src/kindras/legacy/.
+# Do not use. Use new Kindra vector definitions in schema/kindras/.
 {
     "metadata": {
         "version": "0.1.0",

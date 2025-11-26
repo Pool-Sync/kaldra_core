@@ -1,106 +1,88 @@
-# KALDRA Architecture v2.2
+# KALDRA Core v2.2 Architecture
 
-This document provides a high-level overview of the KALDRA Core v2.2 architecture, detailing the data flow, module interactions, and system layers.
+This document provides a high-level overview of the KALDRA Core v2.2 architecture, detailing the interaction between its primary engines.
 
 ## 1. Macro Architecture
 
-The system is designed as a unidirectional pipeline with feedback loops for state persistence and drift accumulation.
+The KALDRA Core is a **Neuro-Symbolic** system. It combines the flexibility of neural networks (LLMs) with the rigidity and determinism of symbolic logic (State Machines, Tensor Calculus).
+
+### 1.1. Primary Modules
+
+1.  **Kindra Engine**: The "Sensor". Analyzes text using 48 cultural vectors.
+2.  **TW369 Engine**: The "Physics". Models the dynamic tension and drift of the system.
+3.  **Δ144 Engine**: The "State Machine". Defines 144 discrete states of consciousness.
+4.  **Master Engine**: The "Orchestrator". Manages data flow and execution order.
+
+## 2. System Flow
 
 ```ascii
-[Input Data]
-     |
-     v
-[Ingestion Layer] -> [Preprocessing]
-     |
-     v
-[Scoring Layer] (Kindra Engine)
-     |
-     +---> [LLM Scorer] --+
-     |                    |--> [Hybrid Mixer]
-     +---> [Rule Scorer] -+
-     |
-     v
-[Dynamics Layer] (TW369 Engine)
-     |
-     +---> [Drift Calculation] -> [Painlevé Filter]
-     |
-     v
-[Mapping Layer] (Adaptive Mapping)
-     |
-     v
-[State Layer] (Δ144 Engine)
-     |
-     v
-[Output Layer] -> [Final State & Metrics]
+[INPUT] --> [KINDRA] --> [TW369] --> [ADAPTIVE MAP] --> [Δ144] --> [OUTPUT]
+               |            |              ^
+               |            v              |
+               +------> [DRIFT] -----------+
 ```
 
-## 2. System Layers
+### 2.1. Step-by-Step
 
-### 2.1. Ingestion & Preprocessing
-- **Responsibility**: Receive raw text and metadata (context). Clean and normalize inputs.
-- **Components**: `MasterEngine.process()` entry point.
+1.  **Input**: Text + Context (Country, Sector, etc.).
+2.  **Kindra Analysis**:
+    *   Text is scored against 48 vectors (L1, L2, L3).
+    *   Scoring method is configurable (Rule-Based, LLM, Hybrid).
+3.  **Drift Calculation (TW369)**:
+    *   Vector scores create tension on Planes 3, 6, and 9.
+    *   Drift is calculated using linear or nonlinear models.
+    *   Painlevé Filter smooths the signal.
+4.  **Adaptive Mapping**:
+    *   Context determines the weight of each plane.
+    *   Example: "Crisis" context boosts Plane 6 (Structure) influence.
+5.  **State Determination (Δ144)**:
+    *   Weighted plane values + Vector scores determine the final state.
+    *   State is selected from the 144 available options.
+6.  **Output**:
+    *   Final State (e.g., `Magician_9_01`).
+    *   Drift Metrics.
+    *   Confidence Score.
 
-### 2.2. Scoring Layer (Kindra)
-- **Responsibility**: Convert text into 48 cultural vector scores.
-- **Components**: `KindraEngine`, `KindraLLMScorer`, `KindraHybridScorer`.
-- **Docs**: `docs/KINDRA_SCORING_OVERVIEW.md`, `docs/CULTURAL_VECTORS_48.md`.
+## 3. Engine Relationships
 
-### 2.3. Dynamics Layer (TW369)
-- **Responsibility**: Calculate system tension, drift, and evolution.
-- **Components**: `TW369Engine`, `PainleveFilter`, `AdvancedDriftModels`.
-- **Docs**: `docs/TW369_ENGINE_SPEC.md`.
+### 3.1. Kindra -> TW369
+*   **L1 Vectors** feed **Plane 9**.
+*   **L2 Vectors** feed **Plane 3**.
+*   **L3 Vectors** feed **Plane 6**.
 
-### 2.4. Mapping Layer (Adaptive)
-- **Responsibility**: Translate Kindra scores and TW369 drift into Δ144 state weights, adapting to context.
-- **Components**: `AdaptiveMapping`.
-- **Docs**: `docs/TW369_ADAPTIVE_MAPPING.md`, `docs/KINDRA_DELTA144_BRIDGE.md`.
+### 3.2. TW369 -> Δ144
+*   **Plane 3** drives **Expansive** states.
+*   **Plane 6** drives **Contractive** states.
+*   **Plane 9** drives **Transcendent** states.
 
-### 2.5. State Layer (Δ144)
-- **Responsibility**: Determine the discrete narrative state of the system.
-- **Components**: `Delta144Engine`.
-- **Docs**: `schema/delta144/delta144_states.json`.
+### 3.3. Drift -> System
+*   **High Drift** (> 0.7) signals instability and may trigger "Metanoia" states.
+*   **Low Drift** (< 0.3) signals stability and reinforces "Structure" states.
 
-### 2.6. Output Layer
-- **Responsibility**: Format and return the final results.
-- **Outputs**: `FinalState`, `DriftMetrics`, `VectorScores`, `Confidence`.
+## 4. Future Implementations
 
-## 3. Module Interactions
+*   **Feedback Loops**: Allowing the final Δ144 state to feed back into Kindra to adjust vector sensitivity for the *next* turn (Stateful Sessions).
+*   **Meta-Engine Routing**: Dynamically selecting different sub-engines based on the input topic (e.g., routing "Finance" to a specialized model).
+*   **Real-Time Stream Processing**: Architecture for handling infinite data streams via Kafka.
+*   **Distributed Architecture**: Breaking the monorepo into microservices (Kindra Service, TW369 Service, etc.).
 
-- **Kindra -> TW369**: Vector scores provide the raw "energy" that drives the TW369 planes.
-- **Kindra -> Δ144**: Vector scores directly boost/suppress specific Δ144 states via the Bridge.
-- **TW369 -> Δ144**: Drift and Plane values modulate the probability of state transitions (e.g., high drift favors "Crisis" states).
-- **Context -> Adaptive Mapping**: Metadata (e.g., "Sector: Finance") adjusts the weights in the Mapping Layer.
+## 5. Enhancements (Short/Medium Term)
 
-## 4. Cross-References
+*   **Performance Optimization**: Using `uvloop` or `Rust` for the core event loop.
+*   **Better Observability**: Integrating OpenTelemetry for distributed tracing.
+*   **Config Hot-Reloading**: Allowing schema updates without restarting the engine.
+*   **Enhanced Error Handling**: Graceful degradation if one engine fails (e.g., if LLM fails, fallback to Rule-Based).
 
-- **Master Engine**: `docs/core/README_MASTER_ENGINE_V2.md`
-- **Repository Structure**: `docs/REPOSITORY_STRUCTURE.md`
-- **Roadmap**: `docs/core/KALDRA_CORE_MASTER_ROADMAP_V2.2.md`
+## 6. Research Track (Long Term)
 
-## 5. Future Implementations
+*   **Neuro-Symbolic Fusion**: Training a single end-to-end model that learns to simulate the TW369 physics internally.
+*   **Quantum Architecture**: Mapping the 3 planes to quantum bits (qubits) for probabilistic state superposition.
+*   **Generative UI**: Using the Δ144 state to procedurally generate the user interface (colors, layout, tone).
+*   **Self-Healing**: The system automatically adjusting its drift parameters to minimize error over time.
 
-*   **Event-Driven Architecture**: Decoupling modules via an event bus (e.g., Kafka) for asynchronous processing.
-*   **Microservices Split**: Breaking the monolith into `kaldra-kindra`, `kaldra-tw369`, and `kaldra-core` services.
-*   **Data Lake Integration**: Automatically dumping all inputs and outputs to a data lake (e.g., S3 + Parquet) for analysis.
-*   **Real-Time Dashboard**: A WebSocket server to stream engine state to a frontend visualization.
+## 7. Known Limitations
 
-## 6. Enhancements (Short/Medium Term)
-
-*   **Logging Standardization**: Implementing structured JSON logging across all modules for better observability.
-*   **Config Hot-Reloading**: Watching `schema/` files for changes and reloading them without restarting the process.
-*   **Circuit Breakers**: Protecting the system from cascading failures if the LLM provider goes down.
-*   **Metrics Collection**: Exposing Prometheus metrics (latency, throughput, drift levels).
-
-## 7. Research Track (Long Term)
-
-*   **Federated Learning**: Training local Kindra models on user devices to preserve privacy.
-*   **Homomorphic Encryption**: Processing sensitive data without ever decrypting it in memory.
-*   **Self-Healing Architecture**: An engine that can detect its own drift and automatically re-calibrate its parameters.
-*   **Neuromorphic Hardware**: Exploring the use of spiking neural networks for the TW369 dynamics layer.
-
-## 8. Known Limitations
-
-*   **Latency**: The sequential pipeline adds latency at each step; total round-trip time can be high.
-*   **Single Point of Failure**: The Master Engine is currently a single process; if it crashes, the whole system stops.
-*   **State Persistence**: State is currently ephemeral; if the process restarts, the "narrative arc" is lost.
-*   **Scalability**: Vertical scaling is limited by Python's GIL; horizontal scaling requires architectural changes.
+*   **Latency**: The sequential nature of the pipeline adds latency.
+*   **Complexity**: Debugging interactions between three complex engines is difficult.
+*   **Scalability**: The current in-memory state management limits the number of concurrent sessions.
+*   **Determinism vs. Creativity**: Balancing the rigid logic of Δ144 with the creative nuance of LLMs is an ongoing challenge.

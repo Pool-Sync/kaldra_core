@@ -86,13 +86,13 @@ The bridge logic is implemented in `src/kindras/layerX_delta144_bridge.py` files
 ## 8. Research Track (Long Term)
 
 *   **Neural Bridge**: Replacing the rule-based bridge with a small neural network trained on expert annotations.
-*   **Semantic Resonance**: Using vector embeddings to calculate the "distance" between a Kindra vector and a Δ144 state description.
-*   **Quantum Superposition**: Modeling the bridge output not as a single state but as a superposition of likely states.
-*   **Cross-Modal Bridging**: Mapping non-textual inputs (audio tone, image style) directly to Δ144 states.
+*   **Semantic Resonance**: Using vector embeddings to find "hidden" connections between Kindra vectors and Δ144 state descriptions.
+*   **Bridge Evolution**: Allowing the bridge to evolve its mappings over time as the cultural context shifts.
+*   **Multi-Bridge Arbitration**: Using multiple bridge strategies and voting on the final state boost.
 
 ## 9. Known Limitations
 
-*   **Hardcoded Logic**: Currently, the mappings are defined in code, making them hard for non-engineers to modify.
-*   **Linearity**: The bridge assumes a mostly linear relationship between vector intensity and state probability.
-*   **Complexity**: With 48 vectors and 144 states, the combinatorial explosion of interactions is hard to manage manually.
-*   **One-Way**: The bridge is unidirectional; Δ144 states do not currently feedback to influence Kindra scoring.
+*   **Hardcoded Logic**: Currently, much of the bridge logic is hardcoded in Python, making it hard to tweak without code changes.
+*   **Linearity**: The bridge assumes a linear relationship between vector score and state boost, which may not always hold.
+*   **Complexity**: The interaction between 48 vectors and 144 states creates a combinatorial explosion that is hard to fully test.
+*   **Context Sensitivity**: The bridge is not yet fully context-aware (e.g., "Hero" might mean something different in Finance vs. Politics).

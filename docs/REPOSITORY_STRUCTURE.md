@@ -27,6 +27,8 @@ docs/
 │   ├── KALDRA_CORE_MASTER_ROADMAP_V2.2.md
 │   ├── KALDRA_CORE_MASTER_TASKLIST.md
 │   └── README_MASTER_ENGINE_V2.md
+├── kindras/                # Kindra engine documentation
+│   └── LEGACY_MIGRATION_GUIDE.md
 ├── ARCHITECTURE_V2.md      # High-level architecture overview
 ├── BIAS_ENGINE_SPEC.md     # Specification for Bias Engine
 ├── CULTURAL_VECTORS_48.md  # Detailed guide to 48 cultural vectors
@@ -73,6 +75,9 @@ src/
 │   ├── delta144_engine.py  # State machine logic
 │   └── delta144_loader.py  # Schema loader
 ├── kindras/                # Kindra Engine logic
+│   ├── legacy/             # Deprecated legacy modules
+│   │   ├── vectors.json
+│   │   └── scoring.py
 │   ├── kindra_engine.py    # Main Kindra engine
 │   ├── kindra_hybrid_scorer.py # Hybrid scoring logic
 │   ├── kindra_llm_scorer.py # LLM scoring logic

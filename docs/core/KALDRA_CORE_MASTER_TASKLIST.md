@@ -197,22 +197,22 @@
 
 ### Legacy Cleanup
 
-- [ ] **Move Legacy Kindra Files**
+- [x] **Move Legacy Kindra Files**
   - **Files to move**:
     - `src/kindras/vectors.json` → `src/kindras/legacy/`
     - `src/kindras/scoring.py` → `src/kindras/legacy/`
-  - **Owner**: TBD
+  - **Owner**: Completed
   - **Dependencies**: None
-  - **Output**: Clean src/kindras/ directory
-  - **Action**: Add deprecation notices
-  - **Estimated**: 1 day
+  - **Output**: Clean src/kindras/ directory ✅
+  - **Action**: Add deprecation notices ✅
+  - **Completed**: 2025-11-26
 
-- [ ] **Create Migration Guide**
+- [x] **Create Migration Guide**
   - **File**: `docs/kindras/LEGACY_MIGRATION_GUIDE.md`
-  - **Owner**: TBD
-  - **Dependencies**: Legacy files moved
-  - **Output**: Guide for migrating from legacy
-  - **Estimated**: 1 day
+  - **Owner**: Completed
+  - **Dependencies**: Legacy files moved ✅
+  - **Output**: Guide for migrating from legacy ✅
+  - **Completed**: 2025-11-26
 
 ### Testing Expansion
 
@@ -664,7 +664,7 @@
 
 **Total Tasks**: 80+  
 **P0 (Critical)**: 10 tasks → **10/10 COMPLETE ✅**  
-**P1 (High)**: 20 tasks → **9/20 COMPLETE** (AI Scoring + Documentation done)  
+**P1 (High)**: 20 tasks → **11/20 COMPLETE** (AI Scoring + Documentation + Legacy Cleanup done)  
 **P2 (Medium)**: 30 tasks → **14/30 COMPLETE** (TW369 schemas + Adaptive Mapping + Advanced Drift + LLM Scoring + Hybrid Scoring done)  
 **P3 (Long-term)**: 20+ tasks → **1/20+ COMPLETE** (Painlevé II done)
 
@@ -678,6 +678,7 @@
 - ✅ Sprint P2-4: Kindra LLM-Based Scoring (6 tests)
 - ✅ Sprint P2-5: Kindra Hybrid Scoring (6 tests)
 - ✅ Sprint 1.4: Documentation Updates (5 docs completed)
+- ✅ Sprint 1.4: Legacy Cleanup (Files moved + Migration Guide)
 
 **System Status**: Production-ready (core + TW369 + Kindra scoring + Painlevé Filter + Adaptive Mapping + Advanced Drift + LLM Scoring + Hybrid Scoring)
 
@@ -707,4 +708,4 @@
 7. ✅ Complete Kindra LLM-Based Scoring (P2/Sprint P2-4)
 8. ✅ Complete Kindra Hybrid Scoring (P2/Sprint P2-5)
 9. ✅ Sprint 1.4 - Documentation Updates (P1)
-10. **NEW**: Sprint 1.4 - Legacy Cleanup (P1)
+10. ✅ Sprint 1.4 - Legacy Cleanup (P1)
