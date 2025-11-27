@@ -772,7 +772,7 @@ def score(self, context, vectors):
 
 ---
 
-### Sprint 2.4: Meta Engine Routing (Week 10-11)
+### Sprint 2.4: Meta Engine Routing (Week 10-11) ✅ COMPLETED
 
 **P2 — MEDIUM**
 
@@ -780,70 +780,67 @@ def score(self, context, vectors):
 
 **Tasks**:
 1. **Context-Based Routing**
-   ```python
-   class MetaRouter:
-       def route(self, context):
-           if self._is_philosophical(context):
-               return self.nietzsche
-           elif self._is_heroic(context):
-               return self.campbell
-           elif self._is_stoic(context):
-               return self.aurelius
-           return self.default
-   ```
+   - MetaRouter class with intelligent routing logic
+   - Keyword-based analysis (4 domains)
+   - Metadata-based routing
+   - Domain hint support
+   - Confidence scoring system
 
 2. **Meta-Engine Orchestration**
-   - Parallel execution
+   - MetaOrchestrator class for multi-engine coordination
+   - Parallel execution support (sequential for now)
    - Result aggregation
    - Conflict resolution
+   - Timing and error management
 
 3. **Fallback Mechanisms**
-   - Graceful degradation
-   - Default routing
+   - Graceful degradation to default engine
+   - Error handling and recovery
+   - Configurable fallback behavior
 
 **Deliverables**:
-- [ ] Intelligent routing implemented
-- [ ] Orchestration logic
-- [ ] Fallback mechanisms
-- [ ] Meta-engine tests
+- [x] `src/meta/engine_router.py` (MetaRouter with routing logic)
+- [x] `src/meta/engine_orchestrator.py` (MetaOrchestrator coordination)
+- [x] `docs/META_ENGINE_ROUTING.md` (Complete specification)
+- [x] 27 tests passing (13 router + 14 orchestrator)
+- [x] 5 engine variants (default, alpha, geo, product, safeguard)
+
+**Status**: ✅ COMPLETED (Nov 2025)
 
 **Estimated Effort**: 7-10 days
 
 ---
 
-### Sprint 2.5: Story-Level Aggregation (Week 11-12)
+### Sprint 2.5: Story-Level Aggregation (Week 11-12) ✅ COMPLETED
 
 **P2 — MEDIUM**
 
-**Objective**: Multi-turn narrative tracking and coherence
+**Objective**: Multi-turn narrative tracking and aggregation
 
 **Tasks**:
-1. **Story Schema Design**
-   ```json
-   {
-     "story_id": "uuid",
-     "turns": [...],
-     "delta144_evolution": [...],
-     "narrative_coherence": 0.85,
-     "dominant_archetypes": [...]
-   }
-   ```
+1. **Story Schema Definition**
+   - JSON schema for story object
+   - Coherence metrics definition
+   - Archetype evolution tracking
 
 2. **Aggregation Logic**
-   - Multi-turn Δ144 aggregation
-   - Temporal narrative evolution
-   - Coherence scoring
+   - Turn-level signal aggregation
+   - Narrative arc computation
+   - Dominant archetype extraction
 
-3. **Story Tracking System**
+3. **Story Tracking**
    - Session management
-   - State persistence
+   - Context window handling
    - Query interface
 
 **Deliverables**:
-- [ ] Story schema defined
-- [ ] Aggregation logic implemented
-- [ ] Tracking system
-- [ ] Story-level tests
+- [x] Story schema defined (`schema/story/story_schema.json`)
+- [x] Aggregation logic implemented (`src/core/story_aggregator.py`)
+- [x] Tracking system (`src/core/story_tracker.py`)
+- [x] Story-level tests (`tests/core/test_story_aggregation.py`)
+- [x] Specification document (`docs/core/STORY_AGGREGATION_SPEC.md`)
+
+**Status**: ✅ COMPLETED (Nov 2025)
 
 **Estimated Effort**: 10-12 days
 

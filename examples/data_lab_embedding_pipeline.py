@@ -209,8 +209,7 @@ def example_4_full_pipeline_simulation():
     top_3 = np.argsort(signal.archetype_probs)[-3:][::-1]
     for idx in top_3:
         print(f"    Archetype {idx}: {signal.archetype_probs[idx]:.4f}")
-    print(f"  Epistemic status: {signal.epistemic_status}")
-    print(f"  TW trigger: {signal.tw_trigger}")
+    print(f"  Has delta state: {signal.delta_state is not None}")
     print()
 
 

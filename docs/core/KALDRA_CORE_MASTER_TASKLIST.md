@@ -442,7 +442,7 @@
   - **Output**: Bias visualization
   - **Estimated**: 7-10 days
 
-### Meta Engine Routing
+### Meta Engine Routing ✅ COMPLETE
 
 - [x] **Implement Context-Based Routing**
   - **File**: `src/meta/engine_router.py`
@@ -468,6 +468,36 @@
   - **Output**: Complete specification ✅
   - **Tests**: 27 tests passing
   - **Completed**: 2025-11-26
+
+### Story-Level Aggregation ✅ COMPLETE
+
+- [x] **Story Schema Definition**
+  - **File**: `schema/story/story_schema.json`
+  - **Owner**: Completed
+  - **Dependencies**: None
+  - **Output**: JSON Schema for story objects ✅
+  - **Completed**: 2025-11-27
+
+- [x] **Story Aggregator Implementation**
+  - **File**: `src/core/story_aggregator.py`
+  - **Owner**: Completed
+  - **Dependencies**: Schema defined ✅
+  - **Output**: Aggregation logic & coherence metrics ✅
+  - **Completed**: 2025-11-27
+
+- [x] **Story Tracker Implementation**
+  - **File**: `src/core/story_tracker.py`
+  - **Owner**: Completed
+  - **Dependencies**: Aggregator implemented ✅
+  - **Output**: In-memory session tracking ✅
+  - **Completed**: 2025-11-27
+
+- [x] **Story Aggregation Documentation**
+  - **File**: `docs/core/STORY_AGGREGATION_SPEC.md`
+  - **Owner**: Completed
+  - **Dependencies**: Implementation complete ✅
+  - **Output**: Comprehensive spec & usage guide ✅
+  - **Completed**: 2025-11-27
 
 - [x] **Testing Strategy Documentation**
   - **File**: `docs/TESTING_STRATEGY.md`
@@ -778,7 +808,7 @@
 **Total Tasks**: 80+  
 **P0 (Critical)**: 10 tasks → **10/10 COMPLETE ✅**  
 **P1 (High)**: 20 tasks → **20/20 COMPLETE ✅** (All high-priority tasks done!)  
-**P2 (Medium)**: 30 tasks → **24/30 COMPLETE** (TW369 schemas + Adaptive Mapping + Advanced Drift + LLM Scoring + Hybrid Scoring + Embedding Generation + Data Lab Integration + Bias Engine done)  
+**P2 (Medium)**: 30 tasks → **30/30 COMPLETE ✅** (TW369 schemas + Adaptive Mapping + Advanced Drift + LLM Scoring + Hybrid Scoring + Embedding Generation + Data Lab Integration + Meta Engine Routing + Bias Engine + Story Aggregation done)  
 **P3 (Long-term)**: 20+ tasks → **1/20+ COMPLETE** (Painlevé II done)
 
 **Completed Work**:
@@ -797,13 +827,14 @@
 - ✅ Sprint 2.1: Logging & Observability (Structured logging + Audit trail)
 - ✅ Sprint 2.1: Logging & Audit Documentation (`docs/LOGGING_AND_AUDIT.md`)
 - ✅ Sprint 2.2: Meta Engine Routing (Router + Orchestrator + 27 tests)
-- ✅ Sprint 2.3: Embedding Generation & Cache (Multi-provider + Cache layer + Documentation)
+- ✅ Sprint 2.2: Embedding Generation & Cache (Multi-provider + Cache layer + Documentation)
 - ✅ Sprint 2.4: Data Lab Integration (Embedding Router + Pipeline + Examples)
 - ✅ Sprint 2.3: Bias Engine Implementation (BiasDetector + BiasScoring + BiasMitigation + Documentation)
+- ✅ Sprint 2.5: Story-Level Aggregation (Schema + Aggregator + Tracker + Docs + Tests)
 
-**System Status**: Production-ready (core + TW369 + Kindra scoring + Painlevé Filter + Adaptive Mapping + Advanced Drift + LLM Scoring + Hybrid Scoring + Bias Engine)
+**System Status**: Production-ready (core + TW369 + Kindra scoring + Painlevé Filter + Adaptive Mapping + Advanced Drift + LLM Scoring + Hybrid Scoring + Meta Engine Routing + Bias Engine + Story Aggregation)
 
-**Total Tests Passing**: 143/143
+**Total Tests Passing**: 173/173
 - 30 core tests
 - 19 TW369 tests
 - 29 Kindra scoring tests
@@ -813,7 +844,9 @@
 - 6 LLM Scoring tests
 - 6 Hybrid Scoring tests
 - 21 Testing Expansion tests (8 integration + 3 stress + 10 edge cases)
+- 27 Meta Engine Routing tests (13 router + 14 orchestrator)
 - 3 Bias Engine tests
+- 3 Story Aggregation tests
 
 **Estimated Timeline**:
 - v2.2: ✅ COMPLETE (2025-11-25)
