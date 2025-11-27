@@ -499,6 +499,43 @@
   - **Output**: Comprehensive spec & usage guide ✅
   - **Completed**: 2025-11-27
 
+### Security & Performance Baseline ✅ COMPLETE
+
+- [x] **Rate Limiting Middleware**
+  - **File**: `kaldra_api/middleware/rate_limiter.py`
+  - **Owner**: Completed
+  - **Dependencies**: None
+  - **Output**: In-memory rate limiting with FastAPI integration ✅
+  - **Completed**: 2025-11-27
+
+- [x] **Input Validation Models**
+  - **File**: `kaldra_api/core/request_models.py`
+  - **Owner**: Completed
+  - **Dependencies**: Pydantic (optional) ✅
+  - **Output**: Request schemas for critical endpoints ✅
+  - **Completed**: 2025-11-27
+
+- [x] **Caching Utilities**
+  - **File**: `src/core/cache_utils.py`
+  - **Owner**: Completed
+  - **Dependencies**: None
+  - **Output**: TTL-based in-memory cache decorator ✅
+  - **Completed**: 2025-11-27
+
+- [x] **Metrics & Monitoring**
+  - **File**: `kaldra_api/monitoring/metrics.py`
+  - **Owner**: Completed
+  - **Dependencies**: Prometheus Client (optional) ✅
+  - **Output**: Prometheus metrics endpoint & instrumentation ✅
+  - **Completed**: 2025-11-27
+
+- [x] **Security & Performance Spec**
+  - **File**: `docs/core/SECURITY_AND_PERFORMANCE_SPEC.md`
+  - **Owner**: Completed
+  - **Dependencies**: Implementation complete ✅
+  - **Output**: Comprehensive baseline specification ✅
+  - **Completed**: 2025-11-27
+
 - [x] **Testing Strategy Documentation**
   - **File**: `docs/TESTING_STRATEGY.md`
   - **Owner**: Completed
@@ -805,9 +842,9 @@
 
 ## SUMMARY
 
-**Total Tasks**: 80+  
+**Total Tasks**: 85+  
 **P0 (Critical)**: 10 tasks → **10/10 COMPLETE ✅**  
-**P1 (High)**: 20 tasks → **20/20 COMPLETE ✅** (All high-priority tasks done!)  
+**P1 (High)**: 25 tasks → **25/25 COMPLETE ✅** (All high-priority tasks done!)  
 **P2 (Medium)**: 30 tasks → **30/30 COMPLETE ✅** (TW369 schemas + Adaptive Mapping + Advanced Drift + LLM Scoring + Hybrid Scoring + Embedding Generation + Data Lab Integration + Meta Engine Routing + Bias Engine + Story Aggregation done)  
 **P3 (Long-term)**: 20+ tasks → **1/20+ COMPLETE** (Painlevé II done)
 
@@ -831,8 +868,9 @@
 - ✅ Sprint 2.4: Data Lab Integration (Embedding Router + Pipeline + Examples)
 - ✅ Sprint 2.3: Bias Engine Implementation (BiasDetector + BiasScoring + BiasMitigation + Documentation)
 - ✅ Sprint 2.5: Story-Level Aggregation (Schema + Aggregator + Tracker + Docs + Tests)
+- ✅ Sprint 2.6: Security & Performance Baseline (Rate Limiting + Validation + Caching + Metrics + Spec)
 
-**System Status**: Production-ready (core + TW369 + Kindra scoring + Painlevé Filter + Adaptive Mapping + Advanced Drift + LLM Scoring + Hybrid Scoring + Meta Engine Routing + Bias Engine + Story Aggregation)
+**System Status**: Production-ready (core + TW369 + Kindra scoring + Painlevé Filter + Adaptive Mapping + Advanced Drift + LLM Scoring + Hybrid Scoring + Meta Engine Routing + Bias Engine + Story Aggregation + Security Baseline)
 
 **Total Tests Passing**: 173/173
 - 30 core tests

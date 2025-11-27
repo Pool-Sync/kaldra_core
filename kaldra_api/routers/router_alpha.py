@@ -13,5 +13,18 @@ Notes:
 """
 
 from fastapi import APIRouter
+from ..core.request_models import AlphaAnalyzeRequest
 
 router = APIRouter()
+
+
+@router.post("/alpha/analyze")
+def analyze_alpha(payload: AlphaAnalyzeRequest):
+    """
+    Placeholder endpoint for Alpha engine analysis with input validation.
+    """
+    return {
+        "status": "received",
+        "ticker": payload.ticker,
+        "analysis": "PENDING_IMPLEMENTATION"
+    }

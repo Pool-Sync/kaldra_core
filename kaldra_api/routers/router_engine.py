@@ -13,6 +13,7 @@ from ..dependencies import get_master_engine
 from src.core.kaldra_master_engine import KaldraMasterEngineV2
 from src.bias import compute_bias_score_from_text, classify_bias
 from ..schemas.signal import KaldraSignalRequest, KaldraSignalResponse
+from ..core.request_models import EngineInferenceRequest
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -24,7 +25,7 @@ router = APIRouter()
     summary="Generate a KALDRA signal from input text.",
 )
 def generate_signal(
-    payload: KaldraSignalRequest,
+    payload: EngineInferenceRequest,  # Updated to use new validation model
     engine: KaldraMasterEngineV2 = Depends(get_master_engine)
 ) -> KaldraSignalResponse:
     """
