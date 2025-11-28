@@ -61,9 +61,15 @@ services:
       - key: WEB_CONCURRENCY
         value: "2"
 
-# Cron Job Example (manual creation on Render dashboard)
-# jobs:
-#   - name: kaldra-news-ingest
-#     schedule: "0 * * * *"   # every hour
-#     env: docker
-#     command: ["python", "scripts/run_news_ingest.py", "--query", "AI", "--limit", "50"]
+# ================================
+# KALDRA NEWS INGEST WORKER (optional)
+# ================================
+# workers:
+#   - name: kaldra-news-worker
+#     type: worker
+#     runtime: python3
+#     envVars:
+#       PYTHON_VERSION: 3.11
+#     buildCommand: "pip install -r requirements.txt"
+#     startCommand: "python scripts/run_news_ingest.py"
+#     plan: starter
