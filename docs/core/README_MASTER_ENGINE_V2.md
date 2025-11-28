@@ -1,5 +1,9 @@
 # KALDRA Master Engine v2.2
 
+# KALDRA Master Engine v2.0 — Architecture & Flow
+
+> **Nota:** Execution reports e inventários históricos da v2.1/v2.2 foram arquivados em `docs/archive/`.
+
 ## 1. Overview
 
 The **KALDRA Master Engine v2.2** is the central nervous system of the KALDRA platform, orchestrating the interaction between multiple specialized engines to generate high-fidelity cultural, semiotic, and narrative intelligence.
