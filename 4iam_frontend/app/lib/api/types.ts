@@ -121,7 +121,7 @@ export interface KaldraSignalRequest {
     text: string;
 }
 
-export type KaldraTWRegime = "STABLE" | "ANOMALY" | "CRITICAL" | "UNSTABLE";
+export type KaldraTWRegime = "STABLE" | "CRITICAL" | "UNSTABLE";
 
 /**
  * KALDRA Signal Response from Master Engine V2
@@ -133,7 +133,7 @@ export interface KaldraSignalResponse {
     delta_state: string;            // Real state ID (e.g., "A07_05")
 
     // TW-Painlevé Oracle
-    tw_regime: KaldraTWRegime;      // "STABLE" or "ANOMALY"
+    tw_regime: KaldraTWRegime;      // "STABLE", "CRITICAL" or "UNSTABLE"
 
     // Kindra Cultural Modulation (top-5 states)
     kindra_distribution: Array<{
