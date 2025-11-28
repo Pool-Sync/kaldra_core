@@ -30,6 +30,8 @@ app = FastAPI(
 origins = [
     "http://localhost:3000",
     "http://localhost:8000",
+    "https://4iam.ai",
+    "https://www.4iam.ai",
     "https://4iam-frontend.vercel.app",
 ]
 
