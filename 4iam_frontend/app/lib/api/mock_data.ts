@@ -446,11 +446,11 @@ export function getMockKaldraSignal(text: string): KaldraSignal {
         archetype: "UNSPECIFIED",
         delta_state: "GENERIC",
         tw_regime: biasScore > 0.7 ? "UNSTABLE" : biasScore > 0.4 ? "CRITICAL" : "STABLE",
-        kindra_distribution: {
-            K01: 0.6,
-            K02: 0.2,
-            K03: 0.2,
-        },
+        kindra_distribution: [
+            { state_index: 1, prob: 0.6 },
+            { state_index: 2, prob: 0.2 },
+            { state_index: 3, prob: 0.2 },
+        ],
         bias_score: biasScore,
         meta_modifiers: {
             strength: [1, 2, 3],
@@ -460,6 +460,6 @@ export function getMockKaldraSignal(text: string): KaldraSignal {
         confidence: 0.8,
         explanation: "Mock KALDRA signal generated locally (useMocks = true).",
         bias_label: biasScore > 0.7 ? "extreme" : biasScore > 0.4 ? "negative" : "neutral",
-        narrative_risk: biasScore > 0.7 ? "high" : biasScore > 0.4 ? "medium" : "low",
+        narrative_risk: biasScore > 0.7 ? 0.9 : biasScore > 0.4 ? 0.5 : 0.1,
     };
 }

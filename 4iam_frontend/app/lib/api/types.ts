@@ -121,7 +121,7 @@ export interface KaldraSignalRequest {
     text: string;
 }
 
-export type KaldraTWRegime = "STABLE" | "ANOMALY";
+export type KaldraTWRegime = "STABLE" | "ANOMALY" | "CRITICAL" | "UNSTABLE";
 
 /**
  * KALDRA Signal Response from Master Engine V2

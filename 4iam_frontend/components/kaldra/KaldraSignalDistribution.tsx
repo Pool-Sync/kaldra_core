@@ -9,8 +9,8 @@ interface Props {
 }
 
 export function KaldraSignalDistribution({ signal, maxBars = 6 }: Props) {
-    const entries = Object.entries(signal.kindra_distribution || {});
-    const sorted = [...entries].sort((a, b) => b[1] - a[1]).slice(0, maxBars);
+    const dist = signal.kindra_distribution || [];
+    const sorted = [...dist].sort((a, b) => b.prob - a.prob).slice(0, maxBars);
 
     if (!sorted.length) {
         return (
@@ -20,7 +20,7 @@ export function KaldraSignalDistribution({ signal, maxBars = 6 }: Props) {
         );
     }
 
-    const maxValue = Math.max(...sorted.map(([, v]) => v));
+    const maxValue = Math.max(...sorted.map((item) => item.prob));
 
     return (
         <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-3 space-y-2">
@@ -28,7 +28,9 @@ export function KaldraSignalDistribution({ signal, maxBars = 6 }: Props) {
                 Kindra distribution (top {sorted.length})
             </div>
             <div className="space-y-1.5">
-                {sorted.map(([id, value]) => {
+                {sorted.map((item) => {
+                    const id = `K${String(item.state_index).padStart(2, '0')}`;
+                    const value = item.prob;
                     const pct = Math.round(value * 100);
                     const width = (value / maxValue) * 100;
                     return (
