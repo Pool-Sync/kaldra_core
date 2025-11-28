@@ -26,7 +26,7 @@ app = FastAPI(
     version="2.1.0",
 )
 
-# Configure CORS - support dynamic origins from environment
+# Configure CORS - permissive mode for development & multi-frontend support
 origins = [
     "http://localhost:3000",
     "http://localhost:8000",
@@ -43,6 +43,7 @@ if frontend_url and frontend_url not in origins:
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
+    allow_origin_regex="https?://.*",  # <- aceita qualquer origem http/https
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
