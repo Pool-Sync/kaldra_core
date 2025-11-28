@@ -492,6 +492,65 @@ def score(self, context, vectors):
 
 ---
 
+### Sprint 2.7: Frontend Deployment & V2.1 Documentation (Week 11-12) ✅ COMPLETED
+
+**P1 — HIGH**
+
+**Objective**: Deploy production frontend and create comprehensive V2.1 release documentation
+
+**Tasks**:
+1. **Frontend Deployment to Vercel**
+   - Deploy Next.js 14 App Router to Vercel
+   - Configure production domain (`https://4iam.ai`)
+   - Set environment variables for production
+   - Verify build and deployment success
+
+2. **CORS Configuration**
+   - Update `kaldra_api/main.py` with production domains
+   - Enable CORS for `4iam.ai`, `www.4iam.ai`, `4iam-frontend.vercel.app`
+   - Add permissive regex for dev/preview environments
+   - Test cross-origin requests
+
+3. **Backend Deployment to Render**
+   - Deploy FastAPI backend with Docker
+   - Configure health checks
+   - Set environment variables (API keys, etc.)
+   - Verify backend stability
+
+4. **Bug Fixes**
+   - Fix FastAPI import error (missing `Any` type)
+   - Fix type definitions (`KaldraTWRegime`, `kindra_distribution`, `narrative_risk`)
+   - Fix Vercel build errors
+   - Update mock data for type compatibility
+
+5. **Frontend Documentation**
+   - Create `docs/ENV_REFERENCE_FRONTEND.md`
+   - Create `docs/FRONTEND_STRUCTURE_CHECKLIST.md`
+   - Create `docs/DEPLOY_FRONTEND_VERCEL.md`
+   - Create `docs/PRODUCTION_NOTES.md`
+
+6. **V2.1 Release Documentation**
+   - Create `docs/KALDRA_V2.1_RELEASE_NOTES.md`
+   - Create `docs/PRODUCTION_ARCHITECTURE_OVERVIEW.md`
+   - Create `docs/KALDRA_CLOUD_ROADMAP.md`
+   - Update `CHANGELOG.md` with v2.1.0 section
+
+**Deliverables**:
+- [x] Frontend deployed to Vercel (`https://4iam.ai`)
+- [x] CORS configured for production domains
+- [x] Backend deployed to Render (Docker + FastAPI)
+- [x] All bug fixes applied
+- [x] 4 frontend documentation files created
+- [x] 3 V2.1 release documentation files created
+- [x] `CHANGELOG.md` updated with v2.1.0
+- [x] Data Lab workers documented (`docs/DATALAB_WORKERS.md`)
+
+**Status**: ✅ COMPLETED (Nov 2025)
+
+**Estimated Effort**: 5-7 days
+
+---
+
 ## PHASE 2: V2.3 — PRODUCTION HARDENING (6-8 weeks)
 
 ### Sprint 2.1: Logging & Observability (Week 1) ✅ COMPLETED

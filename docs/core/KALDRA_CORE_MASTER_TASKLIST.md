@@ -626,6 +626,87 @@
 
 
 
+
+
+### Frontend Deployment & Production (V2.1) ✅ COMPLETE
+
+- [x] **Frontend Deployment to Vercel**
+  - **Platform**: Vercel
+  - **Domain**: `https://4iam.ai`
+  - **Framework**: Next.js 14 (App Router)
+  - **Owner**: Completed
+  - **Dependencies**: None
+  - **Output**: Production frontend deployed ✅
+  - **Completed**: 2025-11-28
+
+- [x] **Environment Configuration**
+  - **Variables**:
+    - `NEXT_PUBLIC_KALDRA_API_MODE=remote`
+    - `NEXT_PUBLIC_KALDRA_API_URL=https://kaldra-core-api.onrender.com`
+  - **Owner**: Completed
+  - **Dependencies**: Frontend deployed ✅
+  - **Output**: Environment vars configured ✅
+  - **Completed**: 2025-11-28
+
+- [x] **CORS Configuration**
+  - **File**: `kaldra_api/main.py`
+  - **Domains**:
+    - `https://4iam.ai`
+    - `https://www.4iam.ai`
+    - `https://4iam-frontend.vercel.app`
+  - **Owner**: Completed
+  - **Dependencies**: Frontend deployed ✅
+  - **Output**: CORS enabled for production ✅
+  - **Completed**: 2025-11-28
+
+- [x] **Backend Deployment to Render**
+  - **Platform**: Render
+  - **Service**: `kaldra-api`
+  - **Technology**: Docker + FastAPI
+  - **Owner**: Completed
+  - **Dependencies**: CORS configured ✅
+  - **Output**: Backend deployed and stable ✅
+  - **Completed**: 2025-11-28
+
+- [x] **Bug Fixes**
+  - **FastAPI Import Error**: Added missing `Any` import ✅
+  - **Type Definitions**: Fixed `KaldraTWRegime`, `kindra_distribution`, `narrative_risk` ✅
+  - **Build Fixes**: Fixed Vercel build errors ✅
+  - **Owner**: Completed
+  - **Completed**: 2025-11-28
+
+- [x] **Frontend Documentation**
+  - **Files**:
+    - `docs/ENV_REFERENCE_FRONTEND.md` ✅
+    - `docs/FRONTEND_STRUCTURE_CHECKLIST.md` ✅
+    - `docs/DEPLOY_FRONTEND_VERCEL.md` ✅
+    - `docs/PRODUCTION_NOTES.md` ✅
+  - **Owner**: Completed
+  - **Dependencies**: Frontend deployed ✅
+  - **Output**: Complete frontend documentation ✅
+  - **Completed**: 2025-11-28
+
+- [x] **V2.1 Release Documentation**
+  - **Files**:
+    - `docs/KALDRA_V2.1_RELEASE_NOTES.md` ✅
+    - `docs/PRODUCTION_ARCHITECTURE_OVERVIEW.md` ✅
+    - `docs/KALDRA_CLOUD_ROADMAP.md` ✅
+    - `CHANGELOG.md` (updated with v2.1.0) ✅
+  - **Owner**: Completed
+  - **Dependencies**: All work complete ✅
+  - **Output**: Comprehensive release documentation ✅
+  - **Completed**: 2025-11-28
+
+- [x] **Data Lab Workers**
+  - **Files**:
+    - `kaldra_data/workers/news_ingest_worker.py` ✅
+    - `scripts/run_news_ingest.py` ✅
+    - `docs/DATALAB_WORKERS.md` ✅
+  - **Owner**: Completed (pre-existing)
+  - **Dependencies**: None
+  - **Output**: News ingestion pipeline operational ✅
+  - **Completed**: 2025-11-26
+
 ---
 
 ## P3 — LONG-TERM (V2.4+)
