@@ -20,14 +20,14 @@
       "static/chunks/fd9d1056-d76e57cce6379a76.js",
       "static/chunks/23-840e9017b2a54791.js",
       "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/app/alpha/[slug]/page-0a563bcbce4b6218.js"
+      "static/chunks/app/alpha/[slug]/page-509602f46ab46f39.js"
     ],
     "/dashboard/page": [
       "static/chunks/webpack-6b032db0e60580c2.js",
       "static/chunks/fd9d1056-d76e57cce6379a76.js",
       "static/chunks/23-840e9017b2a54791.js",
       "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/73-371c82c92b46cbc7.js",
+      "static/chunks/73-2c0e097f15714098.js",
       "static/chunks/app/dashboard/page-5ee2e1c76bb128c8.js"
     ],
     "/docs/architecture/page": [
@@ -35,123 +35,7 @@
       "static/chunks/fd9d1056-d76e57cce6379a76.js",
       "static/chunks/23-840e9017b2a54791.js",
       "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/app/docs/architecture/page-31d07642b384059c.js"
-    ],
-    "/docs/philosophy/page": [
-      "static/chunks/webpack-6b032db0e60580c2.js",
-      "static/chunks/fd9d1056-d76e57cce6379a76.js",
-      "static/chunks/23-840e9017b2a54791.js",
-      "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/app/docs/philosophy/page-5178cc3e2bad4e2b.js"
-    ],
-    "/docs/api/page": [
-      "static/chunks/webpack-6b032db0e60580c2.js",
-      "static/chunks/fd9d1056-d76e57cce6379a76.js",
-      "static/chunks/23-840e9017b2a54791.js",
-      "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/app/docs/api/page-f9048107342fd1d9.js"
-    ],
-    "/geo/page": [
-      "static/chunks/webpack-6b032db0e60580c2.js",
-      "static/chunks/fd9d1056-d76e57cce6379a76.js",
-      "static/chunks/23-840e9017b2a54791.js",
-      "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/649-16aa8bed955682f1.js",
-      "static/chunks/app/geo/page-a2cfb83573bc8832.js"
-    ],
-    "/geo/[slug]/page": [
-      "static/chunks/webpack-6b032db0e60580c2.js",
-      "static/chunks/fd9d1056-d76e57cce6379a76.js",
-      "static/chunks/23-840e9017b2a54791.js",
-      "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/app/geo/[slug]/page-e2282025dd40388a.js"
-    ],
-    "/insights/page": [
-      "static/chunks/webpack-6b032db0e60580c2.js",
-      "static/chunks/fd9d1056-d76e57cce6379a76.js",
-      "static/chunks/23-840e9017b2a54791.js",
-      "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/73-371c82c92b46cbc7.js",
-      "static/chunks/app/insights/page-1c24c243b8e737dc.js"
-    ],
-    "/kaldra/dashboard/page": [
-      "static/chunks/webpack-6b032db0e60580c2.js",
-      "static/chunks/fd9d1056-d76e57cce6379a76.js",
-      "static/chunks/23-840e9017b2a54791.js",
-      "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/app/kaldra/dashboard/page-a97b7698170278d1.js"
-    ],
-    "/kaldra/delta144/page": [
-      "static/chunks/webpack-6b032db0e60580c2.js",
-      "static/chunks/fd9d1056-d76e57cce6379a76.js",
-      "static/chunks/23-840e9017b2a54791.js",
-      "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/app/kaldra/delta144/page-708d8fc38ff54481.js"
-    ],
-    "/kaldra/meta_symbols/page": [
-      "static/chunks/webpack-6b032db0e60580c2.js",
-      "static/chunks/fd9d1056-d76e57cce6379a76.js",
-      "static/chunks/23-840e9017b2a54791.js",
-      "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/app/kaldra/meta_symbols/page-7eca05b01ef4ed49.js"
-    ],
-    "/kaldra/page": [
-      "static/chunks/webpack-6b032db0e60580c2.js",
-      "static/chunks/fd9d1056-d76e57cce6379a76.js",
-      "static/chunks/23-840e9017b2a54791.js",
-      "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/app/kaldra/page-918c21e0d925c7d3.js"
-    ],
-    "/kaldra/kindras/page": [
-      "static/chunks/webpack-6b032db0e60580c2.js",
-      "static/chunks/fd9d1056-d76e57cce6379a76.js",
-      "static/chunks/23-840e9017b2a54791.js",
-      "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/app/kaldra/kindras/page-9e9329e047225a07.js"
-    ],
-    "/kaldra/modifiers/page": [
-      "static/chunks/webpack-6b032db0e60580c2.js",
-      "static/chunks/fd9d1056-d76e57cce6379a76.js",
-      "static/chunks/23-840e9017b2a54791.js",
-      "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/app/kaldra/modifiers/page-bee4e8576b0ba2be.js"
-    ],
-    "/kaldra/polarities/page": [
-      "static/chunks/webpack-6b032db0e60580c2.js",
-      "static/chunks/fd9d1056-d76e57cce6379a76.js",
-      "static/chunks/23-840e9017b2a54791.js",
-      "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/app/kaldra/polarities/page-5c8c5fa3bab2d33f.js"
-    ],
-    "/page": [
-      "static/chunks/webpack-6b032db0e60580c2.js",
-      "static/chunks/fd9d1056-d76e57cce6379a76.js",
-      "static/chunks/23-840e9017b2a54791.js",
-      "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/app/page-2c2a7e7037bd268c.js"
-    ],
-    "/safeguard/page": [
-      "static/chunks/webpack-6b032db0e60580c2.js",
-      "static/chunks/fd9d1056-d76e57cce6379a76.js",
-      "static/chunks/23-840e9017b2a54791.js",
-      "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/649-16aa8bed955682f1.js",
-      "static/chunks/app/safeguard/page-cf5c92dc9c165371.js"
-    ],
-    "/product/page": [
-      "static/chunks/webpack-6b032db0e60580c2.js",
-      "static/chunks/fd9d1056-d76e57cce6379a76.js",
-      "static/chunks/23-840e9017b2a54791.js",
-      "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/649-16aa8bed955682f1.js",
-      "static/chunks/app/product/page-eb8637b0af21ac48.js"
-    ],
-    "/product/[slug]/page": [
-      "static/chunks/webpack-6b032db0e60580c2.js",
-      "static/chunks/fd9d1056-d76e57cce6379a76.js",
-      "static/chunks/23-840e9017b2a54791.js",
-      "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/app/product/[slug]/page-8301013f5aa4433b.js"
+      "static/chunks/app/docs/architecture/page-dedcf546ebfa93aa.js"
     ],
     "/alpha/page": [
       "static/chunks/webpack-6b032db0e60580c2.js",
@@ -160,20 +44,136 @@
       "static/chunks/main-app-e9e5a45de2818d30.js",
       "static/chunks/app/alpha/page-8f7e0f838fbb01d5.js"
     ],
-    "/signals/page": [
+    "/docs/philosophy/page": [
       "static/chunks/webpack-6b032db0e60580c2.js",
       "static/chunks/fd9d1056-d76e57cce6379a76.js",
       "static/chunks/23-840e9017b2a54791.js",
       "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/73-371c82c92b46cbc7.js",
-      "static/chunks/app/signals/page-297a341bf698be2a.js"
+      "static/chunks/app/docs/philosophy/page-08ae844cd463b912.js"
+    ],
+    "/geo/[slug]/page": [
+      "static/chunks/webpack-6b032db0e60580c2.js",
+      "static/chunks/fd9d1056-d76e57cce6379a76.js",
+      "static/chunks/23-840e9017b2a54791.js",
+      "static/chunks/main-app-e9e5a45de2818d30.js",
+      "static/chunks/app/geo/[slug]/page-ce8b7fdc78f137a2.js"
+    ],
+    "/insights/page": [
+      "static/chunks/webpack-6b032db0e60580c2.js",
+      "static/chunks/fd9d1056-d76e57cce6379a76.js",
+      "static/chunks/23-840e9017b2a54791.js",
+      "static/chunks/main-app-e9e5a45de2818d30.js",
+      "static/chunks/73-2c0e097f15714098.js",
+      "static/chunks/app/insights/page-1c24c243b8e737dc.js"
+    ],
+    "/kaldra/dashboard/page": [
+      "static/chunks/webpack-6b032db0e60580c2.js",
+      "static/chunks/fd9d1056-d76e57cce6379a76.js",
+      "static/chunks/23-840e9017b2a54791.js",
+      "static/chunks/main-app-e9e5a45de2818d30.js",
+      "static/chunks/app/kaldra/dashboard/page-da1ef3a00a53dd11.js"
+    ],
+    "/geo/page": [
+      "static/chunks/webpack-6b032db0e60580c2.js",
+      "static/chunks/fd9d1056-d76e57cce6379a76.js",
+      "static/chunks/23-840e9017b2a54791.js",
+      "static/chunks/main-app-e9e5a45de2818d30.js",
+      "static/chunks/649-948b74370b27c720.js",
+      "static/chunks/app/geo/page-a2cfb83573bc8832.js"
+    ],
+    "/docs/api/page": [
+      "static/chunks/webpack-6b032db0e60580c2.js",
+      "static/chunks/fd9d1056-d76e57cce6379a76.js",
+      "static/chunks/23-840e9017b2a54791.js",
+      "static/chunks/main-app-e9e5a45de2818d30.js",
+      "static/chunks/app/docs/api/page-fb2e98cdb8a6aa2b.js"
+    ],
+    "/kaldra/meta_symbols/page": [
+      "static/chunks/webpack-6b032db0e60580c2.js",
+      "static/chunks/fd9d1056-d76e57cce6379a76.js",
+      "static/chunks/23-840e9017b2a54791.js",
+      "static/chunks/main-app-e9e5a45de2818d30.js",
+      "static/chunks/app/kaldra/meta_symbols/page-987ca6859bd23576.js"
+    ],
+    "/kaldra/kindras/page": [
+      "static/chunks/webpack-6b032db0e60580c2.js",
+      "static/chunks/fd9d1056-d76e57cce6379a76.js",
+      "static/chunks/23-840e9017b2a54791.js",
+      "static/chunks/main-app-e9e5a45de2818d30.js",
+      "static/chunks/app/kaldra/kindras/page-1ba84469f90696f7.js"
+    ],
+    "/kaldra/page": [
+      "static/chunks/webpack-6b032db0e60580c2.js",
+      "static/chunks/fd9d1056-d76e57cce6379a76.js",
+      "static/chunks/23-840e9017b2a54791.js",
+      "static/chunks/main-app-e9e5a45de2818d30.js",
+      "static/chunks/app/kaldra/page-918c21e0d925c7d3.js"
+    ],
+    "/kaldra/modifiers/page": [
+      "static/chunks/webpack-6b032db0e60580c2.js",
+      "static/chunks/fd9d1056-d76e57cce6379a76.js",
+      "static/chunks/23-840e9017b2a54791.js",
+      "static/chunks/main-app-e9e5a45de2818d30.js",
+      "static/chunks/app/kaldra/modifiers/page-7266b41b751065f2.js"
+    ],
+    "/product/page": [
+      "static/chunks/webpack-6b032db0e60580c2.js",
+      "static/chunks/fd9d1056-d76e57cce6379a76.js",
+      "static/chunks/23-840e9017b2a54791.js",
+      "static/chunks/main-app-e9e5a45de2818d30.js",
+      "static/chunks/649-948b74370b27c720.js",
+      "static/chunks/app/product/page-eb8637b0af21ac48.js"
+    ],
+    "/kaldra/polarities/page": [
+      "static/chunks/webpack-6b032db0e60580c2.js",
+      "static/chunks/fd9d1056-d76e57cce6379a76.js",
+      "static/chunks/23-840e9017b2a54791.js",
+      "static/chunks/main-app-e9e5a45de2818d30.js",
+      "static/chunks/app/kaldra/polarities/page-8b7a1e9d1f844cd2.js"
     ],
     "/safeguard/[slug]/page": [
       "static/chunks/webpack-6b032db0e60580c2.js",
       "static/chunks/fd9d1056-d76e57cce6379a76.js",
       "static/chunks/23-840e9017b2a54791.js",
       "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/app/safeguard/[slug]/page-b544f5b1b2e6162a.js"
+      "static/chunks/app/safeguard/[slug]/page-047ffe3bf1e46991.js"
+    ],
+    "/product/[slug]/page": [
+      "static/chunks/webpack-6b032db0e60580c2.js",
+      "static/chunks/fd9d1056-d76e57cce6379a76.js",
+      "static/chunks/23-840e9017b2a54791.js",
+      "static/chunks/main-app-e9e5a45de2818d30.js",
+      "static/chunks/app/product/[slug]/page-161845eee330677b.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-6b032db0e60580c2.js",
+      "static/chunks/fd9d1056-d76e57cce6379a76.js",
+      "static/chunks/23-840e9017b2a54791.js",
+      "static/chunks/main-app-e9e5a45de2818d30.js",
+      "static/chunks/app/page-1b6d4bc350646284.js"
+    ],
+    "/signals/page": [
+      "static/chunks/webpack-6b032db0e60580c2.js",
+      "static/chunks/fd9d1056-d76e57cce6379a76.js",
+      "static/chunks/23-840e9017b2a54791.js",
+      "static/chunks/main-app-e9e5a45de2818d30.js",
+      "static/chunks/73-2c0e097f15714098.js",
+      "static/chunks/app/signals/page-297a341bf698be2a.js"
+    ],
+    "/kaldra/delta144/page": [
+      "static/chunks/webpack-6b032db0e60580c2.js",
+      "static/chunks/fd9d1056-d76e57cce6379a76.js",
+      "static/chunks/23-840e9017b2a54791.js",
+      "static/chunks/main-app-e9e5a45de2818d30.js",
+      "static/chunks/app/kaldra/delta144/page-8d3d300f5f3773d4.js"
+    ],
+    "/safeguard/page": [
+      "static/chunks/webpack-6b032db0e60580c2.js",
+      "static/chunks/fd9d1056-d76e57cce6379a76.js",
+      "static/chunks/23-840e9017b2a54791.js",
+      "static/chunks/main-app-e9e5a45de2818d30.js",
+      "static/chunks/649-948b74370b27c720.js",
+      "static/chunks/app/safeguard/page-cf5c92dc9c165371.js"
     ],
     "/(explorer)/explorer/page": [
       "static/chunks/webpack-6b032db0e60580c2.js",
@@ -187,7 +187,7 @@
       "static/chunks/fd9d1056-d76e57cce6379a76.js",
       "static/chunks/23-840e9017b2a54791.js",
       "static/chunks/main-app-e9e5a45de2818d30.js",
-      "static/chunks/app/(explorer)/explorer/layout-b41bbfde533a257e.js"
+      "static/chunks/app/(explorer)/explorer/layout-51c0b8f4015b7782.js"
     ]
   }
 }
