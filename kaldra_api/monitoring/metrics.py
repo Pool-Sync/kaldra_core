@@ -6,7 +6,7 @@ Fails gracefully if prometheus_client is not installed.
 """
 
 import time
-from typing import Optional, Callable
+from typing import Optional, Callable, Any
 
 try:
     from prometheus_client import Counter, Histogram, generate_latest, CONTENT_TYPE_LATEST
