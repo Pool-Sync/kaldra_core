@@ -1,17 +1,8 @@
 """
-KALDRA CORE — TW369 module
-Placeholder implementation. Subject to refinement in later iterations.
+TW369 Module - Temporal-Wisdom 369 Engine.
 """
-from __future__ import annotations
 
-from .core import compute_tw_instability_index
-from .drift import compute_drift_metrics
-from .tw_painleve_core import compute_painleve_curvature
-from .tw_guard import tw_guard_regime
+from .drift_state import DriftState
+from .drift_memory import DriftMemory
 
-__all__ = [
-    "compute_tw_instability_index",
-    "compute_painleve_curvature",
-    "compute_drift_metrics",
-    "tw_guard_regime",
-]
+__all__ = ["DriftState", "DriftMemory"]

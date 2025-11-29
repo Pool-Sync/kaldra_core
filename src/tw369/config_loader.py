@@ -1,71 +1,45 @@
 """
-TW369 Configuration Loader
-
-Loads and validates TW369 engine configuration files against the schema.
+Configuration loader utilities for TW369.
 """
 
 import json
 from pathlib import Path
-
-try:
-    import jsonschema
-    HAS_JSONSCHEMA = True
-except ImportError:
-    HAS_JSONSCHEMA = False
+from typing import Dict, Any, Optional
+from dataclasses import dataclass
 
 
-class TW369ConfigLoader:
+@dataclass
+class PainleveConfig:
+    """Painlevé solver configuration."""
+    alpha: float = 0.0
+    x_start: float = -5.0
+    x_end: float = 5.0
+    step_size: float = 0.01
+    tolerance: float = 1e-5
+    window_short: int = 5
+    window_long: int = 20
+    volatility_threshold: float = 0.5
+
+
+def load_painleve_config(schema_dir: Optional[Path] = None) -> PainleveConfig:
     """
-    Loads TW369 engine configuration with optional schema validation.
+    Load Painlevé configuration from schema.
     
-    If jsonschema is installed, validates configuration files against 
-    tw369_config_schema.json. Otherwise, performs basic structure validation.
+    Args:
+        schema_dir: Optional schema directory path
+        
+    Returns:
+        PainleveConfig object
     """
+    if schema_dir is None:
+        schema_dir = Path(__file__).parent.parent.parent / "schema" / "tw369"
     
-    def __init__(self, schema_path="schema/tw369/tw369_config_schema.json"):
-        """
-        Initialize config loader with schema.
-        
-        Args:
-            schema_path: Path to TW369 config schema file
-        """
-        self.schema_path = Path(schema_path)
-        if self.schema_path.exists():
-            self.schema = json.loads(self.schema_path.read_text())
-        else:
-            self.schema = None
+    config_path = schema_dir / "painleve_config.json"
     
-    def _basic_validate(self, cfg):
-        """
-        Basic validation without jsonschema.
-        
-        Checks for required fields.
-        """
-        required = ["enabled", "max_time_steps", "default_step_size"]
-        for field in required:
-            if field not in cfg:
-                raise ValueError(f"Missing required field: {field}")
+    if not config_path.exists():
+        return PainleveConfig()
     
-    def load(self, path):
-        """
-        Load and validate configuration file.
-        
-        Args:
-            path: Path to configuration JSON file
-            
-        Returns:
-            Validated configuration dict
-            
-        Raises:
-            ValueError: If config is invalid
-            FileNotFoundError: If config file doesn't exist
-        """
-        cfg = json.loads(Path(path).read_text())
-        
-        if HAS_JSONSCHEMA and self.schema:
-            jsonschema.validate(cfg, self.schema)
-        else:
-            self._basic_validate(cfg)
-        
-        return cfg
-
+    with open(config_path, "r") as f:
+        data = json.load(f)
+    
+    return PainleveConfig(**data)

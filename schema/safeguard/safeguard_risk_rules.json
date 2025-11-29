@@ -1,0 +1,15 @@
+{
+    "risk_weights": {
+        "toxicity": 1.0,
+        "manipulation": 0.9,
+        "polarization": 0.8,
+        "extremism": 1.0,
+        "distortion": 0.7,
+        "shadow_loops": 0.6
+    },
+    "thresholds": {
+        "CRITICAL": 0.8,
+        "HIGH": 0.6,
+        "MID": 0.3
+    }
+}

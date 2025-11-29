@@ -1,0 +1,62 @@
+{
+    "A07_RULER": {
+        "preferred_plane": "6",
+        "drift_tolerance": 0.3,
+        "painleve_alpha": 0.0
+    },
+    "A08_REBEL": {
+        "preferred_plane": "3",
+        "drift_tolerance": 0.8,
+        "painleve_alpha": 0.5
+    },
+    "A01_INNOCENT": {
+        "preferred_plane": "3",
+        "drift_tolerance": 0.4,
+        "painleve_alpha": 0.0
+    },
+    "A02_ORPHAN": {
+        "preferred_plane": "6",
+        "drift_tolerance": 0.5,
+        "painleve_alpha": 0.2
+    },
+    "A03_WARRIOR": {
+        "preferred_plane": "3",
+        "drift_tolerance": 0.7,
+        "painleve_alpha": 0.3
+    },
+    "A04_CAREGIVER": {
+        "preferred_plane": "6",
+        "drift_tolerance": 0.3,
+        "painleve_alpha": 0.0
+    },
+    "A05_SEEKER": {
+        "preferred_plane": "9",
+        "drift_tolerance": 0.9,
+        "painleve_alpha": 0.4
+    },
+    "A06_LOVER": {
+        "preferred_plane": "6",
+        "drift_tolerance": 0.6,
+        "painleve_alpha": 0.1
+    },
+    "A09_MAGICIAN": {
+        "preferred_plane": "9",
+        "drift_tolerance": 0.7,
+        "painleve_alpha": 0.3
+    },
+    "A10_SAGE": {
+        "preferred_plane": "9",
+        "drift_tolerance": 0.5,
+        "painleve_alpha": 0.2
+    },
+    "A11_JESTER": {
+        "preferred_plane": "3",
+        "drift_tolerance": 0.8,
+        "painleve_alpha": 0.4
+    },
+    "A12_CREATOR": {
+        "preferred_plane": "3",
+        "drift_tolerance": 0.9,
+        "painleve_alpha": 0.5
+    }
+}

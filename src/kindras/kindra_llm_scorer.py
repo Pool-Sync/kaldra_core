@@ -8,6 +8,7 @@ full compatibility with Δ144, TW369, and all existing components.
 from __future__ import annotations
 from typing import Dict, Any, List, Optional
 import math
+from .scoring.llm_client_base import LLMClientBase
 
 
 class KindraLLMScorer:
@@ -29,12 +30,12 @@ class KindraLLMScorer:
         - Same shape as current rule-based scorer
     """
 
-    def __init__(self, llm_client=None, rule_fallback=None):
+    def __init__(self, llm_client: Optional[LLMClientBase] = None, rule_fallback=None):
         """
         Initialize LLM scorer.
         
         Args:
-            llm_client: Optional LLM client with generate() method
+            llm_client: Optional LLM client implementing LLMClientBase
             rule_fallback: Optional rule-based scorer for fallback
         """
         self.llm = llm_client

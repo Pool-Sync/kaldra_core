@@ -1,4 +1,13 @@
-# TW369 — Advanced Drift Models
+# TW369 Advanced Drift Models — Implementation Details
+
+> **Note**: This document describes detailed implementation of drift models A/B/C/D.  
+> For the overall vision, roadmap, and v2.4 planning, see [`TW369_ENGINE_SPEC.md`](./TW369_ENGINE_SPEC.md).
+
+**Version**: 2.0  
+**Last Updated**: 2025-11-23  
+**Status**: Implementation Reference
+
+---
 
 ## 1. Overview
 
@@ -305,10 +314,44 @@ Potential future models:
 - **Model F (Coupled)**: Cross-plane coupling effects
 - **Model G (Hierarchical)**: Multi-level drift decomposition
 
-## 11. References
+---
+
+## 11. v2.4 Alignment
+
+**Status**: This document describes the current implementation (v2.3 and earlier).
+
+### Files to be Modified in v2.4
+
+The following files will be updated as part of the v2.4 Mathematical Deepening:
+
+- **`src/tw369/advanced_drift_models.py`**
+  - Add support for regime-specific model selection
+  - Integrate with Δ12 archetype regimes
+  - Add drift memory to Model C
+
+- **`src/tw369/tw369_integration.py`**
+  - Use `DriftState` for persistence
+  - Integrate Tracy-Widom module for severity calculation
+  - Apply Painlevé calibration from schema
+
+- **`schema/tw369/drift_parameters.json`**
+  - Add regime-specific parameters
+  - Add Tracy-Widom configuration
+  - Add Painlevé calibration settings
+
+### Cross-References
+
+- **v2.4 Planning**: See [`TW369_ENGINE_SPEC.md` Section 7](./TW369_ENGINE_SPEC.md#7-v24--deepening-plan-tw369--tracy-widom--painlev%C3%A9)
+- **Δ12/Δ144 Integration**: See [`DELTA12_AND_DELTA144_RELATION.md`](./DELTA12_AND_DELTA144_RELATION.md)
+- **Drift Memory**: See `TW369_ENGINE_SPEC.md` Section 7.3
+
+---
+
+## 12. References
 
 - TW369 Engine Spec: `docs/TW369_ENGINE_SPEC.md`
 - Drift Parameters: `schema/tw369/drift_parameters.json`
 - Config Schema: `schema/tw369/tw369_config_schema.json`
 - Implementation: `src/tw369/advanced_drift_models.py`
 - Integration: `src/tw369/tw369_integration.py`
+

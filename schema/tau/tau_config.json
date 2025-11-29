@@ -1,0 +1,17 @@
+{
+    "baseline_score": 5.0,
+    "weights": {
+        "bias_score": 2.0,
+        "polarity_extremity": 1.5,
+        "semantic_entropy": 1.0,
+        "tw_severity": 1.2,
+        "drift_instability": 1.8,
+        "meta_inversions": 2.5
+    },
+    "risk_thresholds": {
+        "LOW": 0.8,
+        "MID": 0.5,
+        "HIGH": 0.2,
+        "CRITICAL": 0.0
+    }
+}

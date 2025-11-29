@@ -29,7 +29,8 @@ Ele é o **tradutor simbólico** que recebe esses sinais e devolve:
 
 - o **arquétipo dominante** (Axx)
 - o **estado específico** dentro da matriz Δ144
-- **modifiers dinâmicos**
+- **modifiers dinâmicos** (auto-inferidos via embeddings v2.7)
+- **polarities** (46 tensões dimensionais v2.7)
 - **scores completos**
 
 ---

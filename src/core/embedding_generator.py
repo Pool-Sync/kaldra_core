@@ -3,8 +3,9 @@ Embedding Generator for KALDRA Core v2.3
 
 Unified embedding generation with support for multiple providers:
 - Sentence Transformers (primary)
-- OpenAI (skeleton via client injection)
+- OpenAI (via requests or client injection)
 - Cohere (skeleton via client injection)
+- Legacy (deterministic simulation)
 - Custom (via callback)
 """
 
@@ -12,7 +13,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Any, Callable, List, Optional, Sequence, Union
-
+import os
+import json
+import requests
 import numpy as np
 
 from src.core.embedding_cache import (
@@ -40,6 +43,7 @@ class EmbeddingConfig:
       - "sentence-transformers"
       - "openai"
       - "cohere"
+      - "legacy" (deterministic simulation)
       - "custom"
 
     model_name:
@@ -53,6 +57,7 @@ class EmbeddingConfig:
     batch_size: int = 16
     device: Optional[str] = None
     dim: Optional[int] = None  # expected output dimension (optional)
+    api_key: Optional[str] = None # For OpenAI/Cohere
 
 
 class EmbeddingGenerator:
@@ -112,6 +117,8 @@ class EmbeddingGenerator:
             embeddings = self._encode_openai(batch)
         elif self.config.provider == "cohere":
             embeddings = self._encode_cohere(batch)
+        elif self.config.provider == "legacy":
+            embeddings = self._encode_legacy(batch)
         elif self.config.provider == "custom":
             embeddings = self._encode_custom(batch)
         else:
@@ -191,30 +198,48 @@ class EmbeddingGenerator:
 
     def _encode_openai(self, texts: Sequence[str]) -> np.ndarray:
         """
-        Skeleton for OpenAI embeddings.
-
-        Expects `openai_client` to provide a `embeddings.create`-like API.
+        OpenAI embeddings via requests or injected client.
         """
-        if self.openai_client is None:
-            raise RuntimeError(
-                "openai_client is not configured. "
-                "Pass an OpenAI client instance to EmbeddingGenerator(openai_client=...)."
+        # 1. Use injected client if available
+        if self.openai_client is not None:
+            response = self.openai_client.embeddings.create(
+                model=self.config.model_name,
+                input=list(texts),
             )
+            vectors = [np.array(item.embedding, dtype=np.float32) for item in response.data]
+            return np.vstack(vectors)
 
-        # Example call, adjust to actual client in real integration.
-        response = self.openai_client.embeddings.create(
-            model=self.config.model_name,
-            input=list(texts),
+        # 2. Use requests if API key is provided
+        if self.config.api_key:
+            url = "https://api.openai.com/v1/embeddings"
+            headers = {
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {self.config.api_key}"
+            }
+            payload = {
+                "model": self.config.model_name,
+                "input": list(texts)
+            }
+            
+            try:
+                response = requests.post(url, headers=headers, json=payload, timeout=10)
+                response.raise_for_status()
+                data = response.json()
+                vectors = [np.array(item["embedding"], dtype=np.float32) for item in data["data"]]
+                return np.vstack(vectors)
+            except Exception as e:
+                print(f"OpenAI Embedding Error: {e}")
+                # Fallback to legacy if configured or raise? 
+                # For now, let's raise to be explicit about failure in REAL mode.
+                raise RuntimeError(f"OpenAI API failed: {e}")
+
+        raise RuntimeError(
+            "OpenAI provider selected but no client injected and no API key in config."
         )
-        # Assume response.data[i].embedding
-        vectors = [np.array(item.embedding, dtype=np.float32) for item in response.data]
-        return np.vstack(vectors)
 
     def _encode_cohere(self, texts: Sequence[str]) -> np.ndarray:
         """
         Skeleton for Cohere embeddings.
-
-        Expects `cohere_client` to provide an `embed`-like API.
         """
         if self.cohere_client is None:
             raise RuntimeError(
@@ -230,11 +255,27 @@ class EmbeddingGenerator:
         vectors = [np.array(vec, dtype=np.float32) for vec in resp.embeddings]
         return np.vstack(vectors)
 
+    def _encode_legacy(self, texts: Sequence[str]) -> np.ndarray:
+        """
+        Deterministic simulation based on text hash.
+        Used for testing and fallback.
+        """
+        dim = self.config.dim or 256
+        vectors = []
+        for text in texts:
+            # Seed based on text content
+            seed = sum(ord(c) for c in text) % (2**32)
+            rng = np.random.RandomState(seed)
+            
+            # Generate random vector
+            vec = rng.randn(dim)
+            vectors.append(vec)
+            
+        return np.vstack(vectors).astype(np.float32)
+
     def _encode_custom(self, texts: Sequence[str]) -> np.ndarray:
         """
         Custom encoder integration.
-
-        Expects a callable with signature: (Sequence[str]) -> np.ndarray
         """
         if self.custom_encoder is None:
             raise RuntimeError(

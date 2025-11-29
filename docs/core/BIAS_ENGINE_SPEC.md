@@ -523,6 +523,52 @@ recommendations = mitigator.generate_recommendations(['toxicity', 'gender'])
 
 ---
 
+## Architecture (v2.3)
+
+The Bias Engine uses a provider-based architecture for modularity and extensibility.
+
+### Components
+
+1. **BiasDetector** (`src/bias/detector.py`)
+   - Main facade accepting injected `BiasProvider`
+   - Defaults to `HeuristicProvider` if no provider specified
+
+2. **BiasProvider** (`src/bias/providers/base.py`)
+   - Abstract interface defining `detect(text) -> Dict[str, float]`
+
+3. **HeuristicProvider** (`src/bias/providers/heuristic.py`)
+   - Built-in keyword and feature-based detection
+   - No external dependencies
+   - Fallback for all scenarios
+
+4. **PerspectiveProvider** (`src/bias/providers/perspective.py`)
+   - Google Perspective API integration via `requests`
+   - Configured via `PERSPECTIVE_API_KEY`
+
+### Configuration
+
+Environment variables:
+```bash
+KALDRA_BIAS_PROVIDER=perspective  # or heuristic
+PERSPECTIVE_API_KEY=YOUR_KEY
+```
+
+### Usage
+
+```python
+from src.bias import BiasDetector
+from src.bias.providers.perspective import PerspectiveProvider
+
+# Default (heuristic)
+detector = BiasDetector()
+result = detector.detect("Text to analyze")
+
+# With Perspective API
+perspective = PerspectiveProvider(api_key="YOUR_KEY")
+detector = BiasDetector(provider=perspective)
+result = detector.detect("Text to analyze")
+```
+
 ## 9. Testing Strategy
 
 ### 9.1 Unit Tests
