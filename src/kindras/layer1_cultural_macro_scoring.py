@@ -21,6 +21,34 @@ class KindraLayer1CulturalMacroScoring(KindraScoringBase):
     - Hierarchy vs horizontal structures
     """
 
+    def adjust_l1_with_polarities(self, scores: Dict[str, float], polarities: Dict[str, float]) -> Dict[str, float]:
+        """
+        Adjust Layer 1 scores based on active polarities (v2.7 Hook).
+        
+        If specific polarities are active (e.g., POL_ORDER_CHAOS), they can boost or suppress
+        related cultural macro scores.
+        """
+        if not polarities:
+            return scores
+            
+        adjusted = scores.copy()
+        
+        # Example logic: High Chaos (POL_ORDER_CHAOS > 0.7) boosts 'disruption' scores if present
+        chaos_score = polarities.get("POL_ORDER_CHAOS", 0.5)
+        if chaos_score > 0.7:
+            for key in adjusted:
+                if "disruption" in key or "change" in key:
+                    adjusted[key] *= 1.1
+                    
+        # Example logic: High Tradition (POL_TRADITION_INNOVATION < 0.3) boosts 'stability'
+        trad_score = polarities.get("POL_TRADITION_INNOVATION", 0.5)
+        if trad_score < 0.3:
+             for key in adjusted:
+                if "tradition" in key or "stability" in key:
+                    adjusted[key] *= 1.1
+                    
+        return adjusted
+
     def score(self, context: Dict[str, Any], vectors: Dict[str, float]) -> Dict[str, float]:
         """
         Score Layer 1 vectors based on cultural macro context.

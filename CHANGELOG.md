@@ -1,18 +1,51 @@
 # Changelog
 All notable changes to KALDRA Core will be documented in this file.
 
-## [2.7.0] - 2025-11-29
+## [2.8.0] - 2025-11-29 — "The Guardian Layer"
+
+### Added
+- **Tau Layer (Epistemic Limiter v2)**: Dual-phase reliability system.
+  - `TauScore`: Dynamic confidence metric [0.0-1.0].
+  - `TauRisk`: Risk classification (LOW, MID, HIGH, CRITICAL).
+  - `Input Phase`: Pre-inference modulation of internal engines.
+  - `Output Phase`: Post-inference stability analysis.
+- **Safeguard Engine**: Narrative safety and ethics system.
+  - Risk Taxonomy: Toxicity, Manipulation, Polarization, Extremism, Distortion, Shadow Loops.
+  - Mitigation Policies: `CLAMP_DRIFT`, `SUPPRESS_POLARITY`, `BLOCK_OUTPUT`.
+- **Pipeline Integration**:
+  - `Drift Damping`: TW369 drift velocity modulated by Tau.
+  - `Archetype Smoothing`: Δ144 probability distribution flattened by Tau.
+  - `Signal Update`: `KaldraSignal` includes `tau` and `safeguard` blocks.
+
+### Changed
+- **KaldraMasterEngineV2**: Orchestrates the new Guardian Layer pipeline.
+- **TW369Integrator**: Accepts external damping modifiers.
+- **Delta144Engine**: Accepts external smoothing modifiers.
+
+### Technical
+- **New Modules**: `src/tau/`, `src/safeguard/`.
+- **New Schemas**: `schema/tau/`, `schema/safeguard/`.
+- **Testing**: Comprehensive unit and integration tests for new layers.
+
+---
+
+## [2.7.0] - 2025-11-29 — "Polarity Engine & Modifier Reintegration"
+
 ### Added
 - **Polarity System**: 46-dimensional tension tracking across Cultural, Semiotic, and Structural planes.
 - **Modifier Auto-Inference**: Embedding-based detection of archetype modifiers in `Delta144Engine`.
 - **Meta-Engine Mapping**: `polarity_mapping` module to bridge Nietzsche/Aurelius/Campbell outputs to Polarities.
 - **Story Engine Oscillations**: Detection of polarity inversions and narrative shifts in `StoryAggregator`.
+- **Modulation Layers**:
+  - **Δ12**: Archetype probabilities modulated by active polarities.
+  - **TW369**: Drift severity modulated by polarity alignment.
 - **Feature Flags**: `KALDRA_TW_POLARITY_ENABLED` and `KALDRA_DELTA12_POLARITY_ENABLED`.
 
 ### Changed
-- **Delta144Engine**: Updated `infer_state` to accept `polarity_scores`.
+- **Delta144Engine**: Updated `infer_state` to accept `polarity_scores` and auto-infer modifiers.
 - **Nietzsche/Aurelius Engines**: Standardized result serialization.
 - **StoryEvent**: Added `polarity_scores` field for persistent storage.
+- **API Adapter**: Exposed polarity and modifier data in standard response.
 
 ---
 

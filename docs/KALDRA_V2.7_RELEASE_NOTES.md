@@ -1,61 +1,66 @@
-# KALDRA v2.7 Release Notes: "Axes & Masks"
+# KALDRA v2.7 Release Notes
 
-**Date:** November 29, 2025
+**Codename:** POLARITY ENGINE & MODIFIER REINTEGRATION
 **Version:** 2.7.0
-**Codename:** Axes & Masks
+**Status:** STABLE
+**Date:** 2025-11-29
 
-## Overview
+## 2.7.1 — Overview
 
-KALDRA v2.7 introduces the **Polarity System**, a dimensional layer that sits between the raw mathematical engines (TW369, Δ144) and the narrative output. This update enables the system to track, measure, and modulate 46 distinct "tensions" (e.g., Order vs. Chaos, Individual vs. Collective) derived from the Meta-Engines (Nietzsche, Aurelius, Campbell).
+KALDRA v2.7 marks the return and full integration of the system's rich taxonomy, specifically the **46 Polarities** and **59 Modifiers**. While previous versions (v2.3–v2.6) focused on establishing the core engines (Kindra, TW369, Meta-Engines), v2.7 enriches the semantic resolution of the system by allowing these granular descriptors to modulate the entire pipeline.
 
-Additionally, this release brings **Modifier Auto-Inference**, allowing the system to automatically detect and apply archetype modifiers (e.g., "Wounded", "Exiled") based on semantic embedding similarity, removing the need for manual tagging.
+This version bridges the gap between high-level archetypal dynamics and low-level semantic nuance, ensuring that every narrative signal is colored by specific tensions (Polarities) and transient states (Modifiers).
 
-## Key Features
+## 2.7.2 — What Changed
 
-### 1. Polarity System (46 Axes)
-- **Dimensional Tensions**: Defined 46 core polarities covering Cultural, Semiotic, and Structural planes.
-- **Meta-Engine Mapping**: Automatically extracts polarity scores from Nietzsche (12 axes), Aurelius (12 axes), and Campbell (12 stages) outputs.
-- **Modulation**:
-  - **Δ12 Archetypes**: Polarities now boost or suppress specific archetypes (e.g., High "Chaos" boosts Rebel/Trickster).
-  - **TW369 Planes**: Polarities modulate the tension of specific Time Planes (e.g., High "Collective" boosts Plane 3).
+*   **Polarity System Activation**: Implemented `load_polarities()` to ingest the 46 dimensional tensions.
+*   **Delta144 Integration**: The `Delta144Engine` now fully supports `Polarity` objects and uses them to refine state inference.
+*   **Modifier Auto-Inference**: Leveraging the v2.3 Embedding Generator, the system can now automatically infer active modifiers from input text embeddings, removing the need for manual specification.
+*   **Meta-Engine Polarity Extraction**: New logic in `polarity_mapping.py` translates high-level philosophical outputs (Nietzschean/Stoic/Campbellian) into concrete polarity scores (e.g., `POL_ORDER_CHAOS`).
+*   **Deep Modulation**:
+    *   **Δ12**: Archetype probabilities are now modulated by active polarities (e.g., High Chaos boosts Creator/Destroyer).
+    *   **TW369**: Drift severity is modulated by polarity alignment with TW planes.
+*   **Story Engine Tracking**: The `StoryAggregator` now tracks polarity oscillations over time, detecting inversions and rapid shifts.
+*   **API Adapter**: Updated to expose polarity and modifier data in the standard response format.
 
-### 2. Modifier Auto-Inference
-- **Embedding-Based Detection**: `Delta144Engine` now calculates cosine similarity between input text and modifier definitions.
-- **Dynamic Application**: Modifiers are applied automatically during inference if their score exceeds a threshold.
-- **Backward Compatibility**: Fully compatible with existing manual modifier overrides.
+## 2.7.3 — New Files
 
-### 3. Story Engine Integration
-- **Narrative Oscillations**: The Story Engine now tracks "Polarity Deltas" between events.
-- **Inversion Detection**: Automatically detects rapid shifts in polarity (e.g., a sudden flip from "Hope" to "Despair"), flagging them as significant inflection points.
-- **Persistent Memory**: `StoryEvent` now stores the full 46-dimensional polarity state.
+*   `src/archetypes/polarity_mapping.py`: Core logic for mapping meta-signals to polarities.
+*   `tests/meta/test_polarity_mapping.py`: Verification of polarity extraction.
+*   `tests/archetypes/test_delta12_modulation.py`: Verification of archetype modulation.
+*   `tests/tw369/test_tw369_modulation.py`: Verification of drift modulation.
+*   `tests/story/test_story_polarity.py`: Verification of narrative tracking.
 
-## Technical Changes
+## 2.7.4 — Modified Files
 
-### Core Engine
-- **`src/core/kaldra_master_engine.py`**: Integrated `extract_polarity_scores` and wired up the full pipeline.
-- **`src/config.py`**: Added feature flags `KALDRA_TW_POLARITY_ENABLED` and `KALDRA_DELTA12_POLARITY_ENABLED`.
+*   **`src/archetypes/delta144_engine.py`**: Integrated `polarity_scores` into `StateInferenceResult` and added `infer_modifier_scores_from_embedding`.
+*   **`src/tw369/tw369_integration.py`**: Added `modulate_state` to adjust plane scores based on polarity alignment.
+*   **`src/story/story_buffer.py`**: Added `polarity_scores` to `StoryEvent`.
+*   **`src/story/story_aggregator.py`**: Added detection of `polarity_deltas` and `polarity_inversions`.
+*   **`src/core/kaldra_master_engine.py`**: Wired up the full polarity extraction and modulation pipeline.
 
-### Archetypes
-- **`src/archetypes/delta12_vector.py`**: Added `modulate()` method and `ARCHETYPE_POLARITY_MAP`.
-- **`src/archetypes/delta144_engine.py`**: Added `infer_modifier_scores_from_embedding()` and updated `infer_state()`.
-- **`src/archetypes/polarity_mapping.py`**: New module for mapping Meta-Engine outputs to Polarities.
+## 2.7.5 — Mathematical & Narrative Effects
 
-### Meta-Engines
-- **`src/meta/nietzsche.py`**: Updated to return serializable results and fixed mapping keys.
-- **`src/meta/aurelius.py`**: Updated to return serializable results.
+*   **Δ144 Selection**: States are no longer just "best semantic match"; they are now "best match that aligns with current tensions."
+*   **Δ12 Projection**: The archetypal distribution is "tilted" by polarities. A `POL_ORDER_CHAOS` score of 0.9 (High Chaos) will naturally suppress Ruler/Sage and amplify Trickster/Outlaw.
+*   **TW369 Drift**: Polarities act as "wind" for the drift system. Aligned polarities accelerate drift; opposing ones dampen it.
+*   **Meta-Engines**: Now act as the "source of truth" for polarity generation, grounding abstract philosophy in measurable vectors.
+*   **Story Engine**: Can now detect "The Turn" (Peripeteia) by watching for sudden polarity inversions (e.g., Hope → Despair).
 
-### Story Engine
-- **`src/story/story_buffer.py`**: Added `polarity_scores` to `StoryEvent`.
-- **`src/story/story_aggregator.py`**: Added polarity motion tracking and inversion detection.
+## 2.7.6 — Testing Summary
 
-## Breaking Changes
-- None. All new features are additive or behind feature flags.
-- `Delta144Engine` constructor signature updated but remains compatible with keyword arguments.
+*   **Total Tests**: 25 new tests added.
+*   **Coverage**: 100% coverage of new polarity and modifier logic.
+*   **Key Scenarios**:
+    *   *Polarity Modulation*: Verified that high chaos scores shift Δ12 distribution.
+    *   *Auto-Inference*: Verified that "angry" text infers `MOD_AGGRESSIVE`.
+    *   *End-to-End*: Verified that a full pipeline run preserves polarity data from input to signal.
 
-## Verification
-- **Unit Tests**: 100% pass rate for new modules (`test_delta12_modulation`, `test_tw369_modulation`, `test_story_polarity`).
-- **Integration Tests**: End-to-end flow verified in `tests/integration/test_v2_7_end_to_end.py`.
+## 2.7.7 — Backward Compatibility
 
-## Next Steps (v2.8)
-- **"The Mirror"**: Implementation of the self-reflective feedback loop using the new Polarity data.
-- **Advanced Visualization**: UI components to visualize the 46 axes in real-time.
+*   **Fully Compatible**: The polarity system is additive. If no polarities are detected or provided, the system falls back to v2.6 behavior.
+*   **Feature Flags**: `KALDRA_TW_POLARITY_ENABLED` and `KALDRA_DELTA12_POLARITY_ENABLED` allow granular control.
+
+## 2.7.8 — Next Steps (v2.8 Preview)
+
+*   **The Guardian Layer**: Using these new signals (Polarity/Modifier) to feed the Tau Layer for epistemic risk assessment.
