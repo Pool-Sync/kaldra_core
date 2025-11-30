@@ -357,3 +357,55 @@ Este arquivo será preenchido pelo Pool (ChatGPT) com base no relatório de audi
 - ✅ **Production Ready** - Resilient against failures.
 - ✅ **Observable** - Deep visibility into pipeline execution.
 - ✅ **Performant** - Tooling to measure and optimize latency.
+
+
+---
+
+## v2.x Line — Frozen Status
+
+As of v2.9 (November 30, 2025), the KALDRA Core 2.x line is considered **frozen and stable**.
+
+### Freeze Summary
+
+- All experimental, legacy, or app-specific code not integrated into the main pipeline has been archived or removed.
+- Unified schemas (`schema/unified/`) and common state/signal abstractions (`src/common/`) are now the canonical foundation for future versions.
+- The v2.x line represents a complete, production-ready narrative-cognitive engine with:
+  - Real AI integration (v2.3)
+  - Mathematical rigor (v2.4)
+  - Philosophical depth (v2.5)
+  - Temporal awareness (v2.6)
+  - Cultural resolution (v2.7)
+  - Safety & reliability (v2.8)
+  - Hardening & observability (v2.9)
+
+### Core Components (Frozen)
+
+All new work (v3.0+) will be built on top of:
+- `src/core/kaldra_master_engine.py` - Master orchestrator
+- `src/common/unified_state.py` - Unified state definitions
+- `src/common/unified_signal.py` - Unified signal definitions
+- `schema/unified/*` - Canonical schemas
+- `src/core/hardening/` - Resilience layer
+- `src/core/observability/` - Visibility layer
+
+### Archived Components
+
+App-specific prototypes have been moved to `src/apps/_ARCHIVE/`:
+- Alpha App (earnings analysis)
+- Geo App (geopolitical risk)
+- Product App (product analysis)
+- Safeguard App (safety monitoring)
+
+These are preserved for reference but are not part of the active pipeline.
+
+### Next Evolution
+
+**v3.0 - The Unification Layer** will:
+- Redesign the Apps architecture
+- Introduce a unified API layer
+- Enhance the Meta-Engine orchestration
+- Expand the Story Engine's temporal capabilities
+- Build on the solid foundation of v2.9
+
+**Tag:** `kaldra_core_v2.9_final`
+
