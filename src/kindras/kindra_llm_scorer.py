@@ -9,6 +9,10 @@ from __future__ import annotations
 from typing import Dict, Any, List, Optional
 import math
 from .scoring.llm_client_base import LLMClientBase
+from src.core.hardening.retries import with_retries
+from src.core.hardening.circuit_breaker import circuit_breaker
+from src.core.hardening.fallbacks import safe_fallback
+from src.core.hardening.timeouts import with_timeout
 
 
 class KindraLLMScorer:
@@ -41,6 +45,9 @@ class KindraLLMScorer:
         self.llm = llm_client
         self.rule_fallback = rule_fallback
 
+    @circuit_breaker(name="kindra_llm_score", fail_threshold=3, reset_time=60)
+    @with_retries(max_attempts=3, backoff=1.0)
+    @with_timeout(seconds=15)
     def score(
         self, 
         text: str, 

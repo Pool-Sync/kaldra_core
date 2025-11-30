@@ -23,6 +23,10 @@ from src.core.embedding_cache import (
     InMemoryEmbeddingCache,
     make_embedding_cache_key,
 )
+from src.core.hardening.retries import with_retries
+from src.core.hardening.circuit_breaker import circuit_breaker
+from src.core.hardening.fallbacks import safe_fallback
+from src.core.hardening.timeouts import with_timeout
 
 # Optional import for sentence-transformers.
 try:  # pragma: no cover - import guard
@@ -196,6 +200,9 @@ class EmbeddingGenerator:
         )
         return np.asarray(emb, dtype=np.float32)
 
+    @circuit_breaker(name="openai_embeddings", fail_threshold=3, reset_time=60)
+    @with_retries(max_attempts=3, backoff=1.0)
+    @with_timeout(seconds=10)
     def _encode_openai(self, texts: Sequence[str]) -> np.ndarray:
         """
         OpenAI embeddings via requests or injected client.
@@ -237,6 +244,9 @@ class EmbeddingGenerator:
             "OpenAI provider selected but no client injected and no API key in config."
         )
 
+    @circuit_breaker(name="cohere_embeddings", fail_threshold=3, reset_time=60)
+    @with_retries(max_attempts=3, backoff=1.0)
+    @with_timeout(seconds=10)
     def _encode_cohere(self, texts: Sequence[str]) -> np.ndarray:
         """
         Skeleton for Cohere embeddings.

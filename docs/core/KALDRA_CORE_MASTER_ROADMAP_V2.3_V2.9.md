@@ -1,7 +1,7 @@
 # KALDRA Core — Master Roadmap v2.3–v2.9
 
-**Last Updated**: 2025-11-29  
-**Status**: v2.8 COMPLETE ✅
+**Last Updated**: 2025-11-30  
+**Status**: v2.9 COMPLETE ✅
 
 ---
 
@@ -13,7 +13,7 @@
 - ✅ **v2.6** — Story Aggregation & Narrative Arcs (COMPLETE)
 - ✅ **v2.7** — Axes & Masks (COMPLETE)
 - ✅ **v2.8** — The Guardian Layer (COMPLETE)
-- 🔄 **v2.9** — Hardening & Performance (PLANNED)
+- ✅ **v2.9** — Hardening & Performance (COMPLETE)
 
 ---
 
@@ -331,6 +331,29 @@ Este arquivo será preenchido pelo Pool (ChatGPT) com base no relatório de audi
 
 ---
 
-## v2.9 — Hardening & Performance (PLANNED)
+## v2.9 — Hardening & Performance ✅ COMPLETE
 
-> NÃO editar este stub com detalhes agora. O preenchimento completo será feito em próxima task.
+**Codename**: Hardening & Performance
+**Status**: COMPLETE
+**Completion Date**: 2025-11-30
+
+### 2.9.1 Hardening Layer ✅
+- **Objective**: Robust error handling and resilience.
+- **Files**: `src/core/hardening/`
+- **Results**:
+  - [x] Timeouts, Retries, Circuit Breakers implemented.
+  - [x] Applied to LLM, Embeddings, Meta, Tau, Safeguard.
+  - [x] Global Degraded Mode in Master Engine.
+
+### 2.9.2 Performance & Observability ✅
+- **Objective**: Visibility and optimization.
+- **Files**: `perf/`, `src/core/observability/`
+- **Results**:
+  - [x] Profiling suite created.
+  - [x] Structured logging with request_id.
+  - [x] Metrics collection hooks.
+
+### v2.9 Results
+- ✅ **Production Ready** - Resilient against failures.
+- ✅ **Observable** - Deep visibility into pipeline execution.
+- ✅ **Performant** - Tooling to measure and optimize latency.

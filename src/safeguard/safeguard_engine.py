@@ -8,6 +8,10 @@ from typing import Dict, Any, List, Optional
 from .safeguard_risk_model import SafeguardRiskModel
 from .safeguard_policy import SafeguardPolicy
 from ..tau.tau_state import TauState
+from src.core.hardening.retries import with_retries
+from src.core.hardening.circuit_breaker import circuit_breaker
+from src.core.hardening.fallbacks import safe_fallback
+from src.core.hardening.timeouts import with_timeout
 
 @dataclass
 class SafeguardSignal:
@@ -34,6 +38,9 @@ class SafeguardEngine:
         self.risk_model = SafeguardRiskModel()
         self.policy = SafeguardPolicy()
         
+    @circuit_breaker(name="safeguard_evaluate", fail_threshold=5, reset_time=30)
+    @with_retries(max_attempts=2, backoff=0.5)
+    @with_timeout(seconds=5)
     def evaluate(
         self,
         tau_state: TauState,

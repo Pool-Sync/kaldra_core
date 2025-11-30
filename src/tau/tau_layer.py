@@ -7,6 +7,10 @@ from typing import Dict, Any, Optional
 from .tau_state import TauState
 from .tau_risk_model import TauRiskModel
 from .tau_policy import TauPolicy
+from src.core.hardening.retries import with_retries
+from src.core.hardening.circuit_breaker import circuit_breaker
+from src.core.hardening.fallbacks import safe_fallback
+from src.core.hardening.timeouts import with_timeout
 
 class TauLayer:
     """
@@ -18,6 +22,9 @@ class TauLayer:
         self.risk_model = TauRiskModel()
         self.policy = TauPolicy()
         
+    @circuit_breaker(name="tau_input_phase", fail_threshold=5, reset_time=30)
+    @with_retries(max_attempts=2, backoff=0.5)
+    @with_timeout(seconds=5)
     def compute_tau_input_phase(
         self,
         bias_result: Dict[str, Any],
@@ -64,6 +71,9 @@ class TauLayer:
             details={"phase": "input", "features": features}
         )
 
+    @circuit_breaker(name="tau_output_phase", fail_threshold=5, reset_time=30)
+    @with_retries(max_attempts=2, backoff=0.5)
+    @with_timeout(seconds=5)
     def compute_tau_output_phase(
         self,
         story_state: Any, # StorySignal or dict

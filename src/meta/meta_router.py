@@ -11,6 +11,10 @@ from .meta_engine_base import MetaEngineBase, MetaSignal
 from .nietzsche import analyze_meta as analyze_nietzsche
 from .campbell import CampbellEngine, HERO_JOURNEY_STAGES
 from .aurelius import analyze_meta as analyze_aurelius
+from src.core.hardening.retries import with_retries
+from src.core.hardening.circuit_breaker import circuit_breaker
+from src.core.hardening.fallbacks import safe_fallback
+from src.core.hardening.timeouts import with_timeout
 
 
 @dataclass
@@ -53,6 +57,9 @@ class MetaRouter:
             CampbellEngine(),
         ]
     
+    @circuit_breaker(name="meta_router_evaluate", fail_threshold=5, reset_time=30)
+    @with_retries(max_attempts=2, backoff=0.5)
+    @with_timeout(seconds=5)
     def evaluate(self, signal: Dict[str, Any]) -> Dict[str, MetaSignal]:
         """
         Run all meta-engines on the signal.

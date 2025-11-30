@@ -1,6 +1,23 @@
 # Changelog
 All notable changes to KALDRA Core will be documented in this file.
 
+## [2.9.0] - 2025-11-30 — "Hardening & Performance"
+
+### Added
+- **Hardening Layer**: Timeouts, Retries, Circuit Breakers, Fallbacks.
+- **Global Degraded Mode**: Master Engine resilience against catastrophic failures.
+- **Profiling Suite**: `perf/` module for performance auditing.
+- **Observability**: Structured logging and metrics hooks.
+- **Test Suites**: Hardening, Chaos, and Performance tests.
+
+### Changed
+- **KaldraMasterEngineV2**: Wrapped in global exception handling.
+- **EmbeddingGenerator**: Added circuit breakers for OpenAI/Cohere.
+- **KindraLLMScorer**: Added retries and timeouts.
+- **MetaRouter**: Added circuit breakers for engine evaluation.
+
+---
+
 ## [2.8.0] - 2025-11-29 — "The Guardian Layer"
 
 ### Added

@@ -19,6 +19,8 @@ from src.meta.nietzsche import analyze_meta as analyze_nietzsche
 from src.meta.aurelius import analyze_meta as analyze_aurelius
 from src.meta.campbell import CampbellEngine
 from src.archetypes.delta12_vector import Delta12Vector
+from src.core.hardening.fallbacks import safe_fallback
+from src.core.hardening.timeouts import with_timeout
 
 @dataclass
 class KaldraSignal:
@@ -32,6 +34,7 @@ class KaldraSignal:
     risk_summary: str = "LOW"
     delta_state: Optional[Any] = None  # Dict with archetype+state from Delta144
     polarity_scores: Optional[Any] = None  # Dict[str, float] (v2.7)
+    degraded: bool = False # v2.9 Hardening flag
 
 class KaldraMasterEngineV2:
     """
@@ -171,109 +174,167 @@ class KaldraMasterEngineV2:
             has_tw_window=has_tw_window,
         )
         
-        # --- PHASE 1: PRE-ANALYSIS (Meta & Polarity) ---
-        polarity_scores = {}
-        meta_results = {}
-        if text:
+        # --- GLOBAL HARDENING WRAPPER ---
+        degraded_mode = False
+        try:
+            # --- PHASE 1: PRE-ANALYSIS (Meta & Polarity) ---
+            polarity_scores = {}
+            meta_results = {}
+            if text:
+                try:
+                    nietzsche_res = analyze_nietzsche(text)
+                    aurelius_res = analyze_aurelius(text)
+                    meta_results = {
+                        "nietzsche": nietzsche_res.to_dict(),
+                        "aurelius": aurelius_res.to_dict()
+                    }
+                    polarity_scores = extract_polarity_scores(meta_results)
+                except Exception as e:
+                    if self.logger:
+                        self.logger.log_event("meta_analysis_error", {"error": str(e)})
+                    # Non-critical failure, continue degraded
+                    degraded_mode = True
+
+            # --- PHASE 2: TAU INPUT PHASE ---
+            # Calculate initial epistemic state
+            # For now, bias is placeholder or derived from polarity
+            bias_placeholder = {"score": 0.0} 
+            modifier_scores_placeholder = {} # Will be inferred by Delta144, but we need them for Tau? 
+            # Actually Tau uses them to MODULATE Delta144.
+            # Let's infer modifier scores from embedding first if possible, or let Delta144 do it.
+            # Delta144 has `infer_modifier_scores_from_embedding`.
             try:
-                nietzsche_res = analyze_nietzsche(text)
-                aurelius_res = analyze_aurelius(text)
-                meta_results = {
-                    "nietzsche": nietzsche_res.to_dict(),
-                    "aurelius": aurelius_res.to_dict()
-                }
-                polarity_scores = extract_polarity_scores(meta_results)
+                modifier_scores = self.delta.infer_modifier_scores_from_embedding(embedding)
+            except Exception:
+                modifier_scores = {}
+                degraded_mode = True
+            
+            try:
+                tau_input = self.tau_layer.compute_tau_input_phase(
+                    bias_result=bias_placeholder,
+                    polarity_scores=polarity_scores,
+                    modifier_scores=modifier_scores
+                )
+                tau_modifiers = tau_input.tau_modifiers
             except Exception as e:
                 if self.logger:
-                    self.logger.log_event("meta_analysis_error", {"error": str(e)})
+                    self.logger.log_event("tau_input_error", {"error": str(e)})
+                # Fallback Tau State
+                tau_modifiers = {}
+                tau_input = TauState(tau_score=0.5, tau_risk="MID", tau_modifiers={}, tau_actions=[])
+                degraded_mode = True
+            
+            # --- PHASE 3: CORE INFERENCE (Modulated) ---
+            
+            # 1) Δ144 — get base archetype distribution (Modulated by Tau)
+            try:
+                result = self.delta.infer_from_vector(embedding, tau_modifiers=tau_modifiers)
+            except Exception as e:
+                 if self.logger:
+                    self.logger.log_event("delta_inference_error", {"error": str(e)})
+                 # Critical failure fallback
+                 from src.archetypes.delta144_engine import DeltaState
+                 result = DeltaState(probs=[1.0/144]*144, dominant_id="A01_INNOCENT", confidence=0.0)
+                 degraded_mode = True
+            
+            if result.probs is None:
+                base_probs = np.ones(144) / 144.0
+            else:
+                base_probs = np.asarray(result.probs, dtype=float)
 
-        # --- PHASE 2: TAU INPUT PHASE ---
-        # Calculate initial epistemic state
-        # For now, bias is placeholder or derived from polarity
-        bias_placeholder = {"score": 0.0} 
-        modifier_scores_placeholder = {} # Will be inferred by Delta144, but we need them for Tau? 
-        # Actually Tau uses them to MODULATE Delta144.
-        # Let's infer modifier scores from embedding first if possible, or let Delta144 do it.
-        # Delta144 has `infer_modifier_scores_from_embedding`.
-        modifier_scores = self.delta.infer_modifier_scores_from_embedding(embedding)
-        
-        tau_input = self.tau_layer.compute_tau_input_phase(
-            bias_result=bias_placeholder,
-            polarity_scores=polarity_scores,
-            modifier_scores=modifier_scores
-        )
-        
-        # Extract modifiers for downstream engines
-        tau_modifiers = tau_input.tau_modifiers
-        
-        # --- PHASE 3: CORE INFERENCE (Modulated) ---
-        
-        # 1) Δ144 — get base archetype distribution (Modulated by Tau)
-        result = self.delta.infer_from_vector(embedding, tau_modifiers=tau_modifiers)
-        
-        if result.probs is None:
-            base_probs = np.ones(144) / 144.0
-        else:
-            base_probs = np.asarray(result.probs, dtype=float)
+            # 2) Kindra modulation (usa torch internamente)
+            try:
+                ctx = torch.tensor(embedding, dtype=torch.float32).unsqueeze(0)
+                probs_t = torch.tensor(base_probs, dtype=torch.float32).unsqueeze(0)
+                
+                # Aplica modulação cultural
+                modulated = self.kindra_mod(probs_t, ctx, apply_softmax=True)[0]
+                modulated_np = modulated.detach().cpu().numpy()
+            except Exception as e:
+                if self.logger:
+                    self.logger.log_event("kindra_mod_error", {"error": str(e)})
+                modulated_np = base_probs # Fallback to unmodulated
+                degraded_mode = True
 
-        # 2) Kindra modulation (usa torch internamente)
-        ctx = torch.tensor(embedding, dtype=torch.float32).unsqueeze(0)
-        probs_t = torch.tensor(base_probs, dtype=torch.float32).unsqueeze(0)
-        
-        # Aplica modulação cultural
-        modulated = self.kindra_mod(probs_t, ctx, apply_softmax=True)[0]
-        modulated_np = modulated.detach().cpu().numpy()
+            # 3) TW369 Drift & Oracle
+            tw_trigger = False
+            tw_stats = None
+            drift_state = {}
+            
+            try:
+                # Compute drift using the integrator
+                # We need a TWState. Let's create a minimal one.
+                tw_state = self.tw_integrator.create_state() # Empty for now, or populate if we had data
+                drift_values = self.tw_integrator.compute_drift(tw_state, tau_modifiers=tau_modifiers)
+                drift_state = {"velocity": sum(drift_values.values()), "values": drift_values}
 
-        # 3) TW369 Drift & Oracle
-        tw_trigger = False
-        tw_stats = None
-        drift_state = {}
-        
-        # Calculate Drift (v2.8)
-        # Create a synthetic TWState from the Kindra output (simplified mapping)
-        # In a full system, Kindra outputs 3 vectors (L1, L2, L3). 
-        # Here we only have the final modulated vector.
-        # We can approximate plane scores from the modulated vector if we had the mapping.
-        # For now, we'll use a dummy state or rely on what we have.
-        # Let's assume we can get some plane info from the Delta144 result if available.
-        
-        # Compute drift using the integrator
-        # We need a TWState. Let's create a minimal one.
-        tw_state = self.tw_integrator.create_state() # Empty for now, or populate if we had data
-        drift_values = self.tw_integrator.compute_drift(tw_state, tau_modifiers=tau_modifiers)
-        drift_state = {"velocity": sum(drift_values.values()), "values": drift_values}
+                if tw_window is not None:
+                    tw_trigger, tw_stats = self.tw_oracle.detect(tw_window)
+            except Exception as e:
+                if self.logger:
+                    self.logger.log_event("tw369_error", {"error": str(e)})
+                degraded_mode = True
 
-        if tw_window is not None:
-            tw_trigger, tw_stats = self.tw_oracle.detect(tw_window)
+            # --- PHASE 4: TAU OUTPUT PHASE ---
+            try:
+                tau_output = self.tau_layer.compute_tau_output_phase(
+                    story_state=None, # No story engine in this minimal loop
+                    drift_state=drift_state,
+                    meta_scores=meta_results
+                )
+            except Exception as e:
+                if self.logger:
+                    self.logger.log_event("tau_output_error", {"error": str(e)})
+                tau_output = TauState(tau_score=0.5, tau_risk="MID", tau_modifiers={}, tau_actions=[])
+                degraded_mode = True
+            
+            # --- PHASE 5: SAFEGUARD ENGINE ---
+            try:
+                safeguard_signal = self.safeguard_engine.evaluate(
+                    tau_state=tau_output,
+                    drift_state=drift_state,
+                    polarities=polarity_scores,
+                    meta=meta_results,
+                    journey_state=None
+                )
+            except Exception as e:
+                if self.logger:
+                    self.logger.log_event("safeguard_error", {"error": str(e)})
+                # Fail Safe: Assume High Risk if Safeguard fails
+                safeguard_signal = SafeguardSignal(
+                    bias={}, polarity_risk={}, drift_risk={}, journey_risk={}, meta_risk={},
+                    final_risk="HIGH", risk_score=0.8, mitigation_actions=["FLAG_RISK"]
+                )
+                degraded_mode = True
 
-        # --- PHASE 4: TAU OUTPUT PHASE ---
-        tau_output = self.tau_layer.compute_tau_output_phase(
-            story_state=None, # No story engine in this minimal loop
-            drift_state=drift_state,
-            meta_scores=meta_results
-        )
-        
-        # --- PHASE 5: SAFEGUARD ENGINE ---
-        safeguard_signal = self.safeguard_engine.evaluate(
-            tau_state=tau_output,
-            drift_state=drift_state,
-            polarities=polarity_scores,
-            meta=meta_results,
-            journey_state=None
-        )
+            signal = KaldraSignal(
+                archetype_probs=modulated_np,
+                tw_trigger=tw_trigger,
+                tw_stats=tw_stats,
+                tau=tau_output.to_dict(),
+                safeguard=safeguard_signal.to_dict(),
+                risk_summary=safeguard_signal.final_risk,
+                delta_state=result.to_dict(),
+                polarity_scores=polarity_scores,
+                degraded=degraded_mode
+            )
+            
+            # Log inference end
+            self._log_inference_end(request_id=request_id, signal=signal)
+            
+            return signal
 
-        signal = KaldraSignal(
-            archetype_probs=modulated_np,
-            tw_trigger=tw_trigger,
-            tw_stats=tw_stats,
-            tau=tau_output.to_dict(),
-            safeguard=safeguard_signal.to_dict(),
-            risk_summary=safeguard_signal.final_risk,
-            delta_state=result.to_dict(),
-            polarity_scores=polarity_scores,
-        )
-        
-        # Log inference end
-        self._log_inference_end(request_id=request_id, signal=signal)
-        
-        return signal
+        except Exception as e:
+            # CATASTROPHIC FAILURE FALLBACK
+            if self.logger:
+                self.logger.log_event("catastrophic_inference_failure", {"error": str(e)})
+            
+            # Return a minimal valid signal
+            fallback_probs = np.ones(144) / 144.0
+            return KaldraSignal(
+                archetype_probs=fallback_probs,
+                tw_trigger=False,
+                tw_stats=None,
+                risk_summary="CRITICAL_FAILURE",
+                degraded=True
+            )
