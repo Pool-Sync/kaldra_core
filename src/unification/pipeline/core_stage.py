@@ -17,6 +17,7 @@ from ..states.unified_state import (
     KindraContext
 )
 from ..registry import ModuleRegistry
+from src.kindras.kindra_engine import KindraEngine
 
 logger = logging.getLogger(__name__)
 
@@ -41,6 +42,10 @@ class CoreStage:
         """
         self.registry = registry
         self.delta144 = registry.get("archetypes")
+        # Initialize KindraEngine
+        # In a full DI system, this might come from registry too, but for now we instantiate directly
+        # or check registry.
+        self.kindra_engine = registry.get("kindra") or KindraEngine()
     
     def execute(self, context: UnifiedContext) -> UnifiedContext:
         """
@@ -95,8 +100,13 @@ class CoreStage:
             
             context.drift_ctx = drift_ctx
             
-            # Create Kindra context (placeholder - full Kindra integration in future)
-            kindra_ctx = KindraContext()
+            # 3. Kindra 3x48 Scoring
+            kindra_ctx = self.kindra_engine.score_all_layers(
+                text=context.input_ctx.text,
+                embedding=embedding,
+                delta144_state=delta144_result.state.id if delta144_result.state else None,
+                archetype_scores=delta12.scores if delta12 else None
+            )
             context.kindra_ctx = kindra_ctx
             
             logger.info(f"Core stage complete: archetype={delta144_result.archetype.label}, state={delta144_result.state.label}")

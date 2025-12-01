@@ -147,19 +147,109 @@ class RiskContext:
 
 
 @dataclass
+class KindraLayerScores:
+    """
+    Container for 48 Kindra vectors in a specific layer.
+    Example:
+        scores = {"E01": 0.42, "E02": 0.76, ...}
+    """
+    scores: Dict[str, float] = field(default_factory=dict)
+    avg_score: float = 0.0
+    max_score: float = 0.0
+
+    def to_json(self) -> Dict[str, Any]:
+        return {
+            "scores": self.scores,
+            "avg_score": self.avg_score,
+            "max_score": self.max_score,
+        }
+
+
+@dataclass
 class KindraContext:
     """
-    Context for Kindra scoring.
+    Represents 144 Kindra vectors (3×48) + aggregates.
+    Single reference object for MetaStage, StoryStage, and OutputStage.
     """
-    layer1: Dict[str, float] = field(default_factory=dict)
-    layer2: Dict[str, float] = field(default_factory=dict)
-    layer3: Dict[str, float] = field(default_factory=dict)
+    # 3 Kindra layers (each with 48 vectors)
+    layer1: KindraLayerScores = field(default_factory=KindraLayerScores)
+    layer2: KindraLayerScores = field(default_factory=KindraLayerScores)
+    layer3: KindraLayerScores = field(default_factory=KindraLayerScores)
+
+    # TW-plane distribution (3/6/9)
+    tw_plane_distribution: Dict[int, float] = field(default_factory=dict)
+
+    # Δ144 distribution derived from Kindra maps
+    delta144_weights: Dict[str, float] = field(default_factory=dict)
+
+    # Auxiliary metadata
+    metadata: Dict[str, Any] = field(default_factory=dict)
+    
+    def get_total_vectors(self) -> int:
+        """
+        Returns the total number of available Kindra vectors.
+        Should always be 144 (3×48).
+        """
+        return (
+            len(self.layer1.scores)
+            + len(self.layer2.scores)
+            + len(self.layer3.scores)
+        )
+    
+    def get_top_vectors(self, n: int = 10) -> List[Dict[str, Any]]:
+        """
+        Returns the top n Kindra vectors considering all three layers combined.
+        Result: list of dicts: [{"id": "...", "score": 0.87, "layer": 2}, ...]
+        """
+        all_vecs = []
+
+        # Add Layer 1
+        for vid, score in self.layer1.scores.items():
+            all_vecs.append({"id": vid, "score": score, "layer": 1})
+
+        # Add Layer 2
+        for vid, score in self.layer2.scores.items():
+            all_vecs.append({"id": vid, "score": score, "layer": 2})
+
+        # Add Layer 3
+        for vid, score in self.layer3.scores.items():
+            all_vecs.append({"id": vid, "score": score, "layer": 3})
+
+        # Sort by score desc
+        all_vecs.sort(key=lambda x: x["score"], reverse=True)
+
+        return all_vecs[:n]
+    
+    def to_json(self) -> Dict[str, Any]:
+        return {
+            "layer1": self.layer1.to_json(),
+            "layer2": self.layer2.to_json(),
+            "layer3": self.layer3.to_json(),
+            "tw_plane_distribution": self.tw_plane_distribution,
+            "delta144_weights": self.delta144_weights,
+            "metadata": self.metadata,
+        }
+    
+    @staticmethod
+    def from_json(data: Dict[str, Any]) -> "KindraContext":
+        return KindraContext(
+            layer1=KindraLayerScores(**data.get("layer1", {})),
+            layer2=KindraLayerScores(**data.get("layer2", {})),
+            layer3=KindraLayerScores(**data.get("layer3", {})),
+            tw_plane_distribution=data.get("tw_plane_distribution", {}),
+            delta144_weights=data.get("delta144_weights", {}),
+            metadata=data.get("metadata", {}),
+        )
     
     def to_dict(self) -> Dict[str, Any]:
+        """Legacy compatibility method - use to_json() for new code."""
         return {
-            'layer1': self.layer1,
-            'layer2': self.layer2,
-            'layer3': self.layer3
+            'layer1': self.layer1.scores,
+            'layer2': self.layer2.scores,
+            'layer3': self.layer3.scores,
+            'tw_plane_distribution': self.tw_plane_distribution,
+            'delta144_weights': self.delta144_weights,
+            'metadata': self.metadata
         }
 
 
