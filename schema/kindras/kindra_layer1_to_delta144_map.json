@@ -3,11 +3,10 @@
         "id": "E01",
         "boost": [
             "Lover",
-            "Jester"
+            "Trickster"
         ],
         "suppress": [
-            "Sage",
-            "Hermit"
+            "Sage"
         ]
     },
     {
@@ -17,8 +16,8 @@
             "Magician"
         ],
         "suppress": [
-            "Everyman",
-            "Judge"
+            "Innocent",
+            "Ruler"
         ]
     },
     {
@@ -36,7 +35,7 @@
         "id": "E04",
         "boost": [
             "Hero",
-            "Outlaw"
+            "Rebel"
         ],
         "suppress": [
             "Sage",
@@ -46,22 +45,19 @@
     {
         "id": "E05",
         "boost": [
-            "Jester",
             "Trickster"
         ],
         "suppress": [
-            "Ruler",
-            "Judge"
+            "Ruler"
         ]
     },
     {
         "id": "E06",
         "boost": [
-            "Jester",
+            "Trickster",
             "Magician"
         ],
         "suppress": [
-            "Judge",
             "Ruler"
         ]
     },
@@ -72,8 +68,8 @@
             "Sage"
         ],
         "suppress": [
-            "Everyman",
-            "Outlaw"
+            "Innocent",
+            "Rebel"
         ]
     },
     {
@@ -84,17 +80,17 @@
         ],
         "suppress": [
             "Sage",
-            "Judge"
+            "Ruler"
         ]
     },
     {
         "id": "S09",
         "boost": [
-            "Everyman",
+            "Innocent",
             "Caregiver"
         ],
         "suppress": [
-            "Outlaw",
+            "Rebel",
             "Explorer"
         ]
     },
@@ -105,8 +101,8 @@
             "Caregiver"
         ],
         "suppress": [
-            "Hermit",
-            "Judge"
+            "Sage",
+            "Ruler"
         ]
     },
     {
@@ -116,7 +112,7 @@
             "Sage"
         ],
         "suppress": [
-            "Jester",
+            "Trickster",
             "Lover"
         ]
     },
@@ -127,7 +123,7 @@
             "Innocent"
         ],
         "suppress": [
-            "Outlaw",
+            "Rebel",
             "Trickster"
         ]
     },
@@ -138,8 +134,8 @@
             "Ruler"
         ],
         "suppress": [
-            "Jester",
-            "Outlaw"
+            "Trickster",
+            "Rebel"
         ]
     },
     {
@@ -150,7 +146,7 @@
         ],
         "suppress": [
             "Trickster",
-            "Outlaw"
+            "Rebel"
         ]
     },
     {
@@ -161,7 +157,7 @@
         ],
         "suppress": [
             "Sage",
-            "Judge"
+            "Ruler"
         ]
     },
     {
@@ -171,7 +167,6 @@
             "Hero"
         ],
         "suppress": [
-            "Judge",
             "Ruler"
         ]
     },
@@ -179,7 +174,7 @@
         "id": "P17",
         "boost": [
             "Ruler",
-            "Guardian"
+            "Caregiver"
         ],
         "suppress": [
             "Innocent",
@@ -189,12 +184,11 @@
     {
         "id": "P18",
         "boost": [
-            "Judge",
             "Ruler"
         ],
         "suppress": [
-            "Jester",
-            "Outlaw"
+            "Trickster",
+            "Rebel"
         ]
     },
     {
@@ -204,7 +198,7 @@
             "Magician"
         ],
         "suppress": [
-            "Everyman",
+            "Innocent",
             "Explorer"
         ]
     },
@@ -216,13 +210,13 @@
         ],
         "suppress": [
             "Trickster",
-            "Outlaw"
+            "Rebel"
         ]
     },
     {
         "id": "P21",
         "boost": [
-            "Outlaw",
+            "Rebel",
             "Hero"
         ],
         "suppress": [
@@ -234,11 +228,11 @@
         "id": "P22",
         "boost": [
             "Sage",
-            "Judge"
+            "Ruler"
         ],
         "suppress": [
-            "Jester",
-            "Outlaw"
+            "Trickster",
+            "Rebel"
         ]
     },
     {
@@ -259,7 +253,7 @@
             "Ruler"
         ],
         "suppress": [
-            "Outlaw",
+            "Rebel",
             "Trickster"
         ]
     },
@@ -270,30 +264,28 @@
             "Magician"
         ],
         "suppress": [
-            "Jester",
-            "Outlaw"
+            "Trickster",
+            "Rebel"
         ]
     },
     {
         "id": "T26",
         "boost": [
             "Hero",
-            "Outlaw"
+            "Rebel"
         ],
         "suppress": [
             "Innocent",
-            "Judge"
+            "Ruler"
         ]
     },
     {
         "id": "T27",
         "boost": [
-            "Judge",
             "Ruler"
         ],
         "suppress": [
-            "Trickster",
-            "Jester"
+            "Trickster"
         ]
     },
     {
@@ -303,8 +295,7 @@
             "Caregiver"
         ],
         "suppress": [
-            "Ruler",
-            "Judge"
+            "Ruler"
         ]
     },
     {
@@ -314,29 +305,28 @@
             "Magician"
         ],
         "suppress": [
-            "Outlaw",
+            "Rebel",
             "Trickster"
         ]
     },
     {
         "id": "T30",
         "boost": [
-            "Hermit",
             "Sage"
         ],
         "suppress": [
             "Hero",
-            "Jester"
+            "Trickster"
         ]
     },
     {
         "id": "T31",
         "boost": [
             "Hero",
-            "Outlaw"
+            "Rebel"
         ],
         "suppress": [
-            "Hermit",
+            "Sage",
             "Innocent"
         ]
     },
@@ -347,8 +337,7 @@
             "Hero"
         ],
         "suppress": [
-            "Ruler",
-            "Judge"
+            "Ruler"
         ]
     },
     {
@@ -359,28 +348,27 @@
         ],
         "suppress": [
             "Hero",
-            "Outlaw"
+            "Rebel"
         ]
     },
     {
         "id": "R34",
         "boost": [
-            "Judge",
+            "Ruler",
             "Sage"
         ],
         "suppress": [
-            "Jester",
-            "Outlaw"
+            "Trickster",
+            "Rebel"
         ]
     },
     {
         "id": "R35",
         "boost": [
-            "Outlaw",
+            "Rebel",
             "Trickster"
         ],
         "suppress": [
-            "Judge",
             "Ruler"
         ]
     },
@@ -391,7 +379,6 @@
             "Magician"
         ],
         "suppress": [
-            "Judge",
             "Ruler"
         ]
     },
@@ -402,7 +389,6 @@
             "Hero"
         ],
         "suppress": [
-            "Judge",
             "Ruler"
         ]
     },
@@ -410,10 +396,10 @@
         "id": "R38",
         "boost": [
             "Caregiver",
-            "Everyman"
+            "Innocent"
         ],
         "suppress": [
-            "Outlaw",
+            "Rebel",
             "Trickster"
         ]
     },
@@ -425,7 +411,7 @@
         ],
         "suppress": [
             "Explorer",
-            "Outlaw"
+            "Rebel"
         ]
     },
     {
@@ -435,7 +421,6 @@
             "Ruler"
         ],
         "suppress": [
-            "Jester",
             "Trickster"
         ]
     },
@@ -446,8 +431,8 @@
             "Sage"
         ],
         "suppress": [
-            "Jester",
-            "Outlaw"
+            "Trickster",
+            "Rebel"
         ]
     },
     {
@@ -457,18 +442,16 @@
             "Magician"
         ],
         "suppress": [
-            "Trickster",
-            "Jester"
+            "Trickster"
         ]
     },
     {
         "id": "M43",
         "boost": [
-            "Judge",
             "Ruler"
         ],
         "suppress": [
-            "Outlaw",
+            "Rebel",
             "Explorer"
         ]
     },
@@ -479,7 +462,6 @@
             "Magician"
         ],
         "suppress": [
-            "Judge",
             "Ruler"
         ]
     },
@@ -491,7 +473,7 @@
         ],
         "suppress": [
             "Trickster",
-            "Outlaw"
+            "Rebel"
         ]
     },
     {
@@ -502,7 +484,7 @@
         ],
         "suppress": [
             "Hero",
-            "Outlaw"
+            "Rebel"
         ]
     },
     {
@@ -513,17 +495,17 @@
         ],
         "suppress": [
             "Trickster",
-            "Outlaw"
+            "Rebel"
         ]
     },
     {
         "id": "M48",
         "boost": [
-            "Everyman",
+            "Innocent",
             "Caregiver"
         ],
         "suppress": [
-            "Outlaw",
+            "Rebel",
             "Magician"
         ]
     }
