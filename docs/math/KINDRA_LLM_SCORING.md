@@ -2,19 +2,38 @@
 
 ## 1. Overview
 
-The **Kindra LLM-Based Scoring** system replaces rule-based Kindra scoring with contextual LLM inference while maintaining full compatibility with Δ144, TW369, Adaptive Mapping, and Advanced Drift models.
+The **Kindra LLM-Based Scoring** system replaces rule-based Kindra scoring with contextual LLM inference while maintaining full compatibility with Δ144, TW369,## 2. Architecture (v2.3)
 
-## 2. Architecture
+The scoring engine uses a modular architecture with dependency injection to support both real LLM inference and legacy/testing modes.
 
 ### Components
 
-1. **KindraLLMScorer** (`src/kindras/kindra_llm_scorer.py`)
-   - Main LLM scoring engine
-   - Handles prompt construction
-   - Parses and clamps LLM responses
-   - Provides fallback to rule-based scoring
+1.  **KindraLLMScorer** (`src/kindras/kindra_llm_scorer.py`)
+    *   Main entry point.
+    *   Accepts an injected `LLMClientBase`.
+    *   Handles prompt construction and response parsing.
+    *   Clamps scores to [-1.0, 1.0].
 
-2. **Prompt System** (`src/kindras/prompts/kindra_llm_prompt.json`)
+2.  **LLMClientBase** (`src/kindras/scoring/llm_client_base.py`)
+    *   Abstract interface defining the `generate(prompt)` contract.
+
+3.  **OpenAILLMClient** (`src/kindras/scoring/llm_openai_client.py`)
+    *   Concrete implementation using `requests` to call OpenAI API.
+    *   Configured via `KALDRA_LLM_API_KEY` and `KALDRA_LLM_MODEL`.
+
+4.  **DummyLLMClient** (`src/kindras/scoring/llm_dummy_client.py`)
+    *   Fallback implementation returning zero scores.
+    *   Used when no API key is present or for testing.
+
+### Configuration
+
+Environment variables in `.env`:
+
+```bash
+KALDRA_LLM_PROVIDER=openai  # or dummy
+KALDRA_LLM_API_KEY=sk-...
+KALDRA_LLM_MODEL=gpt-4-turbo-preview
+```m** (`src/kindras/prompts/kindra_llm_prompt.json`)
    - Few-shot examples
    - Scoring instructions
    - Output format specification

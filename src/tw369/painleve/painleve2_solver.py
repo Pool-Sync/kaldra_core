@@ -10,7 +10,36 @@ We implement an adaptive RK45 solver with:
 """
 
 from __future__ import annotations
-from typing import Callable, List, Tuple
+from typing import Callable, List, Tuple, Optional
+from pathlib import Path
+import sys
+
+# Add parent directory to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
+from tw369.config_loader import load_painleve_config
+from tw369.regime_utils import get_painleve_alpha_for_archetype
+
+
+def build_default_solver(archetype_id: Optional[str] = None) -> "PainleveIISolver":
+    """
+    Build Painlevé II solver with schema-driven configuration.
+    
+    Args:
+        archetype_id: Optional archetype ID for regime-specific calibration
+        
+    Returns:
+        Configured PainleveIISolver
+    """
+    config = load_painleve_config()
+    
+    # Use regime-specific alpha if archetype provided
+    alpha = config.alpha
+    if archetype_id:
+        alpha = get_painleve_alpha_for_archetype(archetype_id)
+    
+    return PainleveIISolver(alpha=alpha)
+
 
 class PainleveIISolver:
     def __init__(self, alpha: float = 0.0):

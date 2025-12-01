@@ -1,0 +1,184 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "KALDRA Story Schema",
+    "description": "Schema for story-level aggregation and multi-turn narrative tracking in KALDRA Core.",
+    "type": "object",
+    "required": [
+        "story_id",
+        "turns",
+        "delta144_evolution",
+        "narrative_coherence",
+        "dominant_archetypes"
+    ],
+    "properties": {
+        "story_id": {
+            "type": "string",
+            "description": "Unique identifier for the story/session (UUID recommended)."
+        },
+        "session_id": {
+            "type": "string",
+            "description": "Optional external session identifier (e.g. chat/session id)."
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO timestamp when the story was created."
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO timestamp when the story was last updated."
+        },
+        "turns": {
+            "type": "array",
+            "description": "Ordered list of narrative turns associated with this story.",
+            "items": {
+                "type": "object",
+                "required": [
+                    "turn_index",
+                    "timestamp",
+                    "role",
+                    "text",
+                    "signal_summary"
+                ],
+                "properties": {
+                    "turn_id": {
+                        "type": "string",
+                        "description": "Optional unique ID for the turn."
+                    },
+                    "turn_index": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "description": "Sequential index of the turn within the story (0-based)."
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "ISO timestamp when the turn occurred."
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "Role associated with the turn (e.g. 'user', 'system', 'assistant')."
+                    },
+                    "text": {
+                        "type": "string",
+                        "description": "Raw or cleaned narrative text for this turn."
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "description": "Optional arbitrary metadata for the turn.",
+                        "additionalProperties": true
+                    },
+                    "signal_summary": {
+                        "type": "object",
+                        "description": "Compact summary of the KALDRA signal for this turn.",
+                        "properties": {
+                            "archetype_top_index": {
+                                "type": "integer",
+                                "description": "Index of the dominant archetype for this turn."
+                            },
+                            "archetype_top_prob": {
+                                "type": "number",
+                                "minimum": 0.0,
+                                "maximum": 1.0,
+                                "description": "Probability of the dominant archetype."
+                            },
+                            "delta_state_id": {
+                                "type": "string",
+                                "description": "Identifier of the \u0394144 state for this turn (if available)."
+                            },
+                            "tw_trigger": {
+                                "type": "boolean",
+                                "description": "Whether a TW369 trigger occurred for this turn."
+                            },
+                            "tw_severity": {
+                                "type": "number",
+                                "description": "Optional TW369 severity or drift magnitude for this turn."
+                            },
+                            "epistemic_status": {
+                                "type": "string",
+                                "description": "Epistemic decision status for this turn (e.g. 'OK', 'INCONCLUSIVO')."
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "delta144_evolution": {
+            "type": "array",
+            "description": "Evolution of \u0394144 states across turns.",
+            "items": {
+                "type": "object",
+                "required": [
+                    "turn_index",
+                    "delta_state_id"
+                ],
+                "properties": {
+                    "turn_index": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "description": "Turn index associated with this \u0394144 state."
+                    },
+                    "delta_state_id": {
+                        "type": "string",
+                        "description": "Identifier of the \u0394144 state (e.g. state key in delta144_states.core.json)."
+                    },
+                    "profile": {
+                        "type": "string",
+                        "description": "Optional profile or regime label (e.g. 'EXPANSIVE', 'CONTRACTIVE', etc.)."
+                    }
+                },
+                "additionalProperties": true
+            }
+        },
+        "narrative_coherence": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Scalar score representing overall narrative coherence across turns."
+        },
+        "dominant_archetypes": {
+            "type": "array",
+            "description": "List of dominant archetype indices summarizing the story.",
+            "items": {
+                "type": "integer",
+                "minimum": 0
+            }
+        },
+        "summary": {
+            "type": "string",
+            "description": "Optional human-readable summary of the story."
+        },
+        "coherence_trace": {
+            "type": "array",
+            "description": "Optional per-turn or segment coherence trace.",
+            "items": {
+                "type": "object",
+                "required": [
+                    "turn_index",
+                    "coherence"
+                ],
+                "properties": {
+                    "turn_index": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "coherence": {
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 1.0
+                    }
+                },
+                "additionalProperties": true
+            }
+        },
+        "metadata": {
+            "type": "object",
+            "description": "Global metadata for the story (domain, language, tags, etc.).",
+            "additionalProperties": true
+        }
+    },
+    "additionalProperties": false
+}

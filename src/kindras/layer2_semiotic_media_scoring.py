@@ -21,6 +21,30 @@ class KindraLayer2SemioticMediaScoring(KindraScoringBase):
     - Agenda-setting / repetition level
     """
 
+    def adjust_l2_with_modifiers(self, scores: Dict[str, float], modifiers: Dict[str, float]) -> Dict[str, float]:
+        """
+        Adjust Layer 2 scores based on active modifiers (v2.7 Hook).
+        
+        Modifiers (e.g., MOD_AGGRESSIVE) can shift semiotic scoring.
+        """
+        if not modifiers:
+            return scores
+            
+        adjusted = scores.copy()
+        
+        # Apply modifier weights
+        # This is a simplified heuristic mapping
+        for mod_name, mod_score in modifiers.items():
+            if mod_score > 0.5:
+                # If modifier is active, boost related keys
+                # e.g. MOD_AGGRESSIVE -> boosts 'conflict', 'intensity'
+                keyword = mod_name.replace("MOD_", "").lower()
+                for key in adjusted:
+                    if keyword in key:
+                        adjusted[key] *= (1.0 + (mod_score * 0.2)) # Up to 20% boost
+                        
+        return adjusted
+
     def score(self, context: Dict[str, Any], vectors: Dict[str, float]) -> Dict[str, float]:
         """
         Score Layer 2 vectors based on semiotic/media context.

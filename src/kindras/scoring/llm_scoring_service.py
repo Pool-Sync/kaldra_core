@@ -9,8 +9,8 @@ from __future__ import annotations
 from typing import Dict, Any
 
 from .llm_types import LLMScoringRequest, LLMScoringResponse
-from .llm_client_base import LLMScoringClient
-from .llm_dummy_client import DummyLLMScoringClient
+from .llm_client_base import LLMClientBase
+from .llm_dummy_client import DummyLLMClient
 
 
 class LLMScoringService:
@@ -19,21 +19,21 @@ class LLMScoringService:
 
         (layer, text, context) -> Kindra scores
 
-    It delegates the actual scoring to an LLMScoringClient implementation.
-    By default, it uses DummyLLMScoringClient (rule-backed).
+    It delegates the actual scoring to an LLMClientBase implementation.
+    By default, it uses DummyLLMClient (rule-backed).
 
     In the future, this can be configured to use a real LLM-based client
     without changing the call sites.
     """
 
-    def __init__(self, client: LLMScoringClient | None = None) -> None:
+    def __init__(self, client: LLMClientBase | None = None) -> None:
         """
         Initialize scoring service.
         
         Args:
-            client: Optional LLM scoring client. Defaults to DummyLLMScoringClient.
+            client: Optional LLM scoring client. Defaults to DummyLLMClient.
         """
-        self._client = client or DummyLLMScoringClient()
+        self._client = client or DummyLLMClient()
 
     def score_layer(
         self,
@@ -56,14 +56,25 @@ class LLMScoringService:
         Returns:
             LLM scoring response with scores and metadata
         """
-        request = LLMScoringRequest(
-            layer=layer,
-            text=text,
-            context=context,
-            mode=mode,
-            max_vectors=max_vectors,
-        )
-        return self._client.score(request)
+        # Adapt request to prompt dict
+        # Note: We need to know which vectors to score. 
+        # In a real scenario, we would fetch vector IDs for the layer from schema.
+        # For now, we pass an empty list or rely on the LLM to know them (if instruction implies).
+        # Or we can pass a hint in context.
+        
+        prompt = {
+            "instruction": f"Score Kindra Layer {layer} vectors.",
+            "context": context,
+            "text": text,
+            "vectors": [] # TODO: Fetch vectors for layer if needed
+        }
+        
+        try:
+            result = self._client.generate(prompt)
+            scores = result.get("scores", {})
+            return LLMScoringResponse(scores=scores, metadata={"mode": mode})
+        except Exception as e:
+            return LLMScoringResponse(scores={}, metadata={}, error=str(e))
 
     def score_all_layers(
         self,

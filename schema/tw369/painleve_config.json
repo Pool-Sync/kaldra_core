@@ -1,0 +1,10 @@
+{
+    "alpha": 0.0,
+    "x_start": -5.0,
+    "x_end": 5.0,
+    "step_size": 0.01,
+    "tolerance": 1e-5,
+    "window_short": 5,
+    "window_long": 20,
+    "volatility_threshold": 0.5
+}

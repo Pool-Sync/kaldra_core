@@ -5,4 +5,4 @@ def test_delta144_engine_loads_default_schemas():
     assert engine is not None
     assert len(engine.archetypes) == 12
     assert len(engine.states) == 144
-    assert len(engine.modifiers) == 61
+    assert len(engine.modifiers) == 62

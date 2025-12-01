@@ -11,9 +11,18 @@ from typing import Dict, Any, Optional, Tuple
 from dataclasses import dataclass
 import math
 from src.tw369.painleve.painleve_filter import painleve_filter
+from src.tw369.painleve.painleve2_solver import PainleveIISolver, build_default_solver
+
+# v2.4 imports
+from src.tw369.tracy_widom import severity_from_index
+from src.tw369.drift_state import DriftState
+from src.tw369.drift_memory import DriftMemory
+from src.tw369.regime_utils import get_tw_regime_for_delta12
+
+# Module-level drift memory (v2.4)
+_DRIFT_MEMORY = DriftMemory(window_size=10)
 from src.tw369.advanced_drift_models import (
     DriftModelConfig,
-    DriftState,
     model_a_linear_drift,
     model_b_nonlinear_drift,
     model_c_multiscale_drift,
@@ -155,7 +164,8 @@ class TW369Integrator:
         """
         Compute global severity factor based on overall system tension.
         
-        Uses Tracy-Widom-inspired normalization to map tension to [0, 1].
+        v2.4: Uses Tracy-Widom module for real statistics (optional).
+        Falls back to legacy heuristic if TW disabled.
         
         Args:
             tw_state: Current TW state
@@ -172,13 +182,16 @@ class TW369Integrator:
             mean_tension = self._apply_painleve_filter(mean_tension)
             mean_tension = max(0.0, mean_tension)
 
-        # Tracy-Widom-like normalization using exponential decay
-        # Maps [0, ∞) → [0, 1)
-        severity = 1.0 - math.exp(-mean_tension)
+        # v2.4: Use Tracy-Widom module (with automatic fallback to legacy)
+        try:
+            severity = severity_from_index(mean_tension)
+        except Exception:
+            # Fallback to legacy calculation if TW fails
+            severity = 1.0 - math.exp(-mean_tension)
         
         return float(max(0.0, min(1.0, severity)))
     
-    def compute_drift(self, tw_state: TWState) -> Dict[str, float]:
+    def compute_drift(self, tw_state: TWState, tau_modifiers: Optional[Dict[str, float]] = None) -> Dict[str, float]:
         """
         Computes the temporal drift based on the TW state.
         
@@ -193,6 +206,7 @@ class TW369Integrator:
         
         Args:
             tw_state: Current TW state with all plane inputs
+            tau_modifiers: Optional modifiers from Tau Layer (e.g. drift_damping)
             
         Returns:
             Dict mapping drift dimensions to values
@@ -263,8 +277,77 @@ class TW369Integrator:
             # Fallback: Model A
             drift = linear_drift
         
+        # v2.4: Track drift in memory (non-blocking)
+        try:
+            drift_state = DriftState(
+                plane_values=tensions,
+                drift_metric=sum(abs(v) for v in drift.values()) / len(drift),
+                painleve_coherence=severity,
+                regime="UNKNOWN"  # Can be enhanced with Δ12 later
+            )
+            _DRIFT_MEMORY.append(drift_state)
+        except Exception:
+            # Never block on memory failure
+            pass
+        
+        # v2.8: Apply Tau Layer Damping
+        if tau_modifiers:
+            damping = tau_modifiers.get("drift_damping", 1.0)
+            if damping < 0.99:
+                for k in drift:
+                    drift[k] *= damping
+        
         return drift
     
+    def modulate_state(
+        self,
+        tw_state: TWState,
+        polarity_scores: Dict[str, float],
+        intensity: float = 0.3
+    ) -> TWState:
+        """
+        v2.7: Modulate TWState plane scores based on polarity scores.
+        
+        Args:
+            tw_state: Original TWState
+            polarity_scores: Dict of {polarity_id: score}
+            intensity: Modulation strength (0.0-1.0)
+            
+        Returns:
+            New TWState with modulated scores
+        """
+        if not polarity_scores:
+            return tw_state
+            
+        # Helper to modulate a scores dict
+        def modulate_dict(scores: Dict[str, float], plane_id: str) -> Dict[str, float]:
+            if not scores:
+                return {}
+            
+            mapping = PLANE_POLARITY_MAP.get(plane_id, {})
+            if not mapping:
+                return scores.copy()
+                
+            # Calculate plane-level modulation factor
+            plane_factor = 1.0
+            for pol_id, direction in mapping.items():
+                if pol_id in polarity_scores:
+                    score = polarity_scores[pol_id]
+                    # Alignment: direction * (2*score - 1)
+                    alignment = direction * (2.0 * score - 1.0)
+                    plane_factor += alignment * intensity
+            
+            # Apply to all scores in this plane (simplified)
+            factor = max(0.0, plane_factor)
+            return {k: v * factor for k, v in scores.items()}
+
+        return TWState(
+            plane3_cultural_macro=modulate_dict(tw_state.plane3_cultural_macro, "3"),
+            plane6_semiotic_media=modulate_dict(tw_state.plane6_semiotic_media, "6"),
+            plane9_structural_systemic=modulate_dict(tw_state.plane9_structural_systemic, "9"),
+            metadata=tw_state.metadata
+        )
+
     def evolve(
         self,
         tw_state: TWState,
@@ -393,3 +476,33 @@ class TW369Integrator:
         return painleve_filter(instability_index)
 
 
+# v2.4: Convenience accessor for drift history
+def get_drift_history():
+    """
+    Get drift history from module-level memory.
+    
+    Returns:
+        List of DriftState objects (oldest to newest)
+    """
+    return _DRIFT_MEMORY.get_history()
+
+
+# v2.7: Mapping of TW Planes to Polarities
+# Format: {PlaneID: {PolarityID: Direction (+1 or -1)}}
+PLANE_POLARITY_MAP = {
+    "3": { # Surface/Cultural - Affect, Connection
+        "POL_INDIVIDUAL_COLLECTIVE": 1.0, # Collective focus boosts Plane 3
+        "POL_BELONGING_ALIENATION": 1.0,  # Belonging boosts Plane 3
+        "POL_INTIMACY_ISOLATION": 1.0,    # Intimacy boosts Plane 3
+    },
+    "6": { # Tension/Semiotic - Conflict, Transformation
+        "POL_ORDER_CHAOS": -1.0,          # Chaos boosts Plane 6 (Tension)
+        "POL_STABILITY_VOLATILITY": 1.0,  # Volatility boosts Plane 6
+        "POL_TRANSFORMATION_STASIS": 1.0, # Transformation boosts Plane 6
+    },
+    "9": { # Structural/Deep - Meaning, Order
+        "POL_MEANING_VOID": 1.0,          # Meaning boosts Plane 9
+        "POL_STRUCTURE_FLOW": 1.0,        # Structure boosts Plane 9
+        "POL_HIERARCHY_NETWORK": 1.0,     # Hierarchy boosts Plane 9
+    }
+}

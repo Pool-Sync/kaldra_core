@@ -1,0 +1,50 @@
+{
+    "A01_INNOCENT": {
+        "alpha": 0.0,
+        "sensitivity": "low"
+    },
+    "A02_ORPHAN": {
+        "alpha": 0.2,
+        "sensitivity": "medium"
+    },
+    "A03_WARRIOR": {
+        "alpha": 0.3,
+        "sensitivity": "medium"
+    },
+    "A04_CAREGIVER": {
+        "alpha": 0.0,
+        "sensitivity": "low"
+    },
+    "A05_SEEKER": {
+        "alpha": 0.4,
+        "sensitivity": "high"
+    },
+    "A06_LOVER": {
+        "alpha": 0.1,
+        "sensitivity": "medium"
+    },
+    "A07_RULER": {
+        "alpha": 0.0,
+        "sensitivity": "low"
+    },
+    "A08_REBEL": {
+        "alpha": 0.5,
+        "sensitivity": "high"
+    },
+    "A09_MAGICIAN": {
+        "alpha": 0.3,
+        "sensitivity": "high"
+    },
+    "A10_SAGE": {
+        "alpha": 0.2,
+        "sensitivity": "medium"
+    },
+    "A11_JESTER": {
+        "alpha": 0.4,
+        "sensitivity": "high"
+    },
+    "A12_CREATOR": {
+        "alpha": 0.5,
+        "sensitivity": "high"
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "KALDRA Archetypes",
+    "description": "Schema for the 12 primary archetypes.",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "required": [
+            "id",
+            "label",
+            "essence",
+            "light",
+            "shadow",
+            "drives",
+            "journey_role",
+            "stoic_axis",
+            "description"
+        ],
+        "properties": {
+            "id": {
+                "type": "string"
+            },
+            "label": {
+                "type": "string"
+            },
+            "essence": {
+                "type": "string"
+            },
+            "light": {
+                "type": "string"
+            },
+            "shadow": {
+                "type": "string"
+            },
+            "drives": {
+                "type": "array"
+            },
+            "journey_role": {
+                "type": "string"
+            },
+            "stoic_axis": {
+                "type": "string"
+            },
+            "description": {
+                "type": "string"
+            }
+        }
+    }
+}

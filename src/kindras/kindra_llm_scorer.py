@@ -8,6 +8,11 @@ full compatibility with Δ144, TW369, and all existing components.
 from __future__ import annotations
 from typing import Dict, Any, List, Optional
 import math
+from .scoring.llm_client_base import LLMClientBase
+from src.core.hardening.retries import with_retries
+from src.core.hardening.circuit_breaker import circuit_breaker
+from src.core.hardening.fallbacks import safe_fallback
+from src.core.hardening.timeouts import with_timeout
 
 
 class KindraLLMScorer:
@@ -29,17 +34,20 @@ class KindraLLMScorer:
         - Same shape as current rule-based scorer
     """
 
-    def __init__(self, llm_client=None, rule_fallback=None):
+    def __init__(self, llm_client: Optional[LLMClientBase] = None, rule_fallback=None):
         """
         Initialize LLM scorer.
         
         Args:
-            llm_client: Optional LLM client with generate() method
+            llm_client: Optional LLM client implementing LLMClientBase
             rule_fallback: Optional rule-based scorer for fallback
         """
         self.llm = llm_client
         self.rule_fallback = rule_fallback
 
+    @circuit_breaker(name="kindra_llm_score", fail_threshold=3, reset_time=60)
+    @with_retries(max_attempts=3, backoff=1.0)
+    @with_timeout(seconds=15)
     def score(
         self, 
         text: str, 

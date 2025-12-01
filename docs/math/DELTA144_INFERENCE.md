@@ -99,6 +99,35 @@ def _init_state_embeddings(self) -> np.ndarray:
 similarity(input, state) = (input · state) / (||input|| × ||state||)
 ```
 
+### 3. Modifier Auto-Inference (v2.7)
+
+**Purpose**: Automatically detect active modifiers (e.g., "Wounded", "Exiled") based on semantic similarity.
+
+**Method**:
+1.  **Modifier Embeddings**: Pre-computed embeddings for all 59 modifiers.
+2.  **Similarity Check**: Compute cosine similarity between input text embedding and all modifier embeddings.
+3.  **Thresholding**: Apply modifiers with similarity > `KALDRA_MODIFIER_THRESHOLD` (default: 0.65).
+4.  **Integration**: Inferred modifiers are combined with manually specified modifiers.
+
+```python
+def infer_modifier_scores_from_embedding(self, embedding: np.ndarray) -> Dict[str, float]:
+    """
+    Infer modifier scores based on cosine similarity with input embedding.
+    """
+    scores = {}
+    
+    # Compute dot product with all modifier embeddings
+    # (assuming normalized vectors)
+    similarities = np.dot(self.modifier_embeddings_matrix, embedding)
+    
+    for idx, score in enumerate(similarities):
+        if score > self.modifier_threshold:
+            mod_id = self.modifier_ids[idx]
+            scores[mod_id] = float(score)
+            
+    return scores
+```
+
 **Implementation**:
 ```python
 # Normalize input
@@ -114,7 +143,30 @@ similarities = self.state_embeddings @ vector
 
 ---
 
-### 3. Softmax with Temperature
+## 3. Semantic Embeddings (v2.3)
+
+As of v2.3, the engine supports real semantic embeddings via the `EmbeddingGenerator`.
+
+### Architecture
+- **EmbeddingGenerator** (`src/core/embedding_generator.py`): Unified provider for embeddings.
+- **Providers**:
+    - `legacy`: Deterministic simulation based on text hash (default).
+    - `openai`: Uses OpenAI API (via `requests` or injected client).
+    - `sentence-transformers`: Uses local models (if installed).
+
+### Configuration
+Set via environment variables:
+```bash
+KALDRA_EMBEDDINGS_MODE=REAL  # or LEGACY
+KALDRA_EMBEDDINGS_API_KEY=sk-...
+KALDRA_EMBEDDINGS_MODEL=text-embedding-3-small
+```
+
+When `KALDRA_EMBEDDINGS_MODE=REAL`, the engine will attempt to use OpenAI by default if no other provider is explicitly configured in code.
+
+---
+
+### 4. Softmax with Temperature
 
 **Purpose**: Convert similarities to probability distribution
 
