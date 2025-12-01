@@ -29,7 +29,7 @@ from dataclasses import dataclass, field, asdict
 from typing import Dict, Any, List, Optional, Tuple
 
 # Import v3.1 state definitions
-from src.meta.nietzsche import MetaInput  # Reuse shared MetaInput
+from src.meta.types import MetaInput  # Shared MetaInput
 from src.unification.states.unified_state import KindraContext
 from src.tw369.tw369_integration import TWState
 from src.common.unified_signal import MetaSignal

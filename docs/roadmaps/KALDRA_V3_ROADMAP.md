@@ -650,7 +650,76 @@ Make KALDRA **explainable** through NL explanations and transparency.
 - ✅ Production infrastructure ready
 - ✅ Performance targets met (<100ms signal mode)
 
+
 ---
+
+## v3.6 — Unified Meta Mind
+**Codename:** "Trinity Convergence"
+**Timeline:** Q2 2027
+**Status:** FUTURE
+
+### Objective
+Unify the three philosophical engines (Nietzsche, Aurelius, Campbell) into a single cohesive Meta Mind layer, fully integrated with StoryContext, TW369 topology, and Multi-Stream narratives.
+
+### Core Deliverables
+
+#### 1. MetaInput / MetaSignal Unification
+- Create `src/meta/types.py`
+- Move shared `MetaInput` and `MetaSignal` definitions here
+- Modify NietzscheEngine, AureliusEngine, CampbellEngine to import from this file
+- Update MetaStage to exclusively use unified types
+
+#### 2. MetaStage Universal Executor
+- Redesign MetaStage to execute all 3 engines by default
+- Create `MetaMindContext`
+- Combine outputs into:
+  - nietzsche
+  - aurelius
+  - campbell
+  - cross_meta_matrix (NEW)
+
+#### 3. Cross-Meta Matrix (NEW)
+- Compute composite indices:
+  - Moral Power Index
+  - Transformation Alignment Index
+  - Shadow / Self-Mastery Index
+- Use outputs from Δ144, Kindra, TW369, StoryBuffer
+
+#### 4. Temporal Meta Intelligence
+- Integrate StoryBuffer (v3.2)
+- Add:
+  - Nietzsche Eternal Return (temporal)
+  - Aurelius Stoic Consistency timeline
+  - Campbell Journey Timeline
+- Use TW369 topology for turning points
+
+#### 5. Explainable Philosophy Layer v3.6
+- Extend v3.4 explainability
+- Add philosophical explanations:
+  - Why master/slave morality was detected
+  - Why certain virtues were highest
+  - Why Campbell identified certain stages/roles
+
+#### 6. Domain Calibration Layer (Alpha/Geo/Product/Safeguard)
+- Add domain-specific meta profiles:
+  - Default Nietzsche/Aurelius/Campbell weights per domain
+- Create `meta_profiles.json`
+
+#### 7. Meta Profiles v3.6
+- Expose user-selectable modes:
+  - Nietzschean Mode
+  - Stoic Mode
+  - Heroic Journey Mode
+  - Philosophical Composite Mode
+  - Leadership Profile Mode
+
+### Success Metrics
+- MetaStage fully unified
+- All 3 engines run every execution
+- Composite Meta Mind signals available
+- Temporal meta intelligence integrated
+- Explainability layer extended
+- Domain calibration validated
 
 ## Implementation Phases
 

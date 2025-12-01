@@ -14,7 +14,7 @@ from dataclasses import dataclass, field, asdict
 from typing import Dict, Any, List, Tuple, Optional
 
 # Import shared types
-from src.meta.nietzsche import MetaInput
+from src.meta.types import MetaInput
 from src.common.unified_signal import MetaSignal
 from src.unification.states.unified_state import KindraContext
 from src.tw369.tw369_integration import TWState
