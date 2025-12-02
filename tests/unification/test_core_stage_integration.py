@@ -7,7 +7,7 @@ import numpy as np
 
 from src.unification.pipeline.core_stage import CoreStage
 from src.unification.states.unified_state import (
-    UnifiedContext, InputContext, KindraContext, ArchetypeContext
+    UnifiedContext, InputContext, KindraContext, ArchetypeContext, KindraLayerScores
 )
 from src.kindras.kindra_engine import KindraEngine
 
@@ -40,7 +40,7 @@ def test_core_stage_integrates_kindra_engine(mock_registry, mock_context):
     # Mock KindraEngine
     mock_kindra = MagicMock(spec=KindraEngine)
     expected_kindra_ctx = KindraContext(
-        layer1={"L1_V1": 0.9},
+        layer1=KindraLayerScores(scores={"L1_V1": 0.9}),
         metadata={"engine": "MockKindra"}
     )
     mock_kindra.score_all_layers.return_value = expected_kindra_ctx
@@ -72,7 +72,7 @@ def test_core_stage_integrates_kindra_engine(mock_registry, mock_context):
     # Verify Context Population
     assert result_ctx.kindra_ctx is not None
     assert result_ctx.kindra_ctx == expected_kindra_ctx
-    assert result_ctx.kindra_ctx.layer1["L1_V1"] == 0.9
+    assert result_ctx.kindra_ctx.layer1.scores["L1_V1"] == 0.9
 
 def test_core_stage_fallback_instantiation(mock_registry, mock_context):
     """Test that CoreStage instantiates KindraEngine if not in registry."""
