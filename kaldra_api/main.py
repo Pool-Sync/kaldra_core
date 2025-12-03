@@ -16,7 +16,8 @@ from .routers import (
     router_geo,
     router_product,
     router_safeguard,
-    router_news
+    router_news,
+    router_v3_1  # v3.1 API endpoints
 )
 
 # Initialize FastAPI app
@@ -66,4 +67,6 @@ app.include_router(router_geo.router, prefix="/geo", tags=["GEO"])
 app.include_router(router_product.router, prefix="/product", tags=["Product"])
 app.include_router(router_safeguard.router, prefix="/safeguard", tags=["Safeguard"])
 app.include_router(router_news.router, prefix="/kaldra", tags=["News"])
+app.include_router(router_v3_1.router, prefix="/api", tags=["v3.1"])  # v3.1 API
+
 
