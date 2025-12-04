@@ -53,6 +53,9 @@ class StoryEvent:
     """
     Single event in the narrative timeline.
     Captures complete KALDRA signal state at a moment in time.
+    
+    Extended in v3.3 Phase 2:
+    - stream_id: Optional identifier for multi-stream narrative tracking
     """
     event_id: str
     timestamp: float
@@ -73,6 +76,9 @@ class StoryEvent:
     
     # Polarity state
     polarity_scores: Optional[Dict[str, float]] = None
+    
+    # v3.3 Phase 2 — Multi-Stream Narratives
+    stream_id: Optional[str] = None  # e.g., "nyt", "twitter", "report_42"
     
     # Optional metadata
     metadata: Dict[str, Any] = field(default_factory=dict)
