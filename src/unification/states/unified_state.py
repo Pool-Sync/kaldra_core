@@ -15,6 +15,13 @@ from src.common.unified_state import DriftState, TauState
 from src.common.unified_signal import MetaSignal, SafeguardSignal, StoryEvent
 from src.archetypes.delta12_vector import Delta12Vector
 
+# v3.3 Phase 2: Multi-stream support
+try:
+    from src.story.stream_comparator import StreamComparisonResult
+except ImportError:
+    # Graceful fallback if Phase 2 not yet in place
+    StreamComparisonResult = None
+
 
 @dataclass
 class GlobalContext:
@@ -261,6 +268,39 @@ class RiskContext:
 
 
 @dataclass
+class MultiStreamContext:
+    """
+    Context for multi-stream narrative analysis.
+    
+    Added in v3.3 Phase 3 for cross-stream comparison.
+    
+    Attributes:
+        active_streams: List of stream IDs currently being tracked
+        pairwise_results: Results from comparing each pair of streams
+        max_divergence: Maximum divergence score across all pairs [0,1]
+        convergent: True if max_divergence < threshold (streams are aligned)
+        metadata: Additional metadata for analysis
+    """
+    active_streams: List[str] = field(default_factory=list)
+    pairwise_results: List[Any] = field(default_factory=list)  # List[StreamComparisonResult]
+    max_divergence: float = 0.0
+    convergent: bool = True
+    metadata: Dict[str, Any] = field(default_factory=dict)
+    
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            'active_streams': self.active_streams,
+            'pairwise_results': [
+                asdict(r) if hasattr(r, '__dataclass_fields__') else r 
+                for r in self.pairwise_results
+            ],
+            'max_divergence': self.max_divergence,
+            'convergent': self.convergent,
+            'metadata': self.metadata
+        }
+
+
+@dataclass
 class KindraLayerScores:
     """
     Container for 48 Kindra vectors in a specific layer.
@@ -386,6 +426,9 @@ class UnifiedContext:
     # v3.3 Phase 1: Multi-source support
     input_ctx_list: Optional[List[InputContext]] = None
     
+    # v3.3 Phase 3: Multi-stream support
+    multi_stream_ctx: Optional[MultiStreamContext] = None
+    
     def to_dict(self) -> Dict[str, Any]:
         """Convert entire context to dictionary."""
         return {
@@ -397,5 +440,6 @@ class UnifiedContext:
             'drift': self.drift_ctx.to_dict() if self.drift_ctx else None,
             'meta': self.meta_ctx.to_dict() if self.meta_ctx else None,
             'story': self.story_ctx.to_dict() if self.story_ctx else None,
-            'risk': self.risk_ctx.to_dict() if self.risk_ctx else None
+            'risk': self.risk_ctx.to_dict() if self.risk_ctx else None,
+            'multi_stream': self.multi_stream_ctx.to_dict() if self.multi_stream_ctx else None
         }

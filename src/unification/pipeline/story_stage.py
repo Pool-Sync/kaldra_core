@@ -13,10 +13,12 @@ Responsibilities:
 from dataclasses import dataclass
 from typing import Optional
 import logging
+import uuid
 from time import time
 
 from ..states.unified_state import UnifiedContext, StoryContext
-from src.story.story_buffer import StoryBuffer, StoryEvent, StoryBufferConfig
+from src.common.unified_signal import StoryEvent  # Use unified_signal StoryEvent (has stream_id)
+from src.story.story_buffer import StoryBuffer, StoryBufferConfig
 from src.story.timeline_builder import TimelineBuilder
 from src.story.arc_detector import ArcDetector
 from src.story.coherence_scorer import CoherenceScorer
@@ -162,6 +164,7 @@ class StoryStage:
         - Archetype data from archetype_ctx
         - Polarities from archetype_ctx
         - Metadata from global_ctx
+        - stream_id from input_ctx.metadata (v3.3 Phase 3)
         
         Args:
             context: Unified context
@@ -177,23 +180,52 @@ class StoryStage:
         if context.input_ctx:
             text = context.input_ctx.text or ""
         
-        # Extract archetype data
-        archetype_id = None
-        archetype_scores = {}
+        # v3.3 Phase 3: Extract stream_id from InputMetadata
+        stream_id = None
+        if context.input_ctx and hasattr(context.input_ctx, 'metadata'):
+            metadata_obj = context.input_ctx.metadata
+            if hasattr(metadata_obj, 'stream_id'):
+                stream_id = metadata_obj.stream_id
+        
+        # Extract archetype data (for delta12 and delta144 fields)
+        delta12 = None
+        delta144_state = None
+        kindra = None
+        meta_scores = None
+        drift_state = None
+        tw_state = None
+        
         if context.archetype_ctx:
+            if context.archetype_ctx.delta12:
+                # Convert Delta12Vector to dict
+                delta12 = context.archetype_ctx.delta12.to_dict() if hasattr(context.archetype_ctx.delta12, 'to_dict') else {}
+            
             if context.archetype_ctx.delta144_state:
-                # delta144_state is StateInferenceResult with state_id and weights
-                archetype_id = getattr(context.archetype_ctx.delta144_state, 'state_id', None)
-                weights = getattr(context.archetype_ctx.delta144_state, 'weights', {})
-                archetype_scores = weights if weights else {}
-            elif context.archetype_ctx.delta12:
-                # Fallback to delta12 primary archetype
-                archetype_id = getattr(context.archetype_ctx.delta12, 'primary_archetype', None)
+                # Extract state_id from StateInferenceResult
+                state_id = getattr(context.archetype_ctx.delta144_state, 'state_id', None)
+                delta144_state = state_id
+        
+        # Extract meta scores
+        if context.meta_ctx:
+            meta_scores = {}
+            if context.meta_ctx.nietzsche:
+                meta_scores['nietzsche'] = context.meta_ctx.nietzsche.score
+            if context.meta_ctx.aurelius:
+                meta_scores['aurelius'] = context.meta_ctx.aurelius.score
+            if context.meta_ctx.campbell:
+                 meta_scores['campbell'] = context.meta_ctx.campbell.score
+        
+        # Extract TW369 state
+        if context.drift_ctx:
+            if context.drift_ctx.drift_state:
+                drift_state = context.drift_ctx.drift_state.to_dict() if hasattr(context.drift_ctx.drift_state, 'to_dict') else {}
+            if context.drift_ctx.tw_state:
+                tw_state = context.drift_ctx.tw_state.to_dict() if hasattr(context.drift_ctx.tw_state, 'to_dict') else {}
         
         # Extract polarities
-        polarities = {}
+        polarity_scores = {}
         if context.archetype_ctx and context.archetype_ctx.polarity_scores:
-            polarities = context.archetype_ctx.polarity_scores
+            polarity_scores = context.archetype_ctx.polarity_scores
         
         # Build metadata
         metadata = {}
@@ -203,11 +235,23 @@ class StoryStage:
                 "mode": context.global_ctx.mode
             }
         
+        # Generate event_id and sequence_id
+        event_id = str(uuid.uuid4())
+        sequence_id = len(self._buffer._events) if hasattr(self._buffer, '_events') else 0
+        
+        # Create StoryEvent using unified_signal.StoryEvent signature
         return StoryEvent(
+            event_id=event_id,
             timestamp=timestamp,
+            sequence_id=sequence_id,
             text=text,
-            archetype_id=archetype_id,
-            archetype_scores=archetype_scores,
-            polarities=polarities,
+            delta12=delta12,
+            delta144_state=delta144_state,
+            kindra=kindra,
+            meta_scores=meta_scores,
+            drift_state=drift_state,
+            tw_state=tw_state,
+            polarity_scores=polarity_scores,
+            stream_id=stream_id,  # v3.3 Phase 3: propagate stream_id
             metadata=metadata
         )
