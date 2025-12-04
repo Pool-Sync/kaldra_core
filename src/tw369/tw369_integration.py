@@ -29,6 +29,13 @@ from src.tw369.advanced_drift_models import (
     model_d_stochastic_drift,
 )
 
+# v3.2: Topological analysis imports
+from src.tw369.drift_history import DriftHistory
+from src.tw369.drift_topology import TW369Topology
+
+
+
+
 
 @dataclass
 class TWState:
@@ -66,6 +73,11 @@ class TW369Integrator:
         self._drift_state: Optional[DriftState] = None
         self._drift_model: str = "model_a"
         self._drift_model_config: DriftModelConfig = DriftModelConfig()
+        
+        # v3.2: Topological analysis components
+        self.drift_history = DriftHistory(max_len=512)
+        self.topology = TW369Topology()
+
     
     def _initialize_state_plane_mapping(self) -> Dict[str, str]:
         """
@@ -288,6 +300,50 @@ class TW369Integrator:
             _DRIFT_MEMORY.append(drift_state)
         except Exception:
             # Never block on memory failure
+            pass
+        
+        # v3.2: Topological analysis integration
+        try:
+            # Compute lambda_max proxy (use max tension or drift magnitude)
+            lambda_max = max(abs(v) for v in drift.values())
+            
+            # Compute Tracy-Widom severity for current drift
+            tw_severity = self.topology.compute_tracy_widom_severity(
+                lambda_max=lambda_max,
+                mean=0.0,
+                std=1.0,
+            )
+            
+            # Classify preliminary regime based on severity
+            drift_magnitude = sum(abs(v) for v in drift.values()) / len(drift)
+            prelim_regime = self.topology.classify_regime(
+                severity=tw_severity,
+                volatility=drift_magnitude,  # Use drift magnitude as proxy initially
+            )
+            
+            # Add sample to drift history
+            self.drift_history.add_sample(
+                drift_value=drift_magnitude,
+                tracy_widom_severity=tw_severity,
+                regime=prelim_regime,
+            )
+            
+            # Build topological DriftContext (non-blocking)
+            # This will be available for Meta Engines to use
+            drift_context = self.topology.build_drift_context(
+                history=self.drift_history,
+                latest_lambda_max=lambda_max,
+                mean=0.0,
+                std=1.0,
+            )
+            
+            # Store in metadata for downstream access
+            if not hasattr(self, '_latest_drift_context'):
+                self._latest_drift_context = None
+            self._latest_drift_context = drift_context
+            
+        except Exception:
+            # Never block on topology failure - graceful degradation
             pass
         
         # v2.8: Apply Tau Layer Damping

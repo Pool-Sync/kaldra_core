@@ -73,21 +73,73 @@ class ArchetypeContext:
 
 
 @dataclass
+class DriftPoint:
+    """
+    Represents a single point in the drift trajectory.
+    
+    Attributes:
+        timestamp: When this drift value was recorded
+        drift_value: The drift metric at this point
+        tracy_widom_severity: Tracy-Widom severity score [0, 1]
+        regime: Regime classification at this point
+    """
+    timestamp: float
+    drift_value: float
+    tracy_widom_severity: float
+    regime: str
+
+
+@dataclass
+class TurningPoint:
+    """
+    Represents a regime transition point in drift history.
+    
+    Attributes:
+        timestamp: When the transition occurred
+        from_regime: Previous regime
+        to_regime: New regime
+        reason: Why the transition occurred (e.g., "severity_threshold_crossed")
+    """
+    timestamp: float
+    from_regime: str
+    to_regime: str
+    reason: str
+
+
+@dataclass
 class DriftContext:
     """
     Context for drift and TW369 analysis.
+    
+    Extended in v3.2 with topological analysis:
+    - Drift trajectory tracking
+    - Turning point detection
+    - Volatility computation
+    - Tracy-Widom severity scoring
     """
     tw_state: Optional[Any] = None  # TWState
     drift_state: Optional[DriftState] = None
     regime: str = "UNKNOWN"
     drift_metric: float = 0.0
     
+    # v3.2: Topological fields
+    volatility: float = 0.0
+    tracy_widom_severity: float = 0.0
+    painleve_smoothed: bool = False
+    trajectory: List[DriftPoint] = field(default_factory=list)
+    turning_points: List[TurningPoint] = field(default_factory=list)
+    
     def to_dict(self) -> Dict[str, Any]:
         return {
             'tw_state': self.tw_state.to_dict() if self.tw_state else None,
             'drift_state': self.drift_state.to_dict() if self.drift_state else None,
             'regime': self.regime,
-            'drift_metric': self.drift_metric
+            'drift_metric': self.drift_metric,
+            'volatility': self.volatility,
+            'tracy_widom_severity': self.tracy_widom_severity,
+            'painleve_smoothed': self.painleve_smoothed,
+            'trajectory': [asdict(p) for p in self.trajectory],
+            'turning_points': [asdict(p) for p in self.turning_points]
         }
 
 
@@ -112,19 +164,26 @@ class MetaContext:
 class StoryContext:
     """
     Context for story and narrative analysis.
+    
+    Extended in v3.2 with metadata support for Δ144 timeline tracking.
     """
     events: List[StoryEvent] = field(default_factory=list)
     arc: Optional[Any] = None  # NarrativeArc
     timeline: Optional[Any] = None  # ArchetypalTimeline
     coherence: float = 0.0
     
+    # v3.2: Temporal metadata (e.g., "delta144_timeline")
+    metadata: Dict[str, Any] = field(default_factory=dict)
+    
     def to_dict(self) -> Dict[str, Any]:
         return {
             'events': [e.to_dict() for e in self.events],
             'arc': self.arc.to_dict() if self.arc and hasattr(self.arc, 'to_dict') else None,
             'timeline': self.timeline.to_dict() if self.timeline and hasattr(self.timeline, 'to_dict') else None,
-            'coherence': self.coherence
+            'coherence': self.coherence,
+            'metadata': self.metadata
         }
+
 
 
 @dataclass
