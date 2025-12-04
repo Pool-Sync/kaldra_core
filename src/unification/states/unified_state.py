@@ -4,7 +4,7 @@ Unified State Definitions for KALDRA v3.0.
 Provides a consistent state representation across the entire pipeline.
 """
 from __future__ import annotations
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass, field, asdict, fields
 from typing import Dict, List, Any, Optional
 import time
 import uuid
@@ -32,18 +32,73 @@ class GlobalContext:
 
 
 @dataclass
+class InputMetadata:
+    """
+    Metadata for input source and content.
+    
+    Added in v3.3 Phase 1 for multi-modal support.
+    """
+    source: Optional[str] = None      # "twitter", "nyt", "reddit", "web", etc.
+    stream_id: Optional[str] = None   # Unique stream identifier
+    content_type: str = "text"        # "text", "json", "html", "table", "image_desc"
+    language: str = "en"
+    timestamp: Optional[float] = None
+    extra: Dict[str, Any] = field(default_factory=dict)
+    
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
 class InputContext:
     """
     Context for input processing stage.
+    
+    Enhanced in v3.3 Phase 1:
+    - metadata: Now strongly typed InputMetadata (backward compatible with dict)
+    - structured: Support for JSON/table data
     """
     text: str
     embedding: Optional[np.ndarray] = None
     bias_score: float = 0.0
     tau_input: Optional[TauState] = None
-    metadata: Dict[str, Any] = field(default_factory=dict)
+    metadata: InputMetadata = field(default_factory=InputMetadata)
+    structured: Optional[Dict[str, Any]] = None
     
+    def __post_init__(self):
+        # Backward compatibility: if metadata is passed as dict, convert to InputMetadata
+        if isinstance(self.metadata, dict):
+            # Extract known fields
+            known_fields = {f.name for f in fields(InputMetadata)}
+            # This is a bit tricky with dataclasses, let's do it manually for safety
+            meta_dict = self.metadata
+            
+            source = meta_dict.get('source')
+            stream_id = meta_dict.get('stream_id')
+            content_type = meta_dict.get('content_type', 'text')
+            language = meta_dict.get('language', 'en')
+            timestamp = meta_dict.get('timestamp')
+            
+            # Collect extra fields
+            extra = {k: v for k, v in meta_dict.items() 
+                    if k not in ['source', 'stream_id', 'content_type', 'language', 'timestamp']}
+            
+            self.metadata = InputMetadata(
+                source=source,
+                stream_id=stream_id,
+                content_type=content_type,
+                language=language,
+                timestamp=timestamp,
+                extra=extra
+            )
+
     def to_dict(self) -> Dict[str, Any]:
-        data = asdict(self)
+        data = {
+            'text': self.text,
+            'bias_score': self.bias_score,
+            'metadata': self.metadata.to_dict() if hasattr(self.metadata, 'to_dict') else self.metadata,
+            'structured': self.structured
+        }
         # Convert numpy array to list for JSON serialization
         if self.embedding is not None:
             data['embedding'] = self.embedding.tolist()
@@ -328,11 +383,15 @@ class UnifiedContext:
     story_ctx: Optional[StoryContext] = None
     risk_ctx: Optional[RiskContext] = None
     
+    # v3.3 Phase 1: Multi-source support
+    input_ctx_list: Optional[List[InputContext]] = None
+    
     def to_dict(self) -> Dict[str, Any]:
         """Convert entire context to dictionary."""
         return {
             'global': self.global_ctx.to_dict(),
             'input': self.input_ctx.to_dict() if self.input_ctx else None,
+            'input_list': [ctx.to_dict() for ctx in self.input_ctx_list] if self.input_ctx_list else None,
             'kindra': self.kindra_ctx.to_dict() if self.kindra_ctx else None,
             'archetypes': self.archetype_ctx.to_dict() if self.archetype_ctx else None,
             'drift': self.drift_ctx.to_dict() if self.drift_ctx else None,
