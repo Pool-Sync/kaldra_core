@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package explainability;
+
+// Component confidence score
+message ComponentConfidence {
+  string name = 1;
+  double score = 2;
+  string reason = 3;
+  map<string, string> metadata = 4;
+}
+
+// Decision trace step
+message DecisionStep {
+  string step = 1;
+  string description = 2;
+  double weight = 3;
+  string source = 4;
+  map<string, string> metadata = 5;
+}
+
+// Confidence container
+message ExplanationConfidence {
+  double overall = 1;
+  repeated ComponentConfidence components = 2;
+  repeated DecisionStep trace = 3;
+  map<string, string> metadata = 4;
+}
+
+// Main explanation message
+message Explanation {
+  string summary = 1;
+  map<string, string> details = 2;
+  map<string, string> raw_facts = 3;
+  ExplanationConfidence confidence = 4;
+}

@@ -1,0 +1,3 @@
+"""
+GraphQL types module initialization.
+"""

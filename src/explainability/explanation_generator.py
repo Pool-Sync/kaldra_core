@@ -1,12 +1,26 @@
 """
-Explanation Generator for KALDRA v3.4 Phase 1.
+Explanation Generator for KALDRA v3.4.
 
-Generates natural language explanations for KALDRA signals with LLM support
-and deterministic fallback mechanisms.
+Phase 1: Natural language explanations with LLM support
+Phase 2: Confidence scoring and decision tracing
 """
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, List
 import logging
 import os
+from dataclasses import asdict
+
+# v3.4 Phase 2: Confidence support
+try:
+    from src.explainability.explanation_confidence import (
+        ConfidenceEngine,
+        ExplanationConfidence,
+        DecisionStep
+    )
+except ImportError:
+    # Graceful fallback if confidence module not available
+    ConfidenceEngine = None
+    ExplanationConfidence = None
+    DecisionStep = None
 
 logger = logging.getLogger(__name__)
 
@@ -19,21 +33,65 @@ class Explanation:
         summary: High-level summary of the explanation
         details: Detailed breakdown by component
         raw_facts: Raw extracted facts from the signal
+        confidence: (v3.4 Phase 2) Confidence and tracing information
+        trace: (v3.4 Phase 2) Decision trace steps
     """
     
     def __init__(self, summary: str, details: Dict[str, Any], raw_facts: Dict[str, Any]):
         self.summary = summary
-        self.details = details
-        self.raw_facts = raw_facts
+        self.details = details or {}
+        self.raw_facts = raw_facts or {}
+        
+        # v3.4 Phase 2: Confidence and trace
+        self.confidence: Optional[Any] = None  # ExplanationConfidence
+        self.trace: List[Any] = []  # List[DecisionStep]
     
     def to_dict(self) -> Dict[str, Any]:
         """Convert to dictionary representation."""
-        return {
+        result = {
             "summary": self.summary,
             "details": self.details,
             "raw_facts": self.raw_facts
         }
+        
+        # v3.4 Phase 2: Include confidence if available
+        if self.confidence:
+            if hasattr(self.confidence, 'to_dict'):
+                result["confidence"] = self.confidence.to_dict()
+            else:
+                result["confidence"] = self.confidence
+        
+        if self.trace:
+            result["trace"] = [
+                asdict(step) if hasattr(step, '__dataclass_fields__') else step
+                for step in self.trace
+            ]
+        
+        return result
+    
+    def to_markdown(self, renderer: Optional[Any] = None, variant: str = "default") -> str:
+        """
+        Render explanation to Markdown format (v3.4 Phase 3).
+        
+        Args:
+            renderer: Optional ExplanationMarkdownRenderer instance
+            variant: Template variant ("default" or "compact")
+        
+        Returns:
+            Markdown string
+        """
+        try:
+            from src.explainability.explanation_output import ExplanationMarkdownRenderer
+            
+            renderer = renderer or ExplanationMarkdownRenderer()
+            return renderer.render(self, variant=variant)
+        except Exception as e:
+            # Graceful fallback
+            logger.warning(f"Markdown rendering failed: {e}")
+            return f"# Explanation\n\n{self.summary}\n"
 
+
+_DEFAULT_CONFIDENCE = object()  # Sentinel value
 
 class ExplanationGenerator:
     """
@@ -43,6 +101,7 @@ class ExplanationGenerator:
     - LLM-based generation (when available)
     - Template-based fallback
     - Barebones fallback (always works)
+    - (v3.4 Phase 2) Confidence scoring and decision tracing
     
     Fallback chain: LLM → Template → Barebones
     
@@ -50,19 +109,44 @@ class ExplanationGenerator:
         >>> generator = ExplanationGenerator()
         >>> explanation = generator.generate(unified_context)
         >>> print(explanation.summary)
+        >>> print(explanation.confidence.overall)
     """
     
-    def __init__(self, llm: Optional[Any] = None, templates: Optional[Dict[str, str]] = None):
+    def __init__(
+        self,
+        llm: Optional[Any] = None,
+        templates: Optional[Dict[str, str]] = None,
+        confidence_engine: Optional[Any] = _DEFAULT_CONFIDENCE
+    ):
         """
         Initialize explanation generator.
         
         Args:
             llm: Optional LLM instance for generation (e.g., OpenAI client)
             templates: Optional custom templates (default: loads from templates/)
+            confidence_engine: (v3.4 Phase 2) Optional ConfidenceEngine for scoring.
+                              Pass None to explicitly disable. Defaults to ConfidenceEngine().
         """
         self.llm = llm
         self.templates = templates or self._load_default_template()
-        logger.info(f"ExplanationGenerator initialized: llm={'present' if llm else 'none'}")
+        
+        # v3.4 Phase 2: Confidence engine
+        # Use sentinelto distinguish explicit None from default
+        if confidence_engine is _DEFAULT_CONFIDENCE:
+            # Default: create ConfidenceEngine if available
+            if ConfidenceEngine is not None:
+                self.confidence_engine = ConfidenceEngine()
+            else:
+                self.confidence_engine = None
+        else:
+            # Explicit value (including None) - use it
+            self.confidence_engine = confidence_engine
+        
+        logger.info(
+            f"ExplanationGenerator initialized: "
+            f"llm={'present' if llm else 'none'}, "
+            f"confidence={'enabled' if self.confidence_engine else 'disabled'}"
+        )
     
     def _load_default_template(self) -> Dict[str, str]:
         """Load the default base template from templates/."""
@@ -78,7 +162,7 @@ class ExplanationGenerator:
             return {"base": template_content}
         except Exception as e:
             logger.warning(f"Could not load template: {e}")
-            return {"base": "# Explanation\n\n{{summary}}\n\n{{details}}"}
+            return {"base": "# Explanation\\n\\n{{summary}}\\n\\n{{details}}"}
     
     def generate(self, context: Any) -> Explanation:
         """
@@ -88,26 +172,50 @@ class ExplanationGenerator:
             context: UnifiedContext from KALDRA pipeline
         
         Returns:
-            Explanation object with summary, details, and raw facts
+            Explanation object with summary, details, raw facts, and confidence
         """
         # Extract facts from context
         facts = self._extract_facts(context)
         
         # Try LLM generation first
+        explanation = None
         if self.llm:
             try:
-                return self._generate_with_llm(facts)
+                explanation = self._generate_with_llm(facts)
             except Exception as e:
                 logger.warning(f"LLM generation failed: {e}, falling back to template")
         
         # Fallback to template
-        try:
-            return self._generate_with_template(facts)
-        except Exception as e:
-            logger.warning(f"Template generation failed: {e}, falling back to barebones")
+        if explanation is None:
+            try:
+                explanation = self._generate_with_template(facts)
+            except Exception as e:
+                logger.warning(f"Template generation failed: {e}, falling back to barebones")
         
         # Final fallback: barebones
-        return self._generate_barebones(facts)
+        if explanation is None:
+            explanation = self._generate_barebones(facts)
+        
+        # v3.4 Phase 2: Compute confidence and trace
+        if self.confidence_engine is not None:
+            try:
+                conf = self.confidence_engine.compute_from_context(context, explanation)
+                explanation.confidence = conf
+                explanation.trace = conf.trace
+                
+                # Also add to details for easy access
+                explanation.details["confidence"] = {
+                    "overall": conf.overall,
+                    "components": [
+                        {"name": c.name, "score": c.score, "reason": c.reason}
+                        for c in conf.components
+                    ]
+                }
+            except Exception as e:
+                logger.warning(f"Confidence computation failed: {e}")
+                explanation.details["confidence_error"] = str(e)
+        
+        return explanation
     
     def _extract_facts(self, context: Any) -> Dict[str, Any]:
         """
@@ -216,13 +324,13 @@ class ExplanationGenerator:
     
     def _build_llm_prompt(self, facts: Dict[str, Any]) -> str:
         """Build prompt for LLM from facts."""
-        prompt = "Generate a natural language explanation for the following KALDRA signal:\n\n"
-        prompt += f"- Delta144 State: {facts.get('delta144_state', 'N/A')}\n"
-        prompt += f"- Polarities: {facts.get('polarities', {})}\n"
-        prompt += f"- Journey Stage: {facts.get('journey_stage', 'N/A')}\n"
-        prompt += f"- Drift Regime: {facts.get('drift_regime', 'N/A')}\n"
-        prompt += f"- Divergence: {facts.get('divergence', 'N/A')}\n"
-        prompt += "\nProvide a concise summary and detailed breakdown."
+        prompt = "Generate a natural language explanation for the following KALDRA signal:\\n\\n"
+        prompt += f"- Delta144 State: {facts.get('delta144_state', 'N/A')}\\n"
+        prompt += f"- Polarities: {facts.get('polarities', {})}\\n"
+        prompt += f"- Journey Stage: {facts.get('journey_stage', 'N/A')}\\n"
+        prompt += f"- Drift Regime: {facts.get('drift_regime', 'N/A')}\\n"
+        prompt += f"- Divergence: {facts.get('divergence', 'N/A')}\\\\n"
+        prompt += "\\nProvide a concise summary and detailed breakdown."
         return prompt
     
     def _generate_with_template(self, facts: Dict[str, Any]) -> Explanation:
@@ -296,7 +404,7 @@ class ExplanationGenerator:
         if facts.get("divergence"):
             drivers.append(f"- Multi-stream divergence: {facts['divergence']:.2f}")
         
-        return "\n".join(drivers) if drivers else "- No significant drivers detected"
+        return "\\n".join(drivers) if drivers else "- No significant drivers detected"
     
     def _build_archetypes_section(self, facts: Dict[str, Any]) -> str:
         """Build archetypes section."""
@@ -312,7 +420,7 @@ class ExplanationGenerator:
             for arch, score in sorted(archetypes.items(), key=lambda x: x[1], reverse=True)[:3]:
                 parts.append(f"- {arch}: {score:.2f}")
         
-        return "\n".join(parts) if parts else "No archetypal data available"
+        return "\\n".join(parts) if parts else "No archetypal data available"
     
     def _build_polarities_section(self, facts: Dict[str, Any]) -> str:
         """Build polarities section."""
@@ -325,7 +433,7 @@ class ExplanationGenerator:
         for polarity, score in sorted(polarities.items(), key=lambda x: x[1], reverse=True):
             parts.append(f"- {polarity}: {score:.2f}")
         
-        return "\n".join(parts)
+        return "\\n".join(parts)
     
     def _build_narrative_section(self, facts: Dict[str, Any]) -> str:
         """Build narrative dynamics section."""
@@ -345,7 +453,7 @@ class ExplanationGenerator:
             convergent = "convergent" if divergence < 0.7 else "divergent"
             parts.append(f"Multi-stream analysis: **{convergent}** (divergence: {divergence:.2f})")
         
-        return "\n".join(parts) if parts else "No narrative dynamics data available"
+        return "\\n".join(parts) if parts else "No narrative dynamics data available"
     
     def _generate_barebones(self, facts: Dict[str, Any]) -> Explanation:
         """

@@ -1,0 +1,3 @@
+"""
+GraphQL resolvers module initialization.
+"""
