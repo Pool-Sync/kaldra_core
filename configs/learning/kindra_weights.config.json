@@ -1,0 +1,18 @@
+{
+    "domain_weights": {
+        "alpha": {
+            "_comment": "Learned weights for Kindra importance in alpha domain",
+            "_note": "To be populated with real values in Phase 2.4"
+        },
+        "geo": {
+            "_comment": "Learned weights for Kindra importance in geo domain"
+        },
+        "product": {
+            "_comment": "Learned weights for Kindra importance in product domain"
+        },
+        "safeguard": {
+            "_comment": "Learned weights for Kindra importance in safeguard domain"
+        }
+    },
+    "description": "Domain-specific learned weights for Kindra scores"
+}

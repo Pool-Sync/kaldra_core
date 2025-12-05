@@ -1,0 +1,14 @@
+{
+    "priors": {
+        "_comment": "Seed priors for Kindra→Δ144 mapping. Structure: kindra_id -> {delta144_state_id: weight}",
+        "_example": {
+            "kindra_001": {
+                "threshold": 0.3,
+                "emergence": 0.4,
+                "integration": 0.2,
+                "transformation": 0.1
+            }
+        },
+        "_note": "Real priors to be populated in Phase 2.3 implementation"
+    }
+}
