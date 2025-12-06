@@ -17,7 +17,9 @@ from .routers import (
     router_product,
     router_safeguard,
     router_news,
-    router_v3_1  # v3.1 API endpoints
+    router_v3_1,  # v3.1 API endpoints
+    router_signals,  # Supabase signals
+    router_story_events,  # Supabase story events
 )
 
 # Initialize FastAPI app
@@ -59,6 +61,45 @@ def health_check() -> dict:
     return {"status": "ok"}
 
 
+@app.get("/health/supabase", tags=["status"])
+async def health_supabase():
+    """
+    Supabase connectivity health check.
+    
+    Attempts to query signals table to verify database connection.
+    
+    Returns:
+    - 200: Connection OK
+    - 503: Connection failed
+    """
+    from .dependencies import get_signal_repository
+    
+    try:
+        repo = get_signal_repository()
+        result = repo.list_signals(limit=1)
+        
+        # Check for errors
+        if isinstance(result, dict) and "error" in result:
+            return {
+                "status": "error",
+                "message": result.get("message", "Unknown database error")
+            }
+        
+        count = len(result) if isinstance(result, list) else 0
+        return {
+            "status": "ok",
+            "supabase_connected": True,
+            "signals_sample_count": count
+        }
+    
+    except Exception as e:
+        return {
+            "status": "error",
+            "supabase_connected": False,
+            "error": str(e)
+        }
+
+
 # Include routers
 app.include_router(router_status.router, prefix="/status", tags=["Status"])
 app.include_router(router_engine.router, prefix="/engine", tags=["Engine"])
@@ -69,4 +110,6 @@ app.include_router(router_safeguard.router, prefix="/safeguard", tags=["Safeguar
 app.include_router(router_news.router, prefix="/kaldra", tags=["News"])
 app.include_router(router_v3_1.router, prefix="/api", tags=["v3.1"])  # v3.1 API
 
-
+# Supabase integration endpoints
+app.include_router(router_signals.router, prefix="/signals", tags=["Signals"])
+app.include_router(router_story_events.router, prefix="/story-events", tags=["Story Events"])

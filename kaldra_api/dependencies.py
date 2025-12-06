@@ -4,6 +4,8 @@ Provides singleton instances of core engines for FastAPI routers.
 """
 from functools import lru_cache
 from src.core.kaldra_master_engine import KaldraMasterEngineV2
+from src.data.repositories.signal_repository import SignalRepository
+from src.data.repositories.story_event_repository import StoryEventRepository
 
 @lru_cache()
 def get_master_engine() -> KaldraMasterEngineV2:
@@ -14,3 +16,17 @@ def get_master_engine() -> KaldraMasterEngineV2:
     during the lifetime of the API process.
     """
     return KaldraMasterEngineV2(d_ctx=256, tau=0.65)
+
+
+def get_signal_repository() -> SignalRepository:
+    """
+    Returns a SignalRepository instance for signal persistence operations.
+    """
+    return SignalRepository()
+
+
+def get_story_event_repository() -> StoryEventRepository:
+    """
+    Returns a StoryEventRepository instance for story events persistence operations.
+    """
+    return StoryEventRepository()
