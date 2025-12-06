@@ -3,7 +3,7 @@
  * Helper functions for converting API data to Explorer types
  */
 
-import type { Signal, StoryEvent } from '../types/kaldra';
+import type { Signal, StoryEvent, ExplorerStoryEvent } from '../types/kaldra';
 import type { ExplorerSignal, ExplorerSource, TWRegime } from '@/app/(explorer)/explorer/lib/explorer.types';
 
 /**
@@ -29,4 +29,22 @@ export function convertSignalToExplorerFormat(signal: Signal): ExplorerSignal {
  */
 export function convertSignalsToExplorerFormat(signals: Signal[]): ExplorerSignal[] {
     return signals.map(convertSignalToExplorerFormat);
+}
+
+/**
+ * Convert API StoryEvent to ExplorerStoryEvent
+ */
+export function convertStoryEventsToExplorerFormat(
+    events: StoryEvent[]
+): ExplorerStoryEvent[] {
+    return events.map(ev => ({
+        id: ev.id,
+        text: ev.text || ev.meta?.description || 'No description',
+        streamLabel: ev.stream_id || ev.meta?.stream || 'unknown',
+        stateLabel: ev.delta144_state || ev.meta?.state || undefined,
+        createdAtLabel: ev.created_at
+            ? new Date(ev.created_at).toLocaleString()
+            : undefined,
+        polarities: ev.polarities || undefined,
+    }));
 }

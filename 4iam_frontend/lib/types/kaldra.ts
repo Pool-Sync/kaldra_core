@@ -50,3 +50,16 @@ export interface SupabaseHealthResponse {
     message?: string;
     error?: string;
 }
+
+/**
+ * Explorer-specific story event format
+ * Simplified for timeline display
+ */
+export interface ExplorerStoryEvent {
+    id: string;
+    text: string;
+    streamLabel: string;
+    stateLabel?: string;
+    createdAtLabel?: string;
+    polarities?: Record<string, number>;
+}
