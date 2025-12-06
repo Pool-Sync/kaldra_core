@@ -1,0 +1,20 @@
+{
+    "parallel_mode": true,
+    "max_workers": 6,
+    "timeout_ms": 85,
+    "fallback_to_sequential": true,
+    "modules_to_parallelize": [
+        "delta144",
+        "kindra",
+        "tw369",
+        "polarities",
+        "story_arc"
+    ],
+    "task_timeouts": {
+        "delta144": 20,
+        "kindra": 15,
+        "tw369": 10,
+        "polarities": 8,
+        "story_arc": 12
+    }
+}

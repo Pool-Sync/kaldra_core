@@ -1,0 +1,11 @@
+{
+    "mode": "fixed",
+    "domains": {
+        "alpha": "hybrid",
+        "geo": "fixed",
+        "product": "hybrid",
+        "safeguard": "fixed"
+    },
+    "global_weight": 0.3,
+    "description": "Configuration for Delta144 learned mapping modes. Options: fixed (current behavior), hybrid (combine base + learned), learned_only (use learned mapping)"
+}

@@ -11,13 +11,16 @@ Integrations:
 """
 
 from dataclasses import dataclass, field, asdict
-from typing import Dict, Any, List, Tuple, Optional
+from typing import Dict, Any, List, Tuple, Optional, TYPE_CHECKING
 
 # Import shared types
 from src.meta.types import MetaInput
 from src.common.unified_signal import MetaSignal
 from src.unification.states.unified_state import KindraContext
 from src.tw369.tw369_integration import TWState
+
+if TYPE_CHECKING:
+    from src.unification.states.unified_state import DriftContext, StoryContext
 
 
 # ============================================================================
@@ -80,7 +83,7 @@ STAGE_KEYWORDS = {
 @dataclass
 class CampbellSignal(MetaSignal):
     """
-    Output signal from CampbellEngine analysis (v3.1).
+    Output signal from CampbellEngine analysis (v3.1+).
     
     Attributes:
         journey_stage: Detected stage (one of JOURNEY_STAGES)
@@ -92,6 +95,13 @@ class CampbellSignal(MetaSignal):
         dominant_axes: Top detected stages or themes
         severity: Strength of the mythic pattern [0, 1]
         notes: Interpretive notes
+        
+        # v3.2: Temporal fields
+        journey_sequence: Sequence of journey stages over time
+        temporal_coherence: [0, 1] Narrative consistency over time
+        arc_completeness: [0, 1] How complete the Hero's Journey is
+        drift_coupling: [0, 1] Alignment between drift transitions and journey milestones
+        delta144_alignment: [0, 1] Archetypal consistency across temporal progression
     """
     journey_stage: str = "ORDINARY_WORLD"
     archetypal_roles: Dict[str, str] = field(default_factory=dict)
@@ -106,12 +116,26 @@ class CampbellSignal(MetaSignal):
     label: str = ""  # e.g., "incipient_hero", "trial_phase"
     score: float = 0.0
     details: Dict[str, Any] = field(default_factory=dict)
+    
+    # v3.2: Temporal fields (backward compatible defaults)
+    journey_sequence: List[str] = field(default_factory=list)
+    temporal_coherence: float = 0.0
+    arc_completeness: float = 0.0
+    drift_coupling: float = 0.0
+    delta144_alignment: float = 0.0
 
     def __post_init__(self):
         super().__post_init__()
+        # v3.1 clamps
         self.transformation_potential = max(0.0, min(1.0, self.transformation_potential))
         self.mythic_resonance = max(0.0, min(1.0, self.mythic_resonance))
         self.severity = max(0.0, min(1.0, self.severity))
+        
+        # v3.2 clamps
+        self.temporal_coherence = max(0.0, min(1.0, self.temporal_coherence))
+        self.arc_completeness = max(0.0, min(1.0, self.arc_completeness))
+        self.drift_coupling = max(0.0, min(1.0, self.drift_coupling))
+        self.delta144_alignment = max(0.0, min(1.0, self.delta144_alignment))
 
 
 # ============================================================================
@@ -120,15 +144,249 @@ class CampbellSignal(MetaSignal):
 
 class CampbellEngine:
     """
-    CampbellEngine v3.1 — Snapshot-only Hero's Journey analyzer.
+    CampbellEngine v3.2 — Snapshot + Temporal Hero's Journey analyzer.
 
     - Uses Δ144 for role mapping
     - Uses Kindra 3×48 for mythic resonance
     - Uses TW369 for transformation potential
     - Detects journey stage from text snapshot
+    - v3.2: Temporal analysis with Story and Drift integration
     """
     
     name = "campbell"
+    
+    # ========================================================================
+    # v3.2: Temporal Analysis Methods
+    # ========================================================================
+    
+    def _infer_journey_sequence_from_story(
+        self,
+        story_ctx: Optional['StoryContext']
+    ) -> List[str]:
+        """
+        Build journey sequence from StoryContext.
+        
+        Args:
+            story_ctx: StoryContext with timeline/arc
+            
+        Returns:
+            List of journey stages in temporal order (deduplicated)
+        """
+        if not story_ctx:
+            return []
+            
+        sequence = []
+        
+        # Try to extract from arc.stage_scores if available
+        if story_ctx.arc and hasattr(story_ctx.arc, 'stage_scores'):
+            # Build sequence from stage_scores (sorted by score)
+            stage_scores = story_ctx.arc.stage_scores
+            if stage_scores:
+                # Sort stages by score, take top stages
+                sorted_stages = sorted(stage_scores.items(), key=lambda x: x[1], reverse=True)
+                # Take stages with non-trivial scores
+                for stage, score in sorted_stages:
+                    if score > 0.1:  # Threshold for meaningful presence
+                        sequence.append(stage)
+        
+        # TODO v3.3: Extract temporal sequence from timeline if available
+        # if story_ctx.timeline and hasattr(story_ctx.timeline, 'events'):
+        #     for event in story_ctx.timeline.events:
+        #         if event.dominant_stage:
+        #             sequence.append(event.dominant_stage)
+        
+        # Remove consecutive duplicates
+        deduplicated = []
+        prev = None
+        for stage in sequence:
+            if stage != prev:
+                deduplicated.append(stage)
+                prev = stage
+                
+        return deduplicated
+    
+    def _measure_transformation_arc(
+        self,
+        story_ctx: Optional['StoryContext'],
+        delta144_timeline: Optional[List[Dict[str, Any]]]
+    ) -> float:
+        """
+        Measure transformation arc completeness.
+        
+        Scoring:
+        - 0.0-0.3: Stuck in early stages (ORDINARY_WORLD, REFUSAL)
+        - 0.4-0.6: Reaches middle stages (ORDEAL, REWARD) but incomplete
+        - 0.7-1.0: Full journey (ORDEAL → RESURRECTION → RETURN)
+        
+        Args:
+            story_ctx: StoryContext with arc info
+            delta144_timeline: Optional archetype evolution timeline
+            
+        Returns:
+            Arc completeness score [0, 1]
+        """
+        base_score = 0.3
+        
+        # Extract dominant stage from arc
+        if story_ctx and story_ctx.arc:
+            dominant_stage = getattr(story_ctx.arc, 'dominant_stage', None)
+            
+            # Scoring by stage
+            early_stages = ["ORDINARY_WORLD", "CALL_TO_ADVENTURE", "REFUSAL_OF_CALL"]
+            middle_stages = ["ORDEAL", "REWARD", "APPROACH_INMOST_CAVE", "TESTS_ALLIES_ENEMIES"]
+            late_stages = ["RESURRECTION", "RETURN_WITH_ELIXIR", "ROAD_BACK"]
+            
+            if dominant_stage in early_stages:
+                base_score = 0.2
+            elif dominant_stage in middle_stages:
+                base_score = 0.5
+            elif dominant_stage in late_stages:
+                base_score = 0.9
+        
+        # Boost if Δ144 timeline shows archetype evolution
+        if delta144_timeline and len(delta144_timeline) >= 2:
+            # Check for progression from innocent/hero to sage/creator
+            first_state = delta144_timeline[0].get('state_id', '')
+            last_state = delta144_timeline[-1].get('state_id', '')
+            
+            # Heuristic: early archetypes → mature archetypes
+            early_archetypes = ['A10_INNOCENT', 'A04_HERO']
+            mature_archetypes = ['A02_SAGE', 'A01_CREATOR', 'A06_CAREGIVER']
+            
+            has_early = any(arch in first_state for arch in early_archetypes)
+            has_mature = any(arch in last_state for arch in mature_archetypes)
+            
+            if has_early and has_mature:
+                base_score += 0.15
+            elif has_mature:
+                base_score += 0.08
+                
+        return min(1.0, max(0.0, base_score))
+    
+    def _compute_temporal_coherence(
+        self,
+        story_ctx: Optional['StoryContext']
+    ) -> float:
+        """
+        Compute temporal coherence of narrative.
+        
+        Uses StoryContext.coherence if available,
+        else heuristic based on stage continuity.
+        
+        Args:
+            story_ctx: StoryContext with coherence info
+            
+        Returns:
+            Coherence score [0, 1]
+        """
+        if not story_ctx:
+            return 0.0
+            
+        # Use coherence.overall if available
+        if story_ctx.coherence and hasattr(story_ctx.coherence, 'overall'):
+            return min(1.0, max(0.0, story_ctx.coherence.overall))
+        
+        # Fallback: check if coherence is a float directly
+        if isinstance(story_ctx.coherence, (int, float)):
+            return min(1.0, max(0.0, float(story_ctx.coherence)))
+            
+        # TODO v3.3: Implement stage sequence coherence checking
+        # Penalize illogical jumps (e.g., CALL → RETURN without ORDEAL)
+        
+        return 0.5  # Default moderate coherence
+    
+    def _compute_drift_coupling(
+        self,
+        drift_ctx: Optional['DriftContext'],
+        journey_sequence: List[str]
+    ) -> float:
+        """
+        Measure alignment between drift turning points and journey milestones.
+        
+        Args:
+            drift_ctx: DriftContext with turning_points
+            journey_sequence: Journey stages in sequence
+            
+        Returns:
+            Coupling score [0, 1]: proportion of turning points near critical stages
+        """
+        if not drift_ctx or not journey_sequence:
+            return 0.0
+            
+        # Check if drift_ctx has turning_points
+        turning_points = getattr(drift_ctx, 'turning_points', [])
+        if not turning_points:
+            return 0.0
+            
+        # Critical journey stages where drift should align
+        critical_stages = ["ORDEAL", "RESURRECTION", "RETURN_WITH_ELIXIR", "CROSSING_THRESHOLD"]
+        
+        # Count how many turning points occur during critical stages
+        # NOTE: This is a simplified heuristic; v3.3 should use actual timestamps
+        aligned_count = 0
+        
+        # If any critical stage is in sequence, assume some coupling potential
+        has_critical = any(stage in journey_sequence for stage in critical_stages)
+        
+        if has_critical and turning_points:
+            # Simple heuristic: if we have turning points and critical stages present,
+            # assume proportional alignment
+            alignment_ratio = min(len(turning_points) / 3.0, 1.0)  # Normalize by expected ~3 major transitions
+            aligned_count = alignment_ratio
+            
+        # TODO v3.3: Use actual timestamp matching between turning_points and story events
+        
+        coupling = aligned_count if has_critical else 0.0
+        return min(1.0, max(0.0, coupling))
+    
+    def _compute_delta144_alignment(
+        self,
+        delta144_timeline: Optional[List[Dict[str, Any]]],
+        journey_sequence: List[str]
+    ) -> float:
+        """
+        Measure alignment between Δ144 archetypes and Campbell journey stages.
+        
+        Args:
+            delta144_timeline: Timeline of archetype states
+            journey_sequence: Journey stages
+            
+        Returns:
+            Alignment score [0, 1]
+        """
+        if not delta144_timeline or not journey_sequence:
+            return 0.0
+            
+        # Expected archetype-stage pairings (heuristic)
+        expected_pairings = {
+            "CALL_TO_ADVENTURE": ["A04_HERO", "A05_EXPLORER"],
+            "MEETING_MENTOR": ["A02_SAGE", "A06_CAREGIVER"],
+            "ORDEAL": ["A04_HERO", "A08_REBEL"],
+            "RESURRECTION": ["A04_HERO", "A01_CREATOR"],
+            "RETURN_WITH_ELIXIR": ["A02_SAGE", "A01_CREATOR", "A06_CAREGIVER"]
+        }
+        
+        # Count matches
+        matches = 0
+        total_checks = 0
+        
+        for stage in journey_sequence:
+            if stage in expected_pairings:
+                expected_archetypes = expected_pairings[stage]
+                total_checks += 1
+                
+                # Check if any delta144_timeline entry matches expected archetypes
+                for entry in delta144_timeline:
+                    state_id = entry.get('state_id', '')
+                    if any(arch in state_id for arch in expected_archetypes):
+                        matches += 1
+                        break
+        
+        if total_checks == 0:
+            return 0.5  # Default if no critical stages to check
+            
+        alignment = matches / total_checks
+        return min(1.0, max(0.0, alignment))
 
     def analyze(self, meta_input: MetaInput) -> CampbellSignal:
         """
@@ -182,7 +440,8 @@ class CampbellEngine:
             mythic_resonance
         )
         
-        return CampbellSignal(
+        # v3.1: Build base signal (snapshot)
+        signal = CampbellSignal(
             journey_stage=journey_stage,
             archetypal_roles=archetypal_roles,
             transformation_potential=trans_potential,
@@ -200,6 +459,63 @@ class CampbellEngine:
                 "tw369_applied": meta_input.tw_state is not None
             }
         )
+        
+        # v3.2: Temporal enrichment (additive, gracefully degrades)
+        try:
+            drift_ctx = getattr(meta_input, 'drift_ctx', None)
+            story_ctx = getattr(meta_input, 'story_ctx', None)
+            
+            # Early exit if no temporal contexts
+            if not drift_ctx and not story_ctx:
+                return signal
+                
+            # Extract Δ144 timeline if present
+            delta144_timeline = None
+            if story_ctx and story_ctx.metadata:
+                delta144_timeline = story_ctx.metadata.get("delta144_timeline")
+            
+            # (a) Journey sequence
+            if story_ctx:
+                signal.journey_sequence = self._infer_journey_sequence_from_story(story_ctx)
+            
+            # (b) Temporal coherence
+            if story_ctx:
+                signal.temporal_coherence = self._compute_temporal_coherence(story_ctx)
+            
+            # (c) Arc completeness
+            if story_ctx or delta144_timeline:
+                signal.arc_completeness = self._measure_transformation_arc(
+                    story_ctx=story_ctx,
+                    delta144_timeline=delta144_timeline
+                )
+            
+            # (d) Drift coupling
+            if drift_ctx and signal.journey_sequence:
+                signal.drift_coupling = self._compute_drift_coupling(
+                    drift_ctx=drift_ctx,
+                    journey_sequence=signal.journey_sequence
+                )
+            
+            # (e) Δ144 alignment
+            if delta144_timeline and signal.journey_sequence:
+                signal.delta144_alignment = self._compute_delta144_alignment(
+                    delta144_timeline=delta144_timeline,
+                    journey_sequence=signal.journey_sequence
+                )
+            
+            # Update details with temporal flags
+            signal.details["temporal_enrichment_applied"] = True
+            signal.details["story_ctx_present"] = story_ctx is not None
+            signal.details["drift_ctx_present"] = drift_ctx is not None
+            
+        except Exception as e:
+            # Log but don't fail - graceful degradation
+            import logging
+            logging.warning(f"CampbellEngine temporal enrichment failed: {e}")
+            signal.details["temporal_enrichment_error"] = str(e)
+        
+        return signal
+
 
     def _map_delta144_to_roles(
         self,

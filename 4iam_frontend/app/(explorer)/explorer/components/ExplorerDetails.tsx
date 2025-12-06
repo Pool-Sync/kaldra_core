@@ -1,13 +1,15 @@
 /**
  * KALDRA Explorer - Details Component
  * 
- * Modal/panel showing detailed signal information.
+ * Modal/panel showing detailed signal information + story events timeline.
  */
 
 'use client';
 
+import { useSignalDetails } from '@/app/hooks/useSignalDetails';
 import { ExplorerSignal } from '../lib/explorer.types';
 import { getRegimeColor, getSourceLabel, formatTimestamp } from '../lib/explorer.utils';
+import { ExplorerStoryTimeline } from '@/components/ExplorerStoryTimeline';
 
 interface ExplorerDetailsProps {
     signal: ExplorerSignal | null;
@@ -15,6 +17,9 @@ interface ExplorerDetailsProps {
 }
 
 export function ExplorerDetails({ signal, onClose }: ExplorerDetailsProps) {
+    // Fetch real signal details + story events from API
+    const { events, loading, error } = useSignalDetails(signal?.id);
+
     if (!signal) return null;
 
     const regimeColor = getRegimeColor(signal.tw_regime);
@@ -123,6 +128,15 @@ export function ExplorerDetails({ signal, onClose }: ExplorerDetailsProps) {
                                 {formatTimestamp(signal.timestamp)}
                             </span>
                         </div>
+                    </div>
+
+                    {/* Story Events Timeline */}
+                    <div className="pt-4 border-t border-gray-200 dark:border-gray-800">
+                        <ExplorerStoryTimeline
+                            events={events}
+                            loading={loading}
+                            error={error}
+                        />
                     </div>
 
                     {/* Signal ID */}

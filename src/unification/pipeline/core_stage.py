@@ -100,14 +100,8 @@ class CoreStage:
             
             context.drift_ctx = drift_ctx
             
-            # 3. Kindra 3x48 Scoring
-            kindra_ctx = self.kindra_engine.score_all_layers(
-                text=context.input_ctx.text,
-                embedding=embedding,
-                delta144_state=delta144_result.state.id if delta144_result.state else None,
-                archetype_scores=delta12.scores if delta12 else None
-            )
-            context.kindra_ctx = kindra_ctx
+            # 3. Kindra 3x48 Scoring (with graceful degradation)
+            context = self._run_kindra(context)
             
             logger.info(f"Core stage complete: archetype={delta144_result.archetype.label}, state={delta144_result.state.label}")
             
@@ -116,3 +110,51 @@ class CoreStage:
             context.global_ctx.degraded = True
         
         return context
+    
+    def _run_kindra(self, context: UnifiedContext) -> UnifiedContext:
+        """
+        Execute KindraEngine and populate context.kindra_ctx.
+        Implements graceful degradation - does not break pipeline on error.
+        """
+        # Skip if Kindra already populated (e.g., reuse scenario)
+        if context.kindra_ctx is not None:
+            return context
+        
+        try:
+            text = context.input_ctx.text if context.input_ctx else ""
+            embedding = context.input_ctx.embedding if context.input_ctx else None
+            
+            # Extract archetype data if available
+            delta144_state = None
+            archetype_scores = None
+            if context.archetype_ctx:
+                if hasattr(context.archetype_ctx, 'delta144_state') and context.archetype_ctx.delta144_state:
+                    # Try to get state.id, fallback to string representation
+                    d_state = context.archetype_ctx.delta144_state
+                    delta144_state = getattr(d_state, 'id', str(d_state)) if d_state else None
+                
+                if hasattr(context.archetype_ctx, 'delta12') and context.archetype_ctx.delta12:
+                    archetype_scores = getattr(context.archetype_ctx.delta12, 'scores', None)
+            
+            # Execute Kindra engine
+            kindra_ctx = self.kindra_engine.score_all_layers(
+                text=text,
+                embedding=embedding,
+                delta144_state=delta144_state,
+                archetype_scores=archetype_scores
+            )
+            
+            context.kindra_ctx = kindra_ctx
+            logger.info(f"Kindra scoring complete: {kindra_ctx.get_total_vectors()} vectors")
+            
+        except Exception as e:
+            # Graceful degradation - log but don't break pipeline
+            self._warn_kindra_failure(e)
+            context.kindra_ctx = None
+            # Don't set global degraded flag for Kindra failures - it's supplementary
+        
+        return context
+    
+    def _warn_kindra_failure(self, exc: Exception):
+        """Log Kindra engine failure with warning level."""
+        logger.warning(f"KindraEngine failed (graceful degradation): {exc}")

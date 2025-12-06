@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 from typing import Any, Optional
+import json
+import os
 
 import numpy as np
 import torch
@@ -21,6 +23,7 @@ from src.meta.campbell import CampbellEngine
 from src.archetypes.delta12_vector import Delta12Vector
 from src.core.hardening.fallbacks import safe_fallback
 from src.core.hardening.timeouts import with_timeout
+from src.infrastructure.execution.parallel_executor import ParallelExecutor, TaskStatus
 
 @dataclass
 class KaldraSignal:
@@ -68,6 +71,48 @@ class KaldraMasterEngineV2:
         self.tau = tau
         self.logger = logger if logger is not None else make_default_logger()
         self.audit_trail = audit_trail
+        
+        # v3.5: Parallel Execution Engine
+        self._load_parallel_config()
+    
+    def _load_parallel_config(self) -> None:
+        """Load parallel execution configuration from file."""
+        config_path = "configs/execution/parallel.config.json"
+        
+        try:
+            if os.path.exists(config_path):
+                with open(config_path, 'r') as f:
+                    config = json.load(f)
+            else:
+                # Default configuration
+                config = {
+                    "parallel_mode": True,
+                    "max_workers": 6,
+                    "timeout_ms": 85,
+                    "task_timeouts": {}
+                }
+            
+            self.parallel_enabled = config.get("parallel_mode", True)
+            self.parallel_executor = ParallelExecutor(
+                max_workers=config.get("max_workers", 6),
+                default_timeout_ms=config.get("timeout_ms", 85),
+                enabled=self.parallel_enabled
+            )
+            self.task_timeouts = config.get("task_timeouts", {})
+            
+            if self.logger:
+                self.logger.log_event("parallel_config_loaded", {
+                    "enabled": self.parallel_enabled,
+                    "max_workers": config.get("max_workers", 6)
+                })
+        
+        except Exception as e:
+            if self.logger:
+                self.logger.log_event("parallel_config_error", {"error": str(e)})
+            # Fallback: disable parallel execution
+            self.parallel_enabled = False
+            self.parallel_executor = ParallelExecutor(enabled=False)
+            self.task_timeouts = {}
 
     def _log_inference_start(self, request_id: str, embedding_shape: Any, has_tw_window: bool) -> None:
         """Log the start of an inference request."""
@@ -224,55 +269,87 @@ class KaldraMasterEngineV2:
                 tau_input = TauState(tau_score=0.5, tau_risk="MID", tau_modifiers={}, tau_actions=[])
                 degraded_mode = True
             
-            # --- PHASE 3: CORE INFERENCE (Modulated) ---
+            # --- PHASE 3: CORE INFERENCE (Parallel Execution) ---
             
-            # 1) Δ144 — get base archetype distribution (Modulated by Tau)
-            try:
-                result = self.delta.infer_from_vector(embedding, tau_modifiers=tau_modifiers)
-            except Exception as e:
-                 if self.logger:
-                    self.logger.log_event("delta_inference_error", {"error": str(e)})
-                 # Critical failure fallback
-                 from src.archetypes.delta144_engine import DeltaState
-                 result = DeltaState(probs=[1.0/144]*144, dominant_id="A01_INNOCENT", confidence=0.0)
-                 degraded_mode = True
+            if self.parallel_enabled:
+                # Parallel execution mode
+                try:
+                    # Define parallel tasks
+                    tasks = {
+                        'delta144': lambda: self.delta.infer_from_vector(embedding, tau_modifiers=tau_modifiers),
+                        'kindra': lambda: self._run_kindra_modulation(embedding, base_probs=np.ones(144) / 144.0),
+                        'tw369': lambda: self._run_tw369_drift(tau_modifiers),
+                        'polarities': lambda: polarity_scores  # Already computed, just return
+                    }
+                    
+                    # Execute in parallel
+                    results = self.parallel_executor.run_parallel(
+                        tasks=tasks,
+                        task_timeouts=self.task_timeouts
+                    )
+                    
+                    # Extract results
+                    if results['delta144'].status == TaskStatus.COMPLETED:
+                        result = results['delta144'].result
+                        base_probs = np.asarray(result.probs if result.probs is not None else [1.0/144]*144, dtype=float)
+                    else:
+                        if self.logger:
+                            self.logger.log_event("delta_parallel_error", {"error": results['delta144'].error})
+                        from src.archetypes.delta144_engine import DeltaState
+                        result = DeltaState(probs=[1.0/144]*144, dominant_id="A01_INNOCENT", confidence=0.0)
+                        base_probs = np.ones(144) / 144.0
+                        degraded_mode = True
+                    
+                    if results['kindra'].status == TaskStatus.COMPLETED:
+                        modulated_np = results['kindra'].result
+                    else:
+                        if self.logger:
+                            self.logger.log_event("kindra_parallel_error", {"error": results['kindra'].error})
+                        modulated_np = base_probs
+                        degraded_mode = True
+                    
+                    if results['tw369'].status == TaskStatus.COMPLETED:
+                        drift_state = results['tw369'].result
+                        driftvalues = drift_state.get("values", {})
+                    else:
+                        if self.logger:
+                            self.logger.log_event("tw369_parallel_error", {"error": results['tw369'].error})
+                        drift_state = {"velocity": 0.0, "values": {}}
+                        degraded_mode = True
+                    
+                except Exception as e:
+                    if self.logger:
+                        self.logger.log_event("parallel_execution_error", {"error": str(e)})
+                    # Fallback to sequential
+                    degraded_mode = True
+                    result, modulated_np, drift_state = self._run_sequential_core(
+                        embedding, tau_modifiers, degraded_mode
+                    )
+                    if result.probs is None:
+                        base_probs = np.ones(144) / 144.0
+                    else:
+                        base_probs = np.asarray(result.probs, dtype=float)
             
-            if result.probs is None:
-                base_probs = np.ones(144) / 144.0
             else:
-                base_probs = np.asarray(result.probs, dtype=float)
+                # Sequential execution mode (fallback)
+                result, modulated_np, drift_state = self._run_sequential_core(
+                    embedding, tau_modifiers, degraded_mode
+                )
+                if result.probs is None:
+                    base_probs = np.ones(144) / 144.0
+                else:
+                    base_probs = np.asarray(result.probs, dtype=float)
 
-            # 2) Kindra modulation (usa torch internamente)
-            try:
-                ctx = torch.tensor(embedding, dtype=torch.float32).unsqueeze(0)
-                probs_t = torch.tensor(base_probs, dtype=torch.float32).unsqueeze(0)
-                
-                # Aplica modulação cultural
-                modulated = self.kindra_mod(probs_t, ctx, apply_softmax=True)[0]
-                modulated_np = modulated.detach().cpu().numpy()
-            except Exception as e:
-                if self.logger:
-                    self.logger.log_event("kindra_mod_error", {"error": str(e)})
-                modulated_np = base_probs # Fallback to unmodulated
-                degraded_mode = True
-
-            # 3) TW369 Drift & Oracle
+            # 3) TW Oracle (still sequential as it depends on tw_window)
             tw_trigger = False
             tw_stats = None
-            drift_state = {}
             
             try:
-                # Compute drift using the integrator
-                # We need a TWState. Let's create a minimal one.
-                tw_state = self.tw_integrator.create_state() # Empty for now, or populate if we had data
-                drift_values = self.tw_integrator.compute_drift(tw_state, tau_modifiers=tau_modifiers)
-                drift_state = {"velocity": sum(drift_values.values()), "values": drift_values}
-
                 if tw_window is not None:
                     tw_trigger, tw_stats = self.tw_oracle.detect(tw_window)
             except Exception as e:
                 if self.logger:
-                    self.logger.log_event("tw369_error", {"error": str(e)})
+                    self.logger.log_event("tw_oracle_error", {"error": str(e)})
                 degraded_mode = True
 
             # --- PHASE 4: TAU OUTPUT PHASE ---
@@ -338,3 +415,71 @@ class KaldraMasterEngineV2:
                 risk_summary="CRITICAL_FAILURE",
                 degraded=True
             )
+    
+    def _run_kindra_modulation(self, embedding: np.ndarray, base_probs: np.ndarray) -> np.ndarray:
+        """Run Kindra modulation (helper for parallel execution)."""
+        try:
+            ctx = torch.tensor(embedding, dtype=torch.float32).unsqueeze(0)
+            probs_t = torch.tensor(base_probs, dtype=torch.float32).unsqueeze(0)
+            
+            # Apply cultural modulation
+            modulated = self.kindra_mod(probs_t, ctx, apply_softmax=True)[0]
+            return modulated.detach().cpu().numpy()
+        except Exception:
+            return base_probs
+    
+    def _run_tw369_drift(self, tau_modifiers: dict) -> dict:
+        """Run TW369 drift calculation (helper for parallel execution)."""
+        try:
+            tw_state = self.tw_integrator.create_state()
+            drift_values = self.tw_integrator.compute_drift(tw_state, tau_modifiers=tau_modifiers)
+            return {"velocity": sum(drift_values.values()), "values": drift_values}
+        except Exception:
+            return {"velocity": 0.0, "values": {}}
+    
+    def _run_sequential_core(self, embedding: np.ndarray, tau_modifiers: dict, degraded_mode: bool) -> tuple:
+        """
+        Run core modules sequentially (fallback mode).
+        
+        Returns:
+            Tuple of (result, modulated_np, drift_state)
+        """
+        # 1) Δ144
+        try:
+            result = self.delta.infer_from_vector(embedding, tau_modifiers=tau_modifiers)
+        except Exception as e:
+            if self.logger:
+                self.logger.log_event("delta_inference_error", {"error": str(e)})
+            from src.archetypes.delta144_engine import DeltaState
+            result = DeltaState(probs=[1.0/144]*144, dominant_id="A01_INNOCENT", confidence=0.0)
+            degraded_mode = True
+        
+        if result.probs is None:
+            base_probs = np.ones(144) / 144.0
+        else:
+            base_probs = np.asarray(result.probs, dtype=float)
+        
+        # 2) Kindra modulation
+        try:
+            ctx = torch.tensor(embedding, dtype=torch.float32).unsqueeze(0)
+            probs_t = torch.tensor(base_probs, dtype=torch.float32).unsqueeze(0)
+            modulated = self.kindra_mod(probs_t, ctx, apply_softmax=True)[0]
+            modulated_np = modulated.detach().cpu().numpy()
+        except Exception as e:
+            if self.logger:
+                self.logger.log_event("kindra_mod_error", {"error": str(e)})
+            modulated_np = base_probs
+            degraded_mode = True
+        
+        # 3) TW369 Drift
+        try:
+            tw_state = self.tw_integrator.create_state()
+            drift_values = self.tw_integrator.compute_drift(tw_state, tau_modifiers=tau_modifiers)
+            drift_state = {"velocity": sum(drift_values.values()), "values": drift_values}
+        except Exception as e:
+            if self.logger:
+                self.logger.log_event("tw369_error", {"error": str(e)})
+            drift_state = {"velocity": 0.0, "values": {}}
+            degraded_mode = True
+        
+        return result, modulated_np, drift_state

@@ -1,58 +1,35 @@
 """
-Story module initialization.
+Story module for KALDRA v3.2 Temporal Mind.
+
+Provides temporal narrative analysis capabilities:
+- StoryBuffer: Event storage with sliding window
+- TimelineBuilder: Archetype transition tracking
+- ArcDetector: Hero's Journey stage detection
+- CoherenceScorer: Narrative consistency metrics
 """
 
-from .story_buffer import StoryBuffer, StoryEvent
-from .story_aggregator import (
-    StoryAggregation,
-    MotionVector,
-    InflectionPoint,
-    DriftTrajectory,
-    ArcProgression,
-    aggregate_story,
-    compute_narrative_motion,
-    detect_inflection_points,
-    detect_arc_progression,
-)
-from .narrative_arc import (
-    NarrativeArc,
-    CAMPBELL_STAGES,
-    analyze_arc,
-    predict_next_stage,
-    compute_tension,
-)
-from .archetypal_timeline import (
-    ArchetypalTimeline,
-    TimelinePoint,
-    ArchetypalLoop,
-    build_timeline,
-    compute_shift_magnitude,
-    compute_trajectory_curvature,
-    detect_archetypal_loops,
-)
+from .story_buffer import StoryEvent, StoryBufferConfig, StoryBuffer
+from .timeline_builder import ArchetypeTransition, StoryTimeline, TimelineBuilder
+from .arc_detector import StoryArc, ArcDetector, JOURNEY_STAGES
+from .coherence_scorer import CoherenceScore, CoherenceScorer
 
 __all__ = [
-    "StoryBuffer",
+    # Story Buffer
     "StoryEvent",
-    "StoryAggregation",
-    "MotionVector",
-    "InflectionPoint",
-    "DriftTrajectory",
-    "ArcProgression",
-    "aggregate_story",
-    "compute_narrative_motion",
-    "detect_inflection_points",
-    "detect_arc_progression",
-    "NarrativeArc",
-    "CAMPBELL_STAGES",
-    "analyze_arc",
-    "predict_next_stage",
-    "compute_tension",
-    "ArchetypalTimeline",
-    "TimelinePoint",
-    "ArchetypalLoop",
-    "build_timeline",
-    "compute_shift_magnitude",
-    "compute_trajectory_curvature",
-    "detect_archetypal_loops",
+    "StoryBufferConfig", 
+    "StoryBuffer",
+    
+    # Timeline Builder
+    "ArchetypeTransition",
+    "StoryTimeline",
+    "TimelineBuilder",
+    
+    # Arc Detector
+    "StoryArc",
+    "ArcDetector",
+    "JOURNEY_STAGES",
+    
+    # Coherence Scorer
+    "CoherenceScore",
+    "CoherenceScorer",
 ]
