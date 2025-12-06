@@ -5,25 +5,31 @@ This module integrates the three Kindra layers (L1, L2, L3) into the TW369 engin
 mapping them to planes 3, 6, and 9 respectively.
 
 Implements temporal drift calculation based on tension gradients between planes.
+Authors: Nikolas, Pool
+Date: 2024-11-25
+Version: v3.2 (with drift history & topology)
 """
 
-from typing import Dict, Any, Optional, Tuple
+from typing import Dict, Any, Optional, List
 from dataclasses import dataclass
+import logging
+import json
 import math
-from src.tw369.painleve.painleve_filter import painleve_filter
-from src.tw369.painleve.painleve2_solver import PainleveIISolver, build_default_solver
 
-# v2.4 imports
-from src.tw369.tracy_widom import severity_from_index
-from src.tw369.drift_state import DriftState
-from src.tw369.drift_memory import DriftMemory
-from src.tw369.regime_utils import get_tw_regime_for_delta12
+from src.infrastructure.cache.decorators import redis_cache
 
-# Module-level drift memory (v2.4)
-_DRIFT_MEMORY = DriftMemory(window_size=10)
-from src.tw369.advanced_drift_models import (
-    DriftModelConfig,
-    model_a_linear_drift,
+logger = logging.getLogger(__name__)
+
+# Core modules
+from src.tw369.delta144_integration import (
+    get_delta144_tw369_plane_mapping,
+    compute_delta144_state_drift
+)
+from src.tw369.tracy_widom import TW369DistributionProcessor
+
+# v2.5: Advanced drift model imports
+from src.tw369.drift_models import (
+    model_a_simple_diff,
     model_b_nonlinear_drift,
     model_c_multiscale_drift,
     model_d_stochastic_drift,
@@ -203,23 +209,20 @@ class TW369Integrator:
         
         return float(max(0.0, min(1.0, severity)))
     
+    @redis_cache(ttl=3600, key_prefix="tw369_drift")  # 1 hour cache for drift calculations
     def compute_drift(self, tw_state: TWState, tau_modifiers: Optional[Dict[str, float]] = None) -> Dict[str, float]:
         """
         Computes the temporal drift based on the TW state.
         
         Drift represents energy/symbolic flow between planes:
         - plane3_to_6: Surface → Tension (cultural forces creating tension)
-        - plane6_to_9: Tension → Structure (tension crystallizing into structure)
-        - plane9_to_3: Structure → Surface (structure manifesting at surface)
-        
-        Drift values are in range approximately [-1.0, 1.0]:
-        - Positive: flow from source to target plane
-        - Negative: resistance/backflow
+        - plane6_to_9: Tension → Structure (resolution/consolidation)
+        - plane9_to_3: Structure → Surface (structural influences on culture)
         
         Args:
-            tw_state: Current TW state with all plane inputs
-            tau_modifiers: Optional modifiers from Tau Layer (e.g. drift_damping)
-            
+            tw_state: Current TW state
+            tau_modifiers: Optional dict of tau scaling factors per dimension
+        
         Returns:
             Dict mapping drift dimensions to values
         """

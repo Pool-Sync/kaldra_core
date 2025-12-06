@@ -7,6 +7,9 @@ uvicorn[standard]==0.38.0
 pydantic==2.12.4
 python-dotenv==1.2.1
 
+# ===== Caching =====
+redis==5.0.1
+
 # ===== HTTP & Networking =====
 httpx==0.28.1
 requests==2.32.5

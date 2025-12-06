@@ -7,6 +7,8 @@ from typing import Dict, Any, Optional
 from dataclasses import dataclass, field
 import logging
 
+from src.infrastructure.cache.decorators import redis_cache
+
 logger = logging.getLogger(__name__)
 
 
@@ -57,6 +59,7 @@ class Delta144MappingEngine:
         logger.info("Delta144MappingEngine initialized")
     
     
+    @redis_cache(ttl=86400, key_prefix="delta144")  # 24 hour cache for learned mappings
     def suggest(self, features: Any) -> Delta144MappingResult:
         """
         Suggest Δ144 state from features.

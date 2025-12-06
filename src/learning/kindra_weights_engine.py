@@ -8,6 +8,8 @@ from dataclasses import dataclass
 import logging
 import json
 
+from src.infrastructure.cache.decorators import redis_cache
+
 logger = logging.getLogger(__name__)
 
 
@@ -45,6 +47,7 @@ class KindraWeightsEngine:
         self.domain_weights = config.get("domain_weights", {})
         logger.info("KindraWeightsEngine initialized")
     
+    @redis_cache(ttl=21600, key_prefix="kindra_weights")  # 6 hour cache
     def get_weights(self, domain: str) -> KindraWeightVector:
         """
         Get weight vector for domain.
