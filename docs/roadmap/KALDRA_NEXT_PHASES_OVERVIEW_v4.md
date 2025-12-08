@@ -999,6 +999,54 @@ Return ID + summary to client
 
 ---
 
+## **14. Frontend Coordination (4iam.ai)**
+
+**Objective:** Coordinate UI implementation with the 4iam.ai frontend team for key KALDRA features.
+
+### 14.1 Coordination Tasks
+
+- [ ] **Coordinate with 4iam.ai frontend team**
+- [ ] **Define UI for preset selection**
+- [ ] **Define UI for profile management**
+- [ ] **Define UI for Kindra visualization**
+- [ ] **Define UI for meta engine outputs**
+
+### 14.2 UI Components Required
+
+#### Preset Selection UI
+- Preset dropdown/selector component
+- Preset preview panel
+- Apply preset confirmation
+- Current preset indicator
+
+#### Profile Management UI
+- User profile view/edit screen
+- Preferences form
+- Domain configuration panel
+- Save/load profile actions
+
+#### Kindra Visualization UI
+- Kindra radar chart component
+- Layer 1/2/3 visualization
+- Mode selector (rule/LLM/hybrid)
+- Weight distribution display
+
+#### Meta Engine Outputs UI
+- Nietzsche output panel
+- Aurelius output panel
+- Campbell output panel
+- Meta score aggregation view
+
+### 14.3 Design Requirements
+
+- Consistent with 4iam.ai design system
+- Dark mode support
+- Mobile responsive
+- Accessibility compliant (WCAG 2.1)
+- Real-time updates via WebSocket
+
+---
+
 **END OF ROADMAP**
 
 This document serves as the master reference for KALDRA v4.0 development. All phases should be implemented incrementally with testing, documentation, and user feedback at each step.
@@ -1008,5 +1056,6 @@ This document serves as the master reference for KALDRA v4.0 development. All ph
 2. Prioritize phases (3.3 → 3.4 → 5.0 recommended)
 3. Create implementation plans for each phase
 4. Begin Phase 3.3 API expansion
+5. **Coordinate with 4iam.ai frontend team on UI requirements**
 
 **Document Status:** Draft v1 - Awaiting Review
