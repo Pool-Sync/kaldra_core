@@ -1,0 +1,92 @@
+node_id,relation,target_id,source_path,target_path,notes
+engine_unified_kernel,depends_on,mod_core_embedding_generator,src/unification/kernel.py,src/core/embedding_generator.py,Loads EmbeddingGenerator in load_engines()
+engine_unified_kernel,depends_on,mod_delta144_engine,src/unification/kernel.py,src/archetypes/delta144_engine.py,Loads Delta144Engine in load_engines()
+engine_unified_kernel,depends_on,mod_bias_detector,src/unification/kernel.py,src/bias/detector.py,Loads BiasDetector in load_engines()
+engine_unified_kernel,depends_on,mod_tau_layer,src/unification/kernel.py,src/tau/tau_layer.py,Loads TauLayer in load_engines()
+engine_unified_kernel,depends_on,mod_safeguard_engine,src/unification/kernel.py,src/safeguard/safeguard_engine.py,Loads SafeguardEngine in load_engines()
+engine_unified_kernel,depends_on,mod_registry,src/unification/kernel.py,src/unification/registry.py,Uses ModuleRegistry
+engine_unified_kernel,depends_on,mod_orchestrator,src/unification/kernel.py,src/unification/orchestrator.py,Creates PipelineOrchestrator
+mod_orchestrator,depends_on,mod_registry,src/unification/orchestrator.py,src/unification/registry.py,Access modules via registry
+mod_core_master_engine,depends_on,mod_delta144_engine,src/core/kaldra_master_engine.py,src/archetypes/delta144_engine.py,Uses Delta144Engine for base inference
+mod_core_master_engine,depends_on,mod_kindra_cultural_mod,src/core/kaldra_master_engine.py,src/kindras/kindra_cultural_mod.py,Uses KaldraKindraCulturalMod for modulation
+mod_core_master_engine,depends_on,mod_tw369_integrator,src/core/kaldra_master_engine.py,src/tw369/tw369_integration.py,Uses TW369Integrator for drift
+mod_core_master_engine,depends_on,mod_tau_layer,src/core/kaldra_master_engine.py,src/tau/tau_layer.py,Uses TauLayer for epistemic limits
+mod_core_master_engine,depends_on,mod_safeguard_engine,src/core/kaldra_master_engine.py,src/safeguard/safeguard_engine.py,Uses SafeguardEngine for safety
+mod_core_master_engine,depends_on,mod_delta12_vector,src/core/kaldra_master_engine.py,src/archetypes/delta12_vector.py,Uses Delta12Vector
+mod_core_master_engine,depends_on,mod_hardening_fallbacks,src/core/kaldra_master_engine.py,src/core/hardening/fallbacks.py,Uses safe_fallback decorator
+mod_core_master_engine,depends_on,mod_hardening_timeouts,src/core/kaldra_master_engine.py,src/core/hardening/timeouts.py,Uses with_timeout decorator
+mod_core_master_engine,depends_on,mod_parallel_executor,src/core/kaldra_master_engine.py,src/infrastructure/execution/parallel_executor.py,Uses ParallelExecutor
+mod_tw369_integrator,depends_on,mod_tracy_widom,src/tw369/tw369_integration.py,src/tw369/tracy_widom.py,Uses TW statistics
+mod_tw369_integrator,depends_on,mod_advanced_drift_models,src/tw369/tw369_integration.py,src/tw369/advanced_drift_models.py,Uses drift model functions
+mod_tw369_integrator,depends_on,mod_drift_history,src/tw369/tw369_integration.py,src/tw369/drift_history.py,Uses DriftHistory
+mod_tw369_integrator,depends_on,mod_drift_topology,src/tw369/tw369_integration.py,src/tw369/drift_topology.py,Uses TW369Topology
+mod_kindra_engine,depends_on,mod_unified_state,src/kindras/kindra_engine.py,src/unification/states/unified_state.py,Uses KindraContext/KindraLayerScores
+mod_kindra_engine,depends_on,mod_kindra_loaders,src/kindras/kindra_engine.py,src/kindras/loaders.py,Uses load_layer_vectors/load_layer_mapping
+mod_kindra_engine,depends_on,mod_kindra_llm_adapter,src/kindras/kindra_engine.py,src/kindras/llm_adapter.py,Uses KindraLLMScorer
+mod_aurelius,depends_on,mod_meta_types,src/meta/aurelius.py,src/meta/types.py,Uses MetaInput
+mod_aurelius,depends_on,mod_unified_state,src/meta/aurelius.py,src/unification/states/unified_state.py,Uses KindraContext
+mod_aurelius,depends_on,mod_tw369_integrator,src/meta/aurelius.py,src/tw369/tw369_integration.py,Uses TWState
+mod_aurelius,depends_on,mod_unified_signal,src/meta/aurelius.py,src/common/unified_signal.py,Uses MetaSignal
+mod_engine_router,configures,app_alpha,src/meta/engine_router.py,src/apps/alpha/,Routes alpha domain
+mod_engine_router,configures,app_geo,src/meta/engine_router.py,src/apps/geo/,Routes geo domain
+mod_engine_router,configures,app_product,src/meta/engine_router.py,src/apps/product/,Routes product domain
+mod_engine_router,configures,app_safeguard_app,src/meta/engine_router.py,src/apps/safeguard/,Routes safeguard domain
+mod_story_aggregator,depends_on,mod_story_buffer,src/story/story_aggregator.py,src/story/story_buffer.py,Uses StoryBuffer/StoryEvent
+mod_delta144_engine,reads_from,schema_archetypes_core,src/archetypes/delta144_engine.py,schema/archetypes/archetypes.core.json,Loads archetype definitions
+mod_delta144_engine,reads_from,schema_delta144_states,src/archetypes/delta144_engine.py,schema/archetypes/delta144_states.json,Loads 144 states
+mod_delta144_engine,reads_from,schema_modifiers,src/archetypes/delta144_engine.py,schema/archetypes/modifiers.json,Loads 59 modifiers
+mod_delta144_engine,reads_from,schema_polarities,src/archetypes/delta144_engine.py,schema/archetypes/polarities.json,Loads 46 polarities
+mod_delta144_engine,depends_on,mod_delta12_vector,src/archetypes/delta144_engine.py,src/archetypes/delta12_vector.py,Uses Delta12Vector
+mod_delta144_engine,depends_on,mod_core_embedding_generator,src/archetypes/delta144_engine.py,src/core/embedding_generator.py,Uses EmbeddingGenerator
+mod_kindra_loaders,reads_from,schema_kindras,src/kindras/loaders.py,schema/kindras/,Loads layer vectors and mappings
+mod_tw369_integrator,reads_from,schema_tw369_config,src/tw369/tw369_integration.py,schema/tw369/tw369_default_config.json,Loads TW config
+mod_tw369_integrator,reads_from,schema_tw369_drift_params,src/tw369/tw369_integration.py,schema/tw369/drift_parameters.json,Loads drift parameters
+api_main,exposes_api,router_engine,kaldra_api/main.py,kaldra_api/routers/router_engine.py,/engine endpoints
+api_main,exposes_api,router_alpha,kaldra_api/main.py,kaldra_api/routers/router_alpha.py,/alpha endpoints
+api_main,exposes_api,router_geo,kaldra_api/main.py,kaldra_api/routers/router_geo.py,/geo endpoints
+api_main,exposes_api,router_product,kaldra_api/main.py,kaldra_api/routers/router_product.py,/product endpoints
+api_main,exposes_api,router_safeguard,kaldra_api/main.py,kaldra_api/routers/router_safeguard.py,/safeguard endpoints
+api_main,exposes_api,router_news,kaldra_api/main.py,kaldra_api/routers/router_news.py,/kaldra endpoints
+api_main,exposes_api,router_v3_1,kaldra_api/main.py,kaldra_api/routers/router_v3_1.py,/api v3.1 endpoints
+api_main,exposes_api,router_signals,kaldra_api/main.py,kaldra_api/routers/router_signals.py,/signals Supabase
+api_main,exposes_api,router_story_events,kaldra_api/main.py,kaldra_api/routers/router_story_events.py,/story-events
+router_engine,depends_on,engine_unified_kernel,kaldra_api/routers/router_engine.py,src/unification/kernel.py,Calls UnifiedKernel
+router_v3_1,depends_on,engine_unified_kernel,kaldra_api/routers/router_v3_1.py,src/unification/kernel.py,Uses v3.1 kernel interface
+data_pipeline_alpha,feeds,app_alpha,kaldra_data/pipeline/pipeline_alpha.py,src/apps/alpha/,Provides data to Alpha app
+data_pipeline_geo,feeds,app_geo,kaldra_data/pipeline/pipeline_geo.py,src/apps/geo/,Provides data to Geo app
+data_pipeline_product,feeds,app_product,kaldra_data/pipeline/pipeline_product.py,src/apps/product/,Provides data to Product app
+data_pipeline_safeguard,feeds,app_safeguard_app,kaldra_data/pipeline/pipeline_safeguard.py,src/apps/safeguard/,Provides data to Safeguard app
+tests_core,tests,engine_core,tests/core/,src/core/,Core engine tests
+tests_tw369,tests,engine_tw369,tests/tw369/,src/tw369/,TW369 engine tests
+tests_kindras,tests,engine_kindra,tests/kindras/,src/kindras/,Kindras engine tests
+tests_archetypes,tests,engine_delta144,tests/archetypes/,src/archetypes/,Archetypes engine tests
+tests_meta,tests,engine_meta,tests/meta/,src/meta/,Meta engines tests
+tests_story,tests,engine_story,tests/story/,src/story/,Story engine tests
+tests_unification,tests,engine_unified_kernel,tests/unification/,src/unification/,Unification tests
+tests_explainability,tests,engine_explainability,tests/explainability/,src/explainability/,Explainability tests
+tests_bias,tests,engine_bias,tests/bias/,src/bias/,Bias engine tests
+tests_tau,tests,engine_tau,tests/tau/,src/tau/,Tau layer tests
+tests_safeguard,tests,engine_safeguard,tests/safeguard/,src/safeguard/,Safeguard engine tests
+tests_integration,tests,engine_core,tests/integration/,src/,Integration tests across engines
+tests_e2e,tests,api_main,tests/e2e/,kaldra_api/,End-to-end API tests
+tests_api,tests,api_main,tests/api/,kaldra_api/,API unit tests
+tests_apps,tests,app_alpha,tests/apps/,src/apps/,App tests
+infra_docker,runs_as,api_main,infra/docker/,kaldra_api/main.py,Docker container runs API
+infra_k8s,configures,infra_docker,infra/k8s/,infra/docker/,K8s deploys Docker containers
+frontend_4iam,renders_ui,api_main,4iam_frontend/,kaldra_api/,Frontend consumes API
+frontend_visual_engine,renders_ui,router_engine,4iam_frontend/visual_engine/,kaldra_api/routers/router_engine.py,Visualizes engine output
+frontend_design_system,owned_by,frontend_4iam,4iam_frontend/design_system/,4iam_frontend/,Design tokens for frontend
+mod_exo_presets,configures,engine_unified_kernel,src/unification/exoskeleton/presets.py,src/unification/kernel.py,Presets configure kernel modes
+mod_pipeline_stages,depends_on,engine_core,src/unification/pipeline/,src/core/,Pipeline stages call core
+mod_pipeline_stages,depends_on,engine_meta,src/unification/pipeline/,src/meta/,Pipeline stages call meta
+mod_pipeline_stages,depends_on,engine_story,src/unification/pipeline/,src/story/,Pipeline stages call story
+mod_pipeline_stages,depends_on,engine_safeguard,src/unification/pipeline/,src/safeguard/,Pipeline stages call safeguard
+mod_learning,feeds,engine_kindra,src/learning/,src/kindras/,Provides learned weights to Kindras
+mod_learning,feeds,engine_delta144,src/learning/,src/archetypes/,Provides mapping to Delta144
+api_clients,depends_on,supabase,kaldra_api/clients/,supabase/,Supabase client integration
+router_signals,writes_to,supabase,kaldra_api/routers/router_signals.py,supabase/,Writes signals to Supabase
+router_story_events,writes_to,supabase,kaldra_api/routers/router_story_events.py,supabase/,Writes story events to Supabase
+engine_kindra,feeds,engine_tw369,src/kindras/,src/tw369/,Kindra scores feed TW369 planes
+engine_kindra,feeds,engine_delta144,src/kindras/,src/archetypes/,Kindra weights influence Delta144
+engine_delta144,feeds,engine_core,src/archetypes/,src/core/,Delta144 probs to master engine
+engine_tw369,feeds,engine_core,src/tw369/,src/core/,Drift state to master engine
