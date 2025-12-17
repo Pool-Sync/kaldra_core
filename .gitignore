@@ -7,3 +7,22 @@
 # Node modules
 .env.local
 node_modules/
+
+# -----------------------------
+# Obsidian (vault noise)
+# -----------------------------
+# Workspace state (personal)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Cache / logs
+.obsidian/cache/
+.obsidian/.cache/
+.obsidian/logs/
+
+# Plugin runtime data (optional: keeps vault clean across machines)
+.obsidian/plugins/*/data.json
+
+# macOS
+.DS_Store
+**/.DS_Store
