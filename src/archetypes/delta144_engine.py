@@ -25,7 +25,7 @@ from dataclasses import dataclass, field, asdict
 from pathlib import Path
 from typing import Dict, List, Optional, Any, Tuple
 
-from src.core.embedding_generator import EmbeddingGenerator, EmbeddingConfig
+from src.core.embeddings.embedding_generator import EmbeddingGenerator, EmbeddingConfig
 from src.config import (
     ARCHETYPES_12_FILE,
     DELTA144_STATES_FILE,

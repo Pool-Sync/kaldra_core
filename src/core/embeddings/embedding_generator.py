@@ -18,7 +18,7 @@ import json
 import requests
 import numpy as np
 
-from src.core.embedding_cache import (
+from src.core.embeddings.embedding_cache import (
     BaseEmbeddingCache,
     InMemoryEmbeddingCache,
     make_embedding_cache_key,

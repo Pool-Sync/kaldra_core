@@ -7,7 +7,7 @@ from typing import Dict, Any, Optional
 from dataclasses import dataclass, field
 import logging
 
-from src.infrastructure.cache.decorators import redis_cache
+from src.execution.cache.decorators import redis_cache
 
 logger = logging.getLogger(__name__)
 

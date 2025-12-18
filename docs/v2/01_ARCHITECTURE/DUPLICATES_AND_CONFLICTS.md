@@ -137,10 +137,10 @@ Known duplicate modules and naming conflicts requiring resolution.
 | Issue | Type | Priority | Status |
 |-------|------|----------|--------|
 | `story_aggregator.py` duplicate | Duplicate | **HIGH** | ✅ Resolved (Core renamed) |
-| `infra/` naming conflict | Naming | Medium | ⏳ Pending |
-| `src/data/` overlap | Naming | Medium | ⏳ Pending |
-| `src/embeddings/` split | Naming | Low | ⏳ Pending |
-| Circular imports | Import | Medium | ⏳ Pending |
+| `infra/` naming conflict | Naming | Medium | ✅ Resolved (src/execution) |
+| `src/data/` overlap | Naming | Medium | ✅ Resolved (src/data_utils) |
+| `src/embeddings/` split | Naming | Low | ✅ Resolved (src/core/embeddings) |
+| Circular imports | Import | Medium | ✅ Resolved (src/common) |
 | Empty schemas | Missing | Medium | ⏳ Pending |
 
 ---

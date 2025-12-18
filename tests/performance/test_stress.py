@@ -2,7 +2,8 @@ import pytest
 import time
 import numpy as np
 from src.core.kaldra_master_engine import KaldraMasterEngineV2
-from src.tw369.tw369_integration import TW369Integrator, TWState
+from src.tw369.tw369_integration import TW369Integrator
+from src.common.types import TWState
 
 @pytest.fixture
 def engine():

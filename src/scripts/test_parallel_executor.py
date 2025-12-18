@@ -10,7 +10,7 @@ from pathlib import Path
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.infrastructure.execution.parallel_executor import (
+from src.execution.execution.parallel_executor import (
     ParallelExecutor,
     TaskStatus
 )

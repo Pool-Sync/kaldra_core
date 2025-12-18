@@ -12,7 +12,7 @@ from .states.unified_state import UnifiedContext
 from .states.unified_context import ContextManager
 
 # v2.9 engine imports
-from src.core.embedding_generator import EmbeddingGenerator, EmbeddingConfig
+from src.core.embeddings.embedding_generator import EmbeddingGenerator, EmbeddingConfig
 from src.archetypes.delta144_engine import Delta144Engine
 from src.bias.detector import BiasDetector
 from src.tau.tau_layer import TauLayer

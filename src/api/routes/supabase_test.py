@@ -2,7 +2,7 @@
 Supabase test endpoint.
 """
 from fastapi import APIRouter
-from src.infra.db.supabase_repository import SupabaseRepository
+from src.execution.utils.db.supabase_repository import SupabaseRepository
 
 router = APIRouter()
 

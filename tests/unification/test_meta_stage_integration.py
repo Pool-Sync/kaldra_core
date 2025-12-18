@@ -14,7 +14,7 @@ from src.unification.pipeline.meta_stage import MetaStage
 from src.unification.states.unified_state import (
     UnifiedContext, InputContext, ArchetypeContext, MetaContext, KindraContext, DriftContext
 )
-from src.tw369.tw369_integration import TWState
+from src.common.types import TWState
 
 # Import Signals
 from src.meta.nietzsche import NietzscheSignal

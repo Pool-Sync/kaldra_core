@@ -8,7 +8,7 @@ from dataclasses import dataclass
 import logging
 import json
 
-from src.infrastructure.cache.decorators import redis_cache
+from src.execution.cache.decorators import redis_cache
 
 logger = logging.getLogger(__name__)
 
