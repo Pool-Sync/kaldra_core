@@ -11,8 +11,8 @@ from pathlib import Path
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from src.archetypes.delta144_engine import Delta144Engine
-from src.core.embeddings.embedding_generator import EmbeddingGenerator, EmbeddingConfig
+from kaldra_engine.archetypes.delta144_engine import Delta144Engine
+from kaldra_engine.core.embeddings.embedding_generator import EmbeddingGenerator, EmbeddingConfig
 
 
 def test_modifier_embeddings_initialization():

@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from src.tw369.oracle_tw_painleve import TWPainleveOracle, TWConfig
+from kaldra_engine.tw369.oracle_tw_painleve import TWPainleveOracle, TWConfig
 
 def test_tw_oracle_initialization():
     config = TWConfig(window_size=50, alpha=0.95)

@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from src.core.kaldra_master_engine import KaldraMasterEngineV2, KaldraSignal
+from kaldra_engine.core.kaldra_master_engine import KaldraMasterEngineV2, KaldraSignal
 
 def test_master_engine_initialization():
     engine = KaldraMasterEngineV2(d_ctx=128, tau=0.7)

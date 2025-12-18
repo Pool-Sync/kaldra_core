@@ -5,8 +5,8 @@ import pytest
 import sys
 sys.path.insert(0, '/Users/niki/Desktop/kaldra_core')
 
-from src.unification.kernel import UnifiedKernel
-from src.unification.states.unified_state import UnifiedContext
+from kaldra_engine.unification.kernel import UnifiedKernel
+from kaldra_engine.unification.states.unified_state import UnifiedContext
 
 
 def test_kernel_initialization():

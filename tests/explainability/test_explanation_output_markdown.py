@@ -2,9 +2,9 @@
 Unit tests for Markdown output (v3.4 Phase 3).
 """
 import pytest
-from src.explainability.explanation_generator import ExplanationGenerator, Explanation
-from src.explainability.explanation_output import ExplanationMarkdownRenderer
-from src.unification.states.unified_state import UnifiedContext, GlobalContext, ArchetypeContext
+from kaldra_engine.explainability.explanation_generator import ExplanationGenerator, Explanation
+from kaldra_engine.explainability.explanation_output import ExplanationMarkdownRenderer
+from kaldra_engine.unification.states.unified_state import UnifiedContext, GlobalContext, ArchetypeContext
 
 
 class TestExplanationMarkdownOutput:

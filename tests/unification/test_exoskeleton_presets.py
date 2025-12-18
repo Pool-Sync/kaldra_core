@@ -3,7 +3,7 @@ Tests for Exoskeleton Presets System.
 """
 
 import pytest
-from src.unification.exoskeleton import PresetConfig, PresetManager
+from kaldra_engine.unification.exoskeleton import PresetConfig, PresetManager
 
 
 def test_presets_exist():

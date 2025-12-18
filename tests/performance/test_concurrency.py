@@ -25,7 +25,7 @@ def test_concurrent_requests():
     print("="*70)
     
     try:
-        from src.core.kaldra_master_engine import KaldraMasterEngineV2
+        from kaldra_engine.core.kaldra_master_engine import KaldraMasterEngineV2
         
         engine = KaldraMasterEngineV2()
         num_requests = 100
@@ -85,7 +85,7 @@ def test_sustained_load():
     print("="*70)
     
     try:
-        from src.core.kaldra_master_engine import KaldraMasterEngineV2
+        from kaldra_engine.core.kaldra_master_engine import KaldraMasterEngineV2
         
         engine = KaldraMasterEngineV2()
         num_requests = 1000
@@ -141,7 +141,7 @@ def test_cache_effectiveness():
     print("="*70)
     
     try:
-        from src.core.kaldra_master_engine import KaldraMasterEngineV2
+        from kaldra_engine.core.kaldra_master_engine import KaldraMasterEngineV2
         
         engine = KaldraMasterEngineV2()
         
@@ -191,7 +191,7 @@ def test_memory_stability():
         import psutil
         import os
         
-        from src.core.kaldra_master_engine import KaldraMasterEngineV2
+        from kaldra_engine.core.kaldra_master_engine import KaldraMasterEngineV2
         
         process = psutil.Process(os.getpid())
         engine = KaldraMasterEngineV2()
@@ -237,7 +237,7 @@ def test_error_recovery():
     print("="*70)
     
     try:
-        from src.core.kaldra_master_engine import KaldraMasterEngineV2
+        from kaldra_engine.core.kaldra_master_engine import KaldraMasterEngineV2
         
         engine = KaldraMasterEngineV2()
         

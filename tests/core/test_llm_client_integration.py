@@ -4,8 +4,8 @@ Tests for LLM Client Integration.
 
 import unittest
 from unittest.mock import MagicMock, patch
-from src.kindras.scoring.llm_openai_client import OpenAILLMClient
-from src.kindras.scoring.llm_dummy_client import DummyLLMClient
+from kaldra_engine.kindras.scoring.llm_openai_client import OpenAILLMClient
+from kaldra_engine.kindras.scoring.llm_dummy_client import DummyLLMClient
 
 class TestLLMClientIntegration(unittest.TestCase):
 

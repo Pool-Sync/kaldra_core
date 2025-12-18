@@ -1,5 +1,5 @@
 import pytest
-from src.tw369.painleve.painleve_filter import painleve_filter
+from kaldra_engine.tw369.painleve.painleve_filter import painleve_filter
 
 class TestPainleveFilter:
     def test_filter_basic(self):

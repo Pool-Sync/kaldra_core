@@ -2,7 +2,7 @@
 Tests for Kindra Layer 2 Rules (Option B).
 """
 
-from src.kindras.scoring.layer2_rules import KindraLayer2SemioticMediaRules
+from kaldra_engine.kindras.scoring.layer2_rules import KindraLayer2SemioticMediaRules
 
 
 def test_layer2_scoring_sensational_social_negative_high_intensity():

@@ -5,8 +5,8 @@ import pytest
 import sys
 sys.path.insert(0, '/Users/niki/Desktop/kaldra_core')
 
-from src.unification.states.unified_state import UnifiedContext, GlobalContext
-from src.unification.adapters.signal_adapter import SignalAdapter
+from kaldra_engine.unification.states.unified_state import UnifiedContext, GlobalContext
+from kaldra_engine.unification.adapters.signal_adapter import SignalAdapter
 
 
 def test_signal_adapter_basic():

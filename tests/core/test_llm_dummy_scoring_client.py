@@ -2,8 +2,8 @@
 Tests for Dummy LLM Scoring Client.
 """
 
-from src.kindras.scoring.llm_dummy_client import DummyLLMScoringClient
-from src.kindras.scoring.llm_types import LLMScoringRequest
+from kaldra_engine.kindras.scoring.llm_dummy_client import DummyLLMScoringClient
+from kaldra_engine.kindras.scoring.llm_types import LLMScoringRequest
 
 
 def test_dummy_llm_scoring_client_layer1_basic():

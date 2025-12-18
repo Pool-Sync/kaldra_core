@@ -3,8 +3,8 @@ Integration tests for story events persistence.
 """
 import pytest
 from typing import Any, Dict, List
-from src.unification.adapters.signal_adapter import SignalAdapter
-from src.unification.states.unified_state import (
+from kaldra_engine.unification.adapters.signal_adapter import SignalAdapter
+from kaldra_engine.unification.states.unified_state import (
     UnifiedContext,
     GlobalContext,
     InputContext,

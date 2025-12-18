@@ -10,8 +10,8 @@ import numpy as np
 from fastapi import APIRouter, HTTPException, Depends
 
 from ..dependencies import get_master_engine
-from src.core.kaldra_master_engine import KaldraMasterEngineV2
-from src.bias import compute_bias_score_from_text, classify_bias
+from kaldra_engine.core.kaldra_master_engine import KaldraMasterEngineV2
+from kaldra_engine.bias import compute_bias_score_from_text, classify_bias
 from ..schemas.signal import KaldraSignalRequest, KaldraSignalResponse
 from ..core.request_models import EngineInferenceRequest
 

@@ -5,7 +5,7 @@ Verifies EmbeddingGenerator behavior under failure.
 import pytest
 import numpy as np
 from unittest.mock import MagicMock
-from src.core.embeddings.embedding_generator import EmbeddingGenerator, EmbeddingConfig
+from kaldra_engine.core.embeddings.embedding_generator import EmbeddingGenerator, EmbeddingConfig
 
 def test_openai_fallback_on_error():
     # Config for OpenAI

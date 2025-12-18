@@ -12,8 +12,8 @@ import pytest
 import numpy as np
 from unittest.mock import patch
 
-from src.kindras.kindra_engine import KindraEngine
-from src.unification.states.unified_state import KindraContext, KindraLayerScores
+from kaldra_engine.kindras.kindra_engine import KindraEngine
+from kaldra_engine.unification.states.unified_state import KindraContext, KindraLayerScores
 
 
 # ============================================================================

@@ -3,8 +3,8 @@ Tests for KindraEngine v3.1.
 """
 import pytest
 from unittest.mock import MagicMock, patch
-from src.kindras.kindra_engine import KindraEngine
-from src.unification.states.unified_state import KindraContext
+from kaldra_engine.kindras.kindra_engine import KindraEngine
+from kaldra_engine.unification.states.unified_state import KindraContext
 
 @pytest.fixture
 def mock_loaders():

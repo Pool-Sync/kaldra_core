@@ -4,8 +4,8 @@ Tests for ArcDetector.
 
 import pytest
 from datetime import datetime
-from src.story.story_buffer import StoryEvent
-from src.story.arc_detector import ArcDetector, JOURNEY_STAGES
+from kaldra_engine.story.story_buffer import StoryEvent
+from kaldra_engine.story.arc_detector import ArcDetector, JOURNEY_STAGES
 
 
 class TestArcDetector:

@@ -7,7 +7,8 @@ WORKDIR /app
 
 # Copy API module
 COPY apps/api/ /app/apps/api/
-ENV PYTHONPATH="${PYTHONPATH}:/app/packages/engine"
+COPY packages/engine/ /app/packages/engine/
+RUN pip install -e /app/packages/engine
 
 # Install dependencies (placeholder)
 # RUN pip install --no-cache-dir -r requirements.txt

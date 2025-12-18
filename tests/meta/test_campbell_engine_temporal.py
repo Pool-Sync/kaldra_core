@@ -15,9 +15,9 @@ from dataclasses import dataclass, field
 from typing import List, Dict, Any, Optional
 from datetime import datetime
 
-from src.meta.campbell_engine import CampbellEngine, CampbellSignal
-from src.meta.types import MetaInput
-from src.unification.states.unified_state import DriftContext, StoryContext, DriftPoint, TurningPoint
+from kaldra_engine.meta.campbell_engine import CampbellEngine, CampbellSignal
+from kaldra_engine.meta.types import MetaInput
+from kaldra_engine.unification.states.unified_state import DriftContext, StoryContext, DriftPoint, TurningPoint
 
 
 # Mock classes for testing

@@ -5,7 +5,7 @@ import pytest
 import json
 import tempfile
 import os
-from src.learning.kindra_priors import KindraPriors
+from kaldra_engine.learning.kindra_priors import KindraPriors
 
 
 class TestKindraPriors:

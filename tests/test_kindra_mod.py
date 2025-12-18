@@ -1,6 +1,6 @@
 import torch
 import pytest
-from src.kindras.kindra_cultural_mod import KaldraKindraCulturalMod
+from kaldra_engine.kindras.kindra_cultural_mod import KaldraKindraCulturalMod
 
 def test_kindra_mod_initialization():
     mod = KaldraKindraCulturalMod(d_ctx=128)

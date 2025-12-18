@@ -4,7 +4,7 @@ Tests for Kindra Layer 2 (Semiotic/Media) Scoring.
 Tests rule-based scoring for media tone, channel, and sentiment.
 """
 
-from src.kindras.layer2_semiotic_media_scoring import KindraLayer2SemioticMediaScoring
+from kaldra_engine.kindras.layer2_semiotic_media_scoring import KindraLayer2SemioticMediaScoring
 
 
 def test_layer2_scoring_sensational_social_negative_high_intensity():

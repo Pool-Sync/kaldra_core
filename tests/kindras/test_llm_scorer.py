@@ -3,7 +3,7 @@ Unit tests for Kindra LLM-based scoring.
 """
 
 import pytest
-from src.kindras.kindra_llm_scorer import KindraLLMScorer
+from kaldra_engine.kindras.kindra_llm_scorer import KindraLLMScorer
 
 
 class DummyLLM:

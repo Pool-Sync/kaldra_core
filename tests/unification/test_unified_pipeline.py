@@ -5,12 +5,12 @@ import pytest
 import sys
 sys.path.insert(0, '/Users/niki/Desktop/kaldra_core')
 
-from src.unification.registry import ModuleRegistry
-from src.unification.kernel import UnifiedKernel
-from src.unification.states.unified_state import UnifiedContext, InputContext
-from src.unification.pipeline.input_stage import InputStage
-from src.unification.pipeline.core_stage import CoreStage
-from src.unification.pipeline.output_stage import OutputStage
+from kaldra_engine.unification.registry import ModuleRegistry
+from kaldra_engine.unification.kernel import UnifiedKernel
+from kaldra_engine.unification.states.unified_state import UnifiedContext, InputContext
+from kaldra_engine.unification.pipeline.input_stage import InputStage
+from kaldra_engine.unification.pipeline.core_stage import CoreStage
+from kaldra_engine.unification.pipeline.output_stage import OutputStage
 
 
 def test_input_stage():

@@ -3,8 +3,8 @@
 import pytest
 from unittest.mock import MagicMock, patch
 
-from src.apps.geo.geo_risk_engine import GeoRiskEngine, GeoRiskEngineConfig
-from src.apps.geo.geo_signals import GeoSignal
+from kaldra_engine.apps.geo.geo_risk_engine import GeoRiskEngine, GeoRiskEngineConfig
+from kaldra_engine.apps.geo.geo_signals import GeoSignal
 
 
 def test_geo_risk_engine_analyze_text_returns_geo_signal():

@@ -10,8 +10,8 @@ from pathlib import Path
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from src.tw369.tw369_integration import TW369Integrator
-from src.common.types import TWState
+from kaldra_engine.tw369.tw369_integration import TW369Integrator
+from kaldra_engine.common.types import TWState
 
 
 def test_tw369_modulation_plane3():

@@ -1,6 +1,6 @@
 import pytest
 import numpy as np
-from src.archetypes.delta144_engine import Delta144Engine
+from kaldra_engine.archetypes.delta144_engine import Delta144Engine
 
 @pytest.fixture
 def delta144():

@@ -10,7 +10,7 @@ from pathlib import Path
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from src.archetypes.delta144_engine import Delta144Engine
+from kaldra_engine.archetypes.delta144_engine import Delta144Engine
 
 
 def test_infer_state_with_polarity_scores():

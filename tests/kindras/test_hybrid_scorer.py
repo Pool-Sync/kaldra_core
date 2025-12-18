@@ -3,7 +3,7 @@ Unit tests for Kindra Hybrid Scoring.
 """
 
 import pytest
-from src.kindras.kindra_hybrid_scorer import KindraHybridScorer
+from kaldra_engine.kindras.kindra_hybrid_scorer import KindraHybridScorer
 
 
 class DummyLLMScorer:

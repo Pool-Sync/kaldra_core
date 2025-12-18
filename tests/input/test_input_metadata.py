@@ -2,7 +2,7 @@
 Tests for InputMetadata and InputContext backward compatibility.
 """
 import pytest
-from src.unification.states.unified_state import InputContext, InputMetadata
+from kaldra_engine.unification.states.unified_state import InputContext, InputMetadata
 
 class TestInputMetadata:
     

@@ -2,9 +2,9 @@
 Tests for Polarity Loading and Kindra Hooks (v2.7).
 """
 import pytest
-from src.archetypes.polarity_mapping import extract_polarity_scores
-from src.kindras.layer1_cultural_macro_scoring import KindraLayer1CulturalMacroScoring
-from src.kindras.layer2_semiotic_media_scoring import KindraLayer2SemioticMediaScoring
+from kaldra_engine.archetypes.polarity_mapping import extract_polarity_scores
+from kaldra_engine.kindras.layer1_cultural_macro_scoring import KindraLayer1CulturalMacroScoring
+from kaldra_engine.kindras.layer2_semiotic_media_scoring import KindraLayer2SemioticMediaScoring
 
 def test_polarity_loading_structure():
     """Test that we can load/define polarities correctly."""

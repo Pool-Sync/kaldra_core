@@ -4,7 +4,7 @@ Tests for PresetRouter Integration.
 
 import pytest
 import tempfile
-from src.unification.exoskeleton import (
+from kaldra_engine.unification.exoskeleton import (
     PresetRouter,
     PresetResolvedConfig,
     PresetManager,

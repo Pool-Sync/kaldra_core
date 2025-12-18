@@ -13,9 +13,9 @@ except ImportError:
 
 pytestmark = pytest.mark.skipif(not GRAPHENE_AVAILABLE, reason="graphene not installed")
 
-from src.explainability.explanation_generator import ExplanationGenerator, Explanation
-from src.api.graphql.resolvers.explainability_resolvers import explanation_to_graphql
-from src.unification.states.unified_state import UnifiedContext, GlobalContext, ArchetypeContext
+from kaldra_engine.explainability.explanation_generator import ExplanationGenerator, Explanation
+from kaldra_engine.api.graphql.resolvers.explainability_resolvers import explanation_to_graphql
+from kaldra_engine.unification.states.unified_state import UnifiedContext, GlobalContext, ArchetypeContext
 
 
 class TestExplanationGraphQLOutput:

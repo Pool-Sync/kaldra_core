@@ -2,8 +2,8 @@
 Unit tests for Feature Builder (v3.5 Phase 2).
 """
 import pytest
-from src.learning.features.feature_builder import LearningFeatureVector, build_from_unified_context
-from src.unification.states.unified_state import (
+from kaldra_engine.learning.features.feature_builder import LearningFeatureVector, build_from_unified_context
+from kaldra_engine.unification.states.unified_state import (
     UnifiedContext,
     GlobalContext,
     ArchetypeContext,

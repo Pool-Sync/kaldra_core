@@ -9,8 +9,8 @@ Tests cover:
 """
 import pytest
 import time
-from src.story.multi_stream_buffer import MultiStreamBuffer, StreamWindow
-from src.common.unified_signal import StoryEvent
+from kaldra_engine.story.multi_stream_buffer import MultiStreamBuffer, StreamWindow
+from kaldra_engine.common.unified_signal import StoryEvent
 
 
 def create_test_event(

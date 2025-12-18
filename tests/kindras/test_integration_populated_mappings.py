@@ -10,15 +10,15 @@ Tests:
 """
 
 import pytest
-from src.kindras.layer1_cultural_macro_loader import Layer1Loader
-from src.kindras.layer2_semiotic_media_loader import Layer2Loader
-from src.kindras.layer3_structural_systemic_loader import Layer3Loader
-from src.kindras.layer1_cultural_macro_scoring import Layer1Scorer
-from src.kindras.layer2_semiotic_media_scoring import Layer2Scorer
-from src.kindras.layer3_structural_systemic_scoring import Layer3Scorer
-from src.kindras.layer1_delta144_bridge import Layer1Delta144Bridge
-from src.kindras.layer2_delta144_bridge import Layer2Delta144Bridge
-from src.kindras.layer3_delta144_bridge import Layer3Delta144Bridge
+from kaldra_engine.kindras.layer1_cultural_macro_loader import Layer1Loader
+from kaldra_engine.kindras.layer2_semiotic_media_loader import Layer2Loader
+from kaldra_engine.kindras.layer3_structural_systemic_loader import Layer3Loader
+from kaldra_engine.kindras.layer1_cultural_macro_scoring import Layer1Scorer
+from kaldra_engine.kindras.layer2_semiotic_media_scoring import Layer2Scorer
+from kaldra_engine.kindras.layer3_structural_systemic_scoring import Layer3Scorer
+from kaldra_engine.kindras.layer1_delta144_bridge import Layer1Delta144Bridge
+from kaldra_engine.kindras.layer2_delta144_bridge import Layer2Delta144Bridge
+from kaldra_engine.kindras.layer3_delta144_bridge import Layer3Delta144Bridge
 
 
 class TestKindraIntegration:

@@ -4,7 +4,7 @@ REST endpoints for story events operations via Supabase.
 """
 from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, Query
-from src.data.repositories.story_event_repository import StoryEventRepository
+from kaldra_engine.data.repositories.story_event_repository import StoryEventRepository
 from ..dependencies import get_story_event_repository
 
 

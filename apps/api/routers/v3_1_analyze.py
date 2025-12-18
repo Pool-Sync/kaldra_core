@@ -11,8 +11,8 @@ import logging
 import sys
 import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../'))
-from src.unification.exoskeleton import PresetRouter
-from src.unification.adapters.unified_api import UnifiedKaldra
+from kaldra_engine.unification.exoskeleton import PresetRouter
+from kaldra_engine.unification.adapters.unified_api import UnifiedKaldra
 
 logger = logging.getLogger(__name__)
 

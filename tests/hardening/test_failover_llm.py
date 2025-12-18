@@ -4,7 +4,7 @@ Verifies that KindraLLMScorer falls back gracefully when LLM fails.
 """
 import pytest
 from unittest.mock import MagicMock
-from src.kindras.kindra_llm_scorer import KindraLLMScorer
+from kaldra_engine.kindras.kindra_llm_scorer import KindraLLMScorer
 
 def test_llm_failure_fallback():
     # Mock a failing LLM client
@@ -31,7 +31,7 @@ def test_llm_timeout_fallback():
     # Since we can't easily simulate real time.sleep in a synchronous mock without slowing tests,
     # we rely on the Exception raised by the timeout decorator.
     
-    from src.core.hardening.timeouts import TimeoutError
+    from kaldra_engine.core.hardening.timeouts import TimeoutError
     
     mock_llm = MagicMock()
     mock_llm.generate.side_effect = TimeoutError("Timed out")

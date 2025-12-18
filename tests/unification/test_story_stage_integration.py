@@ -13,15 +13,15 @@ import pytest
 from datetime import datetime
 from typing import Dict, Any
 
-from src.unification.pipeline.story_stage import StoryStage, StoryStageConfig
-from src.unification.states.unified_state import (
+from kaldra_engine.unification.pipeline.story_stage import StoryStage, StoryStageConfig
+from kaldra_engine.unification.states.unified_state import (
     UnifiedContext,
     GlobalContext,
     InputContext,
     ArchetypeContext,
     StoryContext
 )
-from src.archetypes.delta12_vector import Delta12Vector
+from kaldra_engine.archetypes.delta12_vector import Delta12Vector
 
 
 # Mock Delta144 state for testing

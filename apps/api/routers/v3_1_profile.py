@@ -10,7 +10,7 @@ from ..schemas.v3_1_responses import ProfileResponse
 import sys
 import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../'))
-from src.unification.exoskeleton import ProfileManager, UserProfile
+from kaldra_engine.unification.exoskeleton import ProfileManager, UserProfile
 
 router = APIRouter()
 profile_manager = ProfileManager()

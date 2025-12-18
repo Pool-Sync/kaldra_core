@@ -1,5 +1,5 @@
 import pytest
-from src.tw369.painleve.painleve2_solver import PainleveIISolver
+from kaldra_engine.tw369.painleve.painleve2_solver import PainleveIISolver
 
 class TestPainleveIISolver:
     def test_initialization(self):

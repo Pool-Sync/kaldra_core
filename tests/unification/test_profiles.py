@@ -5,7 +5,7 @@ Tests for Exoskeleton Profiles System.
 import pytest
 import os
 import json
-from src.unification.exoskeleton import UserProfile, ProfileManager
+from kaldra_engine.unification.exoskeleton import UserProfile, ProfileManager
 
 
 def test_user_profile_creation():

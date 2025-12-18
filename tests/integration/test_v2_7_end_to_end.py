@@ -18,11 +18,11 @@ from unittest.mock import MagicMock
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from src.core.kaldra_master_engine import KaldraMasterEngineV2
-from src.archetypes.delta144_engine import Delta144Engine
-from src.story.story_buffer import StoryBuffer
-from src.story.story_aggregator import aggregate_story
-from src.config import KALDRA_DELTA12_POLARITY_ENABLED
+from kaldra_engine.core.kaldra_master_engine import KaldraMasterEngineV2
+from kaldra_engine.archetypes.delta144_engine import Delta144Engine
+from kaldra_engine.story.story_buffer import StoryBuffer
+from kaldra_engine.story.story_aggregator import aggregate_story
+from kaldra_engine.config import KALDRA_DELTA12_POLARITY_ENABLED
 
 def test_v2_7_end_to_end_flow():
     """Test the full v2.7 pipeline."""

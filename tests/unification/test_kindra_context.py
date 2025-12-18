@@ -3,7 +3,7 @@ Tests for KindraContext v3.1 structure and methods.
 """
 import pytest
 import json
-from src.unification.states.unified_state import KindraContext, KindraLayerScores
+from kaldra_engine.unification.states.unified_state import KindraContext, KindraLayerScores
 
 
 def test_kindra_layer_scores_basic():

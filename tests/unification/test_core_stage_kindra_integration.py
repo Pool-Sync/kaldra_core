@@ -6,11 +6,11 @@ import pytest
 from unittest.mock import MagicMock, patch
 import numpy as np
 
-from src.unification.pipeline.core_stage import CoreStage
-from src.unification.states.unified_state import (
+from kaldra_engine.unification.pipeline.core_stage import CoreStage
+from kaldra_engine.unification.states.unified_state import (
     UnifiedContext, InputContext, ArchetypeContext, KindraContext, KindraLayerScores
 )
-from src.kindras.kindra_engine import KindraEngine
+from kaldra_engine.kindras.kindra_engine import KindraEngine
 
 
 @pytest.fixture

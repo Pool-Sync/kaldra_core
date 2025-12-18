@@ -11,8 +11,8 @@ import time
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from src.story.story_buffer import StoryBuffer
-from src.story.story_aggregator import aggregate_story, compute_narrative_motion
+from kaldra_engine.story.story_buffer import StoryBuffer
+from kaldra_engine.story.story_aggregator import aggregate_story, compute_narrative_motion
 
 
 def test_story_buffer_polarity_storage():

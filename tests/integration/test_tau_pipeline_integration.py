@@ -4,8 +4,8 @@ Integration Tests for Tau Pipeline (v2.8).
 import pytest
 import numpy as np
 from unittest.mock import MagicMock, patch
-from src.core.kaldra_master_engine import KaldraMasterEngineV2, KaldraSignal
-from src.tau.tau_state import TauState
+from kaldra_engine.core.kaldra_master_engine import KaldraMasterEngineV2, KaldraSignal
+from kaldra_engine.tau.tau_state import TauState
 
 @pytest.fixture
 def master_engine():

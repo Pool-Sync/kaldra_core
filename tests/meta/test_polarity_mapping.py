@@ -10,7 +10,7 @@ from pathlib import Path
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from src.archetypes.polarity_mapping import extract_polarity_scores
+from kaldra_engine.archetypes.polarity_mapping import extract_polarity_scores
 
 
 def test_extract_polarity_scores_nietzsche():

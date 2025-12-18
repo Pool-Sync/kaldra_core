@@ -5,8 +5,8 @@ Tests for SignalAdapter v3.1 enhancements.
 import pytest
 from unittest.mock import Mock, MagicMock
 
-from src.unification.output import SignalAdapter
-from src.unification.states.unified_state import UnifiedContext
+from kaldra_engine.unification.output import SignalAdapter
+from kaldra_engine.unification.states.unified_state import UnifiedContext
 
 
 class TestSignalAdapterV31:
