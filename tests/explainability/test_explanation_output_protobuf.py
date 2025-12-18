@@ -2,12 +2,12 @@
 Unit tests for Protobuf adapters (v3.4 Phase 3).
 """
 import pytest
-from src.explainability.explanation_generator import ExplanationGenerator, Explanation
-from src.explainability.proto.explanation_adapters import (
+from kaldra_engine.explainability.explanation_generator import ExplanationGenerator, Explanation
+from kaldra_engine.explainability.proto.explanation_adapters import (
     explanation_to_proto,
     explanation_from_proto
 )
-from src.unification.states.unified_state import UnifiedContext, GlobalContext, ArchetypeContext
+from kaldra_engine.unification.states.unified_state import UnifiedContext, GlobalContext, ArchetypeContext
 
 
 class TestExplanationProtobufOutput:

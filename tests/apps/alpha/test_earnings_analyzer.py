@@ -4,11 +4,11 @@ import pytest
 import numpy as np
 from unittest.mock import MagicMock
 
-from src.apps.alpha.earnings_analyzer import (
+from kaldra_engine.apps.alpha.earnings_analyzer import (
     summarize_archetypes, 
     build_alpha_signal_payload
 )
-from src.apps.alpha.earnings_pipeline import EarningsPipelineResult
+from kaldra_engine.apps.alpha.earnings_pipeline import EarningsPipelineResult
 
 @pytest.fixture
 def mock_result():

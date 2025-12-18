@@ -3,12 +3,12 @@ Unit tests for adaptive state-plane mapping.
 """
 
 import pytest
-from src.tw369.state_plane_mapping import (
+from kaldra_engine.tw369.state_plane_mapping import (
     AdaptiveStatePlaneMapper,
     AdaptiveMappingContext,
     PlaneWeights,
 )
-from src.tw369.state_plane_mapping_utils import apply_plane_weights_to_tensions
+from kaldra_engine.tw369.state_plane_mapping_utils import apply_plane_weights_to_tensions
 
 
 def _make_default_config():

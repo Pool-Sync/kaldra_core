@@ -6,7 +6,7 @@ Tests runtime validation of TWState and config dicts.
 
 import pytest
 
-from src.tw369.runtime_validation import (
+from kaldra_engine.tw369.runtime_validation import (
     validate_tw_state_dict,
     validate_tw369_config_dict,
 )

@@ -2,7 +2,7 @@
 Tests for Kindra Layer 3 Rules (Option B).
 """
 
-from src.kindras.scoring.layer3_rules import KindraLayer3StructuralSystemicRules
+from kaldra_engine.kindras.scoring.layer3_rules import KindraLayer3StructuralSystemicRules
 
 
 def test_layer3_scoring_high_institutional_strength_concentrated_power():

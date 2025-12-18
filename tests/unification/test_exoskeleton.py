@@ -12,7 +12,7 @@ import os
 import json
 import pytest
 
-from src.unification.exoskeleton import (
+from kaldra_engine.unification.exoskeleton import (
     PresetManager,
     PresetConfig,
     ProfileManager,

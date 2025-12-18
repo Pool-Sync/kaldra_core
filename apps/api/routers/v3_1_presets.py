@@ -9,7 +9,7 @@ from ..schemas.v3_1_responses import PresetsResponse
 import sys
 import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../'))
-from src.unification.exoskeleton import PresetManager
+from kaldra_engine.unification.exoskeleton import PresetManager
 
 router = APIRouter()
 

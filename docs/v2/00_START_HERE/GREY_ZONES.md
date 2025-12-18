@@ -14,9 +14,9 @@ Grey zones are areas of the codebase with unclear ownership, overlapping functio
 
 ## Grey Zone Inventory
 
-### 1. `src/common/` — Shared Utilities
+### 1. `packages/engine/kaldra_engine/common/` — Shared Utilities
 
-**Location**: `src/common/` (6 files)
+**Location**: `packages/engine/kaldra_engine/common/` (6 files)
 
 **Issue**: Cross-cutting utilities used by multiple engines.
 
@@ -29,14 +29,14 @@ Grey zones are areas of the codebase with unclear ownership, overlapping functio
 **Resolution Path**:
 1. Audit all usages across engines
 2. Document which engines depend on each file
-3. Consider moving to a `src/shared/` or keeping as `src/common/`
+3. Consider moving to a `packages/engine/kaldra_engine/shared/` or keeping as `packages/engine/kaldra_engine/common/`
 4. No action required — this is a valid pattern
 
 ---
 
-### 2. `src/domain/` — Domain Models
+### 2. `packages/engine/kaldra_engine/domain/` — Domain Models
 
-**Location**: `src/domain/` (5 files)
+**Location**: `packages/engine/kaldra_engine/domain/` (5 files)
 
 **Issue**: Unclear scope — should these be in engine-specific locations?
 
@@ -49,34 +49,34 @@ Grey zones are areas of the codebase with unclear ownership, overlapping functio
 **Resolution Path**:
 1. Identify which models belong to which engine
 2. Move engine-specific models to their engine directories
-3. Keep truly shared models in `src/common/`
-4. Delete empty `src/domain/` after migration
+3. Keep truly shared models in `packages/engine/kaldra_engine/common/`
+4. Delete empty `packages/engine/kaldra_engine/domain/` after migration
 
 ---
 
-### 3. `src/embeddings/` — Embedding Utilities
+### 3. `packages/engine/kaldra_engine/embeddings/` — Embedding Utilities
 
-**Location**: `src/embeddings/` (2 files)
+**Location**: `packages/engine/kaldra_engine/embeddings/` (2 files)
 
-**Issue**: Overlaps with `src/core/embedding_generator.py`
+**Issue**: Overlaps with `packages/engine/kaldra_engine/core/embedding_generator.py`
 
 **Current State**:
 - Contains embedding-related utilities
-- `src/core/` has `embedding_generator.py`, `embedding_cache.py`
+- `packages/engine/kaldra_engine/core/` has `embedding_generator.py`, `embedding_cache.py`
 
-**Recommendation**: 🔄 **Merge into `src/core/`**
+**Recommendation**: 🔄 **Merge into `packages/engine/kaldra_engine/core/`**
 
 **Resolution Path**:
 1. Review both locations for duplicate functionality
-2. Merge `src/embeddings/` into `src/core/embeddings/` subdir
+2. Merge `packages/engine/kaldra_engine/embeddings/` into `packages/engine/kaldra_engine/core/embeddings/` subdir
 3. Update all imports
-4. Delete `src/embeddings/`
+4. Delete `packages/engine/kaldra_engine/embeddings/`
 
 ---
 
-### 4. `src/data/` — Data Handling
+### 4. `packages/engine/kaldra_engine/data/` — Data Handling
 
-**Location**: `src/data/` (16 files)
+**Location**: `packages/engine/kaldra_engine/data/` (16 files)
 
 **Issue**: Overlaps with `kaldra_data/`
 
@@ -87,16 +87,16 @@ Grey zones are areas of the codebase with unclear ownership, overlapping functio
 **Recommendation**: 🔄 **Clarify boundary or merge**
 
 **Resolution Path**:
-1. Audit what `src/data/` contains vs `kaldra_data/`
-2. If utilities: keep in `src/data/`
+1. Audit what `packages/engine/kaldra_engine/data/` contains vs `kaldra_data/`
+2. If utilities: keep in `packages/engine/kaldra_engine/data/`
 3. If pipelines/ingestion: move to `kaldra_data/`
-4. Rename to `src/data_utils/` for clarity
+4. Rename to `packages/engine/kaldra_engine/data_utils/` for clarity
 
 ---
 
-### 5. `src/infrastructure/` — Execution Layer
+### 5. `packages/engine/kaldra_engine/infrastructure/` — Execution Layer
 
-**Location**: `src/infrastructure/` (9 files)
+**Location**: `packages/engine/kaldra_engine/infrastructure/` (9 files)
 
 **Issue**: Overlaps with top-level `infra/`
 
@@ -104,20 +104,20 @@ Grey zones are areas of the codebase with unclear ownership, overlapping functio
 - Contains `execution/parallel_executor.py`
 - `infra/` contains deployment configs
 
-**Recommendation**: 🔄 **Rename to `src/execution/`**
+**Recommendation**: 🔄 **Rename to `packages/engine/kaldra_engine/execution/`**
 
 **Resolution Path**:
-1. `src/infrastructure/` → `src/execution/`
+1. `packages/engine/kaldra_engine/infrastructure/` → `packages/engine/kaldra_engine/execution/`
 2. Keep `infra/` for deployment-specific configs
 3. Clear naming: `execution` = runtime, `infra` = deployment
 
 ---
 
-### 6. `src/infra/` — Infrastructure Utilities
+### 6. `packages/engine/kaldra_engine/infra/` — Infrastructure Utilities
 
-**Location**: `src/infra/` (4 files)
+**Location**: `packages/engine/kaldra_engine/infra/` (4 files)
 
-**Issue**: Overlaps with both `infra/` and `src/infrastructure/`
+**Issue**: Overlaps with both `infra/` and `packages/engine/kaldra_engine/infrastructure/`
 
 **Current State**:
 - Small utility files
@@ -127,15 +127,15 @@ Grey zones are areas of the codebase with unclear ownership, overlapping functio
 
 **Resolution Path**:
 1. Review contents
-2. If runtime utilities: merge into `src/infrastructure/` (or `src/execution/`)
+2. If runtime utilities: merge into `packages/engine/kaldra_engine/infrastructure/` (or `packages/engine/kaldra_engine/execution/`)
 3. If deployment configs: move to `infra/`
-4. Delete `src/infra/`
+4. Delete `packages/engine/kaldra_engine/infra/`
 
 ---
 
-### 7. `src/scripts/` — Utility Scripts
+### 7. `packages/engine/kaldra_engine/scripts/` — Utility Scripts
 
-**Location**: `src/scripts/` (13 files)
+**Location**: `packages/engine/kaldra_engine/scripts/` (13 files)
 
 **Issue**: Mix of utilities — unclear categorization
 
@@ -147,7 +147,7 @@ Grey zones are areas of the codebase with unclear ownership, overlapping functio
 
 **Resolution Path**:
 1. Categorize scripts: production vs. development vs. one-off
-2. Production scripts → keep in `src/scripts/`
+2. Production scripts → keep in `packages/engine/kaldra_engine/scripts/`
 3. Development scripts → move to `scripts/` (top-level)
 4. One-off scripts → move to `archive/scripts/`
 
@@ -217,7 +217,7 @@ Grey zones are areas of the codebase with unclear ownership, overlapping functio
 
 **Current State**:
 - Contains protobuf definitions
-- `src/explainability/proto/` also exists
+- `packages/engine/kaldra_engine/explainability/proto/` also exists
 
 **Recommendation**: 🔄 **Move to schema/proto**
 
@@ -232,13 +232,13 @@ Grey zones are areas of the codebase with unclear ownership, overlapping functio
 
 | Grey Zone | Issue | Recommendation | Priority |
 |-----------|-------|----------------|----------|
-| `src/common/` | Cross-cutting | ✅ Keep | Low |
-| `src/domain/` | Unclear scope | 🔄 Merge | Medium |
-| `src/embeddings/` | Overlap | 🔄 Merge into core | Medium |
-| `src/data/` | Overlap | 🔄 Clarify | Medium |
-| `src/infrastructure/` | Naming | 🔄 Rename | Low |
-| `src/infra/` | Overlap | 🔄 Merge | Medium |
-| `src/scripts/` | Mixed | 🔍 Review | Low |
+| `packages/engine/kaldra_engine/common/` | Cross-cutting | ✅ Keep | Low |
+| `packages/engine/kaldra_engine/domain/` | Unclear scope | 🔄 Merge | Medium |
+| `packages/engine/kaldra_engine/embeddings/` | Overlap | 🔄 Merge into core | Medium |
+| `packages/engine/kaldra_engine/data/` | Overlap | 🔄 Clarify | Medium |
+| `packages/engine/kaldra_engine/infrastructure/` | Naming | 🔄 Rename | Low |
+| `packages/engine/kaldra_engine/infra/` | Overlap | 🔄 Merge | Medium |
+| `packages/engine/kaldra_engine/scripts/` | Mixed | 🔍 Review | Low |
 | `archive/` | Legacy | ✅ Keep | Low |
 | `examples/` | Location | 🔄 Move to docs | Low |
 | `perf/` | Location | 🔄 Move to tests | Low |

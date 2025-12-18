@@ -16,7 +16,7 @@ import numpy as np
 
 # Optional import for embedding generator
 try:
-    from src.core.embedding_generator import EmbeddingConfig, EmbeddingGenerator
+    from kaldra_engine.core.embedding_generator import EmbeddingConfig, EmbeddingGenerator
 except ImportError:
     EmbeddingGenerator = None  # type: ignore[assignment, misc]
     EmbeddingConfig = None  # type: ignore[assignment, misc]

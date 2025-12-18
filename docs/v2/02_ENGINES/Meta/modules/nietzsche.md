@@ -2,7 +2,7 @@
 
 > **Module**: `NietzscheEngine`  
 > **Engine**: [[../ENGINE_OVERVIEW|Meta]]  
-> **Path**: `src/meta/nietzsche.py`  
+> **Path**: `packages/engine/kaldra_engine/meta/nietzsche.py`  
 > **Node ID**: `mod_nietzsche`
 
 ---

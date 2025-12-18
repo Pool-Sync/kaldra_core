@@ -68,15 +68,15 @@ Core symbolic intelligence processing.
 
 | Component | Path | Role | Status |
 |-----------|------|------|--------|
-| **UnifiedKernel** | `src/unification/` | v3.0 entry point, loads all engines | ✅ Active |
-| **KaldraMasterEngineV2** | `src/core/` | v2 orchestrator, inference pipeline | ✅ Active |
-| **TW369 Integrator** | `src/tw369/` | Tracy-Widom drift, temporal evolution | ✅ Active |
-| **Kindra Engine** | `src/kindras/` | 3×48 cultural/semiotic scoring | ✅ Active |
-| **Delta144 Engine** | `src/archetypes/` | 12 archetypes × 12 states | ✅ Active |
-| **Meta Engines** | `src/meta/` | Aurelius, Nietzsche, Campbell | ✅ Active |
-| **Story Engine** | `src/story/` | Narrative arc, temporal patterns | ✅ Active |
-| **Learning Engine** | `src/learning/` | Weight learning, priors | 🔶 Partial |
-| **Delta144 (learning)** | `src/delta144/` | Empty/stub | ⚠️ Stub |
+| **UnifiedKernel** | `packages/engine/kaldra_engine/unification/` | v3.0 entry point, loads all engines | ✅ Active |
+| **KaldraMasterEngineV2** | `packages/engine/kaldra_engine/core/` | v2 orchestrator, inference pipeline | ✅ Active |
+| **TW369 Integrator** | `packages/engine/kaldra_engine/tw369/` | Tracy-Widom drift, temporal evolution | ✅ Active |
+| **Kindra Engine** | `packages/engine/kaldra_engine/kindras/` | 3×48 cultural/semiotic scoring | ✅ Active |
+| **Delta144 Engine** | `packages/engine/kaldra_engine/archetypes/` | 12 archetypes × 12 states | ✅ Active |
+| **Meta Engines** | `packages/engine/kaldra_engine/meta/` | Aurelius, Nietzsche, Campbell | ✅ Active |
+| **Story Engine** | `packages/engine/kaldra_engine/story/` | Narrative arc, temporal patterns | ✅ Active |
+| **Learning Engine** | `packages/engine/kaldra_engine/learning/` | Weight learning, priors | 🔶 Partial |
+| **Delta144 (learning)** | `packages/engine/kaldra_engine/delta144/` | Empty/stub | ⚠️ Stub |
 
 ---
 
@@ -86,10 +86,10 @@ Supporting engines for bias, safety, and interpretation.
 
 | Component | Path | Role | Status |
 |-----------|------|------|--------|
-| **Bias Engine** | `src/bias/` | Bias detection & mitigation | ✅ Active |
-| **Tau Layer** | `src/tau/` | Epistemic reliability limiter | ✅ Active |
-| **Safeguard Engine** | `src/safeguard/` | Safety & risk mitigation | ✅ Active |
-| **Explainability** | `src/explainability/` | Human-readable explanations | ✅ Active |
+| **Bias Engine** | `packages/engine/kaldra_engine/bias/` | Bias detection & mitigation | ✅ Active |
+| **Tau Layer** | `packages/engine/kaldra_engine/tau/` | Epistemic reliability limiter | ✅ Active |
+| **Safeguard Engine** | `packages/engine/kaldra_engine/safeguard/` | Safety & risk mitigation | ✅ Active |
+| **Explainability** | `packages/engine/kaldra_engine/explainability/` | Human-readable explanations | ✅ Active |
 
 ---
 
@@ -99,11 +99,11 @@ Domain-specific applications built on engines.
 
 | App | Path | Domain | Status |
 |-----|------|--------|--------|
-| **Alpha** | `src/apps/alpha/` | Financial analysis | ✅ Active |
-| **Geo** | `src/apps/geo/` | Geopolitical analysis | ✅ Active |
-| **Product** | `src/apps/product/` | Product intelligence | ✅ Active |
-| **Safeguard App** | `src/apps/safeguard/` | Safety-focused analysis | ✅ Active |
-| **Archive** | `src/apps/_ARCHIVE/` | Deprecated apps | ⚠️ Archived |
+| **Alpha** | `packages/engine/kaldra_engine/apps/alpha/` | Financial analysis | ✅ Active |
+| **Geo** | `packages/engine/kaldra_engine/apps/geo/` | Geopolitical analysis | ✅ Active |
+| **Product** | `packages/engine/kaldra_engine/apps/product/` | Product intelligence | ✅ Active |
+| **Safeguard App** | `packages/engine/kaldra_engine/apps/safeguard/` | Safety-focused analysis | ✅ Active |
+| **Archive** | `packages/engine/kaldra_engine/apps/_ARCHIVE/` | Deprecated apps | ⚠️ Archived |
 
 ---
 
@@ -278,13 +278,13 @@ Components that don't fit cleanly into a single domain.
 
 | Component | Path | Issue | Recommendation |
 |-----------|------|-------|----------------|
-| `src/common/` | Common utilities | Shared across all | Keep as shared |
-| `src/domain/` | Domain models | Unclear scope | Merge into relevant engines |
-| `src/embeddings/` | Embedding utils | Overlaps with core | Merge into `src/core/` |
-| `src/data/` | Data handling | Overlaps with kaldra_data | Clarify boundary |
-| `src/infrastructure/` | Execution | Overlaps with infra | Rename to `execution` |
-| `src/infra/` | Infra utils | Overlaps with top-level infra | Merge or clarify |
-| `src/scripts/` | Scripts | Mix of utils | Review and categorize |
+| `packages/engine/kaldra_engine/common/` | Common utilities | Shared across all | Keep as shared |
+| `packages/engine/kaldra_engine/domain/` | Domain models | Unclear scope | Merge into relevant engines |
+| `packages/engine/kaldra_engine/embeddings/` | Embedding utils | Overlaps with core | Merge into `packages/engine/kaldra_engine/core/` |
+| `packages/engine/kaldra_engine/data/` | Data handling | Overlaps with kaldra_data | Clarify boundary |
+| `packages/engine/kaldra_engine/infrastructure/` | Execution | Overlaps with infra | Rename to `execution` |
+| `packages/engine/kaldra_engine/infra/` | Infra utils | Overlaps with top-level infra | Merge or clarify |
+| `packages/engine/kaldra_engine/scripts/` | Scripts | Mix of utils | Review and categorize |
 | `archive/` | Archived code | Legacy | Keep archived |
 | `examples/` | Examples | Documentation | Move to docs |
 | `perf/` | Performance | Testing | Move to tests/perf |
@@ -319,7 +319,7 @@ Components that don't fit cleanly into a single domain.
 
 ## Known Limitations
 
-1. **Overlapping Concerns** - `src/data/` vs `kaldra_data/`
+1. **Overlapping Concerns** - `packages/engine/kaldra_engine/data/` vs `kaldra_data/`
 2. **Naming Inconsistency** - `infra/` vs `infrastructure/`
 3. **Empty Schemas** - `schema/tau/`, `schema/safeguard/`
 4. **Missing Frontend Tests** - No frontend test directory visible

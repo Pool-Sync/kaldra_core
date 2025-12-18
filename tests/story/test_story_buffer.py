@@ -4,7 +4,7 @@ Tests for StoryBuffer.
 
 import pytest
 from datetime import datetime, timedelta
-from src.story.story_buffer import StoryBuffer, StoryBufferConfig, StoryEvent
+from kaldra_engine.story.story_buffer import StoryBuffer, StoryBufferConfig, StoryEvent
 
 
 class TestStoryBuffer:

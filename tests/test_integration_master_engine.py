@@ -13,7 +13,7 @@ Tests the complete flow:
 import numpy as np
 import pytest
 
-from src.core.kaldra_master_engine import KaldraMasterEngineV2, KaldraSignal
+from kaldra_engine.core.kaldra_master_engine import KaldraMasterEngineV2, KaldraSignal
 
 
 def test_master_engine_full_flow():

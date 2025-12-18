@@ -2,7 +2,7 @@
 
 > **Module**: `Delta12Vector`  
 > **Engine**: [[../ENGINE_OVERVIEW|Delta144]]  
-> **Path**: `src/archetypes/delta12_vector.py`  
+> **Path**: `packages/engine/kaldra_engine/archetypes/delta12_vector.py`  
 > **Node ID**: `mod_delta12_vector`
 
 ---

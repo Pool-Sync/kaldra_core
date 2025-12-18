@@ -2,7 +2,7 @@
 
 > **Module**: `CampbellEngine`  
 > **Engine**: [[../ENGINE_OVERVIEW|Meta]]  
-> **Path**: `src/meta/campbell_engine.py`  
+> **Path**: `packages/engine/kaldra_engine/meta/campbell_engine.py`  
 > **Node ID**: `mod_campbell`
 
 ---

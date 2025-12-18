@@ -1,7 +1,7 @@
 # ⚙️ Core Engine Overview
 
 > **Engine**: `Core / KaldraMasterEngineV2`  
-> **Path**: `src/core/`  
+> **Path**: `packages/engine/kaldra_engine/core/`  
 > **Node ID**: `engine_core`  
 > **Status**: ✅ Active
 
@@ -24,7 +24,7 @@ The master engine:
 
 | Component | Path | Description |
 |-----------|------|-------------|
-| Main Directory | `src/core/` | All core engine code |
+| Main Directory | `packages/engine/kaldra_engine/core/` | All core engine code |
 | Entry Point | `kaldra_master_engine.py` | `KaldraMasterEngineV2` class |
 | Pipeline | `kaldra_engine_pipeline.py` | Pipeline runner |
 | Embeddings | `embedding_generator.py` | `EmbeddingGenerator` |

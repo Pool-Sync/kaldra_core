@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import MagicMock, patch
-from src.tw369.tw369_integration import TW369Integrator
-from src.common.types import TWState
+from kaldra_engine.tw369.tw369_integration import TW369Integrator
+from kaldra_engine.common.types import TWState
 
 class TestTW369WithPainleve:
     def test_integration_disabled_by_default(self):

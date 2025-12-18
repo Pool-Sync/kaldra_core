@@ -4,7 +4,7 @@ Tests for Kindra Scoring Dispatcher.
 Tests orchestration of all 3 scoring layers.
 """
 
-from src.kindras.scoring_dispatcher import KindraScoringDispatcher
+from kaldra_engine.kindras.scoring_dispatcher import KindraScoringDispatcher
 
 
 def test_kindra_scoring_dispatcher_runs_all_layers():

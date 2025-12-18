@@ -5,15 +5,15 @@ Tests v3.4 Phase 1 explanation generation with LLM, template, and barebones fall
 """
 import pytest
 from unittest.mock import Mock, MagicMock
-from src.explainability.explanation_generator import ExplanationGenerator, Explanation
-from src.unification.states.unified_state import (
+from kaldra_engine.explainability.explanation_generator import ExplanationGenerator, Explanation
+from kaldra_engine.unification.states.unified_state import (
     UnifiedContext,
     GlobalContext,
     ArchetypeContext,
     DriftContext,
     MetaContext,
 )
-from src.common.unified_signal import MetaSignal
+from kaldra_engine.common.unified_signal import MetaSignal
 
 
 class TestExplanationGenerator:
@@ -110,7 +110,7 @@ class TestExplanationGenerator:
         generator = ExplanationGenerator()
         
         # Create context with archetype data
-        from src.archetypes.delta12_vector import Delta12Vector
+        from kaldra_engine.archetypes.delta12_vector import Delta12Vector
         
         delta12 = Delta12Vector()
         delta12.hero = 0.8

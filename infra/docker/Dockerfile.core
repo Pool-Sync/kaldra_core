@@ -6,8 +6,8 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Copy core module
-COPY core/ /app/core/
-COPY data/ /app/data/
+COPY packages/engine/ /app/packages/engine/
+COPY apps/workers/ /app/apps/workers/
 
 # Install dependencies (placeholder)
 # RUN pip install --no-cache-dir -r requirements.txt

@@ -2,7 +2,7 @@
 Integration tests for Kindra Scoring to TWState adapter.
 """
 
-from src.kindras.scoring.twstate_adapter import build_twstate_from_context
+from kaldra_engine.kindras.scoring.twstate_adapter import build_twstate_from_context
 
 
 def test_build_twstate_from_context_shapes_planes():

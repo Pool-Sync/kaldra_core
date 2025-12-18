@@ -10,7 +10,7 @@ Human-readable map of the `kaldra_core` repository organized by domain.
 
 ```
 kaldra_core/
-├── 🎯 Engine Domain (src/)
+├── 🎯 Engine Domain (packages/engine/kaldra_engine/)
 │   ├── unification/     → UnifiedKernel (v3.0 entry)
 │   ├── core/            → KaldraMasterEngineV2
 │   ├── tw369/           → Tracy-Widom drift engine
@@ -23,7 +23,7 @@ kaldra_core/
 │   ├── tau/             → Epistemic limiter
 │   └── safeguard/       → Safety/risk
 │
-├── 📱 App Domain (src/apps/)
+├── 📱 App Domain (packages/engine/kaldra_engine/apps/)
 │   ├── alpha/           → Financial analysis
 │   ├── geo/             → Geopolitical analysis
 │   ├── product/         → Product intelligence
@@ -67,17 +67,17 @@ kaldra_core/
 
 | Engine | Path | Entry Point | Status |
 |--------|------|-------------|--------|
-| [[UnifiedKernel/ENGINE_OVERVIEW\|UnifiedKernel]] | `src/unification/` | `kernel.py` | ✅ Active |
-| [[Core/ENGINE_OVERVIEW\|Core]] | `src/core/` | `kaldra_master_engine.py` | ✅ Active |
-| [[TW369/ENGINE_OVERVIEW\|TW369]] | `src/tw369/` | `tw369_integration.py` | ✅ Active |
-| [[Kindra/ENGINE_OVERVIEW\|Kindra]] | `src/kindras/` | `kindra_engine.py` | ✅ Active |
-| [[Delta144/ENGINE_OVERVIEW\|Delta144]] | `src/archetypes/` | `delta144_engine.py` | ✅ Active |
-| [[Meta/ENGINE_OVERVIEW\|Meta]] | `src/meta/` | `engine_router.py` | ✅ Active |
-| [[Story/ENGINE_OVERVIEW\|Story]] | `src/story/` | `story_aggregator.py` | ✅ Active |
-| [[Explainability/ENGINE_OVERVIEW\|Explainability]] | `src/explainability/` | `explanation_generator.py` | ✅ Active |
-| [[Bias/ENGINE_OVERVIEW\|Bias]] | `src/bias/` | `detector.py` | ✅ Active |
-| [[Tau/ENGINE_OVERVIEW\|Tau]] | `src/tau/` | `tau_layer.py` | ✅ Active |
-| [[Safeguard/ENGINE_OVERVIEW\|Safeguard]] | `src/safeguard/` | `safeguard_engine.py` | ✅ Active |
+| [[UnifiedKernel/ENGINE_OVERVIEW\|UnifiedKernel]] | `packages/engine/kaldra_engine/unification/` | `kernel.py` | ✅ Active |
+| [[Core/ENGINE_OVERVIEW\|Core]] | `packages/engine/kaldra_engine/core/` | `kaldra_master_engine.py` | ✅ Active |
+| [[TW369/ENGINE_OVERVIEW\|TW369]] | `packages/engine/kaldra_engine/tw369/` | `tw369_integration.py` | ✅ Active |
+| [[Kindra/ENGINE_OVERVIEW\|Kindra]] | `packages/engine/kaldra_engine/kindras/` | `kindra_engine.py` | ✅ Active |
+| [[Delta144/ENGINE_OVERVIEW\|Delta144]] | `packages/engine/kaldra_engine/archetypes/` | `delta144_engine.py` | ✅ Active |
+| [[Meta/ENGINE_OVERVIEW\|Meta]] | `packages/engine/kaldra_engine/meta/` | `engine_router.py` | ✅ Active |
+| [[Story/ENGINE_OVERVIEW\|Story]] | `packages/engine/kaldra_engine/story/` | `story_aggregator.py` | ✅ Active |
+| [[Explainability/ENGINE_OVERVIEW\|Explainability]] | `packages/engine/kaldra_engine/explainability/` | `explanation_generator.py` | ✅ Active |
+| [[Bias/ENGINE_OVERVIEW\|Bias]] | `packages/engine/kaldra_engine/bias/` | `detector.py` | ✅ Active |
+| [[Tau/ENGINE_OVERVIEW\|Tau]] | `packages/engine/kaldra_engine/tau/` | `tau_layer.py` | ✅ Active |
+| [[Safeguard/ENGINE_OVERVIEW\|Safeguard]] | `packages/engine/kaldra_engine/safeguard/` | `safeguard_engine.py` | ✅ Active |
 
 ---
 
@@ -85,10 +85,10 @@ kaldra_core/
 
 | App | Path | Domain Focus |
 |-----|------|--------------|
-| Alpha | `src/apps/alpha/` | Financial analysis (earnings, markets) |
-| Geo | `src/apps/geo/` | Geopolitical analysis |
-| Product | `src/apps/product/` | Product intelligence |
-| Safeguard | `src/apps/safeguard/` | Safety-focused analysis |
+| Alpha | `packages/engine/kaldra_engine/apps/alpha/` | Financial analysis (earnings, markets) |
+| Geo | `packages/engine/kaldra_engine/apps/geo/` | Geopolitical analysis |
+| Product | `packages/engine/kaldra_engine/apps/product/` | Product intelligence |
+| Safeguard | `packages/engine/kaldra_engine/apps/safeguard/` | Safety-focused analysis |
 
 ---
 
@@ -123,29 +123,29 @@ kaldra_core/
 | Tau | `schema/tau/` | 0 ⚠️ |
 | Safeguard | `schema/safeguard/` | 0 ⚠️ |
 
-### kaldra_data
+# Monorepo Structure (v3.0)
 
-| Component | Files | Purpose |
-|-----------|-------|---------|
-| datasets/ | 4 | Dataset definitions |
-| ingestion/ | 17 | Data ingestion |
-| pipeline/ | 6 | Data pipelines |
-| preprocessing/ | 11 | Data preprocessing |
-| transformation/ | 4 | Data transformation |
-| workers/ | 1 | Background workers |
-| schemas/ | 8 | Data schemas |
+| Directory | Domain | Purpose |
+|-----------|--------|---------|
+| `apps/api/` | App | FastAPI Gateway |
+| `apps/web/` | App | Next.js Frontend (4iam_frontend) |
+| `apps/workers/` | App | Data/Worker pipelines |
+| `packages/engine/` | Core | KALDRA Python Engine (was packages/engine/kaldra_engine/) |
+| `infra/` | Infra | Infrastructure & Deployment |
+| `archive/` | Archive | Legacy code |
 
----
+## `packages/engine/kaldra_engine/` (Engine Package)
 
-## Infrastructure Details
-
-| Component | Path | Purpose |
-|-----------|------|---------|
-| Docker | `infra/docker/` | Container builds |
-| Kubernetes | `infra/k8s/` | K8s manifests (5 files) |
-| CI/CD | `infra/ci_cd/` | Pipeline configs (2 files) |
-| Scripts | `infra/scripts/` | Infra scripts (4 files) |
-| Supabase | `supabase/` | DB integration (5 files) |
+| Directory | Domain | Purpose |
+|-----------|--------|---------|
+| `core/` | Core | Master Engine & Kernel |
+| `unified_kernel/` | Core | v3 Unification |
+| `kindras/` | Engine | 3x48 Cultural/Semiotic Engine |
+| `delta144/` | Engine | 12x12 Archetypal Engine |
+| `tw369/` | Engine | Tracy-Widom Temporal Engine |
+| `meta/` | Engine | Meta-analysis (Aurelius, Nietzsche, Campbell) |
+| `story/` | Engine | Narrative analysis |
+| `explainability/` | Engine | Logic explanation generation |(5 files) |
 
 ---
 
@@ -153,13 +153,13 @@ kaldra_core/
 
 | Directory | Purpose | Status |
 |-----------|---------|--------|
-| `src/common/` | Shared utilities | Active |
-| `src/domain/` | Domain models | Unclear |
-| `src/embeddings/` | Embedding utilities | Overlaps core |
-| `src/data/` | Data handling | Overlaps kaldra_data |
-| `src/execution/` | Runtime | Parallel execution & task management |
-| `src/data_utils/` | Data | Utilities for normalization/ingestion (NOT primary pipeline) |
-| `src/core/embeddings/` | Core | Unified embedding generation & cache |
+| `packages/engine/kaldra_engine/common/` | Shared utilities | Active |
+| `packages/engine/kaldra_engine/domain/` | Domain models | Unclear |
+| `packages/engine/kaldra_engine/embeddings/` | Embedding utilities | Overlaps core |
+| `packages/engine/kaldra_engine/data/` | Data handling | Overlaps kaldra_data |
+| `packages/engine/kaldra_engine/execution/` | Runtime | Parallel execution & task management |
+| `packages/engine/kaldra_engine/data_utils/` | Data | Utilities for normalization/ingestion (NOT primary pipeline) |
+| `packages/engine/kaldra_engine/core/embeddings/` | Core | Unified embedding generation & cache |
 
 ---
 

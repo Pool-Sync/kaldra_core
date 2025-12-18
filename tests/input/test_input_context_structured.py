@@ -2,11 +2,11 @@
 Tests for Structured Data Ingestion and Normalization.
 """
 import pytest
-from src.data_utils.normalizer.structured_normalizer import StructuredNormalizer
-from src.data_utils.ingestion.api_ingest import APIIngest
-from src.data_utils.ingestion.html_ingest import HTMLIngest
-from src.data_utils.ingestion.text_ingest import TextIngest
-from src.unification.states.unified_state import InputContext
+from kaldra_engine.data_utils.normalizer.structured_normalizer import StructuredNormalizer
+from kaldra_engine.data_utils.ingestion.api_ingest import APIIngest
+from kaldra_engine.data_utils.ingestion.html_ingest import HTMLIngest
+from kaldra_engine.data_utils.ingestion.text_ingest import TextIngest
+from kaldra_engine.unification.states.unified_state import InputContext
 
 class TestStructuredNormalizer:
     

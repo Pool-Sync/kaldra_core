@@ -3,7 +3,7 @@
 import pytest
 import numpy as np
 
-from src.meta.engine_router import RoutingContext, RoutingDecision, MetaRouter
+from kaldra_engine.meta.engine_router import RoutingContext, RoutingDecision, MetaRouter
 
 
 class TestRoutingContext:

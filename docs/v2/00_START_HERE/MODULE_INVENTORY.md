@@ -6,7 +6,7 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 
 ---
 
-## 1. UnifiedKernel Engine (`src/unification/`)
+## 1. UnifiedKernel Engine (`packages/engine/kaldra_engine/unification/`)
 
 ### Core Modules
 
@@ -17,7 +17,7 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 | orchestrator | `orchestrator.py` | Pipeline execution | `PipelineOrchestrator`, `execute()` |
 | router | `router.py` | Mode routing | Router functions |
 
-### Pipeline Stages (`src/unification/pipeline/`)
+### Pipeline Stages (`packages/engine/kaldra_engine/unification/pipeline/`)
 
 | Module | Path | Purpose | Public Surface |
 |--------|------|---------|----------------|
@@ -30,14 +30,14 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 | output_stage | `output_stage.py` | Output formatting | `OutputStage` |
 | pipeline_orchestrator | `pipeline_orchestrator.py` | Stage orchestration | `PipelineOrchestrator` |
 
-### States (`src/unification/states/`)
+### States (`packages/engine/kaldra_engine/unification/states/`)
 
 | Module | Path | Purpose |
 |--------|------|---------|
 | unified_state | `unified_state.py` | `UnifiedContext`, `KindraContext`, `KindraLayerScores` |
 | unified_context | `unified_context.py` | `ContextManager` |
 
-### Exoskeleton (`src/unification/exoskeleton/`)
+### Exoskeleton (`packages/engine/kaldra_engine/unification/exoskeleton/`)
 
 | Module | Path | Purpose |
 |--------|------|---------|
@@ -45,11 +45,11 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 | profiles | `profiles.py` | User profiles |
 | preset_router | `preset_router.py` | Preset routing |
 
-### Adapters (`src/unification/adapters/`)
+### Adapters (`packages/engine/kaldra_engine/unification/adapters/`)
 
 6 files for input/output adaptation
 
-### Output (`src/unification/output/`)
+### Output (`packages/engine/kaldra_engine/unification/output/`)
 
 4 files for output formatting
 
@@ -57,7 +57,7 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 
 ---
 
-## 2. Core Engine (`src/core/`)
+## 2. Core Engine (`packages/engine/kaldra_engine/core/`)
 
 ### Core Modules
 
@@ -74,7 +74,7 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 | story_aggregator | `story_aggregator.py` | Story aggregation | Aggregator class |
 | story_tracker | `story_tracker.py` | Story tracking | Tracker class |
 
-### Hardening (`src/core/hardening/`)
+### Hardening (`packages/engine/kaldra_engine/core/hardening/`)
 
 | Module | Path | Purpose |
 |--------|------|---------|
@@ -82,7 +82,7 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 | timeouts | `timeouts.py` | `with_timeout` decorator |
 | + 6 more files | | Circuit breakers, retries |
 
-### Observability (`src/core/observability/`)
+### Observability (`packages/engine/kaldra_engine/core/observability/`)
 
 2 files for metrics and monitoring
 
@@ -90,7 +90,7 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 
 ---
 
-## 3. TW369 Engine (`src/tw369/`)
+## 3. TW369 Engine (`packages/engine/kaldra_engine/tw369/`)
 
 ### Core Modules
 
@@ -111,7 +111,7 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 | tw_painleve_core | `tw_painleve_core.py` | Painlevé core | Core functions |
 | tw_guard | `tw_guard.py` | TW guard | Guard class |
 
-### Painlevé (`src/tw369/painleve/`)
+### Painlevé (`packages/engine/kaldra_engine/tw369/painleve/`)
 
 4 files for Painlevé transcendent integration
 
@@ -129,7 +129,7 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 
 ---
 
-## 4. Kindras Engine (`src/kindras/`)
+## 4. Kindras Engine (`packages/engine/kaldra_engine/kindras/`)
 
 ### Core Modules
 
@@ -161,11 +161,11 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 | `layer3_structural_systemic_scoring.py` | L3 scoring (Structural/Systemic) |
 | `layer3_delta144_bridge.py` | L3→Δ144 bridge |
 
-### Scoring (`src/kindras/scoring/`)
+### Scoring (`packages/engine/kaldra_engine/kindras/scoring/`)
 
 26 files for specialized scoring implementations
 
-### Prompts (`src/kindras/prompts/`)
+### Prompts (`packages/engine/kaldra_engine/kindras/prompts/`)
 
 1 file for LLM prompts
 
@@ -173,7 +173,7 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 
 ---
 
-## 5. Archetypes Engine (`src/archetypes/`)
+## 5. Archetypes Engine (`packages/engine/kaldra_engine/archetypes/`)
 
 ### Core Modules
 
@@ -197,7 +197,7 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 
 ---
 
-## 6. Meta Engines (`src/meta/`)
+## 6. Meta Engines (`packages/engine/kaldra_engine/meta/`)
 
 ### Core Modules
 
@@ -221,7 +221,7 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 
 ---
 
-## 7. Story Engine (`src/story/`)
+## 7. Story Engine (`packages/engine/kaldra_engine/story/`)
 
 ### Core Modules
 
@@ -248,7 +248,7 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 
 ---
 
-## 8. Explainability Engine (`src/explainability/`)
+## 8. Explainability Engine (`packages/engine/kaldra_engine/explainability/`)
 
 ### Core Modules
 
@@ -258,11 +258,11 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 | explanation_output | `explanation_output.py` | Output formatting | Output classes |
 | explanation_confidence | `explanation_confidence.py` | Confidence scoring | Confidence functions |
 
-### Templates (`src/explainability/templates/`)
+### Templates (`packages/engine/kaldra_engine/explainability/templates/`)
 
 3 files for explanation templates
 
-### Proto (`src/explainability/proto/`)
+### Proto (`packages/engine/kaldra_engine/explainability/proto/`)
 
 4 files for protobuf definitions
 
@@ -270,7 +270,7 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 
 ---
 
-## 9. Bias Engine (`src/bias/`)
+## 9. Bias Engine (`packages/engine/kaldra_engine/bias/`)
 
 ### Core Modules
 
@@ -280,7 +280,7 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 | scoring | `scoring.py` | Bias scoring | Scoring functions |
 | mitigation | `mitigation.py` | Bias mitigation | Mitigation functions |
 
-### Providers (`src/bias/providers/`)
+### Providers (`packages/engine/kaldra_engine/bias/providers/`)
 
 8 files for bias detection providers
 
@@ -292,7 +292,7 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 
 ---
 
-## 10. Tau Layer (`src/tau/`)
+## 10. Tau Layer (`packages/engine/kaldra_engine/tau/`)
 
 ### Core Modules
 
@@ -308,7 +308,7 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 
 ---
 
-## 11. Safeguard Engine (`src/safeguard/`)
+## 11. Safeguard Engine (`packages/engine/kaldra_engine/safeguard/`)
 
 ### Core Modules
 
@@ -325,7 +325,7 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 
 ## Supporting Modules
 
-### Learning (`src/learning/`)
+### Learning (`packages/engine/kaldra_engine/learning/`)
 
 | Module | Purpose |
 |--------|---------|
@@ -336,43 +336,43 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 
 **Tests Found**: `tests/learning/` (12 files)
 
-### Common (`src/common/`)
+### Common (`packages/engine/kaldra_engine/common/`)
 
 | Module | Purpose |
 |--------|---------|
 | 6 files | Shared utilities (unified_signal, etc.) |
 
-### Domain (`src/domain/`)
+### Domain (`packages/engine/kaldra_engine/domain/`)
 
 | Module | Purpose |
 |--------|---------|
 | 5 files | Domain models |
 
-### Embeddings (`src/embeddings/`)
+### Embeddings (`packages/engine/kaldra_engine/embeddings/`)
 
 | Module | Purpose |
 |--------|---------|
 | 2 files | Embedding utilities |
 
-### Data (`src/data/`)
+### Data (`packages/engine/kaldra_engine/data/`)
 
 | Module | Purpose |
 |--------|---------|
 | 16 files | Data handling |
 
-### Infrastructure (`src/infrastructure/`)
+### Infrastructure (`packages/engine/kaldra_engine/infrastructure/`)
 
 | Module | Purpose |
 |--------|---------|
 | 9 files | Execution, parallel processing |
 
-### Infra (`src/infra/`)
+### Infra (`packages/engine/kaldra_engine/infra/`)
 
 | Module | Purpose |
 |--------|---------|
 | 4 files | Infrastructure utilities |
 
-### Scripts (`src/scripts/`)
+### Scripts (`packages/engine/kaldra_engine/scripts/`)
 
 | Module | Purpose |
 |--------|---------|
@@ -407,7 +407,7 @@ Per-engine breakdown of modules, submodules, and public surfaces.
 
 ## Known Limitations
 
-1. **Duplicate Modules** - `story_aggregator.py` exists in both `src/core/` and `src/story/`
+1. **Duplicate Modules** - `story_aggregator.py` exists in both `packages/engine/kaldra_engine/core/` and `packages/engine/kaldra_engine/story/`
 2. **Missing Exports** - Many `__init__.py` files are empty or incomplete
 3. **Inconsistent Naming** - Mix of `_` and no `_` prefixes for internal modules
 4. **Test Coverage Gaps** - Bias, Tau, Safeguard have only 2 test files each

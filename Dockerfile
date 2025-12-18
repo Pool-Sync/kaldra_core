@@ -36,5 +36,8 @@ EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
     CMD python -c "import requests; requests.get('http://localhost:${PORT:-8000}/health')"
 
+# Install engine package
+RUN pip install -e /app/packages/engine
+
 # Start command (Render will override $PORT)
-CMD uvicorn kaldra_api.main:app --host 0.0.0.0 --port ${PORT:-8000}
+CMD uvicorn apps.api.main:app --host 0.0.0.0 --port ${PORT:-8000}

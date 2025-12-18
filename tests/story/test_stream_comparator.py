@@ -9,9 +9,9 @@ Tests cover:
 - Basic note population
 """
 import pytest
-from src.story.stream_comparator import StreamComparator, StreamComparisonResult
-from src.story.multi_stream_buffer import StreamWindow
-from src.common.unified_signal import StoryEvent
+from kaldra_engine.story.stream_comparator import StreamComparator, StreamComparisonResult
+from kaldra_engine.story.multi_stream_buffer import StreamWindow
+from kaldra_engine.common.unified_signal import StoryEvent
 import time
 
 

@@ -10,16 +10,16 @@ Verifies:
 
 import pytest
 from unittest.mock import MagicMock, patch
-from src.unification.pipeline.meta_stage import MetaStage
-from src.unification.states.unified_state import (
+from kaldra_engine.unification.pipeline.meta_stage import MetaStage
+from kaldra_engine.unification.states.unified_state import (
     UnifiedContext, InputContext, ArchetypeContext, MetaContext, KindraContext, DriftContext
 )
-from src.common.types import TWState
+from kaldra_engine.common.types import TWState
 
 # Import Signals
-from src.meta.nietzsche import NietzscheSignal
-from src.meta.aurelius import AureliusSignal
-from src.meta.campbell_engine import CampbellSignal
+from kaldra_engine.meta.nietzsche import NietzscheSignal
+from kaldra_engine.meta.aurelius import AureliusSignal
+from kaldra_engine.meta.campbell_engine import CampbellSignal
 
 
 @pytest.fixture

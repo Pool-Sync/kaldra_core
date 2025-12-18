@@ -2,8 +2,8 @@
 Tests for Safeguard Engine.
 """
 import pytest
-from src.safeguard.safeguard_engine import SafeguardEngine
-from src.tau.tau_state import TauState
+from kaldra_engine.safeguard.safeguard_engine import SafeguardEngine
+from kaldra_engine.tau.tau_state import TauState
 
 @pytest.fixture
 def safeguard_engine():

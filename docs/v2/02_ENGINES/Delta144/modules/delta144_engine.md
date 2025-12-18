@@ -2,7 +2,7 @@
 
 > **Module**: `Delta144Engine`  
 > **Engine**: [[../ENGINE_OVERVIEW|Delta144]]  
-> **Path**: `src/archetypes/delta144_engine.py`  
+> **Path**: `packages/engine/kaldra_engine/archetypes/delta144_engine.py`  
 > **Node ID**: `mod_delta144_engine`
 
 ---

@@ -2,7 +2,7 @@
 
 > **Module**: `TW369Integrator`  
 > **Engine**: [[../ENGINE_OVERVIEW|TW369]]  
-> **Path**: `src/tw369/tw369_integration.py`  
+> **Path**: `packages/engine/kaldra_engine/tw369/tw369_integration.py`  
 > **Node ID**: `mod_tw369_integrator`
 
 ---

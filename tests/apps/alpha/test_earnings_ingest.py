@@ -2,7 +2,7 @@
 
 import pytest
 from unittest.mock import patch, MagicMock
-from src.apps.alpha.earnings_ingest import (
+from kaldra_engine.apps.alpha.earnings_ingest import (
     EarningsSource, 
     load_earnings_text, 
     normalize_earnings_text

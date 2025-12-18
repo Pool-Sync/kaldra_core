@@ -3,7 +3,7 @@ Tests for Ensemble Embedder.
 """
 import pytest
 import numpy as np
-from src.core.embeddings.ensemble_embedder import EnsembleEmbedder
+from kaldra_engine.core.embeddings.ensemble_embedder import EnsembleEmbedder
 
 class TestEnsembleEmbedder:
     

@@ -5,7 +5,7 @@ import pytest
 import sys
 sys.path.insert(0, '/Users/niki/Desktop/kaldra_core')
 
-from src.unification.router import UnifiedRouter, PipelineConfig
+from kaldra_engine.unification.router import UnifiedRouter, PipelineConfig
 
 
 def test_router_signal_mode():

@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 import pytest
-from src.core.epistemic_limiter import EpistemicLimiter
+from kaldra_engine.core.epistemic_limiter import EpistemicLimiter
 
 def test_epistemic_limiter_numpy():
     limiter = EpistemicLimiter(tau=0.8)

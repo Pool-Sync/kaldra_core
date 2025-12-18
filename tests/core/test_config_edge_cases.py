@@ -1,5 +1,5 @@
 import pytest
-from src.core.kaldra_master_engine import KaldraMasterEngineV2
+from kaldra_engine.core.kaldra_master_engine import KaldraMasterEngineV2
 
 def test_config_initialization():
     """Test engine initialization with different tau values."""

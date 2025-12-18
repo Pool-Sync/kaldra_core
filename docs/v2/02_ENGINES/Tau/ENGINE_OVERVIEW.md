@@ -1,7 +1,7 @@
 # ⚙️ Tau Engine Overview
 
 > **Engine**: `Tau / TauLayer`  
-> **Path**: `src/tau/`  
+> **Path**: `packages/engine/kaldra_engine/tau/`  
 > **Node ID**: `engine_tau`  
 > **Status**: ✅ Active
 
@@ -23,7 +23,7 @@ Components:
 
 | Component | Path | Description |
 |-----------|------|-------------|
-| Main Directory | `src/tau/` | All Tau code |
+| Main Directory | `packages/engine/kaldra_engine/tau/` | All Tau code |
 | Entry Point | `tau_layer.py` | `TauLayer` class |
 | Integration | `tau_integration.py` | Integration layer |
 | Policy | `tau_policy.py` | Policy definitions |

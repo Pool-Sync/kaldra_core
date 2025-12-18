@@ -1,7 +1,7 @@
 # ⚙️ Kindra Engine Overview
 
 > **Engine**: `Kindra / KindraEngine`  
-> **Path**: `src/kindras/`  
+> **Path**: `packages/engine/kaldra_engine/kindras/`  
 > **Node ID**: `engine_kindra`  
 > **Status**: ✅ Active
 
@@ -22,7 +22,7 @@ The three layers:
 
 | Component | Path | Description |
 |-----------|------|-------------|
-| Main Directory | `src/kindras/` | All Kindra code |
+| Main Directory | `packages/engine/kaldra_engine/kindras/` | All Kindra code |
 | Entry Point | `kindra_engine.py` | `KindraEngine` v3.1 |
 | Cultural Mod | `kindra_cultural_mod.py` | `KaldraKindraCulturalMod` |
 | Hybrid Scorer | `kindra_hybrid_scorer.py` | Hybrid scoring |

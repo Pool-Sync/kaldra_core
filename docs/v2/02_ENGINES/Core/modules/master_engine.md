@@ -2,7 +2,7 @@
 
 > **Module**: `KaldraMasterEngineV2`  
 > **Engine**: [[../ENGINE_OVERVIEW|Core]]  
-> **Path**: `src/core/kaldra_master_engine.py`  
+> **Path**: `packages/engine/kaldra_engine/core/kaldra_master_engine.py`  
 > **Node ID**: `mod_core_master_engine`
 
 ---

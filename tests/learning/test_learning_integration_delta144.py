@@ -4,11 +4,11 @@ Integration tests for learned mappings with Delta144 (v3.5 Phase 2).
 Tests the optional integration without modifying existing Delta144 engine.
 """
 import pytest
-from src.learning.delta144_mapping_engine import Delta144MappingEngine
-from src.learning.features.feature_builder import LearningFeatureVector, build_from_unified_context
-from src.learning.kindra_priors import KindraPriors
-from src.learning.kindra_weights_engine import KindraWeightsEngine
-from src.unification.states.unified_state import UnifiedContext, GlobalContext, ArchetypeContext
+from kaldra_engine.learning.delta144_mapping_engine import Delta144MappingEngine
+from kaldra_engine.learning.features.feature_builder import LearningFeatureVector, build_from_unified_context
+from kaldra_engine.learning.kindra_priors import KindraPriors
+from kaldra_engine.learning.kindra_weights_engine import KindraWeightsEngine
+from kaldra_engine.unification.states.unified_state import UnifiedContext, GlobalContext, ArchetypeContext
 
 
 class TestLearningIntegrationDelta144:

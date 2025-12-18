@@ -2,7 +2,7 @@
 
 > **Subsystem**: `hardening/`  
 > **Engine**: [[../ENGINE_OVERVIEW|Core]]  
-> **Path**: `src/core/hardening/`  
+> **Path**: `packages/engine/kaldra_engine/core/hardening/`  
 > **Node ID**: `mod_core_hardening_subsystem`
 
 ---

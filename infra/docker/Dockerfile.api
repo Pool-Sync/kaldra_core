@@ -6,7 +6,9 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Copy API module
-COPY kaldra_api/ /app/kaldra_api/
+COPY apps/api/ /app/apps/api/
+COPY packages/engine/ /app/packages/engine/
+RUN pip install -e /app/packages/engine
 
 # Install dependencies (placeholder)
 # RUN pip install --no-cache-dir -r requirements.txt

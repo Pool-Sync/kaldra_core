@@ -1,6 +1,6 @@
 import pytest
 import numpy as np
-from src.core.kaldra_master_engine import KaldraMasterEngineV2, KaldraSignal
+from kaldra_engine.core.kaldra_master_engine import KaldraMasterEngineV2, KaldraSignal
 
 # Deterministic RNG for reproducible tests
 RNG_SEED = 42

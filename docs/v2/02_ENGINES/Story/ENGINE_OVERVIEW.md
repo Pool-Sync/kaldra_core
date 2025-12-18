@@ -1,7 +1,7 @@
 # ⚙️ Story Engine Overview
 
 > **Engine**: `Story / StoryEngine`  
-> **Path**: `src/story/`  
+> **Path**: `packages/engine/kaldra_engine/story/`  
 > **Node ID**: `engine_story`  
 > **Status**: ✅ Active
 
@@ -23,7 +23,7 @@ Outputs:
 
 | Component | Path | Description |
 |-----------|------|-------------|
-| Main Directory | `src/story/` | All story engine code |
+| Main Directory | `packages/engine/kaldra_engine/story/` | All story engine code |
 | Entry Point | `story_aggregator.py` | `aggregate_story()` function |
 | Buffer | `story_buffer.py` | `StoryBuffer`, `StoryEvent` |
 | Arc | `narrative_arc.py` | Arc detection |

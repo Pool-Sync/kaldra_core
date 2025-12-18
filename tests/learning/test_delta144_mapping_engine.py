@@ -2,10 +2,10 @@
 Unit tests for Delta144 Mapping Engine (v3.5 Phase 2).
 """
 import pytest
-from src.learning.delta144_mapping_engine import Delta144MappingEngine, Delta144MappingResult
-from src.learning.features.feature_builder import LearningFeatureVector
-from src.learning.kindra_priors import KindraPriors
-from src.learning.kindra_weights_engine import KindraWeightsEngine
+from kaldra_engine.learning.delta144_mapping_engine import Delta144MappingEngine, Delta144MappingResult
+from kaldra_engine.learning.features.feature_builder import LearningFeatureVector
+from kaldra_engine.learning.kindra_priors import KindraPriors
+from kaldra_engine.learning.kindra_weights_engine import KindraWeightsEngine
 
 
 class TestDelta144MappingEngine:

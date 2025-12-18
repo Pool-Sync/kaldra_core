@@ -1,7 +1,7 @@
 # ⚙️ Explainability Engine Overview
 
 > **Engine**: `Explainability`  
-> **Path**: `src/explainability/`  
+> **Path**: `packages/engine/kaldra_engine/explainability/`  
 > **Node ID**: `engine_explainability`  
 > **Status**: ✅ Active
 
@@ -23,7 +23,7 @@ Components:
 
 | Component | Path | Description |
 |-----------|------|-------------|
-| Main Directory | `src/explainability/` | All explainability code |
+| Main Directory | `packages/engine/kaldra_engine/explainability/` | All explainability code |
 | Entry Point | `explanation_generator.py` | Main generator |
 | Output | `explanation_output.py` | Output formatting |
 | Confidence | `explanation_confidence.py` | Confidence scoring |
@@ -85,13 +85,13 @@ flowchart TB
 
 | Config | Path |
 |--------|------|
-| Templates | `src/explainability/templates/` |
+| Templates | `packages/engine/kaldra_engine/explainability/templates/` |
 
 ### Schemas
 
 | Schema | Path |
 |--------|------|
-| Proto | `src/explainability/proto/` |
+| Proto | `packages/engine/kaldra_engine/explainability/proto/` |
 
 ### Runtime
 

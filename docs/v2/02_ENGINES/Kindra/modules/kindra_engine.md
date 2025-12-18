@@ -2,7 +2,7 @@
 
 > **Module**: `KindraEngine`  
 > **Engine**: [[../ENGINE_OVERVIEW|Kindra]]  
-> **Path**: `src/kindras/kindra_engine.py`  
+> **Path**: `packages/engine/kaldra_engine/kindras/kindra_engine.py`  
 > **Node ID**: `mod_kindra_engine`
 
 ---

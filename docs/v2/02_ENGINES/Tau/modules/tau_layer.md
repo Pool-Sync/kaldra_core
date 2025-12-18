@@ -2,7 +2,7 @@
 
 > **Module**: `TauLayer`  
 > **Engine**: [[../ENGINE_OVERVIEW|Tau]]  
-> **Path**: `src/tau/tau_layer.py`  
+> **Path**: `packages/engine/kaldra_engine/tau/tau_layer.py`  
 > **Node ID**: `mod_tau_layer`
 
 ---

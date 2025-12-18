@@ -2,7 +2,7 @@
 
 > **Module**: `BiasDetector`  
 > **Engine**: [[../ENGINE_OVERVIEW|Bias]]  
-> **Path**: `src/bias/detector.py`  
+> **Path**: `packages/engine/kaldra_engine/bias/detector.py`  
 > **Node ID**: `mod_bias_detector`
 
 ---
@@ -11,7 +11,7 @@
 
 The `BiasDetector` is the sentinel component responsible for identifying potentially harmful or skewed patterns in analysis outputs. It does not sensor content; rather, it flags statistical anomalies that might indicate bias in KALDRA's own processing or in the source text.
 
-The detector operates on a **multi-provider architecture**. It doesn't rely on a single algorithm. Instead, it delegates to a collection of specialized "providers" (located in `src/bias/providers/`), each trained to detect specific types of bias (e.g., gender, racial, political, sentiment imbalance).
+The detector operates on a **multi-provider architecture**. It doesn't rely on a single algorithm. Instead, it delegates to a collection of specialized "providers" (located in `packages/engine/kaldra_engine/bias/providers/`), each trained to detect specific types of bias (e.g., gender, racial, political, sentiment imbalance).
 
 It aggregates scores from these providers into a unified `BiasReport`. This report includes a severity level (LOW, MEDIUM, HIGH, CRITICAL) and specific "bias markers" — snippets or vector dimensions that triggered the detection.
 

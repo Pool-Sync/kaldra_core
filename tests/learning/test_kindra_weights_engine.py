@@ -2,8 +2,8 @@
 Unit tests for Kindra Weights Engine (v3.5 Phase 2).
 """
 import pytest
-from src.learning.kindra_weights_engine import KindraWeightsEngine, KindraWeightVector
-from src.learning.features.feature_builder import LearningFeatureVector
+from kaldra_engine.learning.kindra_weights_engine import KindraWeightsEngine, KindraWeightVector
+from kaldra_engine.learning.features.feature_builder import LearningFeatureVector
 
 
 class TestKindraWeightsEngine:

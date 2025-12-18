@@ -4,12 +4,12 @@ import pytest
 import numpy as np
 from unittest.mock import MagicMock, patch
 
-from src.apps.alpha.earnings_pipeline import (
+from kaldra_engine.apps.alpha.earnings_pipeline import (
     run_earnings_pipeline, 
     EarningsSource, 
     EarningsPipelineResult
 )
-from src.core.kaldra_master_engine import KaldraMasterEngineV2
+from kaldra_engine.core.kaldra_master_engine import KaldraMasterEngineV2
 
 @pytest.fixture
 def mock_engine():

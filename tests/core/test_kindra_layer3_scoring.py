@@ -4,7 +4,7 @@ Tests for Kindra Layer 3 (Structural/Systemic) Scoring.
 Tests rule-based scoring for institutional and structural context.
 """
 
-from src.kindras.layer3_structural_systemic_scoring import KindraLayer3StructuralSystemicScoring
+from kaldra_engine.kindras.layer3_structural_systemic_scoring import KindraLayer3StructuralSystemicScoring
 
 
 def test_layer3_scoring_high_institutional_strength_concentrated_power():

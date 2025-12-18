@@ -4,10 +4,10 @@ Tests for CoherenceScorer.
 
 import pytest
 from datetime import datetime
-from src.story.story_buffer import StoryEvent
-from src.story.timeline_builder import StoryTimeline, ArchetypeTransition
-from src.story.arc_detector import StoryArc
-from src.story.coherence_scorer import CoherenceScorer
+from kaldra_engine.story.story_buffer import StoryEvent
+from kaldra_engine.story.timeline_builder import StoryTimeline, ArchetypeTransition
+from kaldra_engine.story.arc_detector import StoryArc
+from kaldra_engine.story.coherence_scorer import CoherenceScorer
 
 
 class TestCoherenceScorer:

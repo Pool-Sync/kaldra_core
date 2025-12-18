@@ -5,15 +5,15 @@ Tests v3.3 Phase 3 multi-stream integration with the unified pipeline.
 """
 import pytest
 import time
-from src.unification.states.unified_state import (
+from kaldra_engine.unification.states.unified_state import (
     UnifiedContext,
     GlobalContext,
     InputContext,
     InputMetadata,
     StoryContext,
 )
-from src.common.unified_signal import StoryEvent
-from src.unification.pipeline.multi_stream_stage import MultiStreamStage, MultiStreamStageConfig
+from kaldra_engine.common.unified_signal import StoryEvent
+from kaldra_engine.unification.pipeline.multi_stream_stage import MultiStreamStage, MultiStreamStageConfig
 
 
 def create_story_event(

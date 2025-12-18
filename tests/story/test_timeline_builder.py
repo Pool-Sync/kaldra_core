@@ -4,8 +4,8 @@ Tests for TimelineBuilder.
 
 import pytest
 from datetime import datetime, timedelta
-from src.story.story_buffer import StoryEvent
-from src.story.timeline_builder import TimelineBuilder
+from kaldra_engine.story.story_buffer import StoryEvent
+from kaldra_engine.story.timeline_builder import TimelineBuilder
 
 
 class TestTimelineBuilder:

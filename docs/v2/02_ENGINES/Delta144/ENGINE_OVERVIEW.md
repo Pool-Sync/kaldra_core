@@ -1,7 +1,7 @@
 # ⚙️ Delta144 Engine Overview
 
 > **Engine**: `Delta144 / Delta144Engine`  
-> **Path**: `src/archetypes/`  
+> **Path**: `packages/engine/kaldra_engine/archetypes/`  
 > **Node ID**: `engine_delta144`  
 > **Status**: ✅ Active
 
@@ -23,7 +23,7 @@ Components:
 
 | Component | Path | Description |
 |-----------|------|-------------|
-| Main Directory | `src/archetypes/` | All archetype code |
+| Main Directory | `packages/engine/kaldra_engine/archetypes/` | All archetype code |
 | Entry Point | `delta144_engine.py` | `Delta144Engine` class |
 | Delta12 | `delta12_vector.py` | `Delta12Vector` |
 | Polarity | `polarity_mapping.py` | Polarity mapping |

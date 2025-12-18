@@ -1,46 +1,46 @@
 from,relation,to,notes
-src/unification/kernel.py,depends_on,src/core/embedding_generator.py,Loads EmbeddingGenerator in load_engines()
-src/unification/kernel.py,depends_on,src/archetypes/delta144_engine.py,Loads Delta144Engine in load_engines()
-src/unification/kernel.py,depends_on,src/bias/detector.py,Loads BiasDetector in load_engines()
-src/unification/kernel.py,depends_on,src/tau/tau_layer.py,Loads TauLayer in load_engines()
-src/unification/kernel.py,depends_on,src/safeguard/safeguard_engine.py,Loads SafeguardEngine in load_engines()
-src/unification/kernel.py,depends_on,src/unification/registry.py,Uses ModuleRegistry
-src/unification/kernel.py,depends_on,src/unification/orchestrator.py,Creates PipelineOrchestrator
-src/unification/orchestrator.py,depends_on,src/unification/registry.py,Access modules via registry
-src/core/kaldra_master_engine.py,depends_on,src/archetypes/delta144_engine.py,Uses Delta144Engine for base inference
-src/core/kaldra_master_engine.py,depends_on,src/kindras/kindra_cultural_mod.py,Uses KaldraKindraCulturalMod for modulation
-src/core/kaldra_master_engine.py,depends_on,src/tw369/tw369_integration.py,Uses TW369Integrator for drift
-src/core/kaldra_master_engine.py,depends_on,src/tau/tau_layer.py,Uses TauLayer for epistemic limits
-src/core/kaldra_master_engine.py,depends_on,src/safeguard/safeguard_engine.py,Uses SafeguardEngine for safety
-src/core/kaldra_master_engine.py,depends_on,src/archetypes/delta12_vector.py,Uses Delta12Vector
-src/core/kaldra_master_engine.py,depends_on,src/core/hardening/fallbacks.py,Uses safe_fallback decorator
-src/core/kaldra_master_engine.py,depends_on,src/core/hardening/timeouts.py,Uses with_timeout decorator
-src/core/kaldra_master_engine.py,depends_on,src/infrastructure/execution/parallel_executor.py,Uses ParallelExecutor
-src/tw369/tw369_integration.py,depends_on,src/tw369/tracy_widom.py,Uses TW statistics
-src/tw369/tw369_integration.py,depends_on,src/tw369/advanced_drift_models.py,Uses drift model functions
-src/tw369/tw369_integration.py,depends_on,src/tw369/drift_history.py,Uses DriftHistory
-src/tw369/tw369_integration.py,depends_on,src/tw369/drift_topology.py,Uses TW369Topology
-src/kindras/kindra_engine.py,depends_on,src/unification/states/unified_state.py,Uses KindraContext/KindraLayerScores
-src/kindras/kindra_engine.py,depends_on,src/kindras/loaders.py,Uses load_layer_vectors/load_layer_mapping
-src/kindras/kindra_engine.py,depends_on,src/kindras/llm_adapter.py,Uses KindraLLMScorer
-src/meta/aurelius.py,depends_on,src/meta/types.py,Uses MetaInput
-src/meta/aurelius.py,depends_on,src/unification/states/unified_state.py,Uses KindraContext
-src/meta/aurelius.py,depends_on,src/tw369/tw369_integration.py,Uses TWState
-src/meta/aurelius.py,depends_on,src/common/unified_signal.py,Uses MetaSignal
-src/meta/engine_router.py,configures,src/apps/alpha/,Routes alpha domain
-src/meta/engine_router.py,configures,src/apps/geo/,Routes geo domain
-src/meta/engine_router.py,configures,src/apps/product/,Routes product domain
-src/meta/engine_router.py,configures,src/apps/safeguard/,Routes safeguard domain
-src/story/story_aggregator.py,depends_on,src/story/story_buffer.py,Uses StoryBuffer/StoryEvent
-src/archetypes/delta144_engine.py,reads_from,schema/archetypes/archetypes.core.json,Loads archetype definitions
-src/archetypes/delta144_engine.py,reads_from,schema/archetypes/delta144_states.json,Loads 144 states
-src/archetypes/delta144_engine.py,reads_from,schema/archetypes/modifiers.json,Loads 59 modifiers
-src/archetypes/delta144_engine.py,reads_from,schema/archetypes/polarities.json,Loads 46 polarities
-src/archetypes/delta144_engine.py,depends_on,src/archetypes/delta12_vector.py,Uses Delta12Vector
-src/archetypes/delta144_engine.py,depends_on,src/core/embedding_generator.py,Uses EmbeddingGenerator
-src/kindras/loaders.py,reads_from,schema/kindras/,Loads layer vectors and mappings
-src/tw369/tw369_integration.py,reads_from,schema/tw369/tw369_default_config.json,Loads TW config
-src/tw369/tw369_integration.py,reads_from,schema/tw369/drift_parameters.json,Loads drift parameters
+packages/engine/kaldra_engine/unification/kernel.py,depends_on,packages/engine/kaldra_engine/core/embedding_generator.py,Loads EmbeddingGenerator in load_engines()
+packages/engine/kaldra_engine/unification/kernel.py,depends_on,packages/engine/kaldra_engine/archetypes/delta144_engine.py,Loads Delta144Engine in load_engines()
+packages/engine/kaldra_engine/unification/kernel.py,depends_on,packages/engine/kaldra_engine/bias/detector.py,Loads BiasDetector in load_engines()
+packages/engine/kaldra_engine/unification/kernel.py,depends_on,packages/engine/kaldra_engine/tau/tau_layer.py,Loads TauLayer in load_engines()
+packages/engine/kaldra_engine/unification/kernel.py,depends_on,packages/engine/kaldra_engine/safeguard/safeguard_engine.py,Loads SafeguardEngine in load_engines()
+packages/engine/kaldra_engine/unification/kernel.py,depends_on,packages/engine/kaldra_engine/unification/registry.py,Uses ModuleRegistry
+packages/engine/kaldra_engine/unification/kernel.py,depends_on,packages/engine/kaldra_engine/unification/orchestrator.py,Creates PipelineOrchestrator
+packages/engine/kaldra_engine/unification/orchestrator.py,depends_on,packages/engine/kaldra_engine/unification/registry.py,Access modules via registry
+packages/engine/kaldra_engine/core/kaldra_master_engine.py,depends_on,packages/engine/kaldra_engine/archetypes/delta144_engine.py,Uses Delta144Engine for base inference
+packages/engine/kaldra_engine/core/kaldra_master_engine.py,depends_on,packages/engine/kaldra_engine/kindras/kindra_cultural_mod.py,Uses KaldraKindraCulturalMod for modulation
+packages/engine/kaldra_engine/core/kaldra_master_engine.py,depends_on,packages/engine/kaldra_engine/tw369/tw369_integration.py,Uses TW369Integrator for drift
+packages/engine/kaldra_engine/core/kaldra_master_engine.py,depends_on,packages/engine/kaldra_engine/tau/tau_layer.py,Uses TauLayer for epistemic limits
+packages/engine/kaldra_engine/core/kaldra_master_engine.py,depends_on,packages/engine/kaldra_engine/safeguard/safeguard_engine.py,Uses SafeguardEngine for safety
+packages/engine/kaldra_engine/core/kaldra_master_engine.py,depends_on,packages/engine/kaldra_engine/archetypes/delta12_vector.py,Uses Delta12Vector
+packages/engine/kaldra_engine/core/kaldra_master_engine.py,depends_on,packages/engine/kaldra_engine/core/hardening/fallbacks.py,Uses safe_fallback decorator
+packages/engine/kaldra_engine/core/kaldra_master_engine.py,depends_on,packages/engine/kaldra_engine/core/hardening/timeouts.py,Uses with_timeout decorator
+packages/engine/kaldra_engine/core/kaldra_master_engine.py,depends_on,packages/engine/kaldra_engine/infrastructure/execution/parallel_executor.py,Uses ParallelExecutor
+packages/engine/kaldra_engine/tw369/tw369_integration.py,depends_on,packages/engine/kaldra_engine/tw369/tracy_widom.py,Uses TW statistics
+packages/engine/kaldra_engine/tw369/tw369_integration.py,depends_on,packages/engine/kaldra_engine/tw369/advanced_drift_models.py,Uses drift model functions
+packages/engine/kaldra_engine/tw369/tw369_integration.py,depends_on,packages/engine/kaldra_engine/tw369/drift_history.py,Uses DriftHistory
+packages/engine/kaldra_engine/tw369/tw369_integration.py,depends_on,packages/engine/kaldra_engine/tw369/drift_topology.py,Uses TW369Topology
+packages/engine/kaldra_engine/kindras/kindra_engine.py,depends_on,packages/engine/kaldra_engine/unification/states/unified_state.py,Uses KindraContext/KindraLayerScores
+packages/engine/kaldra_engine/kindras/kindra_engine.py,depends_on,packages/engine/kaldra_engine/kindras/loaders.py,Uses load_layer_vectors/load_layer_mapping
+packages/engine/kaldra_engine/kindras/kindra_engine.py,depends_on,packages/engine/kaldra_engine/kindras/llm_adapter.py,Uses KindraLLMScorer
+packages/engine/kaldra_engine/meta/aurelius.py,depends_on,packages/engine/kaldra_engine/meta/types.py,Uses MetaInput
+packages/engine/kaldra_engine/meta/aurelius.py,depends_on,packages/engine/kaldra_engine/unification/states/unified_state.py,Uses KindraContext
+packages/engine/kaldra_engine/meta/aurelius.py,depends_on,packages/engine/kaldra_engine/tw369/tw369_integration.py,Uses TWState
+packages/engine/kaldra_engine/meta/aurelius.py,depends_on,packages/engine/kaldra_engine/common/unified_signal.py,Uses MetaSignal
+packages/engine/kaldra_engine/meta/engine_router.py,configures,packages/engine/kaldra_engine/apps/alpha/,Routes alpha domain
+packages/engine/kaldra_engine/meta/engine_router.py,configures,packages/engine/kaldra_engine/apps/geo/,Routes geo domain
+packages/engine/kaldra_engine/meta/engine_router.py,configures,packages/engine/kaldra_engine/apps/product/,Routes product domain
+packages/engine/kaldra_engine/meta/engine_router.py,configures,packages/engine/kaldra_engine/apps/safeguard/,Routes safeguard domain
+packages/engine/kaldra_engine/story/story_aggregator.py,depends_on,packages/engine/kaldra_engine/story/story_buffer.py,Uses StoryBuffer/StoryEvent
+packages/engine/kaldra_engine/archetypes/delta144_engine.py,reads_from,schema/archetypes/archetypes.core.json,Loads archetype definitions
+packages/engine/kaldra_engine/archetypes/delta144_engine.py,reads_from,schema/archetypes/delta144_states.json,Loads 144 states
+packages/engine/kaldra_engine/archetypes/delta144_engine.py,reads_from,schema/archetypes/modifiers.json,Loads 59 modifiers
+packages/engine/kaldra_engine/archetypes/delta144_engine.py,reads_from,schema/archetypes/polarities.json,Loads 46 polarities
+packages/engine/kaldra_engine/archetypes/delta144_engine.py,depends_on,packages/engine/kaldra_engine/archetypes/delta12_vector.py,Uses Delta12Vector
+packages/engine/kaldra_engine/archetypes/delta144_engine.py,depends_on,packages/engine/kaldra_engine/core/embedding_generator.py,Uses EmbeddingGenerator
+packages/engine/kaldra_engine/kindras/loaders.py,reads_from,schema/kindras/,Loads layer vectors and mappings
+packages/engine/kaldra_engine/tw369/tw369_integration.py,reads_from,schema/tw369/tw369_default_config.json,Loads TW config
+packages/engine/kaldra_engine/tw369/tw369_integration.py,reads_from,schema/tw369/drift_parameters.json,Loads drift parameters
 kaldra_api/main.py,exposes_api,kaldra_api/routers/router_engine.py,/engine endpoints
 kaldra_api/main.py,exposes_api,kaldra_api/routers/router_alpha.py,/alpha endpoints
 kaldra_api/main.py,exposes_api,kaldra_api/routers/router_geo.py,/geo endpoints
@@ -50,39 +50,39 @@ kaldra_api/main.py,exposes_api,kaldra_api/routers/router_news.py,/kaldra endpoin
 kaldra_api/main.py,exposes_api,kaldra_api/routers/router_v3_1.py,/api v3.1 endpoints
 kaldra_api/main.py,exposes_api,kaldra_api/routers/router_signals.py,/signals Supabase
 kaldra_api/main.py,exposes_api,kaldra_api/routers/router_story_events.py,/story-events
-kaldra_api/routers/router_engine.py,depends_on,src/unification/kernel.py,Calls UnifiedKernel
-kaldra_api/routers/router_v3_1.py,depends_on,src/unification/kernel.py,Uses v3.1 kernel interface
-kaldra_data/pipeline/pipeline_alpha.py,feeds,src/apps/alpha/,Provides data to Alpha app
-kaldra_data/pipeline/pipeline_geo.py,feeds,src/apps/geo/,Provides data to Geo app
-kaldra_data/pipeline/pipeline_product.py,feeds,src/apps/product/,Provides data to Product app
-kaldra_data/pipeline/pipeline_safeguard.py,feeds,src/apps/safeguard/,Provides data to Safeguard app
-tests/core/,tests,src/core/,Core engine tests
-tests/tw369/,tests,src/tw369/,TW369 engine tests
-tests/kindras/,tests,src/kindras/,Kindras engine tests
-tests/archetypes/,tests,src/archetypes/,Archetypes engine tests
-tests/meta/,tests,src/meta/,Meta engines tests
-tests/story/,tests,src/story/,Story engine tests
-tests/unification/,tests,src/unification/,Unification tests
-tests/explainability/,tests,src/explainability/,Explainability tests
-tests/bias/,tests,src/bias/,Bias engine tests
-tests/tau/,tests,src/tau/,Tau layer tests
-tests/safeguard/,tests,src/safeguard/,Safeguard engine tests
-tests/integration/,tests,src/,Integration tests across engines
+kaldra_api/routers/router_engine.py,depends_on,packages/engine/kaldra_engine/unification/kernel.py,Calls UnifiedKernel
+kaldra_api/routers/router_v3_1.py,depends_on,packages/engine/kaldra_engine/unification/kernel.py,Uses v3.1 kernel interface
+kaldra_data/pipeline/pipeline_alpha.py,feeds,packages/engine/kaldra_engine/apps/alpha/,Provides data to Alpha app
+kaldra_data/pipeline/pipeline_geo.py,feeds,packages/engine/kaldra_engine/apps/geo/,Provides data to Geo app
+kaldra_data/pipeline/pipeline_product.py,feeds,packages/engine/kaldra_engine/apps/product/,Provides data to Product app
+kaldra_data/pipeline/pipeline_safeguard.py,feeds,packages/engine/kaldra_engine/apps/safeguard/,Provides data to Safeguard app
+tests/core/,tests,packages/engine/kaldra_engine/core/,Core engine tests
+tests/tw369/,tests,packages/engine/kaldra_engine/tw369/,TW369 engine tests
+tests/kindras/,tests,packages/engine/kaldra_engine/kindras/,Kindras engine tests
+tests/archetypes/,tests,packages/engine/kaldra_engine/archetypes/,Archetypes engine tests
+tests/meta/,tests,packages/engine/kaldra_engine/meta/,Meta engines tests
+tests/story/,tests,packages/engine/kaldra_engine/story/,Story engine tests
+tests/unification/,tests,packages/engine/kaldra_engine/unification/,Unification tests
+tests/explainability/,tests,packages/engine/kaldra_engine/explainability/,Explainability tests
+tests/bias/,tests,packages/engine/kaldra_engine/bias/,Bias engine tests
+tests/tau/,tests,packages/engine/kaldra_engine/tau/,Tau layer tests
+tests/safeguard/,tests,packages/engine/kaldra_engine/safeguard/,Safeguard engine tests
+tests/integration/,tests,packages/engine/kaldra_engine/,Integration tests across engines
 tests/e2e/,tests,kaldra_api/,End-to-end API tests
 tests/api/,tests,kaldra_api/,API unit tests
-tests/apps/,tests,src/apps/,App tests
+tests/apps/,tests,packages/engine/kaldra_engine/apps/,App tests
 infra/docker/,runs_as,kaldra_api/main.py,Docker container runs API
 infra/k8s/,configures,infra/docker/,K8s deploys Docker containers
 4iam_frontend/,renders_ui,kaldra_api/,Frontend consumes API
 4iam_frontend/visual_engine/,renders_ui,kaldra_api/routers/router_engine.py,Visualizes engine output
 4iam_frontend/design_system/,owned_by,4iam_frontend/,Design tokens for frontend
-src/unification/exoskeleton/,configures,src/unification/kernel.py,Presets configure kernel modes
-src/unification/pipeline/,depends_on,src/core/,Pipeline stages call core
-src/unification/pipeline/,depends_on,src/meta/,Pipeline stages call meta
-src/unification/pipeline/,depends_on,src/story/,Pipeline stages call story
-src/unification/pipeline/,depends_on,src/safeguard/,Pipeline stages call safeguard
-src/learning/,feeds,src/kindras/,Provides learned weights to Kindras
-src/learning/,feeds,src/archetypes/,Provides mapping to Delta144
+packages/engine/kaldra_engine/unification/exoskeleton/,configures,packages/engine/kaldra_engine/unification/kernel.py,Presets configure kernel modes
+packages/engine/kaldra_engine/unification/pipeline/,depends_on,packages/engine/kaldra_engine/core/,Pipeline stages call core
+packages/engine/kaldra_engine/unification/pipeline/,depends_on,packages/engine/kaldra_engine/meta/,Pipeline stages call meta
+packages/engine/kaldra_engine/unification/pipeline/,depends_on,packages/engine/kaldra_engine/story/,Pipeline stages call story
+packages/engine/kaldra_engine/unification/pipeline/,depends_on,packages/engine/kaldra_engine/safeguard/,Pipeline stages call safeguard
+packages/engine/kaldra_engine/learning/,feeds,packages/engine/kaldra_engine/kindras/,Provides learned weights to Kindras
+packages/engine/kaldra_engine/learning/,feeds,packages/engine/kaldra_engine/archetypes/,Provides mapping to Delta144
 kaldra_api/clients/,depends_on,supabase/,Supabase client integration
 kaldra_api/routers/router_signals.py,writes_to,supabase/,Writes signals to Supabase
 kaldra_api/routers/router_story_events.py,writes_to,supabase/,Writes story events to Supabase

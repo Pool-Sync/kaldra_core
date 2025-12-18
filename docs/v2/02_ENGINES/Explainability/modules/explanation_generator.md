@@ -2,7 +2,7 @@
 
 > **Module**: `ExplanationGenerator`  
 > **Engine**: [[../ENGINE_OVERVIEW|Explainability]]  
-> **Path**: `src/explainability/explanation_generator.py`  
+> **Path**: `packages/engine/kaldra_engine/explainability/explanation_generator.py`  
 > **Node ID**: `mod_explanation_generator`
 
 ---
@@ -73,7 +73,7 @@ flowchart TB
 
 | Config | Path | Purpose |
 |--------|------|---------|
-| Templates | `src/explainability/templates/` | YAML template files |
+| Templates | `packages/engine/kaldra_engine/explainability/templates/` | YAML template files |
 
 ---
 

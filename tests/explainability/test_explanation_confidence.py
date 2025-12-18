@@ -5,14 +5,14 @@ Tests confidence scoring and decision tracing for explanations.
 """
 import pytest
 from unittest.mock import Mock
-from src.explainability.explanation_confidence import (
+from kaldra_engine.explainability.explanation_confidence import (
     ConfidenceEngine,
     ComponentConfidence,
     DecisionStep,
     ExplanationConfidence
 )
-from src.explainability.explanation_generator import ExplanationGenerator, Explanation
-from src.unification.states.unified_state import (
+from kaldra_engine.explainability.explanation_generator import ExplanationGenerator, Explanation
+from kaldra_engine.unification.states.unified_state import (
     UnifiedContext,
     GlobalContext,
     ArchetypeContext,
@@ -21,7 +21,7 @@ from src.unification.states.unified_state import (
     StoryContext,
     MultiStreamContext,
 )
-from src.common.unified_signal import MetaSignal
+from kaldra_engine.common.unified_signal import MetaSignal
 
 
 class TestExplanationConfidence:

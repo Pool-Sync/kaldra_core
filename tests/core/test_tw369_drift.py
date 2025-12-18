@@ -6,8 +6,8 @@ Tests the complete drift calculation and temporal evolution functionality.
 
 import math
 import pytest
-from src.tw369.tw369_integration import TW369Integrator
-from src.common.types import TWState
+from kaldra_engine.tw369.tw369_integration import TW369Integrator
+from kaldra_engine.common.types import TWState
 
 
 class TestTW369DriftMathematics:

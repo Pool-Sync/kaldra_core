@@ -2,7 +2,7 @@
 
 > **Module**: `SafeguardEngine`  
 > **Engine**: [[../ENGINE_OVERVIEW|Safeguard]]  
-> **Path**: `src/safeguard/safeguard_engine.py`  
+> **Path**: `packages/engine/kaldra_engine/safeguard/safeguard_engine.py`  
 > **Node ID**: `mod_safeguard_engine`
 
 ---

@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kaldra_engine"
+version = "3.2.0"
+description = "KALDRA Core Engine"
+authors = [
+  { name="Pool", email="dev@pool.inc" },
+]
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.0",
+    "fastapi>=0.100",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]

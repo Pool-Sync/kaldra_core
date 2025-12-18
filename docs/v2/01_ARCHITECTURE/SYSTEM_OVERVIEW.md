@@ -11,12 +11,12 @@ How the KALDRA system flows from frontend to engines.
 ```mermaid
 flowchart TB
     subgraph Frontend["🖥️ Frontend"]
-        4IAM[4iam_frontend]
+        4IAM[apps/web]
         VE[visual_engine]
     end
 
     subgraph API["🔌 API Layer"]
-        MAIN[kaldra_api/main.py]
+        MAIN[apps/api/main.py]
         ROUTERS[Routers]
     end
 
@@ -52,8 +52,8 @@ flowchart TB
     end
 
     subgraph Data["📊 Data Layer"]
-        SCHEMA[Schema]
-        KDATA[kaldra_data]
+        SCHEMA[schema/]
+        KDATA[apps/workers/kaldra_data]
     end
 
     4IAM --> MAIN

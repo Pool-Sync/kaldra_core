@@ -2,7 +2,7 @@
 
 > **Module**: `StoryAggregator`  
 > **Engine**: [[../ENGINE_OVERVIEW|Story]]  
-> **Path**: `src/story/story_aggregator.py`  
+> **Path**: `packages/engine/kaldra_engine/story/story_aggregator.py`  
 > **Node ID**: `mod_story_aggregator`
 
 ---

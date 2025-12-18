@@ -2,7 +2,7 @@
 Integration tests for LLM to TWState Service.
 """
 
-from src.kindras.scoring.llm_twstate_service import LLMToTWStateService
+from kaldra_engine.kindras.scoring.llm_twstate_service import LLMToTWStateService
 
 
 def test_llm_to_twstate_service_builds_twstate():

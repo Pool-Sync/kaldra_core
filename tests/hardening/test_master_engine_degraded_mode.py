@@ -4,7 +4,7 @@ Hardening Tests: Master Engine Degraded Mode.
 import pytest
 import numpy as np
 from unittest.mock import MagicMock
-from src.core.kaldra_master_engine import KaldraMasterEngineV2
+from kaldra_engine.core.kaldra_master_engine import KaldraMasterEngineV2
 
 def test_master_engine_degraded_flag():
     # Mock a Delta engine that fails

@@ -3,8 +3,8 @@
 import pytest
 import numpy as np
 
-from src.meta.engine_router import RoutingContext, RoutingDecision
-from src.meta.engine_orchestrator import (
+from kaldra_engine.meta.engine_router import RoutingContext, RoutingDecision
+from kaldra_engine.meta.engine_orchestrator import (
     OrchestrationConfig,
     EngineResult,
     OrchestrationResult,
@@ -208,7 +208,7 @@ class TestEngineResult:
     
     def test_successful_result(self):
         """Test successful engine result"""
-        from src.core.kaldra_master_engine import KaldraSignal
+        from kaldra_engine.core.kaldra_master_engine import KaldraSignal
         import numpy as np
         
         signal = KaldraSignal(

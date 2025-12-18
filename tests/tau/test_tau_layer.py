@@ -2,8 +2,8 @@
 Tests for Tau Layer (Epistemic Limiter v2).
 """
 import pytest
-from src.tau.tau_layer import TauLayer
-from src.tau.tau_state import TauState
+from kaldra_engine.tau.tau_layer import TauLayer
+from kaldra_engine.tau.tau_state import TauState
 
 @pytest.fixture
 def tau_layer():

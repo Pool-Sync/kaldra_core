@@ -16,9 +16,9 @@ from pathlib import Path
 from datetime import datetime, timedelta
 
 # Import using src. prefix like other TW369 tests
-from src.tw369.drift_history import DriftHistory, DriftSample
-from src.tw369.drift_topology import TW369Topology
-from src.unification.states.unified_state import DriftContext, DriftPoint, TurningPoint
+from kaldra_engine.tw369.drift_history import DriftHistory, DriftSample
+from kaldra_engine.tw369.drift_topology import TW369Topology
+from kaldra_engine.unification.states.unified_state import DriftContext, DriftPoint, TurningPoint
 
 
 

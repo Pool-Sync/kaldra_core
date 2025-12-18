@@ -2,7 +2,7 @@
 Tests for LLM Scoring Service.
 """
 
-from src.kindras.scoring.llm_scoring_service import LLMScoringService
+from kaldra_engine.kindras.scoring.llm_scoring_service import LLMScoringService
 
 
 def test_llm_scoring_service_score_all_layers():

@@ -2,7 +2,7 @@
 Tests for Kindra Layer 1 Rules (Option B).
 """
 
-from src.kindras.scoring.layer1_rules import KindraLayer1CulturalMacroRules
+from kaldra_engine.kindras.scoring.layer1_rules import KindraLayer1CulturalMacroRules
 
 
 def test_layer1_scoring_brazil_tech():
