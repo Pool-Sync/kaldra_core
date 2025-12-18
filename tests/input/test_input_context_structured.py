@@ -2,10 +2,10 @@
 Tests for Structured Data Ingestion and Normalization.
 """
 import pytest
-from src.data.normalizer.structured_normalizer import StructuredNormalizer
-from src.data.ingestion.api_ingest import APIIngest
-from src.data.ingestion.html_ingest import HTMLIngest
-from src.data.ingestion.text_ingest import TextIngest
+from src.data_utils.normalizer.structured_normalizer import StructuredNormalizer
+from src.data_utils.ingestion.api_ingest import APIIngest
+from src.data_utils.ingestion.html_ingest import HTMLIngest
+from src.data_utils.ingestion.text_ingest import TextIngest
 from src.unification.states.unified_state import InputContext
 
 class TestStructuredNormalizer:

@@ -1,6 +1,7 @@
 import pytest
 import numpy as np
-from src.tw369.tw369_integration import TW369Integrator, TWState
+from src.tw369.tw369_integration import TW369Integrator
+from src.common.types import TWState
 
 @pytest.fixture
 def integrator():

@@ -157,9 +157,9 @@ kaldra_core/
 | `src/domain/` | Domain models | Unclear |
 | `src/embeddings/` | Embedding utilities | Overlaps core |
 | `src/data/` | Data handling | Overlaps kaldra_data |
-| `src/infrastructure/` | Execution | Overlaps infra |
-| `src/learning/` | Weight learning | Partial |
-| `src/scripts/` | Utility scripts | Active |
+| `src/execution/` | Runtime | Parallel execution & task management |
+| `src/data_utils/` | Data | Utilities for normalization/ingestion (NOT primary pipeline) |
+| `src/core/embeddings/` | Core | Unified embedding generation & cache |
 
 ---
 

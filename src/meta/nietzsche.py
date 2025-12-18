@@ -26,7 +26,7 @@ import re
 # Import v3.1 state definitions
 # Import v3.1 state definitions
 from src.unification.states.unified_state import KindraContext
-from src.tw369.tw369_integration import TWState
+from src.common.types import TWState
 from src.common.unified_signal import MetaSignal
 from src.meta.types import MetaInput
 

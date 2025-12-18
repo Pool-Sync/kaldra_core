@@ -4,7 +4,7 @@ Shared types for Meta Engines (v3.1+).
 from dataclasses import dataclass, field
 from typing import Dict, Any, Optional, TYPE_CHECKING
 from src.unification.states.unified_state import KindraContext
-from src.tw369.tw369_integration import TWState
+from src.common.types import TWState
 
 if TYPE_CHECKING:
     from src.unification.states.unified_state import DriftContext, StoryContext

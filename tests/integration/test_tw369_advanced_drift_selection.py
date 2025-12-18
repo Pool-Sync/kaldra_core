@@ -3,7 +3,8 @@ Integration tests for TW369 advanced drift model selection.
 """
 
 import pytest
-from src.tw369.tw369_integration import TW369Integrator, TWState
+from src.tw369.tw369_integration import TW369Integrator
+from src.common.types import TWState
 
 
 def _make_dummy_state() -> TWState:

@@ -4,7 +4,7 @@ Tests for EmbeddingGenerator Legacy Mode.
 
 import unittest
 import numpy as np
-from src.core.embedding_generator import EmbeddingGenerator, EmbeddingConfig
+from src.core.embeddings.embedding_generator import EmbeddingGenerator, EmbeddingConfig
 
 class TestEmbeddingGeneratorLegacy(unittest.TestCase):
 

@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from typing import Dict, Any
 
-from src.tw369.tw369_integration import TWState
+from src.common.types import TWState
 from .llm_scoring_service import LLMScoringService
 
 

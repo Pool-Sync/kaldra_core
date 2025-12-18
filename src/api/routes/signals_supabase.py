@@ -3,7 +3,7 @@ Signals endpoint for Supabase integration.
 """
 from fastapi import APIRouter, Query
 from typing import Optional, List
-from src.infra.db.supabase_repository import SupabaseRepository
+from src.execution.utils.db.supabase_repository import SupabaseRepository
 from src.domain.models.signal_record import SignalRecord
 
 router = APIRouter()

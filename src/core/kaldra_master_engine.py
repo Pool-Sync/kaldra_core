@@ -9,7 +9,8 @@ import torch
 from src.archetypes.delta144_engine import Delta144Engine
 from src.kindras.kindra_cultural_mod import KaldraKindraCulturalMod
 from src.tw369.oracle_tw_painleve import TWPainleveOracle, TWConfig, TWStats
-from src.tw369.tw369_integration import TW369Integrator, TWState
+from src.tw369.tw369_integration import TW369Integrator
+from src.common.types import TWState
 from src.tau.tau_layer import TauLayer
 from src.tau.tau_state import TauState
 from src.safeguard.safeguard_engine import SafeguardEngine, SafeguardSignal
@@ -23,7 +24,7 @@ from src.meta.campbell import CampbellEngine
 from src.archetypes.delta12_vector import Delta12Vector
 from src.core.hardening.fallbacks import safe_fallback
 from src.core.hardening.timeouts import with_timeout
-from src.infrastructure.execution.parallel_executor import ParallelExecutor, TaskStatus
+from src.execution.execution.parallel_executor import ParallelExecutor, TaskStatus
 
 @dataclass
 class KaldraSignal:

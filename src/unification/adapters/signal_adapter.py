@@ -11,12 +11,12 @@ from datetime import datetime, timezone
 from ..states.unified_state import UnifiedContext
 
 try:
-    from src.data.repositories.signal_repository import SignalRepository
+    from src.data_utils.repositories.signal_repository import SignalRepository
 except ImportError:
     SignalRepository = None  # Graceful degradation if not available
 
 try:
-    from src.data.repositories.story_event_repository import StoryEventRepository
+    from src.data_utils.repositories.story_event_repository import StoryEventRepository
 except ImportError:
     StoryEventRepository = None  # Graceful degradation
 

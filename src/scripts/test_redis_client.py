@@ -11,8 +11,8 @@ from pathlib import Path
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.infrastructure.cache.redis_client import RedisClient, get_redis_client
-from src.infrastructure.cache.decorators import redis_cache
+from src.execution.cache.redis_client import RedisClient, get_redis_client
+from src.execution.cache.decorators import redis_cache
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')

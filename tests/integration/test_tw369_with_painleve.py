@@ -1,6 +1,7 @@
 import pytest
 from unittest.mock import MagicMock, patch
-from src.tw369.tw369_integration import TW369Integrator, TWState
+from src.tw369.tw369_integration import TW369Integrator
+from src.common.types import TWState
 
 class TestTW369WithPainleve:
     def test_integration_disabled_by_default(self):

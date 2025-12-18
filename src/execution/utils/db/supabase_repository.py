@@ -4,7 +4,7 @@ Supabase Repository Layer.
 Provides data access methods for Supabase tables.
 """
 from typing import Any, Dict, List, Optional
-from src.infra.supabase_client import get_supabase
+from src.execution.utils.supabase_client import get_supabase
 from src.domain.models.profile import Profile
 from src.domain.models.signal_record import SignalRecord
 from src.domain.models.story_event_record import StoryEventRecord

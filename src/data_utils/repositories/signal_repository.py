@@ -6,7 +6,7 @@ usando o SupabaseClient.
 """
 
 from typing import Any, Dict, List, Optional
-from src.infrastructure.supabase_client import SupabaseClient
+from src.execution.supabase_client import SupabaseClient
 
 
 class SignalRepository:
