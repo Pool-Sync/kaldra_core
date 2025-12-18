@@ -4,7 +4,7 @@ import pytest
 import numpy as np
 from unittest.mock import MagicMock, patch
 
-from kaldra_engine.apps.alpha.earnings_pipeline import (
+from kaldra_engine.solutions.alpha.earnings_pipeline import (
     run_earnings_pipeline, 
     EarningsSource, 
     EarningsPipelineResult

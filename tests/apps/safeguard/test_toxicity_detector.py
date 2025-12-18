@@ -1,7 +1,7 @@
 """Tests for KALDRA-Safeguard toxicity detector."""
 
 import pytest
-from kaldra_engine.apps.safeguard.toxicity_detector import (
+from kaldra_engine.solutions.safeguard.toxicity_detector import (
     ToxicityDetector,
     SafeguardInput,
     SafeguardToxicityResult

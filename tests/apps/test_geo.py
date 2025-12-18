@@ -1,4 +1,4 @@
-from kaldra_engine.apps.geo.geo_analyzer import analyze_geopolitical_text
+from kaldra_engine.solutions.geo.geo_analyzer import analyze_geopolitical_text
 
 
 def test_analyze_geopolitical_text_runs():

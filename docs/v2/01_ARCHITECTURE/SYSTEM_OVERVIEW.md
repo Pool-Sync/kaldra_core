@@ -234,8 +234,8 @@ The [[UnifiedKernel/ENGINE_OVERVIEW|Unified Pipeline]] has these stages:
 ```mermaid
 flowchart TB
     subgraph Cloud["Cloud (Render/Vercel)"]
-        VERCEL[Vercel: Frontend]
-        RENDER[Render: API]
+        VERCEL[Vercel: apps/web]
+        RENDER[Render: apps/api]
     end
 
     subgraph External
