@@ -1,6 +1,6 @@
 import numpy as np
 
-from src.core.story_aggregator import StoryAggregator, StoryTurnSignal
+from src.core.core_story_aggregator import StoryAggregator, StoryTurnSignal
 from src.core.story_tracker import StoryTracker
 
 

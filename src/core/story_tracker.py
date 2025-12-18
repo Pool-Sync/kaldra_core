@@ -13,7 +13,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
-from src.core.story_aggregator import StoryAggregator, StoryTurnSignal
+from src.core.core_story_aggregator import StoryAggregator, StoryTurnSignal
 
 
 def _now_iso() -> str:

@@ -136,7 +136,7 @@ Known duplicate modules and naming conflicts requiring resolution.
 
 | Issue | Type | Priority | Status |
 |-------|------|----------|--------|
-| `story_aggregator.py` duplicate | Duplicate | **HIGH** | ⏳ Pending |
+| `story_aggregator.py` duplicate | Duplicate | **HIGH** | ✅ Resolved (Core renamed) |
 | `infra/` naming conflict | Naming | Medium | ⏳ Pending |
 | `src/data/` overlap | Naming | Medium | ⏳ Pending |
 | `src/embeddings/` split | Naming | Low | ⏳ Pending |
