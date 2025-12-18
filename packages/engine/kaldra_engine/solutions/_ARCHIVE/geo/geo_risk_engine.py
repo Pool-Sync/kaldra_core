@@ -8,7 +8,7 @@ import numpy as np
 
 from kaldra_engine.core.kaldra_master_engine import KaldraMasterEngineV2
 from kaldra_data.transformation.embedding_router import EmbeddingRouter, EmbeddingRouterConfig
-from kaldra_engine.apps.geo.geo_signals import GeoSignal, GeoSignalInput, build_geo_signal_from_kaldra
+from kaldra_engine.solutions.geo.geo_signals import GeoSignal, GeoSignalInput, build_geo_signal_from_kaldra
 
 logger = logging.getLogger(__name__)
 

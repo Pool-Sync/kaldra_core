@@ -23,11 +23,11 @@ kaldra_core/
 │   ├── tau/             → Epistemic limiter
 │   └── safeguard/       → Safety/risk
 │
-├── 📱 App Domain (packages/engine/kaldra_engine/apps/)
+├── 🧠 Solutions Domain (packages/engine/kaldra_engine/solutions/)
 │   ├── alpha/           → Financial analysis
 │   ├── geo/             → Geopolitical analysis
 │   ├── product/         → Product intelligence
-│   └── safeguard/       → Safety-focused
+│   ├── safeguard/       → Safety/risk-focused
 │
 ├── 🔌 API Domain (kaldra_api/)
 │   ├── main.py          → FastAPI entry
@@ -85,10 +85,10 @@ kaldra_core/
 
 | App | Path | Domain Focus |
 |-----|------|--------------|
-| Alpha | `packages/engine/kaldra_engine/apps/alpha/` | Financial analysis (earnings, markets) |
-| Geo | `packages/engine/kaldra_engine/apps/geo/` | Geopolitical analysis |
-| Product | `packages/engine/kaldra_engine/apps/product/` | Product intelligence |
-| Safeguard | `packages/engine/kaldra_engine/apps/safeguard/` | Safety-focused analysis |
+| Solutions | `packages/engine/kaldra_engine/solutions/alpha/` | Financial analysis |
+| Solutions | `packages/engine/kaldra_engine/solutions/geo/` | Geopolitical analysis |
+| Solutions | `packages/engine/kaldra_engine/solutions/product/` | Product intelligence |
+| Solutions | `packages/engine/kaldra_engine/solutions/safeguard/` | Safety-focused analysis |
 
 ---
 

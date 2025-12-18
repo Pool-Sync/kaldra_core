@@ -8,7 +8,7 @@ import numpy as np
 
 from kaldra_engine.core.kaldra_master_engine import KaldraMasterEngineV2
 from kaldra_data.transformation.embedding_router import EmbeddingRouter, EmbeddingRouterConfig
-from kaldra_engine.apps.alpha.earnings_ingest import EarningsSource, load_earnings_text, normalize_earnings_text
+from kaldra_engine.solutions.alpha.earnings_ingest import EarningsSource, load_earnings_text, normalize_earnings_text
 
 logger = logging.getLogger(__name__)
 

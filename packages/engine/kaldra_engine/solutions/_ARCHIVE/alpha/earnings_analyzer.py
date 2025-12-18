@@ -3,7 +3,7 @@
 from typing import Dict, Any, List
 import numpy as np
 
-from kaldra_engine.apps.alpha.earnings_pipeline import EarningsPipelineResult
+from kaldra_engine.solutions.alpha.earnings_pipeline import EarningsPipelineResult
 
 def summarize_archetypes(result: EarningsPipelineResult, top_k: int = 3) -> Dict[str, Any]:
     """

@@ -4,7 +4,7 @@ import pytest
 import numpy as np
 from unittest.mock import MagicMock
 
-from kaldra_engine.apps.geo.geo_signals import (
+from kaldra_engine.solutions.geo.geo_signals import (
     GeoSignalInput,
     GeoSignal,
     build_geo_signal_from_kaldra

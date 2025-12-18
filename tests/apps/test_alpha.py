@@ -1,4 +1,4 @@
-from kaldra_engine.apps.alpha.analyzer import analyze_earnings_call
+from kaldra_engine.solutions.alpha.analyzer import analyze_earnings_call
 
 
 def test_analyze_earnings_call_runs():

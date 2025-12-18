@@ -1,4 +1,4 @@
-from kaldra_engine.apps.product.product_analyzer import analyze_product_text
+from kaldra_engine.solutions.product.product_analyzer import analyze_product_text
 
 
 def test_analyze_product_text_runs():

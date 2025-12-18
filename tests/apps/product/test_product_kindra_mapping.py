@@ -4,7 +4,7 @@ import pytest
 from unittest.mock import MagicMock
 import numpy as np
 
-from kaldra_engine.apps.product.product_kindra_mapping import (
+from kaldra_engine.solutions.product.product_kindra_mapping import (
     ProductNarrativeInput,
     ProductKindraMapping,
     map_text_to_product_kindra
