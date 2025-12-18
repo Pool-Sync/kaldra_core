@@ -123,29 +123,29 @@ kaldra_core/
 | Tau | `schema/tau/` | 0 ⚠️ |
 | Safeguard | `schema/safeguard/` | 0 ⚠️ |
 
-### kaldra_data
+# Monorepo Structure (v3.0)
 
-| Component | Files | Purpose |
-|-----------|-------|---------|
-| datasets/ | 4 | Dataset definitions |
-| ingestion/ | 17 | Data ingestion |
-| pipeline/ | 6 | Data pipelines |
-| preprocessing/ | 11 | Data preprocessing |
-| transformation/ | 4 | Data transformation |
-| workers/ | 1 | Background workers |
-| schemas/ | 8 | Data schemas |
+| Directory | Domain | Purpose |
+|-----------|--------|---------|
+| `apps/api/` | App | FastAPI Gateway |
+| `apps/web/` | App | Next.js Frontend (4iam_frontend) |
+| `apps/workers/` | App | Data/Worker pipelines |
+| `packages/engine/` | Core | KALDRA Python Engine (was src/) |
+| `infra/` | Infra | Infrastructure & Deployment |
+| `archive/` | Archive | Legacy code |
 
----
+## `packages/engine/src/` (Engine Core)
 
-## Infrastructure Details
-
-| Component | Path | Purpose |
-|-----------|------|---------|
-| Docker | `infra/docker/` | Container builds |
-| Kubernetes | `infra/k8s/` | K8s manifests (5 files) |
-| CI/CD | `infra/ci_cd/` | Pipeline configs (2 files) |
-| Scripts | `infra/scripts/` | Infra scripts (4 files) |
-| Supabase | `supabase/` | DB integration (5 files) |
+| Directory | Domain | Purpose |
+|-----------|--------|---------|
+| `core/` | Core | Master Engine & Kernel |
+| `unified_kernel/` | Core | v3 Unification |
+| `kindras/` | Engine | 3x48 Cultural/Semiotic Engine |
+| `delta144/` | Engine | 12x12 Archetypal Engine |
+| `tw369/` | Engine | Tracy-Widom Temporal Engine |
+| `meta/` | Engine | Meta-analysis (Aurelius, Nietzsche, Campbell) |
+| `story/` | Engine | Narrative analysis |
+| `explainability/` | Engine | Logic explanation generation |(5 files) |
 
 ---
 
