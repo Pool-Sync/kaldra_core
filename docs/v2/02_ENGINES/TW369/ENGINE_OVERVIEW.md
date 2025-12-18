@@ -1,7 +1,7 @@
 # ⚙️ TW369 Engine Overview
 
 > **Engine**: `TW369 / TW369Integrator`  
-> **Path**: `src/tw369/`  
+> **Path**: `packages/engine/kaldra_engine/tw369/`  
 > **Node ID**: `engine_tw369`  
 > **Status**: ✅ Active
 
@@ -24,7 +24,7 @@ The engine:
 
 | Component | Path | Description |
 |-----------|------|-------------|
-| Main Directory | `src/tw369/` | All TW369 code |
+| Main Directory | `packages/engine/kaldra_engine/tw369/` | All TW369 code |
 | Entry Point | `tw369_integration.py` | `TW369Integrator`, `TWState` |
 | Tracy-Widom | `tracy_widom.py` | TW statistics |
 | Drift | `drift.py` | Drift calculation |

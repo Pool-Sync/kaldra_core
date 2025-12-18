@@ -1,7 +1,7 @@
 # ⚙️ UnifiedKernel Engine Overview
 
 > **Engine**: `UnifiedKernel`  
-> **Path**: `src/unification/`  
+> **Path**: `packages/engine/kaldra_engine/unification/`  
 > **Node ID**: `engine_unified_kernel`  
 > **Status**: ✅ Active
 
@@ -23,7 +23,7 @@ The kernel is designed to:
 
 | Component | Path | Description |
 |-----------|------|-------------|
-| Main Directory | `src/unification/` | All kernel code |
+| Main Directory | `packages/engine/kaldra_engine/unification/` | All kernel code |
 | Entry Point | `kernel.py` | `UnifiedKernel` class |
 | Registry | `registry.py` | `ModuleRegistry` |
 | Orchestrator | `orchestrator.py` | `PipelineOrchestrator` |

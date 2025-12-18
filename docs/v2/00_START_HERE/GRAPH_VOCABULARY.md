@@ -33,7 +33,7 @@ mod_master_engine,depends_on,mod_delta144_engine,Uses Delta144Engine for base in
 **Direction**: A → B (A feeds B)
 
 **Examples**:
-- `kaldra_data/pipeline/pipeline_alpha.py` feeds `src/apps/alpha/`
+- `kaldra_data/pipeline/pipeline_alpha.py` feeds `packages/engine/kaldra_engine/apps/alpha/`
 - `learning/` feeds `kindras/`
 
 **Graph Usage**:
@@ -123,8 +123,8 @@ router_signals,writes_to,supabase,Writes signals to Supabase
 **Direction**: A → B (A tests B)
 
 **Examples**:
-- `tests/core/` tests `src/core/`
-- `tests/tw369/` tests `src/tw369/`
+- `tests/core/` tests `packages/engine/kaldra_engine/core/`
+- `tests/tw369/` tests `packages/engine/kaldra_engine/tw369/`
 
 **Graph Usage**:
 ```csv
@@ -209,12 +209,12 @@ mod_design_system,owned_by,frontend_4iam,Design tokens for frontend
 
 1. Use lowercase with underscores
 2. Remove file extensions
-3. Remove `src/` prefix
+3. Remove `packages/engine/kaldra_engine/` prefix
 4. Preserve hierarchy with underscores
 
 **Examples**:
-- `src/tw369/tw369_integration.py` → `mod_tw369_integrator`
-- `src/core/kaldra_master_engine.py` → `mod_core_master_engine`
+- `packages/engine/kaldra_engine/tw369/tw369_integration.py` → `mod_tw369_integrator`
+- `packages/engine/kaldra_engine/core/kaldra_master_engine.py` → `mod_core_master_engine`
 - `kaldra_api/routers/router_engine.py` → `router_engine`
 
 ---

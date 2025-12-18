@@ -2,7 +2,7 @@
 
 > **Subsystem**: `scoring/`  
 > **Engine**: [[../ENGINE_OVERVIEW|Kindra]]  
-> **Path**: `src/kindras/scoring/`  
+> **Path**: `packages/engine/kaldra_engine/kindras/scoring/`  
 > **Node ID**: `mod_kindra_scoring_subsystem`
 
 ---

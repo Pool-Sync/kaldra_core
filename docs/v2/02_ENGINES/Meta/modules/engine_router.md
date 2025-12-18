@@ -2,7 +2,7 @@
 
 > **Module**: `MetaRouter`  
 > **Engine**: [[../ENGINE_OVERVIEW|Meta]]  
-> **Path**: `src/meta/engine_router.py`  
+> **Path**: `packages/engine/kaldra_engine/meta/engine_router.py`  
 > **Node ID**: `mod_engine_router`
 
 ---

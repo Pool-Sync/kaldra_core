@@ -1,7 +1,7 @@
 # ⚙️ Bias Engine Overview
 
 > **Engine**: `Bias / BiasDetector`  
-> **Path**: `src/bias/`  
+> **Path**: `packages/engine/kaldra_engine/bias/`  
 > **Node ID**: `engine_bias`  
 > **Status**: ✅ Active
 
@@ -23,7 +23,7 @@ Components:
 
 | Component | Path | Description |
 |-----------|------|-------------|
-| Main Directory | `src/bias/` | All bias engine code |
+| Main Directory | `packages/engine/kaldra_engine/bias/` | All bias engine code |
 | Entry Point | `detector.py` | `BiasDetector` class |
 | Scoring | `scoring.py` | Bias scoring |
 | Mitigation | `mitigation.py` | Mitigation strategies |
@@ -90,7 +90,7 @@ flowchart TB
 
 | Config | Path |
 |--------|------|
-| Bias Schema | `src/bias/bias_schema.json` |
+| Bias Schema | `packages/engine/kaldra_engine/bias/bias_schema.json` |
 
 ### Schemas
 

@@ -2,7 +2,7 @@
 
 > **Module**: `UnifiedKernel`  
 > **Engine**: [[../ENGINE_OVERVIEW|UnifiedKernel]]  
-> **Path**: `src/unification/kernel.py`  
+> **Path**: `packages/engine/kaldra_engine/unification/kernel.py`  
 > **Node ID**: `mod_unified_kernel`
 
 ---

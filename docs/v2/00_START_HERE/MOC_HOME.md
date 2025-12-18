@@ -27,17 +27,17 @@ Welcome to the KALDRA documentation vault. This is your starting point for navig
 
 | Engine | Path | Description | Overview |
 |--------|------|-------------|----------|
-| UnifiedKernel | `src/unification/` | v3.0 entry point | [[UnifiedKernel/ENGINE_OVERVIEW]] |
-| Core | `src/core/` | v2 master engine | [[Core/ENGINE_OVERVIEW]] |
-| TW369 | `src/tw369/` | Tracy-Widom drift | [[TW369/ENGINE_OVERVIEW]] |
-| Kindra | `src/kindras/` | 3×48 cultural scoring | [[Kindra/ENGINE_OVERVIEW]] |
-| Delta144 | `src/archetypes/` | 12×12 archetypes | [[Delta144/ENGINE_OVERVIEW]] |
-| Meta | `src/meta/` | Philosophical engines | [[Meta/ENGINE_OVERVIEW]] |
-| Story | `src/story/` | Narrative/temporal | [[Story/ENGINE_OVERVIEW]] |
-| Explainability | `src/explainability/` | Human-readable output | [[Explainability/ENGINE_OVERVIEW]] |
-| Bias | `src/bias/` | Bias detection | [[Bias/ENGINE_OVERVIEW]] |
-| Tau | `src/tau/` | Epistemic limiter | [[Tau/ENGINE_OVERVIEW]] |
-| Safeguard | `src/safeguard/` | Safety/risk | [[Safeguard/ENGINE_OVERVIEW]] |
+| UnifiedKernel | `packages/engine/kaldra_engine/unification/` | v3.0 entry point | [[UnifiedKernel/ENGINE_OVERVIEW]] |
+| Core | `packages/engine/kaldra_engine/core/` | v2 master engine | [[Core/ENGINE_OVERVIEW]] |
+| TW369 | `packages/engine/kaldra_engine/tw369/` | Tracy-Widom drift | [[TW369/ENGINE_OVERVIEW]] |
+| Kindra | `packages/engine/kaldra_engine/kindras/` | 3×48 cultural scoring | [[Kindra/ENGINE_OVERVIEW]] |
+| Delta144 | `packages/engine/kaldra_engine/archetypes/` | 12×12 archetypes | [[Delta144/ENGINE_OVERVIEW]] |
+| Meta | `packages/engine/kaldra_engine/meta/` | Philosophical engines | [[Meta/ENGINE_OVERVIEW]] |
+| Story | `packages/engine/kaldra_engine/story/` | Narrative/temporal | [[Story/ENGINE_OVERVIEW]] |
+| Explainability | `packages/engine/kaldra_engine/explainability/` | Human-readable output | [[Explainability/ENGINE_OVERVIEW]] |
+| Bias | `packages/engine/kaldra_engine/bias/` | Bias detection | [[Bias/ENGINE_OVERVIEW]] |
+| Tau | `packages/engine/kaldra_engine/tau/` | Epistemic limiter | [[Tau/ENGINE_OVERVIEW]] |
+| Safeguard | `packages/engine/kaldra_engine/safeguard/` | Safety/risk | [[Safeguard/ENGINE_OVERVIEW]] |
 
 ---
 

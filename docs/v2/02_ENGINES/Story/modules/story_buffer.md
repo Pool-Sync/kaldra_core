@@ -2,7 +2,7 @@
 
 > **Module**: `StoryBuffer`  
 > **Engine**: [[../ENGINE_OVERVIEW|Story]]  
-> **Path**: `src/story/story_buffer.py`  
+> **Path**: `packages/engine/kaldra_engine/story/story_buffer.py`  
 > **Node ID**: `mod_story_buffer`
 
 ---

@@ -1,7 +1,7 @@
 # ⚙️ Safeguard Engine Overview
 
 > **Engine**: `Safeguard / SafeguardEngine`  
-> **Path**: `src/safeguard/`  
+> **Path**: `packages/engine/kaldra_engine/safeguard/`  
 > **Node ID**: `engine_safeguard`  
 > **Status**: ✅ Active
 
@@ -23,7 +23,7 @@ Components:
 
 | Component | Path | Description |
 |-----------|------|-------------|
-| Main Directory | `src/safeguard/` | All Safeguard code |
+| Main Directory | `packages/engine/kaldra_engine/safeguard/` | All Safeguard code |
 | Entry Point | `safeguard_engine.py` | `SafeguardEngine` class |
 | Policy | `safeguard_policy.py` | Policy definitions |
 | Risk Model | `safeguard_risk_model.py` | Risk assessment |

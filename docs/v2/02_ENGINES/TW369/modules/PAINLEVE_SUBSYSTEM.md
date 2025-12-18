@@ -2,7 +2,7 @@
 
 > **Subsystem**: `painleve/`  
 > **Engine**: [[../ENGINE_OVERVIEW|TW369]]  
-> **Path**: `src/tw369/painleve/`  
+> **Path**: `packages/engine/kaldra_engine/tw369/painleve/`  
 > **Node ID**: `mod_tw369_painleve_subsystem`
 
 ---

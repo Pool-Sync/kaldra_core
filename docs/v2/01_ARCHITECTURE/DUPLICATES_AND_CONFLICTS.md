@@ -11,13 +11,13 @@ Known duplicate modules and naming conflicts requiring resolution.
 ### 1. `story_aggregator.py` — Critical Duplicate
 
 **Locations**:
-1. `src/core/story_aggregator.py` (7,929 bytes)
-2. `src/story/story_aggregator.py` (16,410 bytes)
+1. `packages/engine/kaldra_engine/core/story_aggregator.py` (7,929 bytes)
+2. `packages/engine/kaldra_engine/story/story_aggregator.py` (16,410 bytes)
 
 **Issue**: Same module name in two engines
 
 **Analysis**:
-| Aspect | `src/core/` | `src/story/` |
+| Aspect | `packages/engine/kaldra_engine/core/` | `packages/engine/kaldra_engine/story/` |
 |--------|-------------|--------------|
 | Size | 7,929 bytes | 16,410 bytes |
 | Purpose | Core aggregation | Full story engine |
@@ -40,12 +40,12 @@ Known duplicate modules and naming conflicts requiring resolution.
 
 ## Naming Conflicts
 
-### 2. `infra/` vs `src/infrastructure/` vs `src/infra/`
+### 2. `infra/` vs `packages/engine/kaldra_engine/infrastructure/` vs `packages/engine/kaldra_engine/infra/`
 
 **Locations**:
 1. `infra/` (top-level) — Deployment configs
-2. `src/infrastructure/` — Runtime execution (parallel_executor)
-3. `src/infra/` — 4 utility files
+2. `packages/engine/kaldra_engine/infrastructure/` — Runtime execution (parallel_executor)
+3. `packages/engine/kaldra_engine/infra/` — 4 utility files
 
 **Issue**: Three directories with overlapping "infrastructure" naming
 
@@ -54,15 +54,15 @@ Known duplicate modules and naming conflicts requiring resolution.
 | Directory | Rename To | Purpose |
 |-----------|-----------|---------|
 | `infra/` | Keep | Deployment |
-| `src/infrastructure/` | `src/execution/` | Runtime |
-| `src/infra/` | Merge into above | Utilities |
+| `packages/engine/kaldra_engine/infrastructure/` | `packages/engine/kaldra_engine/execution/` | Runtime |
+| `packages/engine/kaldra_engine/infra/` | Merge into above | Utilities |
 
 ---
 
-### 3. `src/data/` vs `kaldra_data/`
+### 3. `packages/engine/kaldra_engine/data/` vs `kaldra_data/`
 
 **Locations**:
-1. `src/data/` (16 files) — Data utilities
+1. `packages/engine/kaldra_engine/data/` (16 files) — Data utilities
 2. `kaldra_data/` (63 files) — Data pipelines
 
 **Issue**: Two data-related directories with unclear boundaries
@@ -72,25 +72,25 @@ Known duplicate modules and naming conflicts requiring resolution.
 | Directory | Role | Action |
 |-----------|------|--------|
 | `kaldra_data/` | Primary data layer | Keep |
-| `src/data/` | Utilities | Rename to `src/data_utils/` or merge |
+| `packages/engine/kaldra_engine/data/` | Utilities | Rename to `packages/engine/kaldra_engine/data_utils/` or merge |
 
 ---
 
-### 4. `src/embeddings/` vs `src/core/embedding_*`
+### 4. `packages/engine/kaldra_engine/embeddings/` vs `packages/engine/kaldra_engine/core/embedding_*`
 
 **Locations**:
-1. `src/embeddings/` (2 files)
-2. `src/core/embedding_generator.py`
-3. `src/core/embedding_cache.py`
+1. `packages/engine/kaldra_engine/embeddings/` (2 files)
+2. `packages/engine/kaldra_engine/core/embedding_generator.py`
+3. `packages/engine/kaldra_engine/core/embedding_cache.py`
 
 **Issue**: Embedding functionality split across locations
 
 **Recommendation**: 🔄 **Consolidate in core**
 
 **Resolution Path**:
-1. Move `src/embeddings/` contents to `src/core/embeddings/`
+1. Move `packages/engine/kaldra_engine/embeddings/` contents to `packages/engine/kaldra_engine/core/embeddings/`
 2. Update imports
-3. Delete `src/embeddings/`
+3. Delete `packages/engine/kaldra_engine/embeddings/`
 
 ---
 
@@ -99,8 +99,8 @@ Known duplicate modules and naming conflicts requiring resolution.
 ### 5. Circular Import Risk: `core` ↔ `tw369`
 
 **Modules**:
-- `src/core/kaldra_master_engine.py` imports from `src/tw369/`
-- `src/tw369/` imports from `src/core/` (potential)
+- `packages/engine/kaldra_engine/core/kaldra_master_engine.py` imports from `packages/engine/kaldra_engine/tw369/`
+- `packages/engine/kaldra_engine/tw369/` imports from `packages/engine/kaldra_engine/core/` (potential)
 
 **Risk**: Circular import errors at runtime
 
@@ -108,7 +108,7 @@ Known duplicate modules and naming conflicts requiring resolution.
 
 **Resolution Path**:
 1. Map all imports between core and tw369
-2. Extract shared types to `src/common/`
+2. Extract shared types to `packages/engine/kaldra_engine/common/`
 3. Use lazy imports if needed
 
 ---
@@ -137,10 +137,10 @@ Known duplicate modules and naming conflicts requiring resolution.
 | Issue | Type | Priority | Status |
 |-------|------|----------|--------|
 | `story_aggregator.py` duplicate | Duplicate | **HIGH** | ✅ Resolved (Core renamed) |
-| `infra/` naming conflict | Naming | Medium | ✅ Resolved (src/execution) |
-| `src/data/` overlap | Naming | Medium | ✅ Resolved (src/data_utils) |
-| `src/embeddings/` split | Naming | Low | ✅ Resolved (src/core/embeddings) |
-| Circular imports | Import | Medium | ✅ Resolved (src/common) |
+| `infra/` naming conflict | Naming | Medium | ✅ Resolved (packages/engine/kaldra_engine/execution) |
+| `packages/engine/kaldra_engine/data/` overlap | Naming | Medium | ✅ Resolved (packages/engine/kaldra_engine/data_utils) |
+| `packages/engine/kaldra_engine/embeddings/` split | Naming | Low | ✅ Resolved (packages/engine/kaldra_engine/core/embeddings) |
+| Circular imports | Import | Medium | ✅ Resolved (packages/engine/kaldra_engine/common) |
 | Empty schemas | Missing | Medium | ⏳ Pending |
 
 ---

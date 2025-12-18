@@ -10,17 +10,17 @@ This document catalogs all detected "engines" in the `kaldra_core` repository.
 
 | Engine | Path | Key Entry Point | Domain |
 |--------|------|-----------------|--------|
-| UnifiedKernel | `src/unification/` | `kernel.py` | Orchestration |
-| KaldraMasterEngine | `src/core/` | `kaldra_master_engine.py` | Core Pipeline |
-| TW369 Integrator | `src/tw369/` | `tw369_integration.py` | Mathematical/Drift |
-| Kindra Engine | `src/kindras/` | `kindra_engine.py` | Cultural Scoring |
-| Delta144 Engine | `src/archetypes/` | `delta144_engine.py` | Archetypal Analysis |
-| Meta Engines | `src/meta/` | `engine_router.py` | Philosophical Analysis |
-| Story Engine | `src/story/` | `story_aggregator.py` | Temporal/Narrative |
-| Explainability Engine | `src/explainability/` | `explanation_generator.py` | Interpretation |
-| Bias Engine | `src/bias/` | `detector.py` | Bias Detection |
-| Tau Layer | `src/tau/` | `tau_layer.py` | Epistemic Limiter |
-| Safeguard Engine | `src/safeguard/` | `safeguard_engine.py` | Safety/Risk |
+| UnifiedKernel | `packages/engine/kaldra_engine/unification/` | `kernel.py` | Orchestration |
+| KaldraMasterEngine | `packages/engine/kaldra_engine/core/` | `kaldra_master_engine.py` | Core Pipeline |
+| TW369 Integrator | `packages/engine/kaldra_engine/tw369/` | `tw369_integration.py` | Mathematical/Drift |
+| Kindra Engine | `packages/engine/kaldra_engine/kindras/` | `kindra_engine.py` | Cultural Scoring |
+| Delta144 Engine | `packages/engine/kaldra_engine/archetypes/` | `delta144_engine.py` | Archetypal Analysis |
+| Meta Engines | `packages/engine/kaldra_engine/meta/` | `engine_router.py` | Philosophical Analysis |
+| Story Engine | `packages/engine/kaldra_engine/story/` | `story_aggregator.py` | Temporal/Narrative |
+| Explainability Engine | `packages/engine/kaldra_engine/explainability/` | `explanation_generator.py` | Interpretation |
+| Bias Engine | `packages/engine/kaldra_engine/bias/` | `detector.py` | Bias Detection |
+| Tau Layer | `packages/engine/kaldra_engine/tau/` | `tau_layer.py` | Epistemic Limiter |
+| Safeguard Engine | `packages/engine/kaldra_engine/safeguard/` | `safeguard_engine.py` | Safety/Risk |
 
 ---
 
@@ -29,11 +29,11 @@ This document catalogs all detected "engines" in the `kaldra_core` repository.
 **Canonical Name**: `UnifiedKernel`
 
 **Repo Paths**:
-- `src/unification/` (main directory)
-- `src/unification/kernel.py` (entry point)
-- `src/unification/registry.py` (module registry)
-- `src/unification/orchestrator.py` (pipeline orchestrator)
-- `src/unification/router.py` (mode router)
+- `packages/engine/kaldra_engine/unification/` (main directory)
+- `packages/engine/kaldra_engine/unification/kernel.py` (entry point)
+- `packages/engine/kaldra_engine/unification/registry.py` (module registry)
+- `packages/engine/kaldra_engine/unification/orchestrator.py` (pipeline orchestrator)
+- `packages/engine/kaldra_engine/unification/router.py` (mode router)
 
 **Key Entry Files**:
 - `kernel.py` → `UnifiedKernel` class
@@ -51,7 +51,7 @@ This document catalogs all detected "engines" in the `kaldra_core` repository.
 - `docs/exoskeleton/` (3 files)
 - `schema/unified/` (8 files)
 
-**Pipeline Stages** (`src/unification/pipeline/`):
+**Pipeline Stages** (`packages/engine/kaldra_engine/unification/pipeline/`):
 - `input_stage.py`
 - `core_stage.py`
 - `meta_stage.py`
@@ -67,9 +67,9 @@ This document catalogs all detected "engines" in the `kaldra_core` repository.
 **Canonical Name**: `KaldraMasterEngineV2`
 
 **Repo Paths**:
-- `src/core/` (main directory)
-- `src/core/kaldra_master_engine.py` (primary file)
-- `src/core/kaldra_engine_pipeline.py` (pipeline)
+- `packages/engine/kaldra_engine/core/` (main directory)
+- `packages/engine/kaldra_engine/core/kaldra_master_engine.py` (primary file)
+- `packages/engine/kaldra_engine/core/kaldra_engine_pipeline.py` (pipeline)
 
 **Key Entry Files**:
 - `kaldra_master_engine.py` → `KaldraMasterEngineV2` class (~486 lines)
@@ -86,7 +86,7 @@ This document catalogs all detected "engines" in the `kaldra_core` repository.
 - `docs/MASTER_ENGINE_V2.md`
 - `docs/core/` (38 files)
 
-**Supporting Modules in `src/core/`**:
+**Supporting Modules in `packages/engine/kaldra_engine/core/`**:
 - `embedding_generator.py` - Semantic embedding generation
 - `embedding_cache.py` - Caching layer
 - `epistemic_limiter.py` - Epistemic constraints
@@ -102,8 +102,8 @@ This document catalogs all detected "engines" in the `kaldra_core` repository.
 **Canonical Name**: `TW369Integrator`
 
 **Repo Paths**:
-- `src/tw369/` (main directory)
-- `src/tw369/tw369_integration.py` (primary file, ~568 lines)
+- `packages/engine/kaldra_engine/tw369/` (main directory)
+- `packages/engine/kaldra_engine/tw369/tw369_integration.py` (primary file, ~568 lines)
 
 **Key Entry Files**:
 - `tw369_integration.py` → `TW369Integrator`, `TWState`
@@ -120,7 +120,7 @@ This document catalogs all detected "engines" in the `kaldra_core` repository.
 **Related Docs Found**:
 - `docs/tw369/` (2 files)
 - `schema/tw369/` (10 files)
-- `src/tw369/README_TW369.md`
+- `packages/engine/kaldra_engine/tw369/README_TW369.md`
 
 **Key Components**:
 - `drift.py`, `drift_history.py`, `drift_memory.py`, `drift_state.py` - Drift management
@@ -138,8 +138,8 @@ This document catalogs all detected "engines" in the `kaldra_core` repository.
 **Canonical Name**: `KindraEngine`
 
 **Repo Paths**:
-- `src/kindras/` (main directory)
-- `src/kindras/kindra_engine.py` (entry point)
+- `packages/engine/kaldra_engine/kindras/` (main directory)
+- `packages/engine/kaldra_engine/kindras/kindra_engine.py` (entry point)
 
 **Key Entry Files**:
 - `kindra_engine.py` → `KindraEngine` class (v3.1)
@@ -157,7 +157,7 @@ This document catalogs all detected "engines" in the `kaldra_core` repository.
 - `docs/kindras/` (15 files)
 - `docs/CULTURAL_VECTORS_48.md`
 - `schema/kindras/` (6 files)
-- `src/kindras/README_KINDRAS.md`
+- `packages/engine/kaldra_engine/kindras/README_KINDRAS.md`
 
 **Key Components**:
 - `loaders.py` - Load vectors and mappings
@@ -173,8 +173,8 @@ This document catalogs all detected "engines" in the `kaldra_core` repository.
 **Canonical Name**: `Delta144Engine`
 
 **Repo Paths**:
-- `src/archetypes/` (main directory)
-- `src/archetypes/delta144_engine.py` (primary file, ~842 lines)
+- `packages/engine/kaldra_engine/archetypes/` (main directory)
+- `packages/engine/kaldra_engine/archetypes/delta144_engine.py` (primary file, ~842 lines)
 
 **Key Entry Files**:
 - `delta144_engine.py` → `Delta144Engine` class
@@ -206,7 +206,7 @@ This document catalogs all detected "engines" in the `kaldra_core` repository.
 **Canonical Name**: `MetaEngines` (collective)
 
 **Repo Paths**:
-- `src/meta/` (main directory)
+- `packages/engine/kaldra_engine/meta/` (main directory)
 
 **Key Entry Files**:
 - `engine_router.py` → `MetaRouter` - Context-based routing to engines
@@ -242,7 +242,7 @@ This document catalogs all detected "engines" in the `kaldra_core` repository.
 **Canonical Name**: `StoryEngine`
 
 **Repo Paths**:
-- `src/story/` (main directory)
+- `packages/engine/kaldra_engine/story/` (main directory)
 
 **Key Entry Files**:
 - `story_aggregator.py` → `aggregate_story()`, ~492 lines
@@ -275,7 +275,7 @@ This document catalogs all detected "engines" in the `kaldra_core` repository.
 **Canonical Name**: `ExplainabilityEngine`
 
 **Repo Paths**:
-- `src/explainability/` (main directory)
+- `packages/engine/kaldra_engine/explainability/` (main directory)
 
 **Key Entry Files**:
 - `explanation_generator.py` → Main generator (~17k bytes)
@@ -298,7 +298,7 @@ This document catalogs all detected "engines" in the `kaldra_core` repository.
 **Canonical Name**: `BiasEngine` / `BiasDetector`
 
 **Repo Paths**:
-- `src/bias/` (main directory)
+- `packages/engine/kaldra_engine/bias/` (main directory)
 
 **Key Entry Files**:
 - `detector.py` → `BiasDetector`
@@ -321,7 +321,7 @@ This document catalogs all detected "engines" in the `kaldra_core` repository.
 **Canonical Name**: `TauLayer`
 
 **Repo Paths**:
-- `src/tau/` (main directory)
+- `packages/engine/kaldra_engine/tau/` (main directory)
 
 **Key Entry Files**:
 - `tau_layer.py` → `TauLayer` class
@@ -347,7 +347,7 @@ This document catalogs all detected "engines" in the `kaldra_core` repository.
 **Canonical Name**: `SafeguardEngine`
 
 **Repo Paths**:
-- `src/safeguard/` (main directory)
+- `packages/engine/kaldra_engine/safeguard/` (main directory)
 
 **Key Entry Files**:
 - `safeguard_engine.py` → `SafeguardEngine`
@@ -370,9 +370,9 @@ This document catalogs all detected "engines" in the `kaldra_core` repository.
 ## Future Implementations
 
 1. **Schema Discovery Engine** - Auto-detect and validate schema changes
-2. **Adapter Expansion** - Additional input/output adapters in `src/unification/adapters/`
-3. **Exoskeleton Integration** - Full exoskeleton preset system (`src/unification/exoskeleton/`)
-4. **Learning Engine** - Formalize `src/learning/` as first-class engine
+2. **Adapter Expansion** - Additional input/output adapters in `packages/engine/kaldra_engine/unification/adapters/`
+3. **Exoskeleton Integration** - Full exoskeleton preset system (`packages/engine/kaldra_engine/unification/exoskeleton/`)
+4. **Learning Engine** - Formalize `packages/engine/kaldra_engine/learning/` as first-class engine
 
 ---
 
@@ -399,7 +399,7 @@ This document catalogs all detected "engines" in the `kaldra_core` repository.
 
 1. **Circular Dependencies** - Some engines import each other (e.g., core ↔ tw369)
 2. **Inconsistent Naming** - Mix of Spanish/English docstrings
-3. **Overlapping Functionality** - `src/core/story_aggregator.py` vs `src/story/story_aggregator.py`
+3. **Overlapping Functionality** - `packages/engine/kaldra_engine/core/story_aggregator.py` vs `packages/engine/kaldra_engine/story/story_aggregator.py`
 4. **Missing Schema** - `schema/tau/` and `schema/safeguard/` are empty
 5. **Hardcoded Paths** - Some engines use relative paths that may break
 

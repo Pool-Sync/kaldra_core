@@ -1,7 +1,7 @@
 # ⚙️ Meta Engines Overview
 
 > **Engine**: `Meta / MetaEngines`  
-> **Path**: `src/meta/`  
+> **Path**: `packages/engine/kaldra_engine/meta/`  
 > **Node ID**: `engine_meta`  
 > **Status**: ✅ Active
 
@@ -22,7 +22,7 @@ Engines:
 
 | Component | Path | Description |
 |-----------|------|-------------|
-| Main Directory | `src/meta/` | All meta engine code |
+| Main Directory | `packages/engine/kaldra_engine/meta/` | All meta engine code |
 | Router | `engine_router.py` | `MetaRouter` class |
 | Orchestrator | `engine_orchestrator.py` | Orchestration |
 | Meta Router | `meta_router.py` | Secondary router |
