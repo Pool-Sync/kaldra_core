@@ -1,0 +1,13 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "KALDRA Tau Schema",
+    "type": "object",
+    "properties": {
+        "tau_config": {
+            "type": "object"
+        },
+        "policies": {
+            "type": "array"
+        }
+    }
+}

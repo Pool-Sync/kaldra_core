@@ -1,0 +1,6 @@
+{
+    "enabled": false,
+    "beta": 2,
+    "use_lookup": true,
+    "severity_scale": 1.0
+}
