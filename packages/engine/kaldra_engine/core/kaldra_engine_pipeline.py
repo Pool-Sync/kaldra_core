@@ -12,22 +12,22 @@ import os
 from typing import Dict, Any, Optional
 
 # Kindra Loaders
-from kindras.layer1_cultural_macro_loader import Layer1Loader
-from kindras.layer2_semiotic_media_loader import Layer2Loader
-from kindras.layer3_structural_systemic_loader import Layer3Loader
+from kaldra_engine.kindras.layer1_cultural_macro_loader import Layer1Loader
+from kaldra_engine.kindras.layer2_semiotic_media_loader import Layer2Loader
+from kaldra_engine.kindras.layer3_structural_systemic_loader import Layer3Loader
 
 # Kindra Scorers
-from kindras.layer1_cultural_macro_scoring import Layer1Scorer
-from kindras.layer2_semiotic_media_scoring import Layer2Scorer
-from kindras.layer3_structural_systemic_scoring import Layer3Scorer
+from kaldra_engine.kindras.layer1_cultural_macro_scoring import KindraLayer1CulturalMacroScoring as Layer1Scorer
+from kaldra_engine.kindras.layer2_semiotic_media_scoring import KindraLayer2SemioticMediaScoring as Layer2Scorer
+from kaldra_engine.kindras.layer3_structural_systemic_scoring import KindraLayer3StructuralSystemicScoring as Layer3Scorer
 
 # Kindra Bridges
-from kindras.layer1_delta144_bridge import Layer1Delta144Bridge
-from kindras.layer2_delta144_bridge import Layer2Delta144Bridge
-from kindras.layer3_delta144_bridge import Layer3Delta144Bridge
+from kaldra_engine.kindras.layer1_delta144_bridge import Layer1Delta144Bridge
+from kaldra_engine.kindras.layer2_delta144_bridge import Layer2Delta144Bridge
+from kaldra_engine.kindras.layer3_delta144_bridge import Layer3Delta144Bridge
 
 # TW369
-from tw369.tw369_integration import TW369Integrator
+from kaldra_engine.tw369.tw369_integration import TW369Integrator
 
 
 class KALDRAEnginePipeline:

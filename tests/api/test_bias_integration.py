@@ -4,7 +4,7 @@ Tests bias score and label calculation in /engine/kaldra/signal endpoint
 """
 import pytest
 from fastapi.testclient import TestClient
-from kaldra_api.main import app
+from apps.api.main import app
 
 client = TestClient(app)
 

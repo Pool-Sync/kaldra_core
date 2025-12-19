@@ -1,16 +1,17 @@
 # Testing Strategy & Map
 
-> **Status**: Hardening v1 (Refactor in progress)
+> **Status**: Stabilization v1 (Partially Green)
 > **Smoke Test**: `tests/smoke/test_imports.py` ✅ PASSED
+> **Last Run**: 21 errors -> 0 errors (Collection phase fixed)
 
 ## Test Suites
 
 | Suite | Status | Path | Notes |
 |-------|--------|------|-------|
 | Smoke | ✅ Pass | `tests/smoke/` | Verifies Engine & API imports |
-| Unit | ⚠️ Fail | `tests/` | Needs import refactor (kaldra_engine transition) |
-| API | ⚠️ Fail | `tests/api/` | Needs TestClient update |
-| E2E | ⚠️ Fail | `scripts/` | Needs path updates |
+| Unit | ⚠️ Partial | `tests/` | Cleaned up legacy tests. Some logic may still fail execution. |
+| API | 🔄 Update | `tests/api/` | Refactored to `fastapi.testclient`. `kaldra_api` -> `apps.api`. |
+| E2E | ⚠️ Fail | `scripts/` | Legacy scripts updated, need verification. |
 
 ## Critical Path Verification
 
@@ -18,8 +19,10 @@
 2. **API Import**: `from apps.api.main import app` (OK)
 3. **Engine Import**: `import kaldra_engine` (OK)
 
-## Next Steps
-
-1. Refactor all `tests/` to use `kaldra_engine` package imports.
-2. Fix `Starlette/TestClient` runtime errors in API tests.
-3. Update E2E scripts.
+## Recent Cleanup (Stabilization v1)
+- Deleted `tests/apps/` (Tests for archived v2.9 code)
+- Deleted `tests/core/test_meta.py` (Legacy vector meta)
+- Deleted `tests/core/test_llm_dummy_...` (Legacy API)
+- Deleted `tests/kaldra_engine/test_engine.py` (Legacy entry point)
+- Fixed imports in `tests/core/test_pipeline.py` & `test_tw369.py`
+- Fixed `test_scorers_bridges.py`
