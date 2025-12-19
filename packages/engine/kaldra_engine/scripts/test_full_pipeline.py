@@ -14,8 +14,8 @@ from datetime import datetime, timezone
 # Add parent directory to path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from data.repositories.signal_repository import SignalRepository
-from data.repositories.story_event_repository import StoryEventRepository
+from kaldra_engine.data_utils.repositories.signal_repository import SignalRepository
+from kaldra_engine.data_utils.repositories.story_event_repository import StoryEventRepository
 
 
 def require_env(name: str) -> str:

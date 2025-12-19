@@ -11,7 +11,7 @@ import os
 # Add parent directory to path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from data.repositories.story_event_repository import StoryEventRepository
+from kaldra_engine.data_utils.repositories.story_event_repository import StoryEventRepository
 
 
 def main() -> None:

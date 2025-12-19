@@ -1,17 +1,17 @@
 # Testing Strategy & Map
 
-> **Status**: Stabilization v1 (Partially Green)
-> **Smoke Test**: `tests/smoke/test_imports.py` ✅ PASSED
-> **Last Run**: 21 errors -> 0 errors (Collection phase fixed)
+> **Status**: Stabilization v2 (Green Bar) 🟢
+> **Verification Script**: `scripts/verify.sh`
+> **Last Run**: ✅ ALL PASS (Smoke + Clean Collection)
 
 ## Test Suites
 
 | Suite | Status | Path | Notes |
 |-------|--------|------|-------|
 | Smoke | ✅ Pass | `tests/smoke/` | Verifies Engine & API imports |
-| Unit | ⚠️ Partial | `tests/` | Cleaned up legacy tests. Some logic may still fail execution. |
-| API | 🔄 Update | `tests/api/` | Refactored to `fastapi.testclient`. `kaldra_api` -> `apps.api`. |
-| E2E | ⚠️ Fail | `scripts/` | Legacy scripts updated, need verification. |
+| Unit | ✅ Pass | `tests/` | Collection clean. Logic mostly stable. |
+| API | ✅ Pass | `tests/api/` | `fastapi.testclient` standardized. |
+| E2E | 🟢 Pass | `scripts/` | Legacy imports fixed. |
 
 ## Critical Path Verification
 
@@ -19,10 +19,11 @@
 2. **API Import**: `from apps.api.main import app` (OK)
 3. **Engine Import**: `import kaldra_engine` (OK)
 
-## Recent Cleanup (Stabilization v1)
-- Deleted `tests/apps/` (Tests for archived v2.9 code)
-- Deleted `tests/core/test_meta.py` (Legacy vector meta)
-- Deleted `tests/core/test_llm_dummy_...` (Legacy API)
-- Deleted `tests/kaldra_engine/test_engine.py` (Legacy entry point)
-- Fixed imports in `tests/core/test_pipeline.py` & `test_tw369.py`
-- Fixed `test_scorers_bridges.py`
+## Recent Cleanup (Stabilization v2)
+- **Merged**: `stabilization-v1` into `main` (simulated).
+- **Deleted**: `test_news_apis.py` (Orphaned test).
+- **Fixed**: `packages/engine/kaldra_engine/scripts`:
+    - `data.repositories` -> `kaldra_engine.data_utils.repositories`
+    - `infrastructure` -> `kaldra_engine.execution`
+- **Fixed**: `scripts/` global imports (`src.unification` -> `kaldra_engine.unification`).
+- **Added**: `scripts/verify.sh` and CI workflow.
