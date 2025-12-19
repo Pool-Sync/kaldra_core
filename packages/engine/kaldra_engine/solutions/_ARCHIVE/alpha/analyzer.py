@@ -1,16 +1,17 @@
 """
 KALDRA-ALPHA — Earnings call analyzer (placeholder).
 """
+
 from __future__ import annotations
 
-from kaldra_engine.bias import compute_bias_score_from_text
-from typing import Any, Dict
+from typing import Any
 
 from kaldra_engine.kaldra_engine.kaldra_engine import generate_kaldra_signal
+
 from .ingest import ingest_source
 
 
-def analyze_earnings_call(raw_text: str) -> Dict[str, Any]:
+def analyze_earnings_call(raw_text: str) -> dict[str, Any]:
     """
     Run the KALDRA Engine over an earnings call transcript.
 

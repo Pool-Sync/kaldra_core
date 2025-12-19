@@ -1,6 +1,7 @@
 """
 Generate mock KALDRA signals for integration testing and frontend development.
 """
+
 from __future__ import annotations
 
 import json

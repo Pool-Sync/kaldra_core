@@ -1,16 +1,17 @@
 """
 Signal record model for Supabase.
 """
+
 from dataclasses import dataclass
-from typing import Optional, Dict, Any
 from datetime import datetime
+from typing import Any
 
 
 @dataclass
 class SignalRecord:
     """
     Aggregated signal record for dashboard.
-    
+
     Attributes:
         id: Unique identifier
         created_at: Creation timestamp
@@ -29,23 +30,24 @@ class SignalRecord:
         divergence: Multi-stream divergence [0-1]
         raw_payload: Raw KALDRA output
     """
+
     id: str
-    created_at: Optional[datetime]
+    created_at: datetime | None
     domain: str
-    
+
     title: str
-    summary: Optional[str] = None
-    source_anchor: Optional[str] = None
-    source_url: Optional[str] = None
-    
-    delta144_state: Optional[str] = None
-    dominant_archetype: Optional[str] = None
-    dominant_polarity: Optional[str] = None
-    tw_regime: Optional[str] = None
-    journey_stage: Optional[str] = None
-    
-    importance: Optional[float] = None
-    confidence: Optional[float] = None
-    divergence: Optional[float] = None
-    
-    raw_payload: Optional[Dict[str, Any]] = None
+    summary: str | None = None
+    source_anchor: str | None = None
+    source_url: str | None = None
+
+    delta144_state: str | None = None
+    dominant_archetype: str | None = None
+    dominant_polarity: str | None = None
+    tw_regime: str | None = None
+    journey_stage: str | None = None
+
+    importance: float | None = None
+    confidence: float | None = None
+    divergence: float | None = None
+
+    raw_payload: dict[str, Any] | None = None

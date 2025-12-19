@@ -6,21 +6,22 @@ Combines LLM and Rule-Based scoring with configurable mixing:
 """
 
 from __future__ import annotations
-from typing import Dict, Any, Optional
+
+from typing import Any
 
 
 class KindraHybridScorer:
     """
     Hybrid scorer combining LLM and Rule-Based scoring.
-    
+
     Formula:
         score_final = alpha * score_llm + (1 - alpha) * score_rule
-        
+
     Where alpha ∈ [0, 1]:
         - alpha = 0: Pure rule-based
         - alpha = 0.5: Equal mix
         - alpha = 1: Pure LLM
-    
+
     Supports:
         - Global alpha (default for all layers)
         - Layer-specific alpha overrides
@@ -32,11 +33,11 @@ class KindraHybridScorer:
         llm_scorer,
         rule_scorer,
         alpha_global: float = 0.5,
-        alpha_layers: Optional[Dict[str, float]] = None
+        alpha_layers: dict[str, float] | None = None,
     ):
         """
         Initialize hybrid scorer.
-        
+
         Args:
             llm_scorer: LLM-based scorer instance
             rule_scorer: Rule-based scorer instance
@@ -55,29 +56,24 @@ class KindraHybridScorer:
     def _resolve_alpha(self, layer: int) -> float:
         """
         Resolve alpha for specific layer.
-        
+
         Args:
             layer: Layer number (1, 2, or 3)
-            
+
         Returns:
             Alpha value for this layer
         """
         return float(self.alpha_layers.get(str(layer), self.alpha_global))
 
-    def score(
-        self,
-        text: str,
-        context: Dict[str, Any],
-        vectors: Dict[str, Any]
-    ) -> Dict[str, float]:
+    def score(self, text: str, context: dict[str, Any], vectors: dict[str, Any]) -> dict[str, float]:
         """
         Generate hybrid scores mixing LLM and rule-based.
-        
+
         Args:
             text: Input text to analyze
             context: Context metadata (must include 'kindra_layer')
             vectors: Vector definitions
-            
+
         Returns:
             Dict mapping vector_id to hybrid score in [-1, 1]
         """
@@ -92,14 +88,14 @@ class KindraHybridScorer:
         alpha = self._resolve_alpha(layer)
 
         # 4. Mix scores and clamp
-        final_scores: Dict[str, float] = {}
+        final_scores: dict[str, float] = {}
         for vid in vectors.keys():
             llm_val = llm_scores.get(vid, 0.0)
             rule_val = rule_scores.get(vid, 0.0)
-            
+
             # Hybrid mixing
             mixed = alpha * llm_val + (1.0 - alpha) * rule_val
-            
+
             # Clamp to [-1, 1]
             final_scores[vid] = self._clamp(mixed)
 

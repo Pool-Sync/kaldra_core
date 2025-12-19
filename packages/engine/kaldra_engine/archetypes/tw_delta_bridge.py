@@ -2,21 +2,22 @@
 KALDRA CORE — Delta144 integration layer
 Placeholder implementation. Subject to refinement in later iterations.
 """
+
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Any
+
 import numpy as np
 
-from kaldra_engine.archetypes.delta144_engine import Delta144Engine
-from kaldra_engine.tw369.oracle_tw_painleve import TWPainleveOracle
-from kaldra_engine.tw369.tw_guard import tw_guard_regime, compute_tw_adjustments
+from kaldra_engine.tw369.core import compute_tw_instability_index
+from kaldra_engine.tw369.tw_guard import compute_tw_adjustments
 
 from .api_adapter import evaluate_sequence_stability
 
 
 def apply_tw_guard_to_sequence(
-    activations_sequence: List[np.ndarray],
-) -> Dict[str, Any]:
+    activations_sequence: list[np.ndarray],
+) -> dict[str, Any]:
     """
     Combine Delta144 sequence stability with TW-based guard logic.
 

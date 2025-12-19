@@ -1,12 +1,13 @@
 import numpy as np
-import pytest
-from kaldra_engine.tw369.oracle_tw_painleve import TWPainleveOracle, TWConfig
+from kaldra_engine.tw369.oracle_tw_painleve import TWConfig, TWPainleveOracle
+
 
 def test_tw_oracle_initialization():
     config = TWConfig(window_size=50, alpha=0.95)
     oracle = TWPainleveOracle(config)
     assert oracle.config.window_size == 50
     assert oracle.config.alpha == 0.95
+
 
 def test_compute_covariance():
     oracle = TWPainleveOracle()
@@ -17,18 +18,20 @@ def test_compute_covariance():
     # Covariance matrix should be symmetric
     assert np.allclose(cov, cov.T)
 
+
 def test_tracy_widom_threshold():
     oracle = TWPainleveOracle()
     lower, upper = oracle.tracy_widom_threshold(m=100, alpha=0.99)
     assert lower < upper
     assert lower > 0
 
+
 def test_detect_anomaly():
     oracle = TWPainleveOracle()
     # Normal noise
     window = np.random.randn(100, 20)
     trigger, stats = oracle.detect(window)
-    
+
     # With random noise, it shouldn't trigger usually, but it's probabilistic.
     # We just check the structure of the output.
     assert isinstance(trigger, bool)

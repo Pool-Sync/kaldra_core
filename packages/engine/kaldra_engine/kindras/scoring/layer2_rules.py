@@ -6,7 +6,7 @@ Expanded coverage for media channels and tones.
 
 from __future__ import annotations
 
-from typing import Dict, Any
+from typing import Any
 
 from .rule_engine_base import KindraRuleEngineBase, clamp_score
 
@@ -22,9 +22,9 @@ class KindraLayer2SemioticMediaRules(KindraRuleEngineBase):
     - Media channels (social, TV, print, radio, podcast, blog, ...)
     """
 
-    def score(self, context: Dict[str, Any], base_vectors: Dict[str, float] | None = None) -> Dict[str, float]:
+    def score(self, context: dict[str, Any], base_vectors: dict[str, float] | None = None) -> dict[str, float]:
         """Score Layer 2 vectors based on semiotic/media context."""
-        scores: Dict[str, float] = dict(base_vectors) if base_vectors else {}
+        scores: dict[str, float] = dict(base_vectors) if base_vectors else {}
 
         tone = (context.get("media_tone") or "").lower()
         channel = (context.get("channel") or "").lower()

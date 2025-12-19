@@ -10,8 +10,6 @@ Multi-dimensional bias scoring across:
 
 from __future__ import annotations
 
-from typing import Dict
-
 
 class BiasScoring:
     """
@@ -41,7 +39,7 @@ class BiasScoring:
 
     DIMENSIONS = ["toxicity", "political", "gender", "racial"]
 
-    def compute(self, raw_scores: Dict[str, float]) -> Dict[str, float]:
+    def compute(self, raw_scores: dict[str, float]) -> dict[str, float]:
         """
         Compute normalized multi-dimensional bias scores.
 
@@ -58,7 +56,7 @@ class BiasScoring:
             output[dim] = max(0.0, min(1.0, v))
         return output
 
-    def aggregate(self, scores: Dict[str, float], weights: Dict[str, float] = None) -> float:
+    def aggregate(self, scores: dict[str, float], weights: dict[str, float] = None) -> float:
         """
         Compute weighted aggregate bias score.
 

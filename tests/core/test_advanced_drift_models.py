@@ -2,10 +2,8 @@
 Unit tests for advanced drift models.
 """
 
-import pytest
 from kaldra_engine.tw369.advanced_drift_models import (
     DriftModelConfig,
-    DriftState,
     model_a_linear_drift,
     model_b_nonlinear_drift,
     model_c_multiscale_drift,

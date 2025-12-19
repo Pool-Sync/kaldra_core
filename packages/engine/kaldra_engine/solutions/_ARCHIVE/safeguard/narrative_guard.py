@@ -1,14 +1,15 @@
 """
 KALDRA-SAFEGUARD — Narrative guard (placeholder).
 """
+
 from __future__ import annotations
 
-from typing import Any, Dict
+from typing import Any
 
 from kaldra_engine.kaldra_engine.kaldra_engine import generate_kaldra_signal
 
 
-def evaluate_narrative_risk(raw_text: str) -> Dict[str, Any]:
+def evaluate_narrative_risk(raw_text: str) -> dict[str, Any]:
     """
     Run the KALDRA Engine and interpret the result as narrative risk.
 

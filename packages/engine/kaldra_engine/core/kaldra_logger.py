@@ -4,7 +4,7 @@ import json
 import logging
 import time
 from dataclasses import dataclass, field
-from typing import Any, Dict, Optional
+from typing import Any
 
 
 @dataclass
@@ -36,7 +36,7 @@ class KALDRALogger:
     def log_event(
         self,
         event_type: str,
-        payload: Optional[Dict[str, Any]] = None,
+        payload: dict[str, Any] | None = None,
     ) -> None:
         """
         Log a structured event as a JSON line.

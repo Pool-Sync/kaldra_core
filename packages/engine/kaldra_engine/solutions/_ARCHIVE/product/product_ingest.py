@@ -1,6 +1,7 @@
 """
 KALDRA-PRODUCT — Product review ingestion (placeholder).
 """
+
 from __future__ import annotations
 
 

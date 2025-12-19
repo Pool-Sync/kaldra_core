@@ -6,7 +6,7 @@ Orchestrates all three layer scoring engines.
 
 from __future__ import annotations
 
-from typing import Dict, Any
+from typing import Any
 
 from .layer1_rules import KindraLayer1CulturalMacroRules
 from .layer2_rules import KindraLayer2SemioticMediaRules
@@ -30,9 +30,9 @@ class KindraScoringDispatcher:
 
     def run_all(
         self,
-        context: Dict[str, Any],
-        base_vectors: Dict[str, float] | None = None,
-    ) -> Dict[str, Dict[str, float]]:
+        context: dict[str, Any],
+        base_vectors: dict[str, float] | None = None,
+    ) -> dict[str, dict[str, float]]:
         """
         Run all 3 layer scorers and return a dict keyed by layer name.
 

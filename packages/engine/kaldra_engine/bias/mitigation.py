@@ -9,7 +9,7 @@ Implements bias mitigation strategies:
 
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Any
 
 
 class BiasMitigation:
@@ -46,7 +46,7 @@ class BiasMitigation:
         self.flag_threshold = flag_threshold
         self.extreme_threshold = extreme_threshold
 
-    def apply(self, bias_scores: Dict[str, float]) -> Dict[str, Any]:
+    def apply(self, bias_scores: dict[str, float]) -> dict[str, Any]:
         """
         Apply mitigation strategies to bias scores.
 
@@ -85,9 +85,7 @@ class BiasMitigation:
             "severity": severity,
         }
 
-    def shape_confidence(
-        self, confidence: float, bias_scores: Dict[str, float]
-    ) -> float:
+    def shape_confidence(self, confidence: float, bias_scores: dict[str, float]) -> float:
         """
         Adjust confidence score based on detected bias.
 
@@ -140,7 +138,7 @@ class BiasMitigation:
         else:
             return "critical"
 
-    def generate_recommendations(self, flags: List[str]) -> List[str]:
+    def generate_recommendations(self, flags: list[str]) -> list[str]:
         """
         Generate mitigation recommendations based on flagged dimensions.
 

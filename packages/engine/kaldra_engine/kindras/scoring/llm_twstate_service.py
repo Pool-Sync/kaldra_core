@@ -6,9 +6,10 @@ High-level service that converts text + context directly into TWState for TW369.
 
 from __future__ import annotations
 
-from typing import Dict, Any
+from typing import Any
 
 from kaldra_engine.common.types import TWState
+
 from .llm_scoring_service import LLMScoringService
 
 
@@ -26,7 +27,7 @@ class LLMToTWStateService:
     def __init__(self, scoring_service: LLMScoringService | None = None) -> None:
         """
         Initialize TWState service.
-        
+
         Args:
             scoring_service: Optional LLM scoring service. Defaults to new instance.
         """
@@ -35,17 +36,17 @@ class LLMToTWStateService:
     def build_twstate_from_text(
         self,
         text: str,
-        context: Dict[str, Any],
+        context: dict[str, Any],
         max_vectors_per_layer: int | None = None,
     ) -> TWState:
         """
         Run LLM scoring for all three layers and map them into a TWState.
-        
+
         Args:
             text: Raw text to analyze
             context: Context metadata
             max_vectors_per_layer: Optional limit per layer
-            
+
         Returns:
             TWState instance ready for TW369 engine
         """

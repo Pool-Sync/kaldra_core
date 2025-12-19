@@ -3,20 +3,24 @@ KALDRA Data Lab — News Ingest Worker
 Handles ingestion of news articles for narrative intelligence pipelines.
 """
 
-import time
 import logging
-from typing import List, Dict
+import time
 
 logging.basicConfig(level=logging.INFO)
 
-def fetch_news() -> List[Dict]:
+
+def fetch_news() -> list[dict]:
     """
     Placeholder news fetch.
     Replace with real API connectors in future versions.
     """
     return [
-        {"title": "Example News", "content": "This is a placeholder for real ingestion."}
+        {
+            "title": "Example News",
+            "content": "This is a placeholder for real ingestion.",
+        }
     ]
+
 
 def run():
     logging.info("Starting News Ingest Worker...")

@@ -4,15 +4,13 @@ Utility functions for applying adaptive state-plane mapping to TW369 calculation
 
 from __future__ import annotations
 
-from typing import Dict
-
 from .state_plane_mapping import PlaneMappingResult
 
 
 def apply_plane_weights_to_tensions(
-    plane_tensions: Dict[int, float],
+    plane_tensions: dict[int, float],
     mapping: PlaneMappingResult,
-) -> Dict[int, float]:
+) -> dict[int, float]:
     """
     Apply plane weights from mapping to raw plane tensions.
 

@@ -4,7 +4,7 @@ import json
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 
 @dataclass
@@ -13,10 +13,11 @@ class AuditTrailRecord:
     Single inference-level audit record.
     Intended to be lightweight and serializable.
     """
+
     timestamp: float
     request_id: str
-    context: Dict[str, Any]
-    summary: Dict[str, Any]
+    context: dict[str, Any]
+    summary: dict[str, Any]
 
 
 @dataclass
@@ -25,14 +26,15 @@ class AuditTrail:
     In-memory audit trail with optional JSONL export.
     This is intentionally minimal: storage backend can be swapped in future.
     """
-    records: List[AuditTrailRecord] = field(default_factory=list)
+
+    records: list[AuditTrailRecord] = field(default_factory=list)
 
     def record_inference(
         self,
         request_id: str,
-        context: Dict[str, Any],
-        summary: Dict[str, Any],
-        timestamp: Optional[float] = None,
+        context: dict[str, Any],
+        summary: dict[str, Any],
+        timestamp: float | None = None,
     ) -> None:
         ts = time.time() if timestamp is None else timestamp
         self.records.append(
@@ -44,7 +46,7 @@ class AuditTrail:
             )
         )
 
-    def to_dicts(self) -> List[Dict[str, Any]]:
+    def to_dicts(self) -> list[dict[str, Any]]:
         return [
             {
                 "timestamp": r.timestamp,

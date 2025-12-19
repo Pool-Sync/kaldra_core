@@ -6,7 +6,7 @@ Defines PresetConfig and PresetManager for domain-specific KALDRA analysis modes
 
 import copy
 from dataclasses import dataclass, field
-from typing import Dict, List, Any, Optional
+from typing import Any
 
 
 @dataclass
@@ -27,23 +27,23 @@ class PresetConfig:
     name: str
     description: str
     mode: str  # "signal", "full", "story", "safety-first", "exploratory"
-    emphasis: List[str] = field(default_factory=list)
-    thresholds: Dict[str, float] = field(default_factory=dict)
+    emphasis: list[str] = field(default_factory=list)
+    thresholds: dict[str, float] = field(default_factory=dict)
     output_format: str = "json"
-    metadata: Dict[str, Any] = field(default_factory=dict)
+    metadata: dict[str, Any] = field(default_factory=dict)
 
 
 # Default preset definitions
-_DEFAULT_PRESETS: Dict[str, PresetConfig] = {
+_DEFAULT_PRESETS: dict[str, PresetConfig] = {
     "alpha": PresetConfig(
         name="alpha",
         description="Financial / earnings narrative analysis",
         mode="full",
         emphasis=[
-            "kindra.layer1",         # Cultural/Macro
-            "meta.nietzsche",        # Power dynamics
-            "core.archetypes",       # Δ144
-            "story",                 # When v3.2 arrives
+            "kindra.layer1",  # Cultural/Macro
+            "meta.nietzsche",  # Power dynamics
+            "core.archetypes",  # Δ144
+            "story",  # When v3.2 arrives
         ],
         thresholds={
             "risk": 0.30,
@@ -60,9 +60,9 @@ _DEFAULT_PRESETS: Dict[str, PresetConfig] = {
         description="Geopolitical narrative and regime analysis",
         mode="story",
         emphasis=[
-            "kindra.layer1",         # Geopolitics / macro
-            "kindra.tw_plane",       # 3/6/9 distribution
-            "meta.aurelius",         # Stoic lens for crisis & control
+            "kindra.layer1",  # Geopolitics / macro
+            "kindra.tw_plane",  # 3/6/9 distribution
+            "meta.aurelius",  # Stoic lens for crisis & control
             "core.archetypes",
         ],
         thresholds={
@@ -83,7 +83,7 @@ _DEFAULT_PRESETS: Dict[str, PresetConfig] = {
             "safeguard",
             "tau",
             "bias",
-            "kindra.layer2",      # Media/semiotic toxicity
+            "kindra.layer2",  # Media/semiotic toxicity
         ],
         thresholds={
             "risk": 0.20,
@@ -100,9 +100,9 @@ _DEFAULT_PRESETS: Dict[str, PresetConfig] = {
         description="Brand / product narrative and market resonance",
         mode="full",
         emphasis=[
-            "kindra.layer2",         # Semiotic/Media (brand messaging)
-            "meta.campbell",         # Hero's Journey for brand
-            "core.polarities",       # Brand tensions
+            "kindra.layer2",  # Semiotic/Media (brand messaging)
+            "meta.campbell",  # Hero's Journey for brand
+            "core.polarities",  # Brand tensions
             "core.archetypes",
         ],
         thresholds={
@@ -126,14 +126,14 @@ class PresetManager:
     Supports extension with custom presets.
     """
 
-    def __init__(self, extra_presets: Optional[Dict[str, PresetConfig]] = None):
+    def __init__(self, extra_presets: dict[str, PresetConfig] | None = None):
         """
         Initialize PresetManager.
 
         Args:
             extra_presets: Additional custom presets to merge with defaults
         """
-        self._presets: Dict[str, PresetConfig] = dict(_DEFAULT_PRESETS)
+        self._presets: dict[str, PresetConfig] = dict(_DEFAULT_PRESETS)
         if extra_presets:
             self._presets.update(extra_presets)
 
@@ -154,7 +154,7 @@ class PresetManager:
             raise KeyError(f"Preset not found: {name}")
         return copy.deepcopy(self._presets[name])
 
-    def list_presets(self) -> Dict[str, PresetConfig]:
+    def list_presets(self) -> dict[str, PresetConfig]:
         """
         List all available presets.
 

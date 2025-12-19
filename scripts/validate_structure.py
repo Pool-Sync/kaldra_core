@@ -1,10 +1,10 @@
 """
 Validate expected directory structure for KALDRA CORE.
 """
+
 from __future__ import annotations
 
 from pathlib import Path
-
 
 EXPECTED_PATHS = [
     "core/tw369",

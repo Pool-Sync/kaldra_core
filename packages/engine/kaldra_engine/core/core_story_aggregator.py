@@ -8,9 +8,10 @@ objects (see StoryTurnSignal below).
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 from collections import Counter
+from collections.abc import Sequence
+from dataclasses import dataclass
+from typing import Any
 
 import numpy as np
 
@@ -34,13 +35,13 @@ class StoryTurnSignal:
     """
 
     archetype_probs: np.ndarray
-    delta_state: Optional[Dict[str, Any]] = None
-    tw_trigger: Optional[bool] = None
-    tw_stats: Optional[Dict[str, Any]] = None
-    epistemic_status: Optional[str] = None
+    delta_state: dict[str, Any] | None = None
+    tw_trigger: bool | None = None
+    tw_stats: dict[str, Any] | None = None
+    epistemic_status: str | None = None
 
     @classmethod
-    def from_signal(cls, signal: Any) -> "StoryTurnSignal":
+    def from_signal(cls, signal: Any) -> StoryTurnSignal:
         """
         Build from a KaldraSignal-like object.
 
@@ -85,8 +86,8 @@ class StoryAggregator:
     def aggregate(
         self,
         story_id: str,
-        turns: Sequence[Dict[str, Any]],
-    ) -> Dict[str, Any]:
+        turns: Sequence[dict[str, Any]],
+    ) -> dict[str, Any]:
         """
         Aggregate a sequence of turns into a story-level object.
 
@@ -101,7 +102,7 @@ class StoryAggregator:
             dict compatible with schema/story/story_schema.json (subset).
         """
         # Normalize and collect StoryTurnSignal instances.
-        normalized_turns: List[Tuple[Dict[str, Any], StoryTurnSignal]] = []
+        normalized_turns: list[tuple[dict[str, Any], StoryTurnSignal]] = []
         for t in turns:
             signal_obj = t.get("signal")
             if isinstance(signal_obj, StoryTurnSignal):
@@ -111,10 +112,10 @@ class StoryAggregator:
             normalized_turns.append((t, sts))
 
         # Build per-turn summaries and Δ144 evolution.
-        turn_summaries: List[Dict[str, Any]] = []
-        delta_evolution: List[Dict[str, Any]] = []
-        archetype_indices: List[int] = []
-        coherence_trace: List[Dict[str, Any]] = []
+        turn_summaries: list[dict[str, Any]] = []
+        delta_evolution: list[dict[str, Any]] = []
+        archetype_indices: list[int] = []
+        coherence_trace: list[dict[str, Any]] = []
 
         for t, sts in normalized_turns:
             probs = sts.archetype_probs
@@ -161,18 +162,13 @@ class StoryAggregator:
                 )
 
             # Simple placeholder coherence: higher if top archetype is stable.
-            coherence_trace.append(
-                {
-                    "turn_index": int(t["turn_index"]),
-                    "coherence": top_prob
-                }
-            )
+            coherence_trace.append({"turn_index": int(t["turn_index"]), "coherence": top_prob})
 
         # Compute aggregate coherence and dominant archetypes.
         narrative_coherence = self._compute_coherence(archetype_indices, coherence_trace)
         dominant_archetypes = self._compute_dominant_archetypes(archetype_indices)
 
-        story_obj: Dict[str, Any] = {
+        story_obj: dict[str, Any] = {
             "story_id": story_id,
             "turns": turn_summaries,
             "delta144_evolution": delta_evolution,
@@ -187,7 +183,7 @@ class StoryAggregator:
     # Internal helpers
     # -------------------------
 
-    def _compute_dominant_archetypes(self, indices: Sequence[int]) -> List[int]:
+    def _compute_dominant_archetypes(self, indices: Sequence[int]) -> list[int]:
         if not indices:
             return []
         counter = Counter(indices)
@@ -197,7 +193,7 @@ class StoryAggregator:
     def _compute_coherence(
         self,
         indices: Sequence[int],
-        coherence_trace: Sequence[Dict[str, Any]],
+        coherence_trace: Sequence[dict[str, Any]],
     ) -> float:
         """
         Placeholder coherence metric v1.0.
@@ -219,8 +215,7 @@ class StoryAggregator:
         # Average coherence from trace.
         if coherence_trace:
             avg_conf = float(
-                sum(float(item.get("coherence", 0.0)) for item in coherence_trace)
-                / max(1, len(coherence_trace))
+                sum(float(item.get("coherence", 0.0)) for item in coherence_trace) / max(1, len(coherence_trace))
             )
         else:
             avg_conf = 0.0

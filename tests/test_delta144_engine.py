@@ -1,5 +1,6 @@
 from kaldra_engine.archetypes import Delta144Engine
 
+
 def test_delta144_engine_loads_default_schemas():
     engine = Delta144Engine.from_default_files()
     assert engine is not None

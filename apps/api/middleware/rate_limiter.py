@@ -6,21 +6,24 @@ Designed to be framework-agnostic but integrates with FastAPI if available.
 """
 
 import time
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Dict, Tuple, Callable, Any, Optional
 
 # Conditional FastAPI imports
 try:
-    from fastapi import Request, HTTPException, Depends
+    from fastapi import Depends, HTTPException, Request
 except ImportError:  # pragma: no cover
     Request = object  # type: ignore
     HTTPException = Exception  # type: ignore
-    Depends = lambda x: x  # type: ignore
+
+    def Depends(x):
+        return x  # type: ignore
 
 
 @dataclass
 class RateLimiterConfig:
     """Configuration for RateLimiter."""
+
     requests: int
     per_seconds: int
     key_prefix: str = "kaldra_api"
@@ -35,7 +38,7 @@ class InMemoryRateLimiter:
     def __init__(self, config: RateLimiterConfig):
         self.config = config
         # Storage: client_key -> (window_start_timestamp, count)
-        self._storage: Dict[str, Tuple[float, int]] = {}
+        self._storage: dict[str, tuple[float, int]] = {}
 
     def is_allowed(self, client_key: str) -> bool:
         """
@@ -48,12 +51,12 @@ class InMemoryRateLimiter:
             # New window
             self._storage[client_key] = (now, 1)
             return True
-        
+
         if count < self.config.requests:
             # Within limit
             self._storage[client_key] = (window_start, count + 1)
             return True
-            
+
         # Limit exceeded
         return False
 
@@ -71,13 +74,10 @@ def rate_limit_dependency(config: RateLimiterConfig) -> Callable:
 
         client_ip = request.client.host if request.client else "unknown"
         key = f"{config.key_prefix}:{client_ip}"
-        
+
         if not limiter.is_allowed(key):
             if HTTPException is not Exception:
-                raise HTTPException(
-                    status_code=429, 
-                    detail="Too Many Requests"
-                )
+                raise HTTPException(status_code=429, detail="Too Many Requests")
             else:
                 raise RuntimeError("Too Many Requests")
 

@@ -9,8 +9,8 @@ __all__ = [
 ]
 
 try:
-    from .mediastack_client import MediaStackClient
     from .gnews_client import GNewsClient
+    from .mediastack_client import MediaStackClient
 except ImportError:
     # Graceful degradation if dependencies not installed
     pass

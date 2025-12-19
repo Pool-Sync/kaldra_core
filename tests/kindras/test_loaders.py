@@ -2,12 +2,11 @@
 Tests for Kindra Loaders (Layer 1, 2, 3)
 """
 
-import pytest
 import os
 import sys
 
 # Add src to path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'src'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "src"))
 
 from kindras.layer1_cultural_macro_loader import Layer1Loader
 from kindras.layer2_semiotic_media_loader import Layer2Loader
@@ -20,7 +19,7 @@ class TestLayer1Loader:
         loader = Layer1Loader("schema/kindras/kindra_vectors_layer1_cultural_macro_48.json")
         assert loader is not None
         assert len(loader.vectors) == 48
-    
+
     def test_get_vector(self):
         """Test retrieving a specific vector."""
         loader = Layer1Loader("schema/kindras/kindra_vectors_layer1_cultural_macro_48.json")
@@ -29,7 +28,7 @@ class TestLayer1Loader:
         assert vector.id == "E01"
         assert vector.layer == "L1_CULTURAL_MACRO"
         assert vector.tw_plane == "3"
-    
+
     def test_get_by_domain(self):
         """Test filtering vectors by domain."""
         loader = Layer1Loader("schema/kindras/kindra_vectors_layer1_cultural_macro_48.json")
@@ -43,7 +42,7 @@ class TestLayer2Loader:
         loader = Layer2Loader("schema/kindras/kindra_vectors_layer2_semiotic_media_48.json")
         assert loader is not None
         assert len(loader.vectors) == 48
-    
+
     def test_get_vector(self):
         """Test retrieving a specific vector."""
         loader = Layer2Loader("schema/kindras/kindra_vectors_layer2_semiotic_media_48.json")
@@ -59,7 +58,7 @@ class TestLayer3Loader:
         loader = Layer3Loader("schema/kindras/kindra_vectors_layer3_structural_systemic_48.json")
         assert loader is not None
         assert len(loader.vectors) == 48
-    
+
     def test_get_vector(self):
         """Test retrieving a specific vector."""
         loader = Layer3Loader("schema/kindras/kindra_vectors_layer3_structural_systemic_48.json")

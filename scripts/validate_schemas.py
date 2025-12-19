@@ -1,6 +1,7 @@
 """
 Validate that JSON schema/config files load correctly.
 """
+
 from __future__ import annotations
 
 import json

@@ -35,6 +35,7 @@ TW_ORACLE_CONFIG_FILE = TW369_SCHEMA / "tw369_planes.json"
 # LLM & AI Configuration (v2.3)
 # =============================================================================
 import os
+
 from dotenv import load_dotenv
 
 # Load .env if present

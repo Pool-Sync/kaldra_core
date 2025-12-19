@@ -6,13 +6,14 @@ Bridges Kindra scoring to TW369 engine via TWState.
 
 from __future__ import annotations
 
-from typing import Dict, Any
+from typing import Any
 
 from kaldra_engine.common.types import TWState
+
 from .dispatcher import KindraScoringDispatcher
 
 
-def build_twstate_from_context(context: Dict[str, Any]) -> TWState:
+def build_twstate_from_context(context: dict[str, Any]) -> TWState:
     """
     Adapter: runs Kindra scoring dispatcher and builds a TWState instance
     with layer scores mapped into planes 3, 6, 9.
@@ -20,10 +21,10 @@ def build_twstate_from_context(context: Dict[str, Any]) -> TWState:
     Plane 3  <- Layer 1 (Cultural Macro)
     Plane 6  <- Layer 2 (Semiotic / Media)
     Plane 9  <- Layer 3 (Structural / Systemic)
-    
+
     Args:
         context: Context dict with country, sector, media_tone, etc.
-        
+
     Returns:
         TWState instance ready for TW369 engine
     """

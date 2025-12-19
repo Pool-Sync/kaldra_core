@@ -2,10 +2,10 @@
 KALDRA CORE — TW369 module
 Placeholder implementation. Subject to refinement in later iterations.
 """
+
 from __future__ import annotations
 
 import numpy as np
-from typing import Dict, Any
 
 
 def compute_tw_instability_index(

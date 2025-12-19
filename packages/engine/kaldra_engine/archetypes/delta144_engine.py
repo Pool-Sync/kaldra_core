@@ -20,23 +20,27 @@ v2.7: Agora com auto-inferência de modifiers via embeddings.
 """
 
 import json
-import numpy as np
-from dataclasses import dataclass, field, asdict
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
-from typing import Dict, List, Optional, Any, Tuple
+from typing import Any
 
-from kaldra_engine.core.embeddings.embedding_generator import EmbeddingGenerator, EmbeddingConfig
+import numpy as np
+
 from kaldra_engine.config import (
     ARCHETYPES_12_FILE,
     DELTA144_STATES_FILE,
+    KALDRA_EMBEDDINGS_API_KEY,
+    KALDRA_EMBEDDINGS_MODE,
+    KALDRA_EMBEDDINGS_MODEL,
     MODIFIERS_FILE,
     POLARITIES_FILE,
-    KALDRA_EMBEDDINGS_MODE,
-    KALDRA_EMBEDDINGS_API_KEY,
-    KALDRA_EMBEDDINGS_MODEL,
 )
-from .delta12_vector import Delta12Vector
+from kaldra_engine.core.embeddings.embedding_generator import (
+    EmbeddingConfig,
+    EmbeddingGenerator,
+)
 
+from .delta12_vector import Delta12Vector
 
 # ---------------------------------------------------------------------------
 # Dataclasses básicas
@@ -50,7 +54,7 @@ class Archetype:
     essence: str
     light: str
     shadow: str
-    drives: List[str]
+    drives: list[str]
     journey_role: str
     stoic_axis: str
     description: str
@@ -61,6 +65,7 @@ class ArchetypeState:
     """
     Representa uma célula da matriz Δ144 (arquetipo × estado).
     """
+
     id: str
     archetype_id: str
     row: int
@@ -69,8 +74,8 @@ class ArchetypeState:
     profile: str  # "EXPANSIVE" | "CONTRACTIVE" | "TRANSCENDENT"
     tw_plane_default: str  # "3", "6", "9"
     description: str
-    default_modifiers: List[str] = field(default_factory=list)
-    allowed_modifiers: List[str] = field(default_factory=list)
+    default_modifiers: list[str] = field(default_factory=list)
+    allowed_modifiers: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -78,30 +83,32 @@ class Modifier:
     """
     Modifier (qualificador dinâmico) que pode ser aplicado a um estado Δ144.
     """
+
     id: str
     label: str
     category: str
     description: str
-    tw_alignment: List[str]
+    tw_alignment: list[str]
 
 
 @dataclass
 class Polarity:
     """
     Polarity (tensão dimensional) que estrutura a experiência.
-    
+
     Polaridades representam tensões fundamentais como:
     - LIGHT ↔ SHADOW
     - ORDER ↔ CHAOS
     - EXPANSION ↔ CONTRACTION
-    
+
     v2.7: Polarities são usadas para modular Δ12, TW369, e análise narrativa.
     """
+
     id: str
     label: str
     description: str
     dimension: str  # e.g., "existential", "structure", "energy"
-    tw_alignment: List[str]  # TW planes this polarity aligns with (3/6/9)
+    tw_alignment: list[str]  # TW planes this polarity aligns with (3/6/9)
 
 
 @dataclass
@@ -109,14 +116,15 @@ class StateInferenceResult:
     """
     Resultado final da inferência de estado Δ144.
     """
+
     archetype: Archetype
     state: ArchetypeState
-    active_modifiers: List[Modifier]
-    scores: Dict[str, Any]
-    probs: Optional[List[float]] = None  # Vetor de probabilidades (144)
-    polarity_scores: Dict[str, float] = field(default_factory=dict)  # v2.7
+    active_modifiers: list[Modifier]
+    scores: dict[str, Any]
+    probs: list[float] | None = None  # Vetor de probabilidades (144)
+    polarity_scores: dict[str, float] = field(default_factory=dict)  # v2.7
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         """Convert to dictionary for API serialization."""
         return {
             "archetype": {
@@ -147,9 +155,9 @@ def _load_json(path: Path) -> Any:
         return json.load(f)
 
 
-def load_archetypes(path: Path) -> Dict[str, Archetype]:
+def load_archetypes(path: Path) -> dict[str, Archetype]:
     data = _load_json(path)
-    result: Dict[str, Archetype] = {}
+    result: dict[str, Archetype] = {}
     for raw in data:
         a = Archetype(
             id=raw["id"],
@@ -166,9 +174,9 @@ def load_archetypes(path: Path) -> Dict[str, Archetype]:
     return result
 
 
-def load_states(path: Path) -> Dict[str, ArchetypeState]:
+def load_states(path: Path) -> dict[str, ArchetypeState]:
     data = _load_json(path)
-    result: Dict[str, ArchetypeState] = {}
+    result: dict[str, ArchetypeState] = {}
     for raw in data:
         s = ArchetypeState(
             id=raw["id"],
@@ -186,13 +194,13 @@ def load_states(path: Path) -> Dict[str, ArchetypeState]:
     return result
 
 
-def load_modifiers(path: Path) -> Dict[str, Modifier]:
+def load_modifiers(path: Path) -> dict[str, Modifier]:
     """
     Carrega modifiers do arquivo JSON.
     """
     if not path.exists():
         return {}
-    with open(path, "r", encoding="utf-8") as f:
+    with open(path, encoding="utf-8") as f:
         data = json.load(f)
     modifiers = {}
     for item in data:
@@ -207,27 +215,27 @@ def load_modifiers(path: Path) -> Dict[str, Modifier]:
     return modifiers
 
 
-def load_polarities(path: Path) -> Dict[str, Polarity]:
+def load_polarities(path: Path) -> dict[str, Polarity]:
     """
     Carrega polarities do arquivo JSON.
-    
+
     v2.7: Polarities são tensões dimensionais fundamentais que modulam
     Δ12, TW369, e análise narrativa.
-    
+
     Args:
         path: Caminho para polarities.json
-        
+
     Returns:
         Dict mapeando polarity_id -> Polarity
     """
     if not path.exists():
         # Safe fallback: se arquivo não existe, retorna dict vazio
         return {}
-    
+
     try:
-        with open(path, "r", encoding="utf-8") as f:
+        with open(path, encoding="utf-8") as f:
             data = json.load(f)
-        
+
         polarities = {}
         for item in data:
             pol_id = item["id"]
@@ -238,9 +246,9 @@ def load_polarities(path: Path) -> Dict[str, Polarity]:
                 dimension=item["dimension"],
                 tw_alignment=item.get("tw_alignment", []),
             )
-        
+
         return polarities
-    
+
     except Exception as e:
         # Log warning but don't crash
         print(f"Warning: Failed to load polarities from {path}: {e}")
@@ -275,16 +283,16 @@ class Delta144Engine:
 
     def __init__(
         self,
-        archetypes: Dict[str, Archetype],
-        states: Dict[str, ArchetypeState],
-        modifiers: Dict[str, Modifier],
-        polarities: Dict[str, Polarity],
-        embedding_generator: Optional[EmbeddingGenerator] = None,
+        archetypes: dict[str, Archetype],
+        states: dict[str, ArchetypeState],
+        modifiers: dict[str, Modifier],
+        polarities: dict[str, Polarity],
+        embedding_generator: EmbeddingGenerator | None = None,
         d_ctx: int = 256,
     ) -> None:
         """
         Inicializa o motor Δ144.
-        
+
         Args:
             archetypes: Mapa de arquétipos (12)
             states: Mapa de estados Δ144 (144)
@@ -298,36 +306,36 @@ class Delta144Engine:
         self.modifiers = modifiers
         self.polarities = polarities  # v2.7: Polarities integration
         self.d_ctx = d_ctx
-        
+
         # Configura embedding generator (default: legacy)
         if embedding_generator is None:
             config = EmbeddingConfig(
-                provider=KALDRA_EMBEDDINGS_MODE.lower(), # "legacy" or "real" (mapped to openai/st in factory)
+                provider=KALDRA_EMBEDDINGS_MODE.lower(),  # "legacy" or "real" (mapped to openai/st in factory)
                 model_name=KALDRA_EMBEDDINGS_MODEL,
                 api_key=KALDRA_EMBEDDINGS_API_KEY,
-                dim=d_ctx
+                dim=d_ctx,
             )
             # Map "real" to "openai" for now if configured, else "sentence-transformers" could be default
             # But for safety, let's stick to explicit providers in config.
             # If KALDRA_EMBEDDINGS_MODE is "REAL", we assume OpenAI for this sprint.
             if config.provider == "real":
                 config.provider = "openai"
-            
+
             self.embedding_generator = EmbeddingGenerator(config=config)
         else:
             self.embedding_generator = embedding_generator
 
         # índice rápido: arquétipo → lista de estados
-        self._states_by_archetype: Dict[str, List[ArchetypeState]] = {}
+        self._states_by_archetype: dict[str, list[ArchetypeState]] = {}
         for s in self.states.values():
             self._states_by_archetype.setdefault(s.archetype_id, []).append(s)
-            
+
         # Inicializa embeddings dos estados
-        self._state_embeddings: Dict[str, np.ndarray] = {}
+        self._state_embeddings: dict[str, np.ndarray] = {}
         self._init_state_embeddings()
-        
+
         # v2.7: Inicializa embeddings dos modifiers para auto-inference
-        self._modifier_embeddings: Dict[str, np.ndarray] = {}
+        self._modifier_embeddings: dict[str, np.ndarray] = {}
         self._init_modifier_embeddings()
 
     def _init_state_embeddings(self):
@@ -340,11 +348,11 @@ class Delta144Engine:
             text = f"{state.label}: {state.description}"
             embedding = self.embedding_generator.encode(text)[0]
             self._state_embeddings[state.id] = embedding
-    
+
     def _init_modifier_embeddings(self):
         """
         v2.7: Gera embeddings de referência para cada modifier.
-        
+
         Usado para auto-inferência de modifier scores via cosine similarity.
         """
         for modifier in self.modifiers.values():
@@ -372,7 +380,7 @@ class Delta144Engine:
     def from_schema(cls, d_ctx: int = 256) -> "Delta144Engine":
         """
         Carrega motor a partir dos schemas padrão.
-        
+
         v2.7: Agora carrega polarities além de archetypes, states, e modifiers.
         """
         archetypes = load_archetypes(ARCHETYPES_12_FILE)
@@ -385,7 +393,7 @@ class Delta144Engine:
             states=states,
             modifiers=modifiers,
             polarities=polarities,  # v2.7
-            d_ctx=d_ctx
+            d_ctx=d_ctx,
         )
 
     # ---------------------------------------------------------------------
@@ -398,7 +406,7 @@ class Delta144Engine:
     def get_state(self, state_id: str) -> ArchetypeState:
         return self.states[state_id]
 
-    def list_states_for_archetype(self, archetype_id: str) -> List[ArchetypeState]:
+    def list_states_for_archetype(self, archetype_id: str) -> list[ArchetypeState]:
         return sorted(
             self._states_by_archetype.get(archetype_id, []),
             key=lambda s: (s.row, s.col),
@@ -406,26 +414,26 @@ class Delta144Engine:
 
     def compute_delta12(
         self,
-        plane_scores: Optional[Dict[str, float]] = None,
-        profile_scores: Optional[Dict[str, float]] = None,
-        modifier_scores: Optional[Dict[str, float]] = None
+        plane_scores: dict[str, float] | None = None,
+        profile_scores: dict[str, float] | None = None,
+        modifier_scores: dict[str, float] | None = None,
     ) -> Delta12Vector:
         """
         Compute Delta12 vector (base archetypal probabilities) from input signals.
-        
+
         This projects Kindra/TW369 signals onto the 12-dimensional archetype space.
-        
+
         Args:
             plane_scores: TW369 plane scores (3, 6, 9)
             profile_scores: Profile scores (EXPANSIVE, CONTRACTIVE, TRANSCENDENT)
             modifier_scores: Modifier activation scores
-            
+
         Returns:
             Delta12Vector with normalized archetype probabilities
         """
         # Initialize archetype scores
         archetype_scores = {arch_id: 0.0 for arch_id in self.archetypes.keys()}
-        
+
         # Simple heuristic mapping (can be refined with learned weights)
         if plane_scores:
             # Plane 3 (Action) favors: WARRIOR, REBEL, CREATOR, SEEKER
@@ -434,45 +442,45 @@ class Delta144Engine:
             archetype_scores["A08_REBEL"] += plane_3_weight * 0.25
             archetype_scores["A12_CREATOR"] += plane_3_weight * 0.25
             archetype_scores["A05_SEEKER"] += plane_3_weight * 0.2
-            
+
             # Plane 6 (Structure) favors: RULER, CAREGIVER, LOVER
             plane_6_weight = plane_scores.get("6", 0.0)
             archetype_scores["A07_RULER"] += plane_6_weight * 0.4
             archetype_scores["A04_CAREGIVER"] += plane_6_weight * 0.3
             archetype_scores["A06_LOVER"] += plane_6_weight * 0.3
-            
+
             # Plane 9 (Metanoia) favors: SAGE, MAGICIAN, JESTER
             plane_9_weight = plane_scores.get("9", 0.0)
             archetype_scores["A10_SAGE"] += plane_9_weight * 0.4
             archetype_scores["A09_MAGICIAN"] += plane_9_weight * 0.35
             archetype_scores["A11_JESTER"] += plane_9_weight * 0.25
-        
+
         if profile_scores:
             # EXPANSIVE favors: CREATOR, SEEKER, REBEL
             exp_weight = profile_scores.get("EXPANSIVE", 0.0)
             archetype_scores["A12_CREATOR"] += exp_weight * 0.2
             archetype_scores["A05_SEEKER"] += exp_weight * 0.15
             archetype_scores["A08_REBEL"] += exp_weight * 0.15
-            
+
             # CONTRACTIVE favors: RULER, CAREGIVER, INNOCENT
             con_weight = profile_scores.get("CONTRACTIVE", 0.0)
             archetype_scores["A07_RULER"] += con_weight * 0.2
             archetype_scores["A04_CAREGIVER"] += con_weight * 0.15
             archetype_scores["A01_INNOCENT"] += con_weight * 0.1
-            
+
             # TRANSCENDENT favors: SAGE, MAGICIAN
             trans_weight = profile_scores.get("TRANSCENDENT", 0.0)
             archetype_scores["A10_SAGE"] += trans_weight * 0.2
             archetype_scores["A09_MAGICIAN"] += trans_weight * 0.2
-        
+
         # Ensure all archetypes have at least a small base probability
         for arch_id in archetype_scores:
             archetype_scores[arch_id] += 0.01
-        
+
         # Create and normalize Delta12Vector
         delta12 = Delta12Vector(values=archetype_scores)
         delta12.normalize()
-        
+
         return delta12
 
     # ---------------------------------------------------------------------
@@ -480,9 +488,7 @@ class Delta144Engine:
     # ---------------------------------------------------------------------
 
     def infer_from_vector(
-        self,
-        vector: np.ndarray,
-        tau_modifiers: Optional[Dict[str, float]] = None
+        self, vector: np.ndarray, tau_modifiers: dict[str, float] | None = None
     ) -> StateInferenceResult:
         """
         Realiza inferência semântica comparando o vetor de entrada com os
@@ -498,10 +504,10 @@ class Delta144Engine:
         # Calcula similaridade (dot product) com todos os estados
         scores = []
         state_ids = []
-        
+
         # Ordenar estados para consistência
         sorted_states = sorted(self.states.values(), key=lambda s: s.id)
-        
+
         for s in sorted_states:
             ref_vec = self._state_embeddings.get(s.id)
             if ref_vec is None:
@@ -510,9 +516,9 @@ class Delta144Engine:
                 sim = float(np.dot(query_vec, ref_vec))
             scores.append(sim)
             state_ids.append(s.id)
-            
+
         scores_np = np.array(scores)
-        
+
         # Softmax com temperatura para gerar probabilidades
         # v2.8: Modulate temperature with Tau smoothing
         base_temp = 0.1
@@ -527,46 +533,49 @@ class Delta144Engine:
             temperature = base_temp
         exp_scores = np.exp(scores_np / temperature)
         probs = exp_scores / exp_scores.sum()
-        
+
         # Escolhe o vencedor
         winner_idx = int(np.argmax(probs))
         winner_state_id = state_ids[winner_idx]
         winner_state = self.states[winner_state_id]
         winner_archetype = self.archetypes[winner_state.archetype_id]
-        
+
         # Scores detalhados para debug/trace
         scores_dict = {
-            "plane_scores": {"3": 0.33, "6": 0.33, "9": 0.33}, # Placeholder, poderia ser derivado
-            "profile_scores": {"EXPANSIVE": 0.33, "CONTRACTIVE": 0.33, "TRANSCENDENT": 0.33},
+            "plane_scores": {
+                "3": 0.33,
+                "6": 0.33,
+                "9": 0.33,
+            },  # Placeholder, poderia ser derivado
+            "profile_scores": {
+                "EXPANSIVE": 0.33,
+                "CONTRACTIVE": 0.33,
+                "TRANSCENDENT": 0.33,
+            },
             "chosen_state_score": float(probs[winner_idx]),
-            "similarity": float(scores_np[winner_idx])
+            "similarity": float(scores_np[winner_idx]),
         }
-        
+
         # v2.7: Auto-infer modifier scores from embedding
         modifier_scores = self.infer_modifier_scores_from_embedding(vector, top_k=10)
-        active_modifiers = self._infer_modifiers(
-            winner_state,
-            modifier_scores,
-            max_modifiers=4,
-            threshold=0.35
-        )
-        
+        active_modifiers = self._infer_modifiers(winner_state, modifier_scores, max_modifiers=4, threshold=0.35)
+
         return StateInferenceResult(
             archetype=winner_archetype,
             state=winner_state,
             active_modifiers=active_modifiers,  # v2.7: Now populated automatically
             scores=scores_dict,
-            probs=probs.tolist()
+            probs=probs.tolist(),
         )
 
     def infer_state(
         self,
         archetype_id: str,
-        plane_scores: Dict[str, float],
-        profile_scores: Dict[str, float],
-        modifier_scores: Optional[Dict[str, float]] = None,
-        polarity_scores: Optional[Dict[str, float]] = None,  # v2.7
-        tau_modifiers: Optional[Dict[str, float]] = None,    # v2.8
+        plane_scores: dict[str, float],
+        profile_scores: dict[str, float],
+        modifier_scores: dict[str, float] | None = None,
+        polarity_scores: dict[str, float] | None = None,  # v2.7
+        tau_modifiers: dict[str, float] | None = None,  # v2.8
     ) -> StateInferenceResult:
         """
         Infere um estado Δ144 para um arquétipo específico.
@@ -590,7 +599,7 @@ class Delta144Engine:
             Opcional. Dicionário:
                 {"MOD_WOUNDED": 0.8, "MOD_DEFENSIVE": 0.6, ...}
             Estes valores podem vir do Bias Engine, Kindras, TW369, etc.
-            
+
         polarity_scores:
             Opcional (v2.7). Dicionário:
                 {"POL_LIGHT_SHADOW": 0.8, ...}
@@ -599,7 +608,7 @@ class Delta144Engine:
 
         if modifier_scores is None:
             modifier_scores = {}
-            
+
         if polarity_scores is None:
             polarity_scores = {}
 
@@ -608,9 +617,7 @@ class Delta144Engine:
 
         # 1) Normaliza scores
         plane_scores_norm = self._normalize_scores(plane_scores, default_key="3")
-        profile_scores_norm = self._normalize_scores(
-            profile_scores, default_key="EXPANSIVE"
-        )
+        profile_scores_norm = self._normalize_scores(profile_scores, default_key="EXPANSIVE")
 
         # 2) Escolhe o profile dominante (EXPANSIVE / CONTRACTIVE / TRANSCENDENT)
         dominant_profile = max(profile_scores_norm.items(), key=lambda kv: kv[1])[0]
@@ -625,7 +632,7 @@ class Delta144Engine:
         #    - aderência ao TW-plane dominante
         #    - coerência combinada com os demais planos
         #    - posição (col) pode ser usada como leve ruído/ordem
-        scored: List[Tuple[ArchetypeState, float]] = []
+        scored: list[tuple[ArchetypeState, float]] = []
         for s in profile_filtered:
             score = self._score_state(s, plane_scores_norm, profile_scores_norm)
             scored.append((s, score))
@@ -641,9 +648,7 @@ class Delta144Engine:
             "plane_scores": plane_scores_norm,
             "profile_scores": profile_scores_norm,
             "chosen_profile": dominant_profile,
-            "state_scores": [
-                {"state_id": s.id, "score": sc} for (s, sc) in scored
-            ],
+            "state_scores": [{"state_id": s.id, "score": sc} for (s, sc) in scored],
             "chosen_state_score": best_score,
             "raw_modifier_scores": modifier_scores,
         }
@@ -662,9 +667,9 @@ class Delta144Engine:
 
     @staticmethod
     def _normalize_scores(
-        scores: Dict[str, float],
-        default_key: Optional[str] = None,
-    ) -> Dict[str, float]:
+        scores: dict[str, float],
+        default_key: str | None = None,
+    ) -> dict[str, float]:
         if not scores:
             if default_key is None:
                 return {}
@@ -682,8 +687,8 @@ class Delta144Engine:
     def _score_state(
         self,
         state: ArchetypeState,
-        plane_scores: Dict[str, float],
-        profile_scores: Dict[str, float],
+        plane_scores: dict[str, float],
+        profile_scores: dict[str, float],
     ) -> float:
         """
         Heurística simples de score para um estado:
@@ -709,37 +714,33 @@ class Delta144Engine:
 
     # Internals: modifiers
 
-    def infer_modifier_scores_from_embedding(
-        self,
-        embedding: np.ndarray,
-        top_k: int = 10
-    ) -> Dict[str, float]:
+    def infer_modifier_scores_from_embedding(self, embedding: np.ndarray, top_k: int = 10) -> dict[str, float]:
         """
         v2.7: Infere modifier scores a partir de um embedding via cosine similarity.
-        
+
         Args:
             embedding: Embedding do texto de entrada
             top_k: Número máximo de modifiers a retornar
-            
+
         Returns:
             Dict mapeando modifier_id -> score (0-1)
         """
         if not self._modifier_embeddings:
             # Se não há embeddings de modifiers, retorna vazio
             return {}
-        
+
         scores = {}
-        
+
         for modifier_id, mod_embedding in self._modifier_embeddings.items():
             # Cosine similarity
             similarity = np.dot(embedding, mod_embedding) / (
                 np.linalg.norm(embedding) * np.linalg.norm(mod_embedding) + 1e-10
             )
-            
+
             # Normaliza para [0, 1]
             score = (similarity + 1.0) / 2.0
             scores[modifier_id] = float(score)
-        
+
         # Retorna top_k modifiers com maiores scores
         sorted_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
         return dict(sorted_scores[:top_k])
@@ -747,10 +748,10 @@ class Delta144Engine:
     def _infer_modifiers(
         self,
         state: ArchetypeState,
-        modifier_scores: Dict[str, float],
+        modifier_scores: dict[str, float],
         max_modifiers: int = 4,
         threshold: float = 0.35,
-    ) -> List[Modifier]:
+    ) -> list[Modifier]:
         """
         Ativa modifiers dinâmicos para um estado específico.
 
@@ -769,14 +770,10 @@ class Delta144Engine:
 
         # Se não há scores externos, devolve apenas os defaults.
         if not modifier_scores:
-            return [
-                self.modifiers[mid]
-                for mid in state.default_modifiers
-                if mid in self.modifiers
-            ]
+            return [self.modifiers[mid] for mid in state.default_modifiers if mid in self.modifiers]
 
         # Cria lista de (modifier_id, score)
-        scored_mods: List[Tuple[str, float]] = []
+        scored_mods: list[tuple[str, float]] = []
         for mid in allowed_set:
             score = modifier_scores.get(mid, 0.0)
             scored_mods.append((mid, score))
@@ -784,7 +781,7 @@ class Delta144Engine:
         # Ordena por score desc
         scored_mods.sort(key=lambda t: t[1], reverse=True)
 
-        active_ids: List[str] = []
+        active_ids: list[str] = []
 
         # 1) Garante que defaults entrem se tiverem score razoável ou se não houver nada melhor
         for mid in state.default_modifiers:
@@ -802,7 +799,7 @@ class Delta144Engine:
                 break
 
         # Remove duplicatas mantendo ordem
-        dedup: List[str] = []
+        dedup: list[str] = []
         for mid in active_ids:
             if mid not in dedup:
                 dedup.append(mid)
@@ -838,4 +835,3 @@ if __name__ == "__main__":
     )
 
     print(json.dumps(result.to_dict(), indent=2, ensure_ascii=False))
-

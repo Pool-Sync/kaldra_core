@@ -5,9 +5,9 @@ Resolves (preset + user profile) into executable pipeline configuration.
 """
 
 from dataclasses import dataclass, field
-from typing import Dict, Any, Optional
+from typing import Any
 
-from .presets import PresetManager, PresetConfig
+from .presets import PresetConfig, PresetManager
 from .profiles import ProfileManager, UserProfile
 
 
@@ -32,10 +32,10 @@ class PresetResolvedConfig:
 
     name: str
     mode: str
-    emphasis: Dict[str, float] = field(default_factory=dict)
-    thresholds: Dict[str, float] = field(default_factory=dict)
+    emphasis: dict[str, float] = field(default_factory=dict)
+    thresholds: dict[str, float] = field(default_factory=dict)
     output_format: str = "json"
-    metadata: Dict[str, Any] = field(default_factory=dict)
+    metadata: dict[str, Any] = field(default_factory=dict)
 
 
 class PresetRouter:
@@ -48,8 +48,8 @@ class PresetRouter:
 
     def __init__(
         self,
-        preset_manager: Optional[PresetManager] = None,
-        profile_manager: Optional[ProfileManager] = None
+        preset_manager: PresetManager | None = None,
+        profile_manager: ProfileManager | None = None,
     ):
         """
         Initialize PresetRouter.
@@ -61,11 +61,7 @@ class PresetRouter:
         self.preset_manager = preset_manager or PresetManager()
         self.profile_manager = profile_manager or ProfileManager()
 
-    def resolve_preset(
-        self,
-        preset_name: str,
-        user_id: Optional[str] = None
-    ) -> PresetResolvedConfig:
+    def resolve_preset(self, preset_name: str, user_id: str | None = None) -> PresetResolvedConfig:
         """
         Resolve preset + user profile into final configuration.
 
@@ -83,7 +79,7 @@ class PresetRouter:
         preset: PresetConfig = self.preset_manager.get_preset(preset_name)
 
         # 2. Load user profile (optional)
-        profile: Optional[UserProfile] = None
+        profile: UserProfile | None = None
         if user_id:
             profile = self.profile_manager.get_profile(user_id)
 
@@ -91,10 +87,10 @@ class PresetRouter:
         mode = preset.mode
         output_format = preset.output_format
         thresholds = dict(preset.thresholds)
-        
+
         # Convert emphasis list to dict with default weight of 1.0
         emphasis = {key: 1.0 for key in preset.emphasis}
-        
+
         metadata = dict(preset.metadata)
 
         # 4. Apply profile overrides if available

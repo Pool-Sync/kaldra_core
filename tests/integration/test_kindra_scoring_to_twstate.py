@@ -15,8 +15,8 @@ def test_build_twstate_from_context_shapes_planes():
         "sentiment": "negative",
         "intensity": 0.9,
         "institutional_strength": 0.9,  # High to trigger G21
-        "power_concentration": 0.8,     # High to trigger P17
-        "regulatory_stability": 0.2,    # Low to trigger R33
+        "power_concentration": 0.8,  # High to trigger P17
+        "regulatory_stability": 0.2,  # Low to trigger R33
     }
 
     tw_state = build_twstate_from_context(context)

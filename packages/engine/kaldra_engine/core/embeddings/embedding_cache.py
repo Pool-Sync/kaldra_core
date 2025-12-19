@@ -7,10 +7,10 @@ Supports in-memory and Redis-backed caching.
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 from hashlib import sha256
 from pathlib import Path
-from typing import Dict, Optional, Sequence
 
 import numpy as np
 
@@ -31,12 +31,12 @@ def make_embedding_cache_key(
     Build a deterministic cache key for a batch of texts.
 
     The same (provider, model, texts) tuple must always yield the same key.
-    
+
     Args:
         provider: Embedding provider name (e.g., "sentence-transformers")
         model_name: Model identifier (e.g., "all-MiniLM-L6-v2")
         texts: Sequence of text strings to encode
-    
+
     Returns:
         Deterministic cache key string
     """
@@ -55,7 +55,7 @@ class BaseEmbeddingCache:
       - set(key, value) -> None
     """
 
-    def get(self, key: str) -> Optional[np.ndarray]:  # pragma: no cover - interface
+    def get(self, key: str) -> np.ndarray | None:  # pragma: no cover - interface
         raise NotImplementedError
 
     def set(self, key: str, value: np.ndarray) -> None:  # pragma: no cover - interface
@@ -73,9 +73,9 @@ class InMemoryEmbeddingCache(BaseEmbeddingCache):
       - unit / integration tests
     """
 
-    _store: Dict[str, np.ndarray] = field(default_factory=dict)
+    _store: dict[str, np.ndarray] = field(default_factory=dict)
 
-    def get(self, key: str) -> Optional[np.ndarray]:
+    def get(self, key: str) -> np.ndarray | None:
         return self._store.get(key)
 
     def set(self, key: str, value: np.ndarray) -> None:
@@ -93,13 +93,13 @@ class RedisEmbeddingCache(BaseEmbeddingCache):
       - requires a running Redis instance
     """
 
-    client: "object"  # expected to be a redis.Redis-like client
+    client: object  # expected to be a redis.Redis-like client
     namespace: str = "kaldra:embeddings"
 
     def _full_key(self, key: str) -> str:
         return f"{self.namespace}:{key}"
 
-    def get(self, key: str) -> Optional[np.ndarray]:
+    def get(self, key: str) -> np.ndarray | None:
         full_key = self._full_key(key)
         raw = self.client.get(full_key)
         if raw is None:
@@ -123,7 +123,7 @@ def export_cache_to_disk(cache: InMemoryEmbeddingCache, path: str | Path) -> Non
     Utility for debugging: export an InMemoryEmbeddingCache to disk as raw numpy arrays.
 
     Not used by core logic; safe helper for experiments.
-    
+
     Args:
         cache: InMemoryEmbeddingCache instance to export
         path: File path for export

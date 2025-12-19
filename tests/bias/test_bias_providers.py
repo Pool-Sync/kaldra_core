@@ -2,10 +2,10 @@
 Tests for Bias Providers.
 """
 
-import unittest
-from unittest.mock import patch, MagicMock
 import sys
+import unittest
 from pathlib import Path
+from unittest.mock import MagicMock, patch
 
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
@@ -15,7 +15,6 @@ from bias.providers.perspective import PerspectiveProvider
 
 
 class TestHeuristicProvider(unittest.TestCase):
-
     def test_heuristic_empty_text(self):
         provider = HeuristicProvider()
         result = provider.detect("")
@@ -33,7 +32,6 @@ class TestHeuristicProvider(unittest.TestCase):
 
 
 class TestPerspectiveProvider(unittest.TestCase):
-
     @patch("requests.post")
     def test_perspective_success(self, mock_post):
         # Mock successful response
@@ -43,14 +41,14 @@ class TestPerspectiveProvider(unittest.TestCase):
                 "TOXICITY": {"summaryScore": {"value": 0.8}},
                 "IDENTITY_ATTACK": {"summaryScore": {"value": 0.3}},
                 "INSULT": {"summaryScore": {"value": 0.5}},
-                "THREAT": {"summaryScore": {"value": 0.1}}
+                "THREAT": {"summaryScore": {"value": 0.1}},
             }
         }
         mock_post.return_value = mock_response
 
         provider = PerspectiveProvider(api_key="test-key")
         result = provider.detect("Test text")
-        
+
         self.assertEqual(result["toxicity"], 0.8)
         self.assertEqual(result["gender"], 0.3)
 
@@ -61,7 +59,7 @@ class TestPerspectiveProvider(unittest.TestCase):
 
         provider = PerspectiveProvider(api_key="test-key")
         result = provider.detect("Test text")
-        
+
         # Should return zeros on failure
         self.assertEqual(result["toxicity"], 0.0)
 

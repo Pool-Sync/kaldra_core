@@ -1,27 +1,30 @@
 #!/bin/bash
 set -e
 
-echo "=== KALDRA VERIFICATION =="
+echo "=== KALDRA UNICORN VERIFICATION ==="
 echo "Branch: $(git branch --show-current)"
 echo "Date: $(date)"
 
-echo -e "\n1. Checking Environment..."
-python3 -m pip list | grep -E "kaldra-engine|fastapi|httpx"
+# 1. Formatting Check
+echo -e "\n1. Checking Format (Ruff)..."
+uv run ruff format --check .
 
-echo -e "\n2. Verifying Engine Import..."
+# 2. Lint Check
+echo -e "\n2. Checking Lint (Ruff)..."
+uv run ruff check .
+
+# 3. Type Check
+echo -e "\n3. Checking Types (Pyright)..."
+uv run pyright
+
+# 4. Smoke Tests & Imports
+echo -e "\n4. Verifying Critical Imports..."
 python3 -c "import kaldra_engine; print('✅ kaldra_engine imported')"
-
-echo -e "\n3. Verifying API Import..."
 export PYTHONPATH=$PYTHONPATH:.
 python3 -c "from apps.api.main import app; print('✅ apps.api imported')"
 
-echo -e "\n4. Running Smoke Tests..."
-pytest -q tests/smoke
+# 5. Fast Tests
+echo -e "\n5. Running Fast Tests & Smoke..."
+uv run pytest -q -m "not slow" tests/
 
-echo -e "\n5. Running Test Suite (Collection Check)..."
-pytest --collect-only -q
-
-echo -e "\n6. Running Fast Tests..."
-pytest -q -m "not slow" tests/
-
-echo -e "\n✅ VERIFICATION COMPLETE - GREEN BAR REACHED"
+echo -e "\n✅ UNICORN GATE PASSED - GREEN BAR"

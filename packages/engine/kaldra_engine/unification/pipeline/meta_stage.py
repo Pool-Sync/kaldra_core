@@ -3,21 +3,21 @@ Meta Stage for KALDRA v3.0 Pipeline.
 
 Handles:
 - Nietzsche Engine
-- Aurelius Engine  
+- Aurelius Engine
 - Campbell Engine
 - Polarity mapping
 """
-from typing import Optional
+
 import logging
 
-from kaldra_engine.unification.states.unified_state import UnifiedContext, MetaContext
-from kaldra_engine.unification.registry import ModuleRegistry
-from kaldra_engine.meta.types import MetaInput
+from kaldra_engine.meta.aurelius import AureliusEngine
+from kaldra_engine.meta.campbell_engine import CampbellEngine
 
 # Import Meta Engines
 from kaldra_engine.meta.nietzsche import NietzscheEngine
-from kaldra_engine.meta.aurelius import AureliusEngine
-from kaldra_engine.meta.campbell_engine import CampbellEngine
+from kaldra_engine.meta.types import MetaInput
+from kaldra_engine.unification.registry import ModuleRegistry
+from kaldra_engine.unification.states.unified_state import MetaContext, UnifiedContext
 
 logger = logging.getLogger(__name__)
 
@@ -25,37 +25,37 @@ logger = logging.getLogger(__name__)
 class MetaStage:
     """
     Meta-engine philosophical analysis stage.
-    
+
     Responsibilities:
     1. Nietzsche Engine (Will to Power, etc.)
     2. Aurelius Engine (Stoic analysis)
     3. Campbell Engine (Hero's Journey)
     4. Polarity mapping
     """
-    
+
     def __init__(self, registry: ModuleRegistry):
         """
         Initialize meta stage.
-        
+
         Args:
             registry: Module registry with loaded engines
         """
         self.registry = registry
         # Meta engines will be loaded in future phases
         self.meta_engines_available = False
-    
+
     def execute(self, context: UnifiedContext) -> UnifiedContext:
         """
         Execute meta-analysis engines.
-        
+
         Args:
             context: UnifiedContext with core analysis complete
-            
+
         Returns:
             UnifiedContext with populated meta_ctx
         """
         logger.info("Meta stage: executing philosophical analysis")
-        
+
         try:
             # Build MetaInput from UnifiedContext
             # Extract fields safely handling optional contexts
@@ -64,16 +64,16 @@ class MetaStage:
                 # Assuming delta144_state object has 'id' attribute or is a string
                 # If it's an object, we try to access .id, else str()
                 d_state = context.archetype_ctx.delta144_state
-                delta144_state_id = getattr(d_state, 'id', str(d_state)) if d_state else None
+                delta144_state_id = getattr(d_state, "id", str(d_state)) if d_state else None
 
             archetype_scores = {}
             if context.archetype_ctx and context.archetype_ctx.delta12:
                 # Assuming delta12 has .scores or .to_dict()
-                if hasattr(context.archetype_ctx.delta12, 'scores'):
+                if hasattr(context.archetype_ctx.delta12, "scores"):
                     archetype_scores = context.archetype_ctx.delta12.scores
-                elif hasattr(context.archetype_ctx.delta12, 'to_dict'):
+                elif hasattr(context.archetype_ctx.delta12, "to_dict"):
                     archetype_scores = context.archetype_ctx.delta12.to_dict()
-            
+
             tw_state = None
             if context.drift_ctx and context.drift_ctx.tw_state:
                 tw_state = context.drift_ctx.tw_state
@@ -91,7 +91,7 @@ class MetaStage:
                 kindra=context.kindra_ctx,
                 tw_state=tw_state,
                 polarity_scores=polarities,
-                modifiers=modifiers
+                modifiers=modifiers,
             )
 
             nietzsche_sig = None
@@ -101,12 +101,12 @@ class MetaStage:
             # Execute NietzscheEngine
             try:
                 if hasattr(self, "registry") and self.registry:
-                     nietzsche_engine = self.registry.get("nietzsche")
-                     if not nietzsche_engine: # Fallback if registry returns None
-                         nietzsche_engine = NietzscheEngine()
+                    nietzsche_engine = self.registry.get("nietzsche")
+                    if not nietzsche_engine:  # Fallback if registry returns None
+                        nietzsche_engine = NietzscheEngine()
                 else:
-                     nietzsche_engine = NietzscheEngine()
-                     
+                    nietzsche_engine = NietzscheEngine()
+
                 nietzsche_sig = nietzsche_engine.analyze(meta_input)
             except Exception as e:
                 self._warn("NietzscheEngine failed", e)
@@ -119,7 +119,7 @@ class MetaStage:
                         aurelius_engine = AureliusEngine()
                 else:
                     aurelius_engine = AureliusEngine()
-                    
+
                 aurelius_sig = aurelius_engine.analyze(meta_input)
             except Exception as e:
                 self._warn("AureliusEngine failed", e)
@@ -138,18 +138,14 @@ class MetaStage:
                 self._warn("CampbellEngine failed", e)
 
             # Populate MetaContext
-            context.meta_ctx = MetaContext(
-                nietzsche=nietzsche_sig,
-                aurelius=aurelius_sig,
-                campbell=campbell_sig
-            )
-            
+            context.meta_ctx = MetaContext(nietzsche=nietzsche_sig, aurelius=aurelius_sig, campbell=campbell_sig)
+
             logger.info("Meta stage complete")
-            
+
         except Exception as e:
             logger.error(f"Meta stage failed: {e}")
             context.global_ctx.degraded = True
-        
+
         return context
 
     def _warn(self, message, exception):

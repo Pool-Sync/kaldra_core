@@ -4,11 +4,12 @@ Tests for LLM Client Integration.
 
 import unittest
 from unittest.mock import MagicMock, patch
-from kaldra_engine.kindras.scoring.llm_openai_client import OpenAILLMClient
+
 from kaldra_engine.kindras.scoring.llm_dummy_client import DummyLLMClient
+from kaldra_engine.kindras.scoring.llm_openai_client import OpenAILLMClient
+
 
 class TestLLMClientIntegration(unittest.TestCase):
-
     def test_dummy_client(self):
         client = DummyLLMClient()
         prompt = {"vectors": ["V1", "V2"]}
@@ -20,13 +21,7 @@ class TestLLMClientIntegration(unittest.TestCase):
     def test_openai_client_success(self, mock_post):
         # Mock successful response
         mock_response = MagicMock()
-        mock_response.json.return_value = {
-            "choices": [{
-                "message": {
-                    "content": '{"scores": {"V1": 0.8, "V2": -0.5}}'
-                }
-            }]
-        }
+        mock_response.json.return_value = {"choices": [{"message": {"content": '{"scores": {"V1": 0.8, "V2": -0.5}}'}}]}
         mock_post.return_value = mock_response
 
         client = OpenAILLMClient(api_key="test-key")
@@ -34,9 +29,9 @@ class TestLLMClientIntegration(unittest.TestCase):
             "instruction": "Score",
             "context": {"country": "BR"},
             "text": "Test text",
-            "vectors": ["V1", "V2"]
+            "vectors": ["V1", "V2"],
         }
-        
+
         response = client.generate(prompt)
         self.assertEqual(response["scores"]["V1"], 0.8)
         self.assertEqual(response["scores"]["V2"], -0.5)
@@ -48,9 +43,10 @@ class TestLLMClientIntegration(unittest.TestCase):
 
         client = OpenAILLMClient(api_key="test-key")
         prompt = {"vectors": ["V1"]}
-        
+
         response = client.generate(prompt)
         self.assertEqual(response, {"scores": {}})
+
 
 if __name__ == "__main__":
     unittest.main()

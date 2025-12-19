@@ -7,7 +7,6 @@ Validates that all parameter profiles load correctly and have expected structure
 import json
 from pathlib import Path
 
-
 PARAM_DIR = Path("schema") / "tw369"
 
 

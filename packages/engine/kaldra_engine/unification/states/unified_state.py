@@ -3,17 +3,21 @@ Unified State Definitions for KALDRA v3.0.
 
 Provides a consistent state representation across the entire pipeline.
 """
+
 from __future__ import annotations
-from dataclasses import dataclass, field, asdict, fields
-from typing import Dict, List, Any, Optional
+
 import time
 import uuid
+from dataclasses import asdict, dataclass, field, fields
+from typing import Any
+
 import numpy as np
+
+from kaldra_engine.archetypes.delta12_vector import Delta12Vector
+from kaldra_engine.common.unified_signal import MetaSignal, SafeguardSignal, StoryEvent
 
 # Import v2.9 state definitions
 from kaldra_engine.common.unified_state import DriftState, TauState
-from kaldra_engine.common.unified_signal import MetaSignal, SafeguardSignal, StoryEvent
-from kaldra_engine.archetypes.delta12_vector import Delta12Vector
 
 # v3.3 Phase 2: Multi-stream support
 try:
@@ -28,13 +32,14 @@ class GlobalContext:
     """
     Global context for the entire pipeline execution.
     """
+
     request_id: str = field(default_factory=lambda: str(uuid.uuid4()))
     timestamp: float = field(default_factory=time.time)
     mode: str = "full"  # "signal" | "story" | "full" | "safety-first" | "exploratory"
     version: str = "3.0"
     degraded: bool = False
-    
-    def to_dict(self) -> Dict[str, Any]:
+
+    def to_dict(self) -> dict[str, Any]:
         return asdict(self)
 
 
@@ -42,17 +47,18 @@ class GlobalContext:
 class InputMetadata:
     """
     Metadata for input source and content.
-    
+
     Added in v3.3 Phase 1 for multi-modal support.
     """
-    source: Optional[str] = None      # "twitter", "nyt", "reddit", "web", etc.
-    stream_id: Optional[str] = None   # Unique stream identifier
-    content_type: str = "text"        # "text", "json", "html", "table", "image_desc"
+
+    source: str | None = None  # "twitter", "nyt", "reddit", "web", etc.
+    stream_id: str | None = None  # Unique stream identifier
+    content_type: str = "text"  # "text", "json", "html", "table", "image_desc"
     language: str = "en"
-    timestamp: Optional[float] = None
-    extra: Dict[str, Any] = field(default_factory=dict)
-    
-    def to_dict(self) -> Dict[str, Any]:
+    timestamp: float | None = None
+    extra: dict[str, Any] = field(default_factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
         return asdict(self)
 
 
@@ -60,57 +66,61 @@ class InputMetadata:
 class InputContext:
     """
     Context for input processing stage.
-    
+
     Enhanced in v3.3 Phase 1:
     - metadata: Now strongly typed InputMetadata (backward compatible with dict)
     - structured: Support for JSON/table data
     """
+
     text: str
-    embedding: Optional[np.ndarray] = None
+    embedding: np.ndarray | None = None
     bias_score: float = 0.0
-    tau_input: Optional[TauState] = None
+    tau_input: TauState | None = None
     metadata: InputMetadata = field(default_factory=InputMetadata)
-    structured: Optional[Dict[str, Any]] = None
-    
+    structured: dict[str, Any] | None = None
+
     def __post_init__(self):
         # Backward compatibility: if metadata is passed as dict, convert to InputMetadata
         if isinstance(self.metadata, dict):
             # Extract known fields
-            known_fields = {f.name for f in fields(InputMetadata)}
+            {f.name for f in fields(InputMetadata)}
             # This is a bit tricky with dataclasses, let's do it manually for safety
             meta_dict = self.metadata
-            
-            source = meta_dict.get('source')
-            stream_id = meta_dict.get('stream_id')
-            content_type = meta_dict.get('content_type', 'text')
-            language = meta_dict.get('language', 'en')
-            timestamp = meta_dict.get('timestamp')
-            
+
+            source = meta_dict.get("source")
+            stream_id = meta_dict.get("stream_id")
+            content_type = meta_dict.get("content_type", "text")
+            language = meta_dict.get("language", "en")
+            timestamp = meta_dict.get("timestamp")
+
             # Collect extra fields
-            extra = {k: v for k, v in meta_dict.items() 
-                    if k not in ['source', 'stream_id', 'content_type', 'language', 'timestamp']}
-            
+            extra = {
+                k: v
+                for k, v in meta_dict.items()
+                if k not in ["source", "stream_id", "content_type", "language", "timestamp"]
+            }
+
             self.metadata = InputMetadata(
                 source=source,
                 stream_id=stream_id,
                 content_type=content_type,
                 language=language,
                 timestamp=timestamp,
-                extra=extra
+                extra=extra,
             )
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         data = {
-            'text': self.text,
-            'bias_score': self.bias_score,
-            'metadata': self.metadata.to_dict() if hasattr(self.metadata, 'to_dict') else self.metadata,
-            'structured': self.structured
+            "text": self.text,
+            "bias_score": self.bias_score,
+            "metadata": self.metadata.to_dict() if hasattr(self.metadata, "to_dict") else self.metadata,
+            "structured": self.structured,
         }
         # Convert numpy array to list for JSON serialization
         if self.embedding is not None:
-            data['embedding'] = self.embedding.tolist()
+            data["embedding"] = self.embedding.tolist()
         if self.tau_input is not None:
-            data['tau_input'] = self.tau_input.to_dict()
+            data["tau_input"] = self.tau_input.to_dict()
         return data
 
 
@@ -119,17 +129,18 @@ class ArchetypeContext:
     """
     Context for archetypal analysis.
     """
-    delta12: Optional[Delta12Vector] = None
-    delta144_state: Optional[Any] = None  # StateInferenceResult
-    polarity_scores: Dict[str, float] = field(default_factory=dict)
-    modifier_scores: Dict[str, float] = field(default_factory=dict)
-    
-    def to_dict(self) -> Dict[str, Any]:
+
+    delta12: Delta12Vector | None = None
+    delta144_state: Any | None = None  # StateInferenceResult
+    polarity_scores: dict[str, float] = field(default_factory=dict)
+    modifier_scores: dict[str, float] = field(default_factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
         data = {
-            'delta12': self.delta12.to_dict() if self.delta12 else None,
-            'delta144_state': self.delta144_state.to_dict() if self.delta144_state else None,
-            'polarity_scores': self.polarity_scores,
-            'modifier_scores': self.modifier_scores
+            "delta12": self.delta12.to_dict() if self.delta12 else None,
+            "delta144_state": self.delta144_state.to_dict() if self.delta144_state else None,
+            "polarity_scores": self.polarity_scores,
+            "modifier_scores": self.modifier_scores,
         }
         return data
 
@@ -138,13 +149,14 @@ class ArchetypeContext:
 class DriftPoint:
     """
     Represents a single point in the drift trajectory.
-    
+
     Attributes:
         timestamp: When this drift value was recorded
         drift_value: The drift metric at this point
         tracy_widom_severity: Tracy-Widom severity score [0, 1]
         regime: Regime classification at this point
     """
+
     timestamp: float
     drift_value: float
     tracy_widom_severity: float
@@ -155,13 +167,14 @@ class DriftPoint:
 class TurningPoint:
     """
     Represents a regime transition point in drift history.
-    
+
     Attributes:
         timestamp: When the transition occurred
         from_regime: Previous regime
         to_regime: New regime
         reason: Why the transition occurred (e.g., "severity_threshold_crossed")
     """
+
     timestamp: float
     from_regime: str
     to_regime: str
@@ -172,36 +185,37 @@ class TurningPoint:
 class DriftContext:
     """
     Context for drift and TW369 analysis.
-    
+
     Extended in v3.2 with topological analysis:
     - Drift trajectory tracking
     - Turning point detection
     - Volatility computation
     - Tracy-Widom severity scoring
     """
-    tw_state: Optional[Any] = None  # TWState
-    drift_state: Optional[DriftState] = None
+
+    tw_state: Any | None = None  # TWState
+    drift_state: DriftState | None = None
     regime: str = "UNKNOWN"
     drift_metric: float = 0.0
-    
+
     # v3.2: Topological fields
     volatility: float = 0.0
     tracy_widom_severity: float = 0.0
     painleve_smoothed: bool = False
-    trajectory: List[DriftPoint] = field(default_factory=list)
-    turning_points: List[TurningPoint] = field(default_factory=list)
-    
-    def to_dict(self) -> Dict[str, Any]:
+    trajectory: list[DriftPoint] = field(default_factory=list)
+    turning_points: list[TurningPoint] = field(default_factory=list)
+
+    def to_dict(self) -> dict[str, Any]:
         return {
-            'tw_state': self.tw_state.to_dict() if self.tw_state else None,
-            'drift_state': self.drift_state.to_dict() if self.drift_state else None,
-            'regime': self.regime,
-            'drift_metric': self.drift_metric,
-            'volatility': self.volatility,
-            'tracy_widom_severity': self.tracy_widom_severity,
-            'painleve_smoothed': self.painleve_smoothed,
-            'trajectory': [asdict(p) for p in self.trajectory],
-            'turning_points': [asdict(p) for p in self.turning_points]
+            "tw_state": self.tw_state.to_dict() if self.tw_state else None,
+            "drift_state": self.drift_state.to_dict() if self.drift_state else None,
+            "regime": self.regime,
+            "drift_metric": self.drift_metric,
+            "volatility": self.volatility,
+            "tracy_widom_severity": self.tracy_widom_severity,
+            "painleve_smoothed": self.painleve_smoothed,
+            "trajectory": [asdict(p) for p in self.trajectory],
+            "turning_points": [asdict(p) for p in self.turning_points],
         }
 
 
@@ -210,15 +224,16 @@ class MetaContext:
     """
     Context for meta-engine analysis.
     """
-    nietzsche: Optional[MetaSignal] = None
-    aurelius: Optional[MetaSignal] = None
-    campbell: Optional[MetaSignal] = None
-    
-    def to_dict(self) -> Dict[str, Any]:
+
+    nietzsche: MetaSignal | None = None
+    aurelius: MetaSignal | None = None
+    campbell: MetaSignal | None = None
+
+    def to_dict(self) -> dict[str, Any]:
         return {
-            'nietzsche': asdict(self.nietzsche) if self.nietzsche else None,
-            'aurelius': asdict(self.aurelius) if self.aurelius else None,
-            'campbell': asdict(self.campbell) if self.campbell else None
+            "nietzsche": asdict(self.nietzsche) if self.nietzsche else None,
+            "aurelius": asdict(self.aurelius) if self.aurelius else None,
+            "campbell": asdict(self.campbell) if self.campbell else None,
         }
 
 
@@ -226,26 +241,26 @@ class MetaContext:
 class StoryContext:
     """
     Context for story and narrative analysis.
-    
+
     Extended in v3.2 with metadata support for Δ144 timeline tracking.
     """
-    events: List[StoryEvent] = field(default_factory=list)
-    arc: Optional[Any] = None  # NarrativeArc
-    timeline: Optional[Any] = None  # ArchetypalTimeline
-    coherence: float = 0.0
-    
-    # v3.2: Temporal metadata (e.g., "delta144_timeline")
-    metadata: Dict[str, Any] = field(default_factory=dict)
-    
-    def to_dict(self) -> Dict[str, Any]:
-        return {
-            'events': [e.to_dict() for e in self.events],
-            'arc': self.arc.to_dict() if self.arc and hasattr(self.arc, 'to_dict') else None,
-            'timeline': self.timeline.to_dict() if self.timeline and hasattr(self.timeline, 'to_dict') else None,
-            'coherence': self.coherence,
-            'metadata': self.metadata
-        }
 
+    events: list[StoryEvent] = field(default_factory=list)
+    arc: Any | None = None  # NarrativeArc
+    timeline: Any | None = None  # ArchetypalTimeline
+    coherence: float = 0.0
+
+    # v3.2: Temporal metadata (e.g., "delta144_timeline")
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "events": [e.to_dict() for e in self.events],
+            "arc": self.arc.to_dict() if self.arc and hasattr(self.arc, "to_dict") else None,
+            "timeline": self.timeline.to_dict() if self.timeline and hasattr(self.timeline, "to_dict") else None,
+            "coherence": self.coherence,
+            "metadata": self.metadata,
+        }
 
 
 @dataclass
@@ -253,17 +268,18 @@ class RiskContext:
     """
     Context for risk and safety analysis.
     """
-    tau_output: Optional[TauState] = None
-    safeguard: Optional[SafeguardSignal] = None
+
+    tau_output: TauState | None = None
+    safeguard: SafeguardSignal | None = None
     final_risk: str = "UNKNOWN"
     risk_score: float = 0.0
-    
-    def to_dict(self) -> Dict[str, Any]:
+
+    def to_dict(self) -> dict[str, Any]:
         return {
-            'tau_output': self.tau_output.to_dict() if self.tau_output else None,
-            'safeguard': self.safeguard.to_dict() if self.safeguard else None,
-            'final_risk': self.final_risk,
-            'risk_score': self.risk_score
+            "tau_output": self.tau_output.to_dict() if self.tau_output else None,
+            "safeguard": self.safeguard.to_dict() if self.safeguard else None,
+            "final_risk": self.final_risk,
+            "risk_score": self.risk_score,
         }
 
 
@@ -271,9 +287,9 @@ class RiskContext:
 class MultiStreamContext:
     """
     Context for multi-stream narrative analysis.
-    
+
     Added in v3.3 Phase 3 for cross-stream comparison.
-    
+
     Attributes:
         active_streams: List of stream IDs currently being tracked
         pairwise_results: Results from comparing each pair of streams
@@ -281,22 +297,20 @@ class MultiStreamContext:
         convergent: True if max_divergence < threshold (streams are aligned)
         metadata: Additional metadata for analysis
     """
-    active_streams: List[str] = field(default_factory=list)
-    pairwise_results: List[Any] = field(default_factory=list)  # List[StreamComparisonResult]
+
+    active_streams: list[str] = field(default_factory=list)
+    pairwise_results: list[Any] = field(default_factory=list)  # List[StreamComparisonResult]
     max_divergence: float = 0.0
     convergent: bool = True
-    metadata: Dict[str, Any] = field(default_factory=dict)
-    
-    def to_dict(self) -> Dict[str, Any]:
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
         return {
-            'active_streams': self.active_streams,
-            'pairwise_results': [
-                asdict(r) if hasattr(r, '__dataclass_fields__') else r 
-                for r in self.pairwise_results
-            ],
-            'max_divergence': self.max_divergence,
-            'convergent': self.convergent,
-            'metadata': self.metadata
+            "active_streams": self.active_streams,
+            "pairwise_results": [asdict(r) if hasattr(r, "__dataclass_fields__") else r for r in self.pairwise_results],
+            "max_divergence": self.max_divergence,
+            "convergent": self.convergent,
+            "metadata": self.metadata,
         }
 
 
@@ -307,11 +321,12 @@ class KindraLayerScores:
     Example:
         scores = {"E01": 0.42, "E02": 0.76, ...}
     """
-    scores: Dict[str, float] = field(default_factory=dict)
+
+    scores: dict[str, float] = field(default_factory=dict)
     avg_score: float = 0.0
     max_score: float = 0.0
 
-    def to_json(self) -> Dict[str, Any]:
+    def to_json(self) -> dict[str, Any]:
         return {
             "scores": self.scores,
             "avg_score": self.avg_score,
@@ -325,32 +340,29 @@ class KindraContext:
     Represents 144 Kindra vectors (3×48) + aggregates.
     Single reference object for MetaStage, StoryStage, and OutputStage.
     """
+
     # 3 Kindra layers (each with 48 vectors)
     layer1: KindraLayerScores = field(default_factory=KindraLayerScores)
     layer2: KindraLayerScores = field(default_factory=KindraLayerScores)
     layer3: KindraLayerScores = field(default_factory=KindraLayerScores)
 
     # TW-plane distribution (3/6/9)
-    tw_plane_distribution: Dict[int, float] = field(default_factory=dict)
+    tw_plane_distribution: dict[int, float] = field(default_factory=dict)
 
     # Δ144 distribution derived from Kindra maps
-    delta144_weights: Dict[str, float] = field(default_factory=dict)
+    delta144_weights: dict[str, float] = field(default_factory=dict)
 
     # Auxiliary metadata
-    metadata: Dict[str, Any] = field(default_factory=dict)
-    
+    metadata: dict[str, Any] = field(default_factory=dict)
+
     def get_total_vectors(self) -> int:
         """
         Returns the total number of available Kindra vectors.
         Should always be 144 (3×48).
         """
-        return (
-            len(self.layer1.scores)
-            + len(self.layer2.scores)
-            + len(self.layer3.scores)
-        )
-    
-    def get_top_vectors(self, n: int = 10) -> List[Dict[str, Any]]:
+        return len(self.layer1.scores) + len(self.layer2.scores) + len(self.layer3.scores)
+
+    def get_top_vectors(self, n: int = 10) -> list[dict[str, Any]]:
         """
         Returns the top n Kindra vectors considering all three layers combined.
         Result: list of dicts: [{"id": "...", "score": 0.87, "layer": 2}, ...]
@@ -373,8 +385,8 @@ class KindraContext:
         all_vecs.sort(key=lambda x: x["score"], reverse=True)
 
         return all_vecs[:n]
-    
-    def to_json(self) -> Dict[str, Any]:
+
+    def to_json(self) -> dict[str, Any]:
         return {
             "layer1": self.layer1.to_json(),
             "layer2": self.layer2.to_json(),
@@ -383,9 +395,9 @@ class KindraContext:
             "delta144_weights": self.delta144_weights,
             "metadata": self.metadata,
         }
-    
+
     @staticmethod
-    def from_json(data: Dict[str, Any]) -> "KindraContext":
+    def from_json(data: dict[str, Any]) -> KindraContext:
         return KindraContext(
             layer1=KindraLayerScores(**data.get("layer1", {})),
             layer2=KindraLayerScores(**data.get("layer2", {})),
@@ -394,16 +406,16 @@ class KindraContext:
             delta144_weights=data.get("delta144_weights", {}),
             metadata=data.get("metadata", {}),
         )
-    
-    def to_dict(self) -> Dict[str, Any]:
+
+    def to_dict(self) -> dict[str, Any]:
         """Legacy compatibility method - use to_json() for new code."""
         return {
-            'layer1': self.layer1.scores,
-            'layer2': self.layer2.scores,
-            'layer3': self.layer3.scores,
-            'tw_plane_distribution': self.tw_plane_distribution,
-            'delta144_weights': self.delta144_weights,
-            'metadata': self.metadata
+            "layer1": self.layer1.scores,
+            "layer2": self.layer2.scores,
+            "layer3": self.layer3.scores,
+            "tw_plane_distribution": self.tw_plane_distribution,
+            "delta144_weights": self.delta144_weights,
+            "metadata": self.metadata,
         }
 
 
@@ -411,35 +423,36 @@ class KindraContext:
 class UnifiedContext:
     """
     Complete unified context for the entire pipeline.
-    
+
     This is the central state object passed through all pipeline stages.
     """
+
     global_ctx: GlobalContext = field(default_factory=GlobalContext)
-    input_ctx: Optional[InputContext] = None
-    kindra_ctx: Optional[KindraContext] = None
-    archetype_ctx: Optional[ArchetypeContext] = None
-    drift_ctx: Optional[DriftContext] = None
-    meta_ctx: Optional[MetaContext] = None
-    story_ctx: Optional[StoryContext] = None
-    risk_ctx: Optional[RiskContext] = None
-    
+    input_ctx: InputContext | None = None
+    kindra_ctx: KindraContext | None = None
+    archetype_ctx: ArchetypeContext | None = None
+    drift_ctx: DriftContext | None = None
+    meta_ctx: MetaContext | None = None
+    story_ctx: StoryContext | None = None
+    risk_ctx: RiskContext | None = None
+
     # v3.3 Phase 1: Multi-source support
-    input_ctx_list: Optional[List[InputContext]] = None
-    
+    input_ctx_list: list[InputContext] | None = None
+
     # v3.3 Phase 3: Multi-stream support
-    multi_stream_ctx: Optional[MultiStreamContext] = None
-    
-    def to_dict(self) -> Dict[str, Any]:
+    multi_stream_ctx: MultiStreamContext | None = None
+
+    def to_dict(self) -> dict[str, Any]:
         """Convert entire context to dictionary."""
         return {
-            'global': self.global_ctx.to_dict(),
-            'input': self.input_ctx.to_dict() if self.input_ctx else None,
-            'input_list': [ctx.to_dict() for ctx in self.input_ctx_list] if self.input_ctx_list else None,
-            'kindra': self.kindra_ctx.to_dict() if self.kindra_ctx else None,
-            'archetypes': self.archetype_ctx.to_dict() if self.archetype_ctx else None,
-            'drift': self.drift_ctx.to_dict() if self.drift_ctx else None,
-            'meta': self.meta_ctx.to_dict() if self.meta_ctx else None,
-            'story': self.story_ctx.to_dict() if self.story_ctx else None,
-            'risk': self.risk_ctx.to_dict() if self.risk_ctx else None,
-            'multi_stream': self.multi_stream_ctx.to_dict() if self.multi_stream_ctx else None
+            "global": self.global_ctx.to_dict(),
+            "input": self.input_ctx.to_dict() if self.input_ctx else None,
+            "input_list": [ctx.to_dict() for ctx in self.input_ctx_list] if self.input_ctx_list else None,
+            "kindra": self.kindra_ctx.to_dict() if self.kindra_ctx else None,
+            "archetypes": self.archetype_ctx.to_dict() if self.archetype_ctx else None,
+            "drift": self.drift_ctx.to_dict() if self.drift_ctx else None,
+            "meta": self.meta_ctx.to_dict() if self.meta_ctx else None,
+            "story": self.story_ctx.to_dict() if self.story_ctx else None,
+            "risk": self.risk_ctx.to_dict() if self.risk_ctx else None,
+            "multi_stream": self.multi_stream_ctx.to_dict() if self.multi_stream_ctx else None,
         }

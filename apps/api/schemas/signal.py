@@ -1,12 +1,13 @@
 """
 KALDRA API — Pydantic schemas for KALDRA Engine signals.
 """
+
 from __future__ import annotations
 
-from typing import Dict, List, Literal, Mapping
+from collections.abc import Mapping
+from typing import Literal
 
 from pydantic import BaseModel, Field
-
 
 TWRegime = Literal["STABLE", "ANOMALY"]
 
@@ -24,9 +25,9 @@ class KaldraSignalResponse(BaseModel):
     archetype: str
     delta_state: str
     tw_regime: TWRegime
-    kindra_distribution: List[KindraDistributionItem]
+    kindra_distribution: list[KindraDistributionItem]
     bias_score: float
-    meta_modifiers: Mapping[str, List[float]]
+    meta_modifiers: Mapping[str, list[float]]
     confidence: float
     explanation: str
 

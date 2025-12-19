@@ -1,24 +1,23 @@
 """
 Signals endpoint for Supabase integration.
 """
+
 from fastapi import APIRouter, Query
-from typing import Optional, List
 from kaldra_engine.execution.utils.db.supabase_repository import SupabaseRepository
-from kaldra_engine.domain.models.signal_record import SignalRecord
 
 router = APIRouter()
 repo = SupabaseRepository()
 
 
-@router.get("/signals", response_model=List[dict])
-def list_signals(domain: Optional[str] = Query(None), limit: int = 50):
+@router.get("/signals", response_model=list[dict])
+def list_signals(domain: str | None = Query(None), limit: int = 50):
     """
     List signals from Supabase.
-    
+
     Args:
         domain: Filter by domain (alpha, geo, product, safeguard)
         limit: Maximum number of records (default: 50)
-    
+
     Returns:
         List of signal dictionaries
     """
@@ -31,10 +30,10 @@ def list_signals(domain: Optional[str] = Query(None), limit: int = 50):
 def get_signal(signal_id: str):
     """
     Get single signal by ID.
-    
+
     Args:
         signal_id: Signal UUID
-    
+
     Returns:
         Signal dictionary or 404
     """
@@ -44,15 +43,15 @@ def get_signal(signal_id: str):
     return signal.__dict__
 
 
-@router.get("/signals/{signal_id}/events", response_model=List[dict])
+@router.get("/signals/{signal_id}/events", response_model=list[dict])
 def list_story_events(signal_id: str, limit: int = 100):
     """
     List story events for a signal.
-    
+
     Args:
         signal_id: Signal UUID
         limit: Maximum number of events
-    
+
     Returns:
         List of story event dictionaries
     """

@@ -8,11 +8,10 @@ Multi-provider bias detection supporting:
 
 from __future__ import annotations
 
-from typing import Any, Dict, Optional
+from typing import Any
 
 from .providers.base import BiasProvider
 from .providers.heuristic import HeuristicProvider
-from .providers.perspective import PerspectiveProvider
 
 
 class BiasDetector:
@@ -40,16 +39,16 @@ class BiasDetector:
         >>> result = detector.detect("Test text")
     """
 
-    def __init__(self, provider: Optional[BiasProvider] = None) -> None:
+    def __init__(self, provider: BiasProvider | None = None) -> None:
         """
         Initialize bias detector.
-        
+
         Args:
             provider: BiasProvider instance (defaults to HeuristicProvider)
         """
         self.provider = provider or HeuristicProvider()
 
-    def detect(self, text: str) -> Dict[str, float]:
+    def detect(self, text: str) -> dict[str, float]:
         """
         Detect bias in text using configured provider.
 
@@ -71,13 +70,26 @@ class BiasDetector:
 # ============================================================================
 
 BIAS_KEYWORDS = {
-    "always", "never", "worst", "best", "hate", "stupid",
-    "absolute", "undeniable", "disaster", "miracle", "impossible",
-    "everyone", "nobody", "obvious", "clearly", "refuse"
+    "always",
+    "never",
+    "worst",
+    "best",
+    "hate",
+    "stupid",
+    "absolute",
+    "undeniable",
+    "disaster",
+    "miracle",
+    "impossible",
+    "everyone",
+    "nobody",
+    "obvious",
+    "clearly",
+    "refuse",
 }
 
 
-def compute_bias_score_from_text(text: str) -> Dict[str, Any]:
+def compute_bias_score_from_text(text: str) -> dict[str, Any]:
     """
     Bias detector based on heuristics and keyword presence.
 
@@ -132,4 +144,3 @@ def compute_bias_score_from_text(text: str) -> Dict[str, Any]:
             "keyword_hits": keyword_hits,
         },
     }
-

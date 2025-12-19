@@ -1,6 +1,7 @@
 """
 Supabase test endpoint.
 """
+
 from fastapi import APIRouter
 from kaldra_engine.execution.utils.db.supabase_repository import SupabaseRepository
 
@@ -11,7 +12,7 @@ router = APIRouter()
 def test_supabase():
     """
     Test Supabase connection.
-    
+
     Returns:
         Status dict with row count or error
     """

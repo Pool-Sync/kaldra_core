@@ -5,13 +5,14 @@ Defines the contract for all LLM clients used by Kindra scorers.
 """
 
 from abc import ABC, abstractmethod
-from typing import Dict, Any
+from typing import Any
+
 
 class LLMClientBase(ABC):
     """Abstract base class for LLM clients."""
 
     @abstractmethod
-    def generate(self, prompt: Dict[str, Any]) -> Dict[str, Any]:
+    def generate(self, prompt: dict[str, Any]) -> dict[str, Any]:
         """
         Generate a response from the LLM based on the prompt.
 

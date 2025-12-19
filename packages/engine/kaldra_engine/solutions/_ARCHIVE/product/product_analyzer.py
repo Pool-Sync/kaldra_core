@@ -1,16 +1,17 @@
 """
 KALDRA-PRODUCT — Product analyzer (placeholder).
 """
+
 from __future__ import annotations
 
-from typing import Any, Dict
-from kaldra_engine.bias import classify_bias
+from typing import Any
 
 from kaldra_engine.kaldra_engine.kaldra_engine import generate_kaldra_signal
+
 from .product_ingest import ingest_source
 
 
-def analyze_product_text(raw_text: str) -> Dict[str, Any]:
+def analyze_product_text(raw_text: str) -> dict[str, Any]:
     """
     Run the KALDRA Engine over product-related text.
 

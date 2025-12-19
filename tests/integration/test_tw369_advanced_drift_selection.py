@@ -2,9 +2,8 @@
 Integration tests for TW369 advanced drift model selection.
 """
 
-import pytest
-from kaldra_engine.tw369.tw369_integration import TW369Integrator
 from kaldra_engine.common.types import TWState
+from kaldra_engine.tw369.tw369_integration import TW369Integrator
 
 
 def _make_dummy_state() -> TWState:
@@ -61,7 +60,7 @@ class TestTW369AdvancedDriftSelection:
         # Both should be valid drifts
         assert isinstance(result1, dict)
         assert isinstance(result2, dict)
-        
+
         # State should be updated
         assert integrator._drift_state is not None
 
@@ -89,7 +88,7 @@ class TestTW369AdvancedDriftSelection:
         integrator._drift_model = "invalid_model"
 
         result = integrator.compute_drift(state)
-        
+
         # Should fallback to Model A
         assert isinstance(result, dict)
         assert set(result.keys()) == {

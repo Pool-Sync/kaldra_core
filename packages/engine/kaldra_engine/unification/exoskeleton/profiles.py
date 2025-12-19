@@ -4,10 +4,10 @@ User Profiles System for Exoskeleton Layer.
 Provides persistent user preferences for KALDRA analysis modes.
 """
 
-from dataclasses import dataclass, field
-from typing import Dict, Any, Optional
 import json
 import os
+from dataclasses import dataclass, field
+from typing import Any
 
 
 @dataclass
@@ -30,9 +30,9 @@ class UserProfile:
     risk_tolerance: float = 0.5  # [0, 1]
     output_format: str = "json"
     depth: str = "standard"  # "fast" | "standard" | "deep" | "exploratory"
-    preferences: Dict[str, Any] = field(default_factory=dict)
+    preferences: dict[str, Any] = field(default_factory=dict)
 
-    def to_json(self) -> Dict[str, Any]:
+    def to_json(self) -> dict[str, Any]:
         """Serialize profile to JSON-compatible dict."""
         return {
             "user_id": self.user_id,
@@ -44,7 +44,7 @@ class UserProfile:
         }
 
     @staticmethod
-    def from_json(data: Dict[str, Any]) -> "UserProfile":
+    def from_json(data: dict[str, Any]) -> "UserProfile":
         """Deserialize profile from JSON-compatible dict."""
         return UserProfile(
             user_id=data["user_id"],
@@ -59,7 +59,7 @@ class UserProfile:
 class ProfileManager:
     """
     Manages persistent user profiles.
-    
+
     Saves profiles as JSON files in a local directory.
     Can be replaced with database backend in future versions.
     """
@@ -78,9 +78,7 @@ class ProfileManager:
         """Get file path for a user's profile."""
         return os.path.join(self.storage_dir, f"{user_id}.json")
 
-    def create_profile(
-        self, user_id: str, preferences: Optional[Dict[str, Any]] = None
-    ) -> UserProfile:
+    def create_profile(self, user_id: str, preferences: dict[str, Any] | None = None) -> UserProfile:
         """
         Create a new user profile.
 
@@ -103,7 +101,7 @@ class ProfileManager:
         self.save_profile(profile)
         return profile
 
-    def get_profile(self, user_id: str) -> Optional[UserProfile]:
+    def get_profile(self, user_id: str) -> UserProfile | None:
         """
         Retrieve an existing user profile.
 
@@ -117,11 +115,11 @@ class ProfileManager:
         if not os.path.exists(path):
             return None
 
-        with open(path, "r") as f:
+        with open(path) as f:
             data = json.load(f)
         return UserProfile.from_json(data)
 
-    def update_profile(self, user_id: str, preferences: Dict[str, Any]) -> UserProfile:
+    def update_profile(self, user_id: str, preferences: dict[str, Any]) -> UserProfile:
         """
         Update an existing profile or create if doesn't exist.
 
@@ -181,6 +179,6 @@ class ProfileManager:
         """
         if not os.path.exists(self.storage_dir):
             return []
-        
+
         files = os.listdir(self.storage_dir)
         return [f.replace(".json", "") for f in files if f.endswith(".json")]

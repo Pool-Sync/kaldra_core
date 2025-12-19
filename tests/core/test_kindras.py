@@ -1,6 +1,4 @@
-
 import numpy as np
-
 from kaldra_engine.kindras import infer_kindra_distribution
 
 

@@ -1,6 +1,7 @@
 """
 KALDRA-GEO — Geopolitical text ingestion (placeholder).
 """
+
 from __future__ import annotations
 
 

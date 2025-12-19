@@ -3,39 +3,36 @@ Structured Data Normalizer for KALDRA v3.3.
 
 Normalizes various structured data formats (JSON, tables, etc.) into a consistent dictionary format.
 """
-from typing import Dict, Any, List, Union
-import json
+
+from typing import Any
+
 
 class StructuredNormalizer:
     """
     Normalizes structured data inputs.
     """
-    
-    def normalize_json(self, data: Dict[str, Any]) -> Dict[str, Any]:
+
+    def normalize_json(self, data: dict[str, Any]) -> dict[str, Any]:
         """
         Normalize a JSON object.
-        
+
         Currently a pass-through, but allows for future schema validation or transformation.
         """
         return data
-        
-    def normalize_table(self, rows: List[Dict[str, Any]]) -> Dict[str, Any]:
+
+    def normalize_table(self, rows: list[dict[str, Any]]) -> dict[str, Any]:
         """
         Normalize a list of rows (table) into a structured format.
-        
+
         Returns:
             Dict with 'type': 'table', 'rows': rows, 'count': len(rows)
         """
-        return {
-            "type": "table",
-            "rows": rows,
-            "count": len(rows)
-        }
-        
-    def normalize_generic(self, data: Any) -> Dict[str, Any]:
+        return {"type": "table", "rows": rows, "count": len(rows)}
+
+    def normalize_generic(self, data: Any) -> dict[str, Any]:
         """
         Normalize generic data.
-        
+
         Attempts to detect type and normalize accordingly.
         """
         if isinstance(data, dict):
