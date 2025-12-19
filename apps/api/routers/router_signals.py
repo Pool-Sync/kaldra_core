@@ -4,7 +4,7 @@ REST endpoints for signal operations via Supabase.
 """
 from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, Query
-from kaldra_engine.data.repositories.signal_repository import SignalRepository
+from kaldra_engine.data_utils.repositories.signal_repository import SignalRepository
 from ..dependencies import get_signal_repository
 
 
