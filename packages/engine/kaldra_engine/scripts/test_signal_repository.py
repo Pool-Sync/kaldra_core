@@ -12,7 +12,7 @@ import os
 # Add parent directory to path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from data.repositories.signal_repository import SignalRepository
+from kaldra_engine.data_utils.repositories.signal_repository import SignalRepository
 
 
 def main() -> None:
