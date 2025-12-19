@@ -1,0 +1,103 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "TW369EngineConfig",
+    "description": "Schema for TW369 engine configuration: enables/disables components, sets limits, and wires drift parameters to the KALDRA Master Engine.",
+    "type": "object",
+    "properties": {
+        "enabled": {
+            "type": "boolean",
+            "description": "If false, TW369 drift is skipped and the \u0394144 distribution is not evolved over time.",
+            "default": true
+        },
+        "max_time_steps": {
+            "type": "integer",
+            "description": "Maximum number of discrete evolution steps allowed in a single call.",
+            "minimum": 1,
+            "default": 10
+        },
+        "default_step_size": {
+            "type": "number",
+            "description": "Default step_size used in TW369Integrator.evolve() when not overridden.",
+            "minimum": 0.0,
+            "default": 1.0
+        },
+        "use_painleve_filter": {
+            "type": "boolean",
+            "description": "If true, future versions of TW369 may apply a Painlev\u00e9 II filter on instability indices before drift.",
+            "default": false
+        },
+        "severity_cap": {
+            "type": "number",
+            "description": "Optional upper bound on severity factor to avoid extreme drift under pathological tensions.",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "default": 1.0
+        },
+        "planes": {
+            "type": "object",
+            "description": "Optional per-plane overrides for drift/evolution behavior.",
+            "properties": {
+                "3": {
+                    "type": "object",
+                    "description": "Config overrides for Plane 3 (Cultural / Surface).",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "default": true
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "6": {
+                    "type": "object",
+                    "description": "Config overrides for Plane 6 (Semiotic / Tension).",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "default": true
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "9": {
+                    "type": "object",
+                    "description": "Config overrides for Plane 9 (Structural / Deep).",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "default": true
+                        }
+                    },
+                    "additionalProperties": true
+                }
+            },
+            "additionalProperties": false
+        },
+        "drift_parameters_ref": {
+            "type": "string",
+            "description": "Optional path or identifier pointing to the drift parameter set (e.g., 'schema/tw369/drift_parameters.json').",
+            "default": "schema/tw369/drift_parameters.json"
+        },
+        "drift_model": {
+            "type": "string",
+            "description": "Selects which drift model to use: 'model_a' (default), 'nonlinear', 'multiscale', 'stochastic'.",
+            "enum": [
+                "model_a",
+                "nonlinear",
+                "multiscale",
+                "stochastic"
+            ],
+            "default": "model_a"
+        },
+        "notes": {
+            "type": "string",
+            "description": "Free-text field for documenting configuration rationale or experiment IDs."
+        }
+    },
+    "required": [
+        "enabled",
+        "max_time_steps",
+        "default_step_size"
+    ],
+    "additionalProperties": false
+}

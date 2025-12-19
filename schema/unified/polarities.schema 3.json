@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "KALDRA Polarities",
+    "description": "Schema for polarities.",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "required": [
+            "id",
+            "label",
+            "description",
+            "dimension",
+            "tw_alignment"
+        ],
+        "properties": {
+            "id": {
+                "type": "string"
+            },
+            "label": {
+                "type": "string"
+            },
+            "description": {
+                "type": "string"
+            },
+            "dimension": {
+                "type": "string"
+            },
+            "tw_alignment": {
+                "type": "array"
+            }
+        }
+    }
+}
