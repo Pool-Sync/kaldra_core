@@ -8,7 +8,8 @@ import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'src'))
 
-from core.kaldra_engine_pipeline import KALDRAEnginePipeline
+from kaldra_engine.core.kaldra_engine_pipeline import KALDRAEnginePipeline
+# from kaldra_engine.kindras.layer1_cultural_macro_scoring import KindraLayer1CulturalMacroScoring as Layer1Scorer
 
 
 class TestKALDRAEnginePipeline:

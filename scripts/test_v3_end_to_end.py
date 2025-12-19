@@ -5,7 +5,7 @@ import sys
 import json
 sys.path.insert(0, '/Users/niki/Desktop/kaldra_core')
 
-from src.unification.adapters.unified_api import UnifiedKaldra
+from kaldra_engine.unification.adapters.unified_api import UnifiedKaldra
 
 def test_unified_api():
     print("=" * 60)

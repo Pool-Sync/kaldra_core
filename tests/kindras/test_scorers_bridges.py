@@ -8,9 +8,11 @@ import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'src'))
 
-from kindras.layer1_cultural_macro_loader import Layer1Loader
-from kindras.layer1_cultural_macro_scoring import Layer1Scorer
-from kindras.layer1_delta144_bridge import Layer1Delta144Bridge
+from kaldra_engine.kindras.layer1_cultural_macro_loader import Layer1Loader
+from kaldra_engine.kindras.layer1_cultural_macro_scoring import KindraLayer1CulturalMacroScoring as Layer1Scorer
+# from kaldra_engine.kindras.layer2_semiotic_media_scoring import KindraLayer2SemioticMediaScoring as Layer2Scorer
+# from kaldra_engine.kindras.layer3_structural_systemic_scoring import KindraLayer3StructuralSystemicScoring as Layer3Scorer
+from kaldra_engine.kindras.layer1_delta144_bridge import Layer1Delta144Bridge
 
 
 class TestScorers:

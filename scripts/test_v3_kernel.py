@@ -4,7 +4,7 @@ Quick test of KALDRA v3.0 Unified Kernel.
 import sys
 sys.path.insert(0, '/Users/niki/Desktop/kaldra_core')
 
-from src.unification.kernel import UnifiedKernel
+from kaldra_engine.unification.kernel import UnifiedKernel
 
 def test_kernel():
     print("Testing KALDRA v3.0 Unified Kernel...")

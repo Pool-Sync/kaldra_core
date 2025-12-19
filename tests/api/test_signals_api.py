@@ -3,7 +3,7 @@ Tests for Signals API endpoints.
 """
 import uuid
 from fastapi.testclient import TestClient
-from kaldra_api.main import app
+from apps.api.main import app
 
 
 client = TestClient(app)

@@ -35,13 +35,13 @@ FILES_TO_DELETE = [
 ]
 
 DIRS_TO_DELETE = [
-    "src/legacy",
-    "src/old",
-    "src/simulation",
+    "kaldra_engine/legacy",
+    "kaldra_engine/old",
+    "kaldra_engine/simulation",
     "legacy",
     "old",
     "simulation",
-    "src/kindras/legacy"
+    "kaldra_engine/kindras/legacy"
 ]
 
 def delete_file(path_str):

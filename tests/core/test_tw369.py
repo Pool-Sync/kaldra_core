@@ -1,6 +1,7 @@
 import numpy as np
 
-from kaldra_engine.tw369 import compute_tw_instability_index, compute_drift_metrics
+from kaldra_engine.tw369.core import compute_tw_instability_index
+from kaldra_engine.tw369.drift import compute_drift_metrics
 
 
 def test_compute_tw_instability_index_runs():

@@ -4,7 +4,7 @@ Tests that kindra_distribution returns top-5 states correctly
 """
 import pytest
 from fastapi.testclient import TestClient
-from kaldra_api.main import app
+from apps.api.main import app
 
 client = TestClient(app)
 

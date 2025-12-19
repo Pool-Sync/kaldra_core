@@ -9,7 +9,7 @@ import os
 # Add project root to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../'))
 
-from kaldra_api.routers import v3_1_presets
+from apps.api.routers import v3_1_presets
 
 
 def test_list_presets_returns_dict():

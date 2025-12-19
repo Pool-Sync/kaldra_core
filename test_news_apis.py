@@ -10,8 +10,8 @@ from pathlib import Path
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
-from kaldra_data.ingestion.news.mediastack_client import MediaStackClient
-from kaldra_data.ingestion.news.gnews_client import GNewsClient
+from kaldra_engine.data_utils.ingestion.news.mediastack_client import MediaStackClient
+from kaldra_engine.data_utils.ingestion.news.gnews_client import GNewsClient
 
 def test_mediastack():
     """Test MediaStack API"""

@@ -7,7 +7,7 @@ import shutil
 from pathlib import Path
 
 ROOT_DIR = Path("/Users/niki/Desktop/kaldra_core")
-APPS_DIR = ROOT_DIR / "src/apps"
+APPS_DIR = ROOT_DIR / "packages/engine/kaldra_engine/solutions"
 
 # Files to archive by app
 ARCHIVE_MAP = {
