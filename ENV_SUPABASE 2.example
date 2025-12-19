@@ -1,0 +1,17 @@
+# ===========================================================
+#  SUPABASE CONFIGURATION — EXAMPLE FILE (DO NOT COMMIT REAL KEYS)
+# ===========================================================
+
+# Core
+SUPABASE_URL=https://SEU-PROJECT-URL.supabase.co
+SUPABASE_ANON_KEY=PASTE_ANON_KEY_HERE
+SUPABASE_SERVICE_ROLE_KEY=PASTE_SERVICE_ROLE_KEY_HERE
+
+# Optional (Pooling)
+SUPABASE_SCHEMA=public
+SUPABASE_POOL_MIN=1
+SUPABASE_POOL_MAX=5
+
+# ===========================================================
+# NEVER COMMIT REAL .env FILES
+# ===========================================================
