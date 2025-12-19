@@ -21,18 +21,20 @@ from kaldra_engine.execution.cache.decorators import redis_cache
 logger = logging.getLogger(__name__)
 
 # Core modules
-from kaldra_engine.tw369.delta144_integration import (
-    get_delta144_tw369_plane_mapping,
-    compute_delta144_state_drift
-)
-from kaldra_engine.tw369.tracy_widom import TW369DistributionProcessor
+# from kaldra_engine.tw369.delta144_integration import (
+#     get_delta144_tw369_plane_mapping,
+#     compute_delta144_state_drift
+# )
+# from kaldra_engine.tw369.tracy_widom import TW369DistributionProcessor
 
 # v2.5: Advanced drift model imports
-from kaldra_engine.tw369.drift_models import (
-    model_a_simple_diff,
+from kaldra_engine.tw369.advanced_drift_models import (
+    model_a_linear_drift,
     model_b_nonlinear_drift,
     model_c_multiscale_drift,
     model_d_stochastic_drift,
+    DriftModelConfig,
+    DriftState,
 )
 
 # v3.2: Topological analysis imports

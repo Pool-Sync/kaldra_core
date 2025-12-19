@@ -1,28 +1,71 @@
-# Environment files
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
 .env
-*.env
-.env.*
-!.env.example
+.venv/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# Node modules
-.env.local
-node_modules/
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+*.cover
 
-# -----------------------------
-# Obsidian (vault noise)
-# -----------------------------
-# Workspace state (personal)
-.obsidian/workspace.json
-.obsidian/workspace-mobile.json
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
 
-# Cache / logs
-.obsidian/cache/
-.obsidian/.cache/
-.obsidian/logs/
+# Ruff
+.ruff_cache/
 
-# Plugin runtime data (optional: keeps vault clean across machines)
-.obsidian/plugins/*/data.json
+# Jupyter
+.ipynb_checkpoints
 
-# macOS
+# IDE
+.vscode/
+.idea/
 .DS_Store
-**/.DS_Store
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+.next/
+out/
+build/
+
+# Docker
+docker-compose.override.yml
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# KALDRA Specific
+.gemini/
+*.log
+tmp/

@@ -1,3 +1,0 @@
-"""
-Infrastructure module for KALDRA.
-"""

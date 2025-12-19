@@ -6,6 +6,7 @@ kaldra_engine.egg-info/SOURCES.txt
 kaldra_engine.egg-info/dependency_links.txt
 kaldra_engine.egg-info/requires.txt
 kaldra_engine.egg-info/top_level.txt
+kaldra_engine/api/__init__ 2.py
 kaldra_engine/api/__init__.py
 kaldra_engine/api/graphql/__init__.py
 kaldra_engine/api/graphql/resolvers/__init__.py
@@ -14,47 +15,38 @@ kaldra_engine/api/graphql/types/__init__.py
 kaldra_engine/api/graphql/types/explainability_types.py
 kaldra_engine/api/routes/signals_supabase.py
 kaldra_engine/api/routes/supabase_test.py
-kaldra_engine.solutions/__init__.py
-kaldra_engine.solutions/_ARCHIVE/alpha/analyzer.py
-kaldra_engine.solutions/_ARCHIVE/alpha/earnings_analyzer.py
-kaldra_engine.solutions/_ARCHIVE/alpha/earnings_ingest.py
-kaldra_engine.solutions/_ARCHIVE/alpha/earnings_pipeline.py
-kaldra_engine.solutions/_ARCHIVE/alpha/ingest.py
-kaldra_engine.solutions/_ARCHIVE/geo/geo_analyzer.py
-kaldra_engine.solutions/_ARCHIVE/geo/geo_ingest.py
-kaldra_engine.solutions/_ARCHIVE/geo/geo_risk_engine.py
-kaldra_engine.solutions/_ARCHIVE/geo/geo_signals.py
-kaldra_engine.solutions/_ARCHIVE/product/product_analyzer.py
-kaldra_engine.solutions/_ARCHIVE/product/product_ingest.py
-kaldra_engine.solutions/_ARCHIVE/product/product_kindra_mapping.py
-kaldra_engine.solutions/_ARCHIVE/safeguard/bias_monitor.py
-kaldra_engine.solutions/_ARCHIVE/safeguard/narrative_guard.py
-kaldra_engine.solutions/_ARCHIVE/safeguard/toxicity_detector.py
-kaldra_engine.solutions/alpha/__init__.py
-kaldra_engine.solutions/geo/__init__.py
-kaldra_engine.solutions/product/__init__.py
-kaldra_engine.solutions/safeguard/__init__.py
 kaldra_engine/archetypes/__init__.py
 kaldra_engine/archetypes/api_adapter.py
+kaldra_engine/archetypes/delta12_vector 2.py
 kaldra_engine/archetypes/delta12_vector.py
 kaldra_engine/archetypes/delta144_engine.py
+kaldra_engine/archetypes/polarity_mapping 2.py
 kaldra_engine/archetypes/polarity_mapping.py
 kaldra_engine/archetypes/tw_delta_bridge.py
 kaldra_engine/bias/__init__.py
 kaldra_engine/bias/detector.py
 kaldra_engine/bias/mitigation.py
 kaldra_engine/bias/scoring.py
+kaldra_engine/bias/providers/__init__ 2.py
 kaldra_engine/bias/providers/__init__.py
+kaldra_engine/bias/providers/base 2.py
 kaldra_engine/bias/providers/base.py
+kaldra_engine/bias/providers/heuristic 2.py
 kaldra_engine/bias/providers/heuristic.py
+kaldra_engine/bias/providers/perspective 2.py
 kaldra_engine/bias/providers/perspective.py
+kaldra_engine/common/__init__ 2.py
 kaldra_engine/common/__init__.py
+kaldra_engine/common/types 2.py
 kaldra_engine/common/types.py
+kaldra_engine/common/unified_signal 2.py
 kaldra_engine/common/unified_signal.py
+kaldra_engine/common/unified_state 2.py
 kaldra_engine/common/unified_state.py
 kaldra_engine/core/__init__.py
 kaldra_engine/core/audit_trail.py
 kaldra_engine/core/cache_utils.py
+kaldra_engine/core/core_story_aggregator 2.py
 kaldra_engine/core/core_story_aggregator.py
 kaldra_engine/core/epistemic_limiter.py
 kaldra_engine/core/kaldra_engine_pipeline.py
@@ -63,13 +55,21 @@ kaldra_engine/core/kaldra_master_engine.py
 kaldra_engine/core/story_tracker.py
 kaldra_engine/core/embeddings/embedding_cache.py
 kaldra_engine/core/embeddings/embedding_generator.py
+kaldra_engine/core/embeddings/ensemble_embedder 2.py
 kaldra_engine/core/embeddings/ensemble_embedder.py
+kaldra_engine/core/hardening/circuit_breaker 2.py
 kaldra_engine/core/hardening/circuit_breaker.py
+kaldra_engine/core/hardening/fallbacks 2.py
 kaldra_engine/core/hardening/fallbacks.py
+kaldra_engine/core/hardening/retries 2.py
 kaldra_engine/core/hardening/retries.py
+kaldra_engine/core/hardening/timeouts 2.py
 kaldra_engine/core/hardening/timeouts.py
+kaldra_engine/core/observability/logging 2.py
 kaldra_engine/core/observability/logging.py
+kaldra_engine/core/observability/metrics 2.py
 kaldra_engine/core/observability/metrics.py
+kaldra_engine/data_utils/__init__ 2.py
 kaldra_engine/data_utils/__init__.py
 kaldra_engine/data_utils/ingestion/api_ingest.py
 kaldra_engine/data_utils/ingestion/html_ingest.py
@@ -79,12 +79,15 @@ kaldra_engine/data_utils/repositories/__init__.py
 kaldra_engine/data_utils/repositories/signal_repository.py
 kaldra_engine/data_utils/repositories/story_event_repository.py
 kaldra_engine/delta144/__init__.py
+kaldra_engine/domain/__init__ 2.py
 kaldra_engine/domain/__init__.py
 kaldra_engine/domain/models/__init__.py
 kaldra_engine/domain/models/profile.py
 kaldra_engine/domain/models/signal_record.py
 kaldra_engine/domain/models/story_event_record.py
+kaldra_engine/execution/__init__ 2.py
 kaldra_engine/execution/__init__.py
+kaldra_engine/execution/supabase_client 2.py
 kaldra_engine/execution/supabase_client.py
 kaldra_engine/execution/cache/__init__.py
 kaldra_engine/execution/cache/decorators.py
@@ -95,14 +98,19 @@ kaldra_engine/execution/utils/__init__.py
 kaldra_engine/execution/utils/supabase_client.py
 kaldra_engine/execution/utils/db/__init__.py
 kaldra_engine/execution/utils/db/supabase_repository.py
+kaldra_engine/explainability/__init__ 2.py
 kaldra_engine/explainability/__init__.py
+kaldra_engine/explainability/explanation_confidence 2.py
 kaldra_engine/explainability/explanation_confidence.py
+kaldra_engine/explainability/explanation_generator 2.py
 kaldra_engine/explainability/explanation_generator.py
+kaldra_engine/explainability/explanation_output 2.py
 kaldra_engine/explainability/explanation_output.py
 kaldra_engine/explainability/proto/__init__.py
 kaldra_engine/explainability/proto/explanation_adapters.py
 kaldra_engine/kindras/__init__.py
 kaldra_engine/kindras/kindra_cultural_mod.py
+kaldra_engine/kindras/kindra_engine 2.py
 kaldra_engine/kindras/kindra_engine.py
 kaldra_engine/kindras/kindra_hybrid_scorer.py
 kaldra_engine/kindras/kindra_inference.py
@@ -117,7 +125,9 @@ kaldra_engine/kindras/layer2_semiotic_media_scoring.py
 kaldra_engine/kindras/layer3_delta144_bridge.py
 kaldra_engine/kindras/layer3_structural_systemic_loader.py
 kaldra_engine/kindras/layer3_structural_systemic_scoring.py
+kaldra_engine/kindras/llm_adapter 2.py
 kaldra_engine/kindras/llm_adapter.py
+kaldra_engine/kindras/loaders 2.py
 kaldra_engine/kindras/loaders.py
 kaldra_engine/kindras/normalization.py
 kaldra_engine/kindras/scoring_base.py
@@ -129,83 +139,150 @@ kaldra_engine/kindras/scoring/layer2_rules.py
 kaldra_engine/kindras/scoring/layer3_rules.py
 kaldra_engine/kindras/scoring/llm_client_base.py
 kaldra_engine/kindras/scoring/llm_dummy_client.py
+kaldra_engine/kindras/scoring/llm_openai_client 2.py
 kaldra_engine/kindras/scoring/llm_openai_client.py
 kaldra_engine/kindras/scoring/llm_scoring_service.py
 kaldra_engine/kindras/scoring/llm_twstate_service.py
 kaldra_engine/kindras/scoring/llm_types.py
 kaldra_engine/kindras/scoring/rule_engine_base.py
 kaldra_engine/kindras/scoring/twstate_adapter.py
+kaldra_engine/learning/__init__ 2.py
 kaldra_engine/learning/__init__.py
+kaldra_engine/learning/delta144_mapping_engine 2.py
 kaldra_engine/learning/delta144_mapping_engine.py
+kaldra_engine/learning/kindra_priors 2.py
 kaldra_engine/learning/kindra_priors.py
+kaldra_engine/learning/kindra_weights_engine 2.py
 kaldra_engine/learning/kindra_weights_engine.py
 kaldra_engine/learning/features/__init__.py
 kaldra_engine/learning/features/feature_builder.py
 kaldra_engine/meta/__init__.py
 kaldra_engine/meta/aurelius.py
 kaldra_engine/meta/campbell.py
+kaldra_engine/meta/campbell_engine 2.py
 kaldra_engine/meta/campbell_engine.py
 kaldra_engine/meta/engine_orchestrator.py
 kaldra_engine/meta/engine_router.py
+kaldra_engine/meta/meta_engine_base 2.py
 kaldra_engine/meta/meta_engine_base.py
 kaldra_engine/meta/meta_router.py
 kaldra_engine/meta/nietzsche.py
+kaldra_engine/meta/types 2.py
 kaldra_engine/meta/types.py
+kaldra_engine/safeguard/safeguard_engine 2.py
 kaldra_engine/safeguard/safeguard_engine.py
+kaldra_engine/safeguard/safeguard_integration 2.py
 kaldra_engine/safeguard/safeguard_integration.py
+kaldra_engine/safeguard/safeguard_policy 2.py
 kaldra_engine/safeguard/safeguard_policy.py
+kaldra_engine/safeguard/safeguard_risk_model 2.py
 kaldra_engine/safeguard/safeguard_risk_model.py
+kaldra_engine/scripts/__init__ 2.py
 kaldra_engine/scripts/__init__.py
+kaldra_engine/scripts/test_full_pipeline 2.py
 kaldra_engine/scripts/test_full_pipeline.py
+kaldra_engine/scripts/test_kaldra_supabase_client 2.py
 kaldra_engine/scripts/test_kaldra_supabase_client.py
+kaldra_engine/scripts/test_parallel_executor 2.py
 kaldra_engine/scripts/test_parallel_executor.py
+kaldra_engine/scripts/test_redis_client 2.py
 kaldra_engine/scripts/test_redis_client.py
+kaldra_engine/scripts/test_signal_repository 2.py
 kaldra_engine/scripts/test_signal_repository.py
+kaldra_engine/scripts/test_story_event_repository 2.py
 kaldra_engine/scripts/test_story_event_repository.py
+kaldra_engine/scripts/test_supabase_connection 2.py
 kaldra_engine/scripts/test_supabase_connection.py
+kaldra_engine/solutions/__init__.py
+kaldra_engine/solutions/_ARCHIVE/alpha/analyzer.py
+kaldra_engine/solutions/_ARCHIVE/alpha/earnings_analyzer.py
+kaldra_engine/solutions/_ARCHIVE/alpha/earnings_ingest.py
+kaldra_engine/solutions/_ARCHIVE/alpha/earnings_pipeline.py
+kaldra_engine/solutions/_ARCHIVE/alpha/ingest.py
+kaldra_engine/solutions/_ARCHIVE/geo/geo_analyzer.py
+kaldra_engine/solutions/_ARCHIVE/geo/geo_ingest.py
+kaldra_engine/solutions/_ARCHIVE/geo/geo_risk_engine.py
+kaldra_engine/solutions/_ARCHIVE/geo/geo_signals.py
+kaldra_engine/solutions/_ARCHIVE/product/product_analyzer.py
+kaldra_engine/solutions/_ARCHIVE/product/product_ingest.py
+kaldra_engine/solutions/_ARCHIVE/product/product_kindra_mapping.py
+kaldra_engine/solutions/_ARCHIVE/safeguard/bias_monitor.py
+kaldra_engine/solutions/_ARCHIVE/safeguard/narrative_guard.py
+kaldra_engine/solutions/_ARCHIVE/safeguard/toxicity_detector.py
+kaldra_engine/solutions/alpha/__init__.py
+kaldra_engine/solutions/geo/__init__.py
+kaldra_engine/solutions/product/__init__.py
+kaldra_engine/solutions/safeguard/__init__.py
+kaldra_engine/story/__init__ 2.py
 kaldra_engine/story/__init__.py
+kaldra_engine/story/arc_detector 2.py
 kaldra_engine/story/arc_detector.py
+kaldra_engine/story/archetypal_timeline 2.py
 kaldra_engine/story/archetypal_timeline.py
+kaldra_engine/story/coherence_scorer 2.py
 kaldra_engine/story/coherence_scorer.py
+kaldra_engine/story/multi_stream_buffer 2.py
 kaldra_engine/story/multi_stream_buffer.py
+kaldra_engine/story/narrative_arc 2.py
 kaldra_engine/story/narrative_arc.py
+kaldra_engine/story/story_aggregator 2.py
 kaldra_engine/story/story_aggregator.py
+kaldra_engine/story/story_buffer 2.py
 kaldra_engine/story/story_buffer.py
+kaldra_engine/story/stream_comparator 2.py
 kaldra_engine/story/stream_comparator.py
+kaldra_engine/story/timeline_builder 2.py
 kaldra_engine/story/timeline_builder.py
+kaldra_engine/tau/tau_integration 2.py
 kaldra_engine/tau/tau_integration.py
+kaldra_engine/tau/tau_layer 2.py
 kaldra_engine/tau/tau_layer.py
+kaldra_engine/tau/tau_policy 2.py
 kaldra_engine/tau/tau_policy.py
+kaldra_engine/tau/tau_risk_model 2.py
 kaldra_engine/tau/tau_risk_model.py
+kaldra_engine/tau/tau_state 2.py
 kaldra_engine/tau/tau_state.py
 kaldra_engine/tw369/__init__.py
 kaldra_engine/tw369/advanced_drift_models.py
 kaldra_engine/tw369/config_loader.py
 kaldra_engine/tw369/core.py
 kaldra_engine/tw369/drift.py
+kaldra_engine/tw369/drift_history 2.py
 kaldra_engine/tw369/drift_history.py
+kaldra_engine/tw369/drift_memory 2.py
 kaldra_engine/tw369/drift_memory.py
+kaldra_engine/tw369/drift_state 2.py
 kaldra_engine/tw369/drift_state.py
+kaldra_engine/tw369/drift_topology 2.py
 kaldra_engine/tw369/drift_topology.py
 kaldra_engine/tw369/mapping.py
 kaldra_engine/tw369/oracle_tw_painleve.py
+kaldra_engine/tw369/regime_utils 2.py
 kaldra_engine/tw369/regime_utils.py
 kaldra_engine/tw369/runtime_validation.py
 kaldra_engine/tw369/schema_migration.py
 kaldra_engine/tw369/schema_registry.py
 kaldra_engine/tw369/state_plane_mapping.py
 kaldra_engine/tw369/state_plane_mapping_utils.py
+kaldra_engine/tw369/temporal_coherence 2.py
 kaldra_engine/tw369/temporal_coherence.py
+kaldra_engine/tw369/tracy_widom 2.py
 kaldra_engine/tw369/tracy_widom.py
 kaldra_engine/tw369/tw369_integration.py
 kaldra_engine/tw369/tw_guard.py
 kaldra_engine/tw369/tw_painleve_core.py
 kaldra_engine/tw369/painleve/painleve2_solver.py
 kaldra_engine/tw369/painleve/painleve_filter.py
+kaldra_engine/unification/__init__ 2.py
 kaldra_engine/unification/__init__.py
+kaldra_engine/unification/kernel 2.py
 kaldra_engine/unification/kernel.py
+kaldra_engine/unification/orchestrator 2.py
 kaldra_engine/unification/orchestrator.py
+kaldra_engine/unification/registry 2.py
 kaldra_engine/unification/registry.py
+kaldra_engine/unification/router 2.py
 kaldra_engine/unification/router.py
 kaldra_engine/unification/adapters/__init__.py
 kaldra_engine/unification/adapters/signal_adapter.py
