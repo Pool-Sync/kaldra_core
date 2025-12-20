@@ -2,13 +2,8 @@
 Tests for Delta12Vector and compute_delta12.
 """
 
-import sys
-from pathlib import Path
-
-sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
-
-from archetypes.delta12_vector import ARCHETYPE_IDS, Delta12Vector
-from archetypes.delta144_engine import Delta144Engine
+from kaldra_engine.archetypes.delta12_vector import ARCHETYPE_IDS, Delta12Vector
+from kaldra_engine.archetypes.delta144_engine import Delta144Engine
 
 
 def test_delta12_normalizes_to_one():

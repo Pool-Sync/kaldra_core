@@ -3,14 +3,11 @@ Tests for archetype regimes integration.
 """
 
 import json
-import sys
 from pathlib import Path
 
 import pytest
 
-sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
-
-from archetypes.delta12_vector import ARCHETYPE_IDS, Delta12Vector
+from kaldra_engine.archetypes.delta12_vector import ARCHETYPE_IDS, Delta12Vector
 
 
 def test_load_regime_for_known_archetype():
