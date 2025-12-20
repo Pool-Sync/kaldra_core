@@ -2,16 +2,11 @@
 Tests for Bias Providers.
 """
 
-import sys
 import unittest
-from pathlib import Path
 from unittest.mock import MagicMock, patch
 
-# Add src to path
-sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
-
-from bias.providers.heuristic import HeuristicProvider
-from bias.providers.perspective import PerspectiveProvider
+from kaldra_engine.bias.providers.heuristic import HeuristicProvider
+from kaldra_engine.bias.providers.perspective import PerspectiveProvider
 
 
 class TestHeuristicProvider(unittest.TestCase):
