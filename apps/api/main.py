@@ -2,24 +2,26 @@
 KALDRA API Gateway — Main Entry Point
 FastAPI application serving KALDRA Engine endpoints.
 """
+
 from __future__ import annotations
 
 import os
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 # Import routers
 from .routers import (
-    router_status,
-    router_engine,
     router_alpha,
+    router_engine,
     router_geo,
+    router_news,
     router_product,
     router_safeguard,
-    router_news,
-    router_v3_1,  # v3.1 API endpoints
     router_signals,  # Supabase signals
+    router_status,
     router_story_events,  # Supabase story events
+    router_v3_1,  # v3.1 API endpoints
 )
 
 # Initialize FastAPI app
@@ -65,39 +67,35 @@ def health_check() -> dict:
 async def health_supabase():
     """
     Supabase connectivity health check.
-    
+
     Attempts to query signals table to verify database connection.
-    
+
     Returns:
     - 200: Connection OK
     - 503: Connection failed
     """
     from .dependencies import get_signal_repository
-    
+
     try:
         repo = get_signal_repository()
         result = repo.list_signals(limit=1)
-        
+
         # Check for errors
         if isinstance(result, dict) and "error" in result:
             return {
                 "status": "error",
-                "message": result.get("message", "Unknown database error")
+                "message": result.get("message", "Unknown database error"),
             }
-        
+
         count = len(result) if isinstance(result, list) else 0
         return {
             "status": "ok",
             "supabase_connected": True,
-            "signals_sample_count": count
+            "signals_sample_count": count,
         }
-    
+
     except Exception as e:
-        return {
-            "status": "error",
-            "supabase_connected": False,
-            "error": str(e)
-        }
+        return {"status": "error", "supabase_connected": False, "error": str(e)}
 
 
 # Include routers

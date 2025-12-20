@@ -2,9 +2,10 @@
 KALDRA CORE — TW369 module
 Placeholder implementation. Subject to refinement in later iterations.
 """
+
 from __future__ import annotations
 
-from typing import Dict, Literal
+from typing import Literal
 
 TWRegime = Literal["STABLE", "CRITICAL", "UNSTABLE"]
 
@@ -36,7 +37,7 @@ def compute_tw_adjustments(
     tw_index: float,
     base_lambda: float = 1.0,
     base_tau: float = 1.0,
-) -> Dict[str, float]:
+) -> dict[str, float]:
     """
     Produce simple lambda/tau adjustments based on instability.
 
@@ -50,8 +51,20 @@ def compute_tw_adjustments(
     """
     regime = tw_guard_regime(tw_index)
     if regime == "STABLE":
-        return {"regime": regime, "lambda_adjust": 0.8 * base_lambda, "tau_adjust": 1.2 * base_tau}
+        return {
+            "regime": regime,
+            "lambda_adjust": 0.8 * base_lambda,
+            "tau_adjust": 1.2 * base_tau,
+        }
     if regime == "UNSTABLE":
-        return {"regime": regime, "lambda_adjust": 1.2 * base_lambda, "tau_adjust": 0.8 * base_tau}
+        return {
+            "regime": regime,
+            "lambda_adjust": 1.2 * base_lambda,
+            "tau_adjust": 0.8 * base_tau,
+        }
     # CRITICAL
-    return {"regime": regime, "lambda_adjust": 1.0 * base_lambda, "tau_adjust": 1.0 * base_tau}
+    return {
+        "regime": regime,
+        "lambda_adjust": 1.0 * base_lambda,
+        "tau_adjust": 1.0 * base_tau,
+    }

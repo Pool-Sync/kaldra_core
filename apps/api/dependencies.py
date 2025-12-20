@@ -2,16 +2,21 @@
 KALDRA API Gateway — Dependency Injection
 Provides singleton instances of core engines for FastAPI routers.
 """
+
 from functools import lru_cache
+
 from kaldra_engine.core.kaldra_master_engine import KaldraMasterEngineV2
 from kaldra_engine.data_utils.repositories.signal_repository import SignalRepository
-from kaldra_engine.data_utils.repositories.story_event_repository import StoryEventRepository
+from kaldra_engine.data_utils.repositories.story_event_repository import (
+    StoryEventRepository,
+)
 
-@lru_cache()
+
+@lru_cache
 def get_master_engine() -> KaldraMasterEngineV2:
     """
     Returns a singleton instance of the KALDRA Master Engine V2.
-    
+
     This function is cached to ensure only one engine instance is created
     during the lifetime of the API process.
     """

@@ -1,19 +1,25 @@
 """
 Shared types for Meta Engines (v3.1+).
 """
+
 from dataclasses import dataclass, field
-from typing import Dict, Any, Optional, TYPE_CHECKING
-from kaldra_engine.unification.states.unified_state import KindraContext
+from typing import TYPE_CHECKING, Optional
+
 from kaldra_engine.common.types import TWState
+from kaldra_engine.unification.states.unified_state import KindraContext
 
 if TYPE_CHECKING:
-    from kaldra_engine.unification.states.unified_state import DriftContext, StoryContext
+    from kaldra_engine.unification.states.unified_state import (
+        DriftContext,
+        StoryContext,
+    )
+
 
 @dataclass
 class MetaInput:
     """
     Standard input for meta-engine analysis (v3.1+).
-    
+
     Attributes:
         text: Input text to analyze
         delta144_state: Optional current Δ144 state identifier
@@ -26,15 +32,16 @@ class MetaInput:
         drift_ctx: Optional DriftContext for v3.2 topological drift (TODO v3.3: unified refactor)
         story_ctx: Optional StoryContext for v3.2 temporal narrative (TODO v3.3: unified refactor)
     """
+
     text: str
-    delta144_state: Optional[str] = None
-    archetype_scores: Dict[str, float] = field(default_factory=dict)
-    kindra: Optional[KindraContext] = None
-    tw_state: Optional[TWState] = None
-    bias_score: Optional[float] = None
-    polarity_scores: Optional[Dict[str, float]] = None
-    modifiers: Optional[Dict[str, float]] = None
-    
+    delta144_state: str | None = None
+    archetype_scores: dict[str, float] = field(default_factory=dict)
+    kindra: KindraContext | None = None
+    tw_state: TWState | None = None
+    bias_score: float | None = None
+    polarity_scores: dict[str, float] | None = None
+    modifiers: dict[str, float] | None = None
+
     # v3.2: Temporal contexts (TODO v3.3: unified refactor across meta-engines)
-    drift_ctx: Optional['DriftContext'] = None
-    story_ctx: Optional['StoryContext'] = None
+    drift_ctx: Optional["DriftContext"] = None
+    story_ctx: Optional["StoryContext"] = None

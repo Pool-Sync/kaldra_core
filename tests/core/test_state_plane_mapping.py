@@ -2,21 +2,21 @@
 Unit tests for adaptive state-plane mapping.
 """
 
-import pytest
 from kaldra_engine.tw369.state_plane_mapping import (
-    AdaptiveStatePlaneMapper,
     AdaptiveMappingContext,
-    PlaneWeights,
+    AdaptiveStatePlaneMapper,
 )
-from kaldra_engine.tw369.state_plane_mapping_utils import apply_plane_weights_to_tensions
+from kaldra_engine.tw369.state_plane_mapping_utils import (
+    apply_plane_weights_to_tensions,
+)
 
 
 def _make_default_config():
     return {
         "enabled": True,
         "domains": {
-            "ALPHA":   {"plane3": 0.50, "plane6": 0.35, "plane9": 0.15},
-            "GEO":     {"plane3": 0.20, "plane6": 0.30, "plane9": 0.50},
+            "ALPHA": {"plane3": 0.50, "plane6": 0.35, "plane9": 0.15},
+            "GEO": {"plane3": 0.20, "plane6": 0.30, "plane9": 0.50},
             "PRODUCT": {"plane3": 0.55, "plane6": 0.30, "plane9": 0.15},
             "SAFEGUARD": {"plane3": 0.30, "plane6": 0.30, "plane9": 0.40},
             "DEFAULT": {"plane3": 0.40, "plane6": 0.35, "plane9": 0.25},
@@ -97,17 +97,17 @@ class TestAdaptiveStatePlaneMapping:
         mapper = AdaptiveStatePlaneMapper(cfg)
 
         domains = ["ALPHA", "GEO", "PRODUCT", "SAFEGUARD", "DEFAULT"]
-        
+
         for domain in domains:
             ctx = AdaptiveMappingContext(domain=domain, severity=0.5)
             res = mapper.infer_mapping(ctx)
             w = res.plane_weights
-            
+
             # All weights non-negative
             assert w.plane3 >= 0.0
             assert w.plane6 >= 0.0
             assert w.plane9 >= 0.0
-            
+
             # Sum to 1
             assert abs(w.plane3 + w.plane6 + w.plane9 - 1.0) < 1e-6
 
@@ -121,7 +121,7 @@ class TestAdaptiveStatePlaneMapping:
             time_horizon="long",
             narrative_type="crisis",
             country="BR",
-            sector="energy"
+            sector="energy",
         )
         res = mapper.infer_mapping(ctx)
 

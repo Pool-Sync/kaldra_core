@@ -8,6 +8,7 @@ Aggregates all v3.1 sub-routers:
 """
 
 from fastapi import APIRouter
+
 from . import v3_1_analyze, v3_1_presets, v3_1_profile
 
 # Create main v3.1 router
@@ -16,8 +17,8 @@ router = APIRouter(
     tags=["v3.1"],
     responses={
         404: {"description": "Not found"},
-        500: {"description": "Internal server error"}
-    }
+        500: {"description": "Internal server error"},
+    },
 )
 
 # Include sub-routers

@@ -1,6 +1,8 @@
 import numpy as np
-
-from kaldra_engine.archetypes.api_adapter import infer_state, evaluate_sequence_stability
+from kaldra_engine.archetypes.api_adapter import (
+    evaluate_sequence_stability,
+    infer_state,
+)
 
 
 def test_infer_state_runs():

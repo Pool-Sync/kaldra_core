@@ -3,23 +3,17 @@ GraphQL resolvers for KALDRA Explainability (v3.4 Phase 3).
 
 Backend-only adapters for future API exposure.
 """
-from typing import Optional
+
 from kaldra_engine.explainability.explanation_generator import Explanation
-from kaldra_engine.api.graphql.types.explainability_types import (
-    ExplanationType,
-    ExplanationConfidenceType,
-    ComponentConfidenceType,
-    DecisionStepType
-)
 
 
 def explanation_to_graphql(explanation: Explanation) -> dict:
     """
     Convert Explanation object to GraphQL-compatible dict.
-    
+
     Args:
         explanation: Explanation instance
-    
+
     Returns:
         Dictionary compatible with ExplanationType
     """
@@ -28,7 +22,7 @@ def explanation_to_graphql(explanation: Explanation) -> dict:
         "details": explanation.details,
         "raw_facts": explanation.raw_facts,
     }
-    
+
     # Convert confidence if present
     if explanation.confidence:
         result["confidence"] = {
@@ -38,7 +32,7 @@ def explanation_to_graphql(explanation: Explanation) -> dict:
                     "name": comp.name,
                     "score": comp.score,
                     "reason": comp.reason,
-                    "metadata": comp.metadata
+                    "metadata": comp.metadata,
                 }
                 for comp in explanation.confidence.components
             ],
@@ -48,13 +42,13 @@ def explanation_to_graphql(explanation: Explanation) -> dict:
                     "description": step.description,
                     "weight": step.weight,
                     "source": step.source,
-                    "metadata": step.metadata
+                    "metadata": step.metadata,
                 }
                 for step in explanation.confidence.trace
             ],
-            "metadata": explanation.confidence.metadata
+            "metadata": explanation.confidence.metadata,
         }
-    
+
     # Convert trace if present
     if explanation.trace:
         result["trace"] = [
@@ -63,9 +57,9 @@ def explanation_to_graphql(explanation: Explanation) -> dict:
                 "description": step.description,
                 "weight": step.weight,
                 "source": step.source,
-                "metadata": step.metadata if hasattr(step, 'metadata') else {}
+                "metadata": step.metadata if hasattr(step, "metadata") else {},
             }
             for step in explanation.trace
         ]
-    
+
     return result

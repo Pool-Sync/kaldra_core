@@ -6,24 +6,25 @@ full compatibility with Δ144, TW369, and all existing components.
 """
 
 from __future__ import annotations
-from typing import Dict, Any, List, Optional
-import math
-from .scoring.llm_client_base import LLMClientBase
-from kaldra_engine.core.hardening.retries import with_retries
+
+from typing import Any
+
 from kaldra_engine.core.hardening.circuit_breaker import circuit_breaker
-from kaldra_engine.core.hardening.fallbacks import safe_fallback
+from kaldra_engine.core.hardening.retries import with_retries
 from kaldra_engine.core.hardening.timeouts import with_timeout
+
+from .scoring.llm_client_base import LLMClientBase
 
 
 class KindraLLMScorer:
     """
     LLM-based Kindra scoring engine.
-    
+
     Input:
         - text: raw input text (str)
         - context: dict with metadata (country, sector, domain, channel, etc.)
         - vectors: dict of vector definitions (from schema)
-    
+
     Output:
         - dict {vector_id: score (-1.0 to 1.0)}
 
@@ -34,10 +35,10 @@ class KindraLLMScorer:
         - Same shape as current rule-based scorer
     """
 
-    def __init__(self, llm_client: Optional[LLMClientBase] = None, rule_fallback=None):
+    def __init__(self, llm_client: LLMClientBase | None = None, rule_fallback=None):
         """
         Initialize LLM scorer.
-        
+
         Args:
             llm_client: Optional LLM client implementing LLMClientBase
             rule_fallback: Optional rule-based scorer for fallback
@@ -48,20 +49,15 @@ class KindraLLMScorer:
     @circuit_breaker(name="kindra_llm_score", fail_threshold=3, reset_time=60)
     @with_retries(max_attempts=3, backoff=1.0)
     @with_timeout(seconds=15)
-    def score(
-        self, 
-        text: str, 
-        context: Dict[str, Any], 
-        vectors: Dict[str, Any]
-    ) -> Dict[str, float]:
+    def score(self, text: str, context: dict[str, Any], vectors: dict[str, Any]) -> dict[str, float]:
         """
         Generate Kindra scores using LLM inference.
-        
+
         Args:
             text: Raw input text to analyze
             context: Metadata dict (country, sector, domain, etc.)
             vectors: Vector definitions from schema
-            
+
         Returns:
             Dict mapping vector_id to score in [-1, 1]
         """
@@ -79,7 +75,7 @@ class KindraLLMScorer:
         # 3. Chamada LLM
         try:
             response = self.llm.generate(prompt)
-        except Exception as e:
+        except Exception:
             # LLM error → fallback
             if self.rule_fallback is not None:
                 return self.rule_fallback.score(context, vectors)
@@ -92,20 +88,15 @@ class KindraLLMScorer:
         # 5. Clamp final
         return {k: max(-1.0, min(1.0, v)) for k, v in scores.items()}
 
-    def _build_prompt(
-        self, 
-        text: str, 
-        context: Dict[str, Any], 
-        vectors: Dict[str, Any]
-    ) -> Dict[str, Any]:
+    def _build_prompt(self, text: str, context: dict[str, Any], vectors: dict[str, Any]) -> dict[str, Any]:
         """
         Construct LLM prompt with context and instructions.
-        
+
         Args:
             text: Input text
             context: Context metadata
             vectors: Vector definitions
-            
+
         Returns:
             Prompt dict for LLM
         """
@@ -117,30 +108,26 @@ class KindraLLMScorer:
             "vectors": list(vectors.keys()),
         }
 
-    def _parse_scores(
-        self, 
-        llm_response: Any, 
-        vectors: Dict[str, Any]
-    ) -> Dict[str, float]:
+    def _parse_scores(self, llm_response: Any, vectors: dict[str, Any]) -> dict[str, float]:
         """
         Parse LLM response into score dict.
-        
+
         Args:
             llm_response: Response from LLM (must have 'scores' key)
             vectors: Vector definitions
-            
+
         Returns:
             Dict mapping vector_id to float score
         """
         # llm_response must return {vector_id: float}
         raw = llm_response.get("scores", {})
         parsed = {}
-        
+
         for k in vectors.keys():
             v = raw.get(k, 0.0)
             try:
                 parsed[k] = float(v)
             except (ValueError, TypeError):
                 parsed[k] = 0.0
-                
+
         return parsed

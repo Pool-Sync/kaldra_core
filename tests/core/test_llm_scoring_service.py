@@ -24,7 +24,7 @@ def test_llm_scoring_service_score_all_layers():
     results = service.score_all_layers(text=text, context=context)
 
     assert set(results.keys()) == {1, 2, 3}
-    for layer, resp in results.items():
+    for _layer, resp in results.items():
         assert resp.error is None
         for v in resp.scores.values():
             assert -1.0 <= v <= 1.0

@@ -1,21 +1,22 @@
 """
 KALDRA CORE — Kindra inference engine (3×48).
 """
+
 from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any
 
 import numpy as np
 
 from .normalization import l2_normalize, softmax
 from .scoring import cosine_similarity
 
-_VECTORS_CACHE: Dict[str, np.ndarray] | None = None
+_VECTORS_CACHE: dict[str, np.ndarray] | None = None
 
 
-def _load_vectors() -> Dict[str, np.ndarray]:
+def _load_vectors() -> dict[str, np.ndarray]:
     """
     Load Kindra vectors from vectors.json and cache them in memory.
 
@@ -31,7 +32,7 @@ def _load_vectors() -> Dict[str, np.ndarray]:
     with data_path.open("r", encoding="utf-8") as f:
         data = json.load(f)
 
-    mapping: Dict[str, np.ndarray] = {}
+    mapping: dict[str, np.ndarray] = {}
     for item in data.get("kindras", []):
         kid = item["id"]
         vec = np.asarray(item["vector"], dtype=float)
@@ -41,7 +42,7 @@ def _load_vectors() -> Dict[str, np.ndarray]:
     return mapping
 
 
-def infer_kindra_distribution(input_vector: np.ndarray) -> Dict[str, Any]:
+def infer_kindra_distribution(input_vector: np.ndarray) -> dict[str, Any]:
     """
     Compute a probability distribution over Kindras given an input vector.
 
@@ -59,8 +60,8 @@ def infer_kindra_distribution(input_vector: np.ndarray) -> Dict[str, Any]:
     if not vectors:
         return {"distribution": {}, "labels": []}
 
-    scores: List[float] = []
-    labels: List[str] = []
+    scores: list[float] = []
+    labels: list[str] = []
 
     for kid, kvec in vectors.items():
         labels.append(kid)
@@ -69,7 +70,7 @@ def infer_kindra_distribution(input_vector: np.ndarray) -> Dict[str, Any]:
     scores_arr = np.asarray(scores, dtype=float)
     probs = softmax(scores_arr)
 
-    distribution = {label: float(p) for label, p in zip(labels, probs)}
+    distribution = {label: float(p) for label, p in zip(labels, probs, strict=False)}
     return {
         "distribution": distribution,
         "labels": labels,

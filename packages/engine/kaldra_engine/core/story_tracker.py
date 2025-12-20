@@ -10,14 +10,14 @@ from __future__ import annotations
 
 import uuid
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional
+from datetime import UTC, datetime
+from typing import Any
 
-from kaldra_engine.core.core_story_aggregator import StoryAggregator, StoryTurnSignal
+from kaldra_engine.core.core_story_aggregator import StoryAggregator
 
 
 def _now_iso() -> str:
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 @dataclass
@@ -28,7 +28,7 @@ class StoryTurn:
     role: str
     text: str
     signal: Any
-    metadata: Dict[str, Any] = field(default_factory=dict)
+    metadata: dict[str, Any] = field(default_factory=dict)
     turn_id: str = field(default_factory=lambda: uuid.uuid4().hex)
 
 
@@ -40,15 +40,15 @@ class StoryTracker:
     distributed implementation in future versions.
     """
 
-    def __init__(self, aggregator: Optional[StoryAggregator] = None) -> None:
-        self._stories: Dict[str, List[StoryTurn]] = {}
+    def __init__(self, aggregator: StoryAggregator | None = None) -> None:
+        self._stories: dict[str, list[StoryTurn]] = {}
         self.aggregator = aggregator or StoryAggregator()
 
     # -------------------------
     # Story lifecycle
     # -------------------------
 
-    def create_story(self, story_id: Optional[str] = None) -> str:
+    def create_story(self, story_id: str | None = None) -> str:
         """
         Create a new story. Returns the story_id.
         """
@@ -63,8 +63,8 @@ class StoryTracker:
         role: str,
         text: str,
         signal: Any,
-        timestamp: Optional[str] = None,
-        metadata: Optional[Dict[str, Any]] = None,
+        timestamp: str | None = None,
+        metadata: dict[str, Any] | None = None,
     ) -> StoryTurn:
         """
         Append a new turn to an existing story.
@@ -99,13 +99,13 @@ class StoryTracker:
         turns.append(turn)
         return turn
 
-    def get_story_turns(self, story_id: str) -> List[StoryTurn]:
+    def get_story_turns(self, story_id: str) -> list[StoryTurn]:
         """
         Return the list of StoryTurn objects for a given story_id.
         """
         return list(self._stories.get(story_id, []))
 
-    def aggregate_story(self, story_id: str) -> Dict[str, Any]:
+    def aggregate_story(self, story_id: str) -> dict[str, Any]:
         """
         Aggregate a story into a schema-compatible object via StoryAggregator.
         """
@@ -113,7 +113,7 @@ class StoryTracker:
             raise KeyError(f"Unknown story_id: {story_id}")
 
         turns = self._stories[story_id]
-        turns_payload: List[Dict[str, Any]] = []
+        turns_payload: list[dict[str, Any]] = []
         for t in turns:
             turns_payload.append(
                 {
@@ -142,7 +142,7 @@ class StoryTracker:
         """
         self._stories.pop(story_id, None)
 
-    def list_story_ids(self) -> List[str]:
+    def list_story_ids(self) -> list[str]:
         """
         List all known story IDs.
         """

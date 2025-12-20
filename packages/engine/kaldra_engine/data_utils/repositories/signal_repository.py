@@ -5,7 +5,8 @@ Responsável por todas as operações de leitura/escrita na tabela `signals`
 usando o SupabaseClient.
 """
 
-from typing import Any, Dict, List, Optional
+from typing import Any
+
 from kaldra_engine.execution.supabase_client import SupabaseClient
 
 
@@ -15,7 +16,7 @@ class SignalRepository:
     Toda a pipeline deve usar este repositório, não o cliente direto.
     """
 
-    def __init__(self, client: Optional[SupabaseClient] = None) -> None:
+    def __init__(self, client: SupabaseClient | None = None) -> None:
         self.client = client or SupabaseClient()
         self.table = "signals"
 
@@ -23,16 +24,16 @@ class SignalRepository:
 
     def list_signals(
         self,
-        domain: Optional[str] = None,
+        domain: str | None = None,
         limit: int = 50,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Lista sinais com filtros opcionais.
-        
+
         Args:
             domain: Filtrar por domínio (alpha, geo, product, safeguard)
             limit: Número máximo de resultados
-        
+
         Returns:
             Lista de sinais ou dict com erro
         """
@@ -42,13 +43,13 @@ class SignalRepository:
 
         return self.client.fetch(self.table, params)
 
-    def get_signal_by_id(self, signal_id: str) -> Dict[str, Any]:
+    def get_signal_by_id(self, signal_id: str) -> dict[str, Any]:
         """
         Busca um sinal específico por ID.
-        
+
         Args:
             signal_id: UUID do sinal
-        
+
         Returns:
             Sinal ou dict com erro
         """
@@ -57,10 +58,10 @@ class SignalRepository:
 
     # ---------- Escrita ----------
 
-    def create_signal(self, data: Dict[str, Any]) -> Dict[str, Any]:
+    def create_signal(self, data: dict[str, Any]) -> dict[str, Any]:
         """
         Cria um novo sinal.
-        
+
         Espera um dict com os campos principais:
         - id (uuid) — opcional, pode ser gerado pelo banco
         - domain (required)
@@ -69,34 +70,34 @@ class SignalRepository:
         - importance
         - confidence
         - raw_payload (jsonb)
-        
+
         Args:
             data: Dados do sinal
-        
+
         Returns:
             Sinal criado ou dict com erro
         """
         return self.client.insert(self.table, data)
 
-    def upsert_signal(self, data: Dict[str, Any]) -> Dict[str, Any]:
+    def upsert_signal(self, data: dict[str, Any]) -> dict[str, Any]:
         """
         Insere ou atualiza um sinal.
-        
+
         Args:
             data: Dados do sinal (deve incluir id para atualização)
-        
+
         Returns:
             Sinal upsertado ou dict com erro
         """
         return self.client.upsert(self.table, data)
 
-    def delete_signal(self, signal_id: str) -> Dict[str, Any]:
+    def delete_signal(self, signal_id: str) -> dict[str, Any]:
         """
         Deleta um sinal por ID.
-        
+
         Args:
             signal_id: UUID do sinal
-        
+
         Returns:
             Resposta de sucesso ou dict com erro
         """

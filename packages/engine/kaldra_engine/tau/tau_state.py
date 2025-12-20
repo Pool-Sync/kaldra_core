@@ -3,14 +3,16 @@ Tau State Definition.
 
 Defines the data structure for the Tau Layer's epistemic state.
 """
+
 from dataclasses import dataclass, field
-from typing import Dict, List, Any
+from typing import Any
+
 
 @dataclass
 class TauState:
     """
     Represents the epistemic reliability state of the system.
-    
+
     Attributes:
         tau_score: Float [0.0, 1.0] representing confidence/safety.
                    1.0 = High Confidence/Safety
@@ -22,18 +24,19 @@ class TauState:
                      e.g., ["CLAMP_DRIFT", "FLAG_UNCERTAINTY"]
         details: Additional context about risk factors.
     """
+
     tau_score: float
     tau_risk: str
-    tau_modifiers: Dict[str, float] = field(default_factory=dict)
-    tau_actions: List[str] = field(default_factory=list)
-    details: Dict[str, Any] = field(default_factory=dict)
+    tau_modifiers: dict[str, float] = field(default_factory=dict)
+    tau_actions: list[str] = field(default_factory=list)
+    details: dict[str, Any] = field(default_factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         """Convert to dictionary."""
         return {
             "tau_score": self.tau_score,
             "tau_risk": self.tau_risk,
             "tau_modifiers": self.tau_modifiers,
             "tau_actions": self.tau_actions,
-            "details": self.details
+            "details": self.details,
         }

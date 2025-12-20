@@ -4,8 +4,10 @@ Dummy LLM Client.
 A placeholder client that returns zero scores. Used for testing and fallback.
 """
 
-from typing import Dict, Any
+from typing import Any
+
 from .llm_client_base import LLMClientBase
+
 
 class DummyLLMClient(LLMClientBase):
     """
@@ -13,7 +15,7 @@ class DummyLLMClient(LLMClientBase):
     Useful for testing or when no API key is configured.
     """
 
-    def generate(self, prompt: Dict[str, Any]) -> Dict[str, Any]:
+    def generate(self, prompt: dict[str, Any]) -> dict[str, Any]:
         """
         Return a dummy response with 0.0 scores for all requested vectors.
         """

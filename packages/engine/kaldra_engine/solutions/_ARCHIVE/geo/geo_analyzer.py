@@ -1,17 +1,17 @@
-
 """
 KALDRA-GEO — Geopolitical analyzer (placeholder).
 """
+
 from __future__ import annotations
 
-from typing import Any, Dict
-from kaldra_engine.bias import compute_bias_score_from_text
+from typing import Any
 
 from kaldra_engine.kaldra_engine.kaldra_engine import generate_kaldra_signal
+
 from .geo_ingest import ingest_source
 
 
-def analyze_geopolitical_text(raw_text: str) -> Dict[str, Any]:
+def analyze_geopolitical_text(raw_text: str) -> dict[str, Any]:
     """
     Run the KALDRA Engine over geopolitical text.
 

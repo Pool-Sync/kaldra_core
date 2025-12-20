@@ -6,3 +6,4 @@ Author-email: Pool <dev@pool.inc>
 Requires-Python: >=3.11
 Requires-Dist: pydantic>=2.0
 Requires-Dist: fastapi>=0.100
+Requires-Dist: numpy>=1.24.0

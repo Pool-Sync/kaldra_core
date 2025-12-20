@@ -1,15 +1,18 @@
 """
 KindraEngine v3.1 — 3×48 semantic/cultural engine.
 """
-from typing import Dict, Any, List, Optional
+
+from typing import Any
+
 import numpy as np
 
-from kaldra_engine.unification.states.unified_state import KindraContext, KindraLayerScores
-from kaldra_engine.kindras.loaders import (
-    load_layer_vectors,
-    load_layer_mapping
-)
 from kaldra_engine.kindras.llm_adapter import KindraLLMScorer
+from kaldra_engine.kindras.loaders import load_layer_mapping, load_layer_vectors
+from kaldra_engine.unification.states.unified_state import (
+    KindraContext,
+    KindraLayerScores,
+)
+
 
 class KindraEngine:
     """
@@ -21,7 +24,7 @@ class KindraEngine:
     - Uses LLM scoring + embeddings + Kindra→Δ144 mapping normalized
     """
 
-    def __init__(self, llm_scorer: Optional[KindraLLMScorer] = None):
+    def __init__(self, llm_scorer: KindraLLMScorer | None = None):
         self.llm_scorer = llm_scorer or KindraLLMScorer()
 
         # Load vectors and maps
@@ -36,9 +39,9 @@ class KindraEngine:
     def score_all_layers(
         self,
         text: str,
-        embedding: Optional[np.ndarray] = None,
-        delta144_state: Optional[str] = None,
-        archetype_scores: Optional[Dict[str, float]] = None
+        embedding: np.ndarray | None = None,
+        delta144_state: str | None = None,
+        archetype_scores: dict[str, float] | None = None,
     ) -> KindraContext:
         """
         Return KindraContext with 3×48 scores + TW-plane distribution + delta144_weights.
@@ -61,31 +64,27 @@ class KindraEngine:
             layer3=layer3_obj,
             tw_plane_distribution=tw_dist,
             delta144_weights=delta144_weights,
-            metadata={"engine": "KindraEngine v3.1"}
+            metadata={"engine": "KindraEngine v3.1"},
         )
-    
-    def _build_layer_scores(self, scores: Dict[str, float]) -> KindraLayerScores:
+
+    def _build_layer_scores(self, scores: dict[str, float]) -> KindraLayerScores:
         """Build KindraLayerScores from dict."""
         if not scores:
             return KindraLayerScores()
-        
+
         avg = sum(scores.values()) / len(scores)
         max_val = max(scores.values())
-        
-        return KindraLayerScores(
-            scores=scores,
-            avg_score=avg,
-            max_score=max_val
-        )
+
+        return KindraLayerScores(scores=scores, avg_score=avg, max_score=max_val)
 
     def _score_layer(
         self,
         layer: int,
         text: str,
-        embedding: Optional[np.ndarray],
-        vectors: Dict[str, Dict[str, Any]],
-        layer_map: Dict[str, Any]
-    ) -> Dict[str, float]:
+        embedding: np.ndarray | None,
+        vectors: dict[str, dict[str, Any]],
+        layer_map: dict[str, Any],
+    ) -> dict[str, float]:
         """
         Produce scores ∈ [0, 1] for the 48 vectors of a layer.
         """
@@ -93,24 +92,21 @@ class KindraEngine:
         for vid, vdef in vectors.items():
             # LLM/Heuristic Score
             raw_score = self.llm_scorer.score_vector(text, vdef)
-            
+
             # TODO: Integrate embedding similarity if embedding is provided
             # For now, just use raw_score
-            
+
             # Apply map boosts (if any logic requires it, e.g. based on global state)
             # Currently map is used for aggregation, but could influence score too.
             # We'll keep it simple for now.
-            
+
             scores[vid] = raw_score
-            
+
         return scores
 
     def _compute_tw_plane_distribution(
-        self,
-        l1: KindraLayerScores,
-        l2: KindraLayerScores,
-        l3: KindraLayerScores
-    ) -> Dict[int, float]:
+        self, l1: KindraLayerScores, l2: KindraLayerScores, l3: KindraLayerScores
+    ) -> dict[int, float]:
         """
         Calculate narrative energy distribution per 3/6/9 plane.
         """
@@ -119,49 +115,44 @@ class KindraEngine:
         raw9 = l3.avg_score  # Layer 3 -> Plane 9 (Abstract/Systemic)
 
         total = raw3 + raw6 + raw9 + 1e-8
-        return {
-            3: raw3 / total,
-            6: raw6 / total,
-            9: raw9 / total
-        }
+        return {3: raw3 / total, 6: raw6 / total, 9: raw9 / total}
 
     def _aggregate_delta144_weights(
-        self,
-        l1: Dict[str, float],
-        l2: Dict[str, float],
-        l3: Dict[str, float]
-    ) -> Dict[str, float]:
+        self, l1: dict[str, float], l2: dict[str, float], l3: dict[str, float]
+    ) -> dict[str, float]:
         """
         Use normalized maps to accumulate weight on Delta144 states.
         """
         weights = {}
-        
+
         def process_layer(scores, mapping):
             for vid, score in scores.items():
-                if score <= 0: continue
-                
+                if score <= 0:
+                    continue
+
                 map_info = mapping.get(vid)
-                if not map_info: continue
-                
+                if not map_info:
+                    continue
+
                 # map_info is likely a dict with 'delta144_targets' or similar
                 # Or based on schema: {"kindra_vector_id": "...", "delta144_targets": [{"id": "A01_CREATOR", "weight": 0.5}, ...]}
-                targets = map_info.get('delta144_targets', [])
-                
+                targets = map_info.get("delta144_targets", [])
+
                 for target in targets:
-                    tid = target.get('id')
-                    tweight = target.get('weight', 1.0)
-                    
+                    tid = target.get("id")
+                    tweight = target.get("weight", 1.0)
+
                     if tid:
                         weights[tid] = weights.get(tid, 0.0) + (score * tweight)
 
         process_layer(l1, self.layer1_map)
         process_layer(l2, self.layer2_map)
         process_layer(l3, self.layer3_map)
-        
+
         # Normalize
         total = sum(weights.values())
         if total > 0:
             for k in weights:
                 weights[k] /= total
-                
+
         return weights

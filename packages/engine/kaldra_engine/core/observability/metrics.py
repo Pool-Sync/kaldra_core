@@ -1,7 +1,7 @@
 """
 Metrics Collection for KALDRA v2.9.
 """
-from typing import Dict, Any
+
 
 class MetricsCollector:
     def __init__(self):
@@ -19,6 +19,7 @@ class MetricsCollector:
         if metric not in self.histograms:
             self.histograms[metric] = []
         self.histograms[metric].append(value)
+
 
 # Global instance
 metrics = MetricsCollector()

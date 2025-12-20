@@ -2,10 +2,10 @@
 KALDRA CORE — TW369 module
 Placeholder implementation. Subject to refinement in later iterations.
 """
+
 from __future__ import annotations
 
 import numpy as np
-from typing import Dict
 
 
 def compute_l2_drift(vec_t: np.ndarray, vec_t1: np.ndarray) -> float:
@@ -46,7 +46,7 @@ def compute_drift_metrics(
     vec_t: np.ndarray,
     vec_t1: np.ndarray,
     delta_time: float = 1.0,
-) -> Dict[str, float]:
+) -> dict[str, float]:
     """
     Return basic drift metrics, including a normalized temporal drift.
 

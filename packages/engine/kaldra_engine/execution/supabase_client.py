@@ -4,11 +4,11 @@ Versão: v1
 Funções básicas para leitura/escrita usando a REST API do Supabase.
 """
 
-import os
-import urllib.request
-import urllib.error
 import json
-from typing import Any, Dict, List, Optional
+import os
+import urllib.error
+import urllib.request
+from typing import Any
 
 
 class SupabaseClient:
@@ -28,10 +28,9 @@ class SupabaseClient:
         self,
         path: str,
         method: str = "GET",
-        data: Optional[Dict] = None,
-        params: Optional[str] = None,
-    ) -> Dict[str, Any]:
-
+        data: dict | None = None,
+        params: str | None = None,
+    ) -> dict[str, Any]:
         endpoint = self.url.rstrip("/") + path
         if params:
             endpoint += f"?{params}"
@@ -61,15 +60,15 @@ class SupabaseClient:
 
     # ---------- Public API ----------
 
-    def fetch(self, table: str, params: str = "select=*") -> Dict[str, Any]:
+    def fetch(self, table: str, params: str = "select=*") -> dict[str, Any]:
         return self._make_request(f"/rest/v1/{table}", "GET", None, params)
 
-    def insert(self, table: str, data: Dict) -> Dict[str, Any]:
+    def insert(self, table: str, data: dict) -> dict[str, Any]:
         return self._make_request(f"/rest/v1/{table}", "POST", data)
 
-    def upsert(self, table: str, data: Dict) -> Dict[str, Any]:
+    def upsert(self, table: str, data: dict) -> dict[str, Any]:
         return self._make_request(f"/rest/v1/{table}", "POST", data, "on_conflict=id")
 
-    def delete(self, table: str, match: Dict) -> Dict[str, Any]:
+    def delete(self, table: str, match: dict) -> dict[str, Any]:
         params = "&".join(f"{k}=eq.{v}" for k, v in match.items())
         return self._make_request(f"/rest/v1/{table}", "DELETE", None, params)

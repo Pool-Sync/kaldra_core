@@ -11,21 +11,19 @@ Unified embedding generation with support for multiple providers:
 
 from __future__ import annotations
 
+from collections.abc import Callable, Sequence
 from dataclasses import dataclass
-from typing import Any, Callable, List, Optional, Sequence, Union
-import os
-import json
-import requests
-import numpy as np
+from typing import Any, Union
 
+import numpy as np
+import requests
 from kaldra_engine.core.embeddings.embedding_cache import (
     BaseEmbeddingCache,
     InMemoryEmbeddingCache,
     make_embedding_cache_key,
 )
-from kaldra_engine.core.hardening.retries import with_retries
 from kaldra_engine.core.hardening.circuit_breaker import circuit_breaker
-from kaldra_engine.core.hardening.fallbacks import safe_fallback
+from kaldra_engine.core.hardening.retries import with_retries
 from kaldra_engine.core.hardening.timeouts import with_timeout
 
 # Optional import for sentence-transformers.
@@ -59,9 +57,9 @@ class EmbeddingConfig:
     model_name: str = "all-MiniLM-L6-v2"
     normalize: bool = True
     batch_size: int = 16
-    device: Optional[str] = None
-    dim: Optional[int] = None  # expected output dimension (optional)
-    api_key: Optional[str] = None # For OpenAI/Cohere
+    device: str | None = None
+    dim: int | None = None  # expected output dimension (optional)
+    api_key: str | None = None  # For OpenAI/Cohere
 
 
 class EmbeddingGenerator:
@@ -77,11 +75,11 @@ class EmbeddingGenerator:
 
     def __init__(
         self,
-        config: Optional[EmbeddingConfig] = None,
-        cache: Optional[BaseEmbeddingCache] = None,
+        config: EmbeddingConfig | None = None,
+        cache: BaseEmbeddingCache | None = None,
         openai_client: Any = None,
         cohere_client: Any = None,
-        custom_encoder: Optional[Callable[[Sequence[str]], np.ndarray]] = None,
+        custom_encoder: Callable[[Sequence[str]], np.ndarray] | None = None,
     ) -> None:
         self.config = config or EmbeddingConfig()
         self.cache = cache or InMemoryEmbeddingCache()
@@ -139,7 +137,7 @@ class EmbeddingGenerator:
     # --------------------
     # Internal helpers
     # --------------------
-    def _normalize_input(self, texts: TextLike) -> List[str]:
+    def _normalize_input(self, texts: TextLike) -> list[str]:
         if isinstance(texts, str):
             batch = [texts]
         else:
@@ -180,8 +178,7 @@ class EmbeddingGenerator:
     def _encode_sentence_transformers(self, texts: Sequence[str]) -> np.ndarray:
         if SentenceTransformer is None:
             raise RuntimeError(
-                "sentence-transformers is not installed. "
-                "Install via `pip install sentence-transformers`."
+                "sentence-transformers is not installed. Install via `pip install sentence-transformers`."
             )
 
         if self._st_model is None:
@@ -221,13 +218,10 @@ class EmbeddingGenerator:
             url = "https://api.openai.com/v1/embeddings"
             headers = {
                 "Content-Type": "application/json",
-                "Authorization": f"Bearer {self.config.api_key}"
+                "Authorization": f"Bearer {self.config.api_key}",
             }
-            payload = {
-                "model": self.config.model_name,
-                "input": list(texts)
-            }
-            
+            payload = {"model": self.config.model_name, "input": list(texts)}
+
             try:
                 response = requests.post(url, headers=headers, json=payload, timeout=10)
                 response.raise_for_status()
@@ -236,13 +230,11 @@ class EmbeddingGenerator:
                 return np.vstack(vectors)
             except Exception as e:
                 print(f"OpenAI Embedding Error: {e}")
-                # Fallback to legacy if configured or raise? 
+                # Fallback to legacy if configured or raise?
                 # For now, let's raise to be explicit about failure in REAL mode.
                 raise RuntimeError(f"OpenAI API failed: {e}")
 
-        raise RuntimeError(
-            "OpenAI provider selected but no client injected and no API key in config."
-        )
+        raise RuntimeError("OpenAI provider selected but no client injected and no API key in config.")
 
     @circuit_breaker(name="cohere_embeddings", fail_threshold=3, reset_time=60)
     @with_retries(max_attempts=3, backoff=1.0)
@@ -276,11 +268,11 @@ class EmbeddingGenerator:
             # Seed based on text content
             seed = sum(ord(c) for c in text) % (2**32)
             rng = np.random.RandomState(seed)
-            
+
             # Generate random vector
             vec = rng.randn(dim)
             vectors.append(vec)
-            
+
         return np.vstack(vectors).astype(np.float32)
 
     def _encode_custom(self, texts: Sequence[str]) -> np.ndarray:
@@ -289,8 +281,7 @@ class EmbeddingGenerator:
         """
         if self.custom_encoder is None:
             raise RuntimeError(
-                "custom_encoder is not configured. "
-                "Pass a callable to EmbeddingGenerator(custom_encoder=...)."
+                "custom_encoder is not configured. Pass a callable to EmbeddingGenerator(custom_encoder=...)."
             )
 
         arr = self.custom_encoder(list(texts))

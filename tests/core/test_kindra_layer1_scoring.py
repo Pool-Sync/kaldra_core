@@ -4,7 +4,9 @@ Tests for Kindra Layer 1 (Cultural Macro) Scoring.
 Tests rule-based scoring for country and sector contexts.
 """
 
-from kaldra_engine.kindras.layer1_cultural_macro_scoring import KindraLayer1CulturalMacroScoring
+from kaldra_engine.kindras.layer1_cultural_macro_scoring import (
+    KindraLayer1CulturalMacroScoring,
+)
 
 
 def test_layer1_scoring_brazil_tech():

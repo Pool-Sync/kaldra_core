@@ -8,8 +8,7 @@ the core TW369 mathematics.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Dict, Any, Literal, Optional
-
+from typing import Any, Literal
 
 DomainType = Literal["ALPHA", "GEO", "PRODUCT", "SAFEGUARD", "DEFAULT"]
 
@@ -21,13 +20,14 @@ class AdaptiveMappingContext:
 
     This context is intentionally generic and independent of TW369 internals.
     """
+
     domain: DomainType = "DEFAULT"
     severity: float = 0.0  # [0, 1], as computed by TW369
     instability_index: float = 0.0  # any non-negative float
     time_horizon: Literal["short", "medium", "long"] = "medium"
-    narrative_type: Optional[str] = None   # e.g., 'crisis', 'optimistic', 'policy'
-    country: Optional[str] = None
-    sector: Optional[str] = None
+    narrative_type: str | None = None  # e.g., 'crisis', 'optimistic', 'policy'
+    country: str | None = None
+    sector: str | None = None
 
 
 @dataclass
@@ -38,6 +38,7 @@ class PlaneWeights:
         w3 >= 0, w6 >= 0, w9 >= 0
         w3 + w6 + w9 = 1
     """
+
     plane3: float
     plane6: float
     plane9: float
@@ -50,9 +51,10 @@ class PlaneMappingResult:
     - layer_primary_plane: primary assignment for each Kindra layer
     - plane_weights: global weights applied to planes 3, 6, 9
     """
-    layer_primary_plane: Dict[int, int]  # {1: 3, 2: 6, 3: 9} by default
+
+    layer_primary_plane: dict[int, int]  # {1: 3, 2: 6, 3: 9} by default
     plane_weights: PlaneWeights
-    metadata: Dict[str, Any]
+    metadata: dict[str, Any]
 
 
 class AdaptiveStatePlaneMapper:
@@ -69,7 +71,7 @@ class AdaptiveStatePlaneMapper:
 
     def __init__(
         self,
-        config: Dict[str, Any],
+        config: dict[str, Any],
     ) -> None:
         self._config = config
         self._severity_thresholds = config.get("severity_thresholds", {})
@@ -195,7 +197,7 @@ class AdaptiveStatePlaneMapper:
         # Primary mapping remains static for now (future: truly dynamic reassignment)
         primary = {1: 3, 2: 6, 3: 9}
 
-        meta: Dict[str, Any] = {
+        meta: dict[str, Any] = {
             "domain": ctx.domain,
             "severity": ctx.severity,
             "instability_index": ctx.instability_index,

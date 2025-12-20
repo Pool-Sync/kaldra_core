@@ -7,10 +7,11 @@ Falls back to basic structural validation when jsonschema is unavailable.
 
 import json
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any
 
 try:
     import jsonschema  # type: ignore
+
     HAS_JSONSCHEMA = True
 except ImportError:  # pragma: no cover
     HAS_JSONSCHEMA = False
@@ -19,21 +20,21 @@ except ImportError:  # pragma: no cover
 SCHEMA_DIR = Path("schema") / "tw369"
 
 
-def _load_json(path: Path) -> Dict[str, Any]:
+def _load_json(path: Path) -> dict[str, Any]:
     """Load JSON file."""
     return json.loads(path.read_text())
 
 
-def validate_tw_state_dict(data: Dict[str, Any]) -> None:
+def validate_tw_state_dict(data: dict[str, Any]) -> None:
     """
     Runtime validation helper for TWState-like dicts.
 
     - If jsonschema is available and tw_state_schema.json exists, validate against it.
     - Otherwise, perform minimal structural checks and raise ValueError on failure.
-    
+
     Args:
         data: Dictionary to validate as TWState
-        
+
     Raises:
         ValueError: If validation fails
         jsonschema.ValidationError: If schema validation fails (when jsonschema available)
@@ -56,16 +57,16 @@ def validate_tw_state_dict(data: Dict[str, Any]) -> None:
         raise ValueError(f"TWState missing required keys: {sorted(missing)}")
 
 
-def validate_tw369_config_dict(cfg: Dict[str, Any]) -> None:
+def validate_tw369_config_dict(cfg: dict[str, Any]) -> None:
     """
     Runtime validation helper for TW369 engine config dicts.
 
     - If jsonschema is available and tw369_config_schema.json exists, validate against it.
     - Otherwise, perform minimal structural checks and raise ValueError on failure.
-    
+
     Args:
         cfg: Dictionary to validate as TW369 config
-        
+
     Raises:
         ValueError: If validation fails
         jsonschema.ValidationError: If schema validation fails (when jsonschema available)

@@ -13,8 +13,13 @@ Notes:
 """
 
 from fastapi import APIRouter, Depends, Response
-from ..middleware.rate_limiter import rate_limit_dependency, RateLimiterConfig
-from ..monitoring.metrics import get_metrics_response, get_metrics_content_type, register_default_metrics
+
+from ..middleware.rate_limiter import RateLimiterConfig, rate_limit_dependency
+from ..monitoring.metrics import (
+    get_metrics_content_type,
+    get_metrics_response,
+    register_default_metrics,
+)
 
 # Initialize metrics
 register_default_metrics()
@@ -22,18 +27,14 @@ register_default_metrics()
 router = APIRouter()
 
 # Configure rate limiter for status endpoints
-status_rate_limiter = rate_limit_dependency(
-    RateLimiterConfig(requests=10, per_seconds=60, key_prefix="status")
-)
+status_rate_limiter = rate_limit_dependency(RateLimiterConfig(requests=10, per_seconds=60, key_prefix="status"))
 
-@router.get(
-    "/",
-    dependencies=[Depends(status_rate_limiter)]
-)
+
+@router.get("/", dependencies=[Depends(status_rate_limiter)])
 def status():
     """
     Health check endpoint.
-    
+
     Returns:
         dict: Status information
     """

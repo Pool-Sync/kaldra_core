@@ -5,22 +5,26 @@ Provides integration with Prometheus for tracking request counts and latencies.
 Fails gracefully if prometheus_client is not installed.
 """
 
-import time
-from typing import Optional, Callable, Any
+from typing import Any
 
 try:
-    from prometheus_client import Counter, Histogram, generate_latest, CONTENT_TYPE_LATEST
+    from prometheus_client import (
+        CONTENT_TYPE_LATEST,
+        Counter,
+        Histogram,
+        generate_latest,
+    )
 except ImportError:  # pragma: no cover
     Counter = Histogram = None  # type: ignore
     CONTENT_TYPE_LATEST = "text/plain"
-    
+
     def generate_latest():  # type: ignore
         return b""
 
 
 # Global metrics placeholders
-REQUEST_COUNT: Optional[Any] = None
-REQUEST_LATENCY: Optional[Any] = None
+REQUEST_COUNT: Any | None = None
+REQUEST_LATENCY: Any | None = None
 
 
 def register_default_metrics():
@@ -29,22 +33,22 @@ def register_default_metrics():
     Idempotent: safe to call multiple times.
     """
     global REQUEST_COUNT, REQUEST_LATENCY
-    
+
     if Counter is None or Histogram is None:
         return
 
     if REQUEST_COUNT is None:
         REQUEST_COUNT = Counter(
-            'kaldra_api_requests_total', 
-            'Total count of requests', 
-            ['method', 'endpoint', 'status']
+            "kaldra_api_requests_total",
+            "Total count of requests",
+            ["method", "endpoint", "status"],
         )
-        
+
     if REQUEST_LATENCY is None:
         REQUEST_LATENCY = Histogram(
-            'kaldra_api_request_duration_seconds', 
-            'Request duration in seconds',
-            ['method', 'endpoint']
+            "kaldra_api_request_duration_seconds",
+            "Request duration in seconds",
+            ["method", "endpoint"],
         )
 
 

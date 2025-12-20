@@ -1,4 +1,4 @@
-from kaldra_engine.bias import compute_bias_score_from_text, classify_bias
+from kaldra_engine.bias import classify_bias, compute_bias_score_from_text
 
 
 def test_compute_bias_score_from_text_runs():

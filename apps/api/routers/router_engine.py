@@ -3,17 +3,19 @@ KALDRA API — Engine router.
 
 Exposes HTTP endpoints that wrap the KALDRA Master Engine V2.
 """
+
 from __future__ import annotations
 
 import logging
-import numpy as np
-from fastapi import APIRouter, HTTPException, Depends
 
-from ..dependencies import get_master_engine
+import numpy as np
+from fastapi import APIRouter, Depends, HTTPException
+from kaldra_engine.bias import classify_bias, compute_bias_score_from_text
 from kaldra_engine.core.kaldra_master_engine import KaldraMasterEngineV2
-from kaldra_engine.bias import compute_bias_score_from_text, classify_bias
-from ..schemas.signal import KaldraSignalRequest, KaldraSignalResponse
+
 from ..core.request_models import EngineInferenceRequest
+from ..dependencies import get_master_engine
+from ..schemas.signal import KaldraSignalResponse
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -26,11 +28,11 @@ router = APIRouter()
 )
 def generate_signal(
     payload: EngineInferenceRequest,  # Updated to use new validation model
-    engine: KaldraMasterEngineV2 = Depends(get_master_engine)
+    engine: KaldraMasterEngineV2 = Depends(get_master_engine),
 ) -> KaldraSignalResponse:
     """
     Call the KALDRA Master Engine V2 and return a structured signal.
-    
+
     This endpoint now uses the real Master Engine V2, which orchestrates:
     - Delta144 (archetype inference)
     - Kindra Cultural Modulation
@@ -58,38 +60,31 @@ def generate_signal(
         # Simulate embedding generation (in prod, use a real encoder)
         # For now, use a simple hash-based deterministic vector
         embedding = _text_to_embedding(text)
-        
+
         # Call Master Engine V2
         signal = engine.infer_from_embedding(embedding)
-        
+
         # Extract top archetype
         top_idx = int(np.argmax(signal.archetype_probs))
-        top_prob = float(signal.archetype_probs[top_idx])
-        
+        float(signal.archetype_probs[top_idx])
+
         # Extract Delta144 state information
         delta = signal.delta_state or {}
         archetype_id = delta.get("archetype", {}).get("id", f"STATE_{top_idx:03d}")
         state_id = delta.get("state", {}).get("id", "INFERRED")
-        
+
         # Prepare Kindra distribution (top 5 states)
         probs = signal.archetype_probs
         top_indices = probs.argsort()[-5:][::-1]
-        kindra_distribution = [
-            {"state_index": int(i), "prob": float(probs[i])}
-            for i in top_indices
-        ]
-        
+        kindra_distribution = [{"state_index": int(i), "prob": float(probs[i])} for i in top_indices]
+
         # Calculate narrative risk (heuristic v0.1)
         # 40% bias, 30% TW, 30% low epistemic confidence
         conf = signal.epistemic.confidence or 0.0
         tw_factor = 1.0 if signal.tw_trigger else 0.0
-        narrative_risk = (
-            0.4 * bias_score +
-            0.3 * tw_factor +
-            0.3 * (1.0 - conf)
-        )
+        narrative_risk = 0.4 * bias_score + 0.3 * tw_factor + 0.3 * (1.0 - conf)
         narrative_risk = max(0.0, min(1.0, float(narrative_risk)))
-        
+
         logger.info(
             "KALDRA signal generated",
             extra={
@@ -101,7 +96,7 @@ def generate_signal(
                 "narrative_risk": narrative_risk,
             },
         )
-        
+
         # Map to response schema
         return KaldraSignalResponse(
             archetype=archetype_id,
@@ -115,12 +110,10 @@ def generate_signal(
             bias_label=bias_label,
             narrative_risk=narrative_risk,
         )
-        
+
     except Exception as exc:
         logger.exception("KALDRA Master Engine error")
-        raise HTTPException(
-            status_code=500, detail=f"KALDRA Master Engine error: {exc}"
-        ) from exc
+        raise HTTPException(status_code=500, detail=f"KALDRA Master Engine error: {exc}") from exc
 
 
 def _text_to_embedding(text: str, d_ctx: int = 256) -> np.ndarray:
@@ -131,4 +124,3 @@ def _text_to_embedding(text: str, d_ctx: int = 256) -> np.ndarray:
     seed = sum(ord(c) for c in text) % (2**32)
     rng = np.random.RandomState(seed)
     return rng.randn(d_ctx)
-

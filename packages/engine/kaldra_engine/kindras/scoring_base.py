@@ -4,17 +4,17 @@ Base classes and utilities for Kindra scoring.
 Provides abstract base class and helper functions for all Kindra scorers.
 """
 
-from typing import Dict, Any
 from abc import ABC, abstractmethod
+from typing import Any
 
 
 def clamp_score(value: float) -> float:
     """
     Clamp helper to keep scores in [-1.0, 1.0].
-    
+
     Args:
         value: Score value to clamp
-        
+
     Returns:
         Clamped score in range [-1.0, 1.0]
     """
@@ -32,7 +32,7 @@ class KindraScoringBase(ABC):
     """
 
     @abstractmethod
-    def score(self, context: Dict[str, Any], vectors: Dict[str, float]) -> Dict[str, float]:
+    def score(self, context: dict[str, Any], vectors: dict[str, float]) -> dict[str, float]:
         """
         Compute scores for a set of Kindra vectors given a context.
 

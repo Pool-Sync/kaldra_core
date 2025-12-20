@@ -1,23 +1,25 @@
 from dataclasses import dataclass
+
 import numpy as np
 import torch
-from typing import Optional
+
 
 @dataclass
 class EpistemicDecision:
-    status: str            # "OK" | "INCONCLUSIVO"
+    status: str  # "OK" | "INCONCLUSIVO"
     delegate: bool
-    archetype_idx: Optional[int] = None
-    confidence: Optional[float] = None
+    archetype_idx: int | None = None
+    confidence: float | None = None
+
 
 class EpistemicLimiter:
     """
     Camada τ (Tau): Limitador Epistêmico.
-    
+
     Decide se o sistema está confiante o suficiente para 'manifestar'
     um arquétipo como diagnóstico final, ou se deve delegar para revisão humana
     ou marcar como inconclusivo.
-    
+
     O parâmetro tau (τ) define o limiar de corte de confiança (entropia inversa).
     """
 
@@ -31,10 +33,10 @@ class EpistemicLimiter:
         probs = np.asarray(probs, dtype=float)
         idx = int(probs.argmax())
         conf = float(probs[idx])
-        
+
         if conf < self.tau:
             return EpistemicDecision(status="INCONCLUSIVO", delegate=True)
-            
+
         return EpistemicDecision(
             status="OK",
             delegate=False,
@@ -50,5 +52,5 @@ class EpistemicLimiter:
             # Se for batch, pega o primeiro ou assume input single
             if probs.dim() > 1:
                 probs = probs[0]
-                
+
             return self.from_probs(probs.cpu().numpy())

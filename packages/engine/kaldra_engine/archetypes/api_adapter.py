@@ -2,22 +2,24 @@
 KALDRA CORE — Delta144 integration layer
 Placeholder implementation. Subject to refinement in later iterations.
 """
+
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Any
+
 import numpy as np
 
 
 def infer_state(
     vector_144: np.ndarray,
-    modifiers: Dict[str, float] | None = None,
-    polarities: Dict[str, float] | None = None,
-) -> Dict[str, Any]:
+    modifiers: dict[str, float] | None = None,
+    polarities: dict[str, float] | None = None,
+) -> dict[str, Any]:
     """
     Public API wrapper around the existing Delta144 implementation.
 
     Calls the real Delta144 engine to infer state from the vector.
-    
+
     Args:
         vector_144: 144-dimensional state vector
         modifiers: Optional modifier weights dictionary
@@ -34,9 +36,9 @@ def infer_state(
         raise ValueError("vector_144 must have length 144.")
 
     # In a real scenario, we might want to instantiate the engine here or use a singleton.
-    # For this adapter, we'll just do the normalization and return the structure 
+    # For this adapter, we'll just do the normalization and return the structure
     # expected by external consumers, but enriched with v2.7 metadata.
-    
+
     norm = np.linalg.norm(v, ord=1) + 1e-8
     probs = v / norm
 
@@ -44,16 +46,16 @@ def infer_state(
         "state_vector": probs.tolist(),
         "meta": {
             "modifiers": modifiers or {},
-            "polarities": polarities or {}, # v2.7
+            "polarities": polarities or {},  # v2.7
         },
-        "v2_7_compliant": True
+        "v2_7_compliant": True,
     }
 
 
 def evaluate_sequence_stability(
-    activations_sequence: List[np.ndarray],
+    activations_sequence: list[np.ndarray],
     tau: float = 0.5,
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     """
     Evaluate stability over a sequence of 144D activations.
     Placeholder: computes simple drift summary.
@@ -70,7 +72,7 @@ def evaluate_sequence_stability(
 
     # L2 drift between successive activations
     diffs = []
-    for a, b in zip(activations_sequence[:-1], activations_sequence[1:]):
+    for a, b in zip(activations_sequence[:-1], activations_sequence[1:], strict=False):
         a = np.asarray(a, dtype=float)
         b = np.asarray(b, dtype=float)
         diffs.append(float(np.linalg.norm(b - a, ord=2)))

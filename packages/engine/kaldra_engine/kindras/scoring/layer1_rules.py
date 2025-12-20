@@ -6,7 +6,7 @@ Expanded coverage for countries and sectors.
 
 from __future__ import annotations
 
-from typing import Dict, Any
+from typing import Any
 
 from .rule_engine_base import KindraRuleEngineBase, clamp_score
 
@@ -23,9 +23,9 @@ class KindraLayer1CulturalMacroRules(KindraRuleEngineBase):
     - Sector-level cultural biases (tech, finance, healthcare, retail, industrial, ...)
     """
 
-    def score(self, context: Dict[str, Any], base_vectors: Dict[str, float] | None = None) -> Dict[str, float]:
+    def score(self, context: dict[str, Any], base_vectors: dict[str, float] | None = None) -> dict[str, float]:
         """Score Layer 1 vectors based on cultural macro context."""
-        scores: Dict[str, float] = dict(base_vectors) if base_vectors else {}
+        scores: dict[str, float] = dict(base_vectors) if base_vectors else {}
 
         country = (context.get("country") or "").upper()
         sector = (context.get("sector") or "").lower()

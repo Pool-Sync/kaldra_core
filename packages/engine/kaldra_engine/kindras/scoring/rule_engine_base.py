@@ -7,16 +7,16 @@ Provides abstract base class and clamp helper for all scoring engines.
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Dict, Any
+from typing import Any
 
 
 def clamp_score(value: float) -> float:
     """
     Clamp helper to keep scores in [-1.0, 1.0].
-    
+
     Args:
         value: Score value to clamp
-        
+
     Returns:
         Clamped score in range [-1.0, 1.0]
     """
@@ -34,7 +34,7 @@ class KindraRuleEngineBase(ABC):
     """
 
     @abstractmethod
-    def score(self, context: Dict[str, Any], base_vectors: Dict[str, float] | None = None) -> Dict[str, float]:
+    def score(self, context: dict[str, Any], base_vectors: dict[str, float] | None = None) -> dict[str, float]:
         """
         Compute scores for a set of Kindra vectors given a context.
 

@@ -3,14 +3,14 @@ Configuration loader utilities for TW369.
 """
 
 import json
-from pathlib import Path
-from typing import Dict, Any, Optional
 from dataclasses import dataclass
+from pathlib import Path
 
 
 @dataclass
 class PainleveConfig:
     """Painlevé solver configuration."""
+
     alpha: float = 0.0
     x_start: float = -5.0
     x_end: float = 5.0
@@ -21,25 +21,25 @@ class PainleveConfig:
     volatility_threshold: float = 0.5
 
 
-def load_painleve_config(schema_dir: Optional[Path] = None) -> PainleveConfig:
+def load_painleve_config(schema_dir: Path | None = None) -> PainleveConfig:
     """
     Load Painlevé configuration from schema.
-    
+
     Args:
         schema_dir: Optional schema directory path
-        
+
     Returns:
         PainleveConfig object
     """
     if schema_dir is None:
         schema_dir = Path(__file__).parent.parent.parent / "schema" / "tw369"
-    
+
     config_path = schema_dir / "painleve_config.json"
-    
+
     if not config_path.exists():
         return PainleveConfig()
-    
-    with open(config_path, "r") as f:
+
+    with open(config_path) as f:
         data = json.load(f)
-    
+
     return PainleveConfig(**data)

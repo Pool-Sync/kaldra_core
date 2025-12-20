@@ -1,6 +1,7 @@
 """
 KALDRA-ALPHA — Earnings call ingestion (placeholder).
 """
+
 from __future__ import annotations
 
 

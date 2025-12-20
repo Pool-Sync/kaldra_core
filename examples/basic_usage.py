@@ -1,10 +1,14 @@
 import json
+
 from src.archetypes import Delta144Engine
+
 
 def main():
     # Initialize engine with default schemas
     engine = Delta144Engine.from_default_files()
-    print(f"Engine initialized with {len(engine.archetypes)} archetypes, {len(engine.states)} states, and {len(engine.modifiers)} modifiers.")
+    print(
+        f"Engine initialized with {len(engine.archetypes)} archetypes, {len(engine.states)} states, and {len(engine.modifiers)} modifiers."
+    )
 
     # Example inference
     result = engine.infer_state(
@@ -20,6 +24,7 @@ def main():
 
     print("\nInference Result:")
     print(json.dumps(result.to_dict(), indent=2, ensure_ascii=False))
+
 
 if __name__ == "__main__":
     main()

@@ -1,8 +1,8 @@
 """
 Profile model for Supabase.
 """
+
 from dataclasses import dataclass
-from typing import Optional
 from datetime import datetime
 
 
@@ -10,7 +10,7 @@ from datetime import datetime
 class Profile:
     """
     User profile model.
-    
+
     Attributes:
         id: Unique identifier
         created_at: Creation timestamp
@@ -19,9 +19,10 @@ class Profile:
         role: User role (admin, viewer, beta)
         notes: Additional notes
     """
+
     id: str
-    created_at: Optional[datetime] = None
-    email: Optional[str] = None
-    display_name: Optional[str] = None
-    role: Optional[str] = None
-    notes: Optional[str] = None
+    created_at: datetime | None = None
+    email: str | None = None
+    display_name: str | None = None
+    role: str | None = None
+    notes: str | None = None

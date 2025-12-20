@@ -9,7 +9,6 @@ from __future__ import annotations
 import math
 import random
 from dataclasses import dataclass
-from typing import Dict, Optional, Tuple
 
 
 @dataclass
@@ -18,6 +17,7 @@ class DriftModelConfig:
     Configuration slice for advanced drift models extracted from
     schema/tw369/drift_parameters.json and TW369 config.
     """
+
     default_model: str = "model_a"
     nonlinear_enabled: bool = False
     nonlinear_exponent: float = 1.5
@@ -29,7 +29,7 @@ class DriftModelConfig:
     stochastic_enabled: bool = False
     stochastic_base_sigma: float = 0.05
     stochastic_severity_scale: float = 0.5
-    stochastic_seed: Optional[int] = None
+    stochastic_seed: int | None = None
 
 
 @dataclass
@@ -40,25 +40,23 @@ class DriftState:
     last_drift: last step drift values { 'plane3_to_6': ..., ... }
     long_term_drift: slower moving drift baseline.
     """
-    last_drift: Dict[str, float]
-    long_term_drift: Dict[str, float]
+
+    last_drift: dict[str, float]
+    long_term_drift: dict[str, float]
 
 
 def model_a_linear_drift(
-    gradients: Dict[str, float],
+    gradients: dict[str, float],
     severity: float,
     normalization_k: float,
-) -> Dict[str, float]:
+) -> dict[str, float]:
     """
     Baseline linear drift (Model A), preserved for backward compatibility.
 
     drift = (grad / k) * severity
     """
     k = max(1.0, normalization_k)
-    return {
-        key: (g / k) * severity
-        for key, g in gradients.items()
-    }
+    return {key: (g / k) * severity for key, g in gradients.items()}
 
 
 def nonlinear_transform_gradient(
@@ -83,11 +81,11 @@ def nonlinear_transform_gradient(
 
 
 def model_b_nonlinear_drift(
-    gradients: Dict[str, float],
+    gradients: dict[str, float],
     severity: float,
     cfg: DriftModelConfig,
     normalization_k: float,
-) -> Dict[str, float]:
+) -> dict[str, float]:
     """
     Nonlinear drift model (Model B).
 
@@ -96,7 +94,7 @@ def model_b_nonlinear_drift(
     2. Normalize by k.
     3. Scale by severity.
     """
-    transformed: Dict[str, float] = {}
+    transformed: dict[str, float] = {}
     for key, g in gradients.items():
         g_nl = nonlinear_transform_gradient(
             g,
@@ -107,17 +105,14 @@ def model_b_nonlinear_drift(
         transformed[key] = g_nl
 
     k = max(1.0, normalization_k)
-    return {
-        key: (g_nl / k) * severity
-        for key, g_nl in transformed.items()
-    }
+    return {key: (g_nl / k) * severity for key, g_nl in transformed.items()}
 
 
 def model_c_multiscale_drift(
-    instantaneous_drift: Dict[str, float],
+    instantaneous_drift: dict[str, float],
     cfg: DriftModelConfig,
-    prev_state: Optional[DriftState],
-) -> Tuple[Dict[str, float], DriftState]:
+    prev_state: DriftState | None,
+) -> tuple[dict[str, float], DriftState]:
     """
     Multiscale drift model (Model C).
 
@@ -140,8 +135,8 @@ def model_c_multiscale_drift(
         prev_last = dict(prev_state.last_drift)
         prev_long = dict(prev_state.long_term_drift)
 
-    new_short: Dict[str, float] = {}
-    new_long: Dict[str, float] = {}
+    new_short: dict[str, float] = {}
+    new_long: dict[str, float] = {}
 
     for key, inst_val in instantaneous_drift.items():
         last_val = prev_last.get(key, 0.0)
@@ -160,10 +155,10 @@ def model_c_multiscale_drift(
 
 
 def model_d_stochastic_drift(
-    base_drift: Dict[str, float],
+    base_drift: dict[str, float],
     severity: float,
     cfg: DriftModelConfig,
-) -> Dict[str, float]:
+) -> dict[str, float]:
     """
     Stochastic drift model (Model D).
 
@@ -178,7 +173,7 @@ def model_d_stochastic_drift(
     sev_clamped = max(0.0, min(1.0, severity))
     sigma = cfg.stochastic_base_sigma * (1.0 + sev_clamped * cfg.stochastic_severity_scale)
 
-    noisy: Dict[str, float] = {}
+    noisy: dict[str, float] = {}
     for key, val in base_drift.items():
         noise = random.gauss(0.0, sigma)
         noisy[key] = val + noise

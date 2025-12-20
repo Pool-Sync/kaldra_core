@@ -5,11 +5,11 @@ Uso:
     python -m src.scripts.test_supabase_connection
 """
 
+import json
 import os
 import sys
-import urllib.request
 import urllib.error
-import json
+import urllib.request
 
 
 def get_env(name: str) -> str:

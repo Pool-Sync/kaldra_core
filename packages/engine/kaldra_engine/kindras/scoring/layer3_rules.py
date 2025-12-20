@@ -4,7 +4,7 @@ Kindra Layer 3 (Structural/Systemic) Rule-Based Scoring Engine.
 
 from __future__ import annotations
 
-from typing import Dict, Any
+from typing import Any
 
 from .rule_engine_base import KindraRuleEngineBase, clamp_score
 
@@ -20,9 +20,9 @@ class KindraLayer3StructuralSystemicRules(KindraRuleEngineBase):
     - Long-term structural risk vs predictability
     """
 
-    def score(self, context: Dict[str, Any], base_vectors: Dict[str, float] | None = None) -> Dict[str, float]:
+    def score(self, context: dict[str, Any], base_vectors: dict[str, float] | None = None) -> dict[str, float]:
         """Score Layer 3 vectors based on structural/systemic context."""
-        scores: Dict[str, float] = dict(base_vectors) if base_vectors else {}
+        scores: dict[str, float] = dict(base_vectors) if base_vectors else {}
 
         inst_strength = float(context.get("institutional_strength", 0.5))
         power_conc = float(context.get("power_concentration", 0.5))

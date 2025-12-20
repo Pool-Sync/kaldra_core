@@ -9,16 +9,21 @@ Tests:
 - Boost/suppress logic works correctly
 """
 
-import pytest
 from kaldra_engine.kindras.layer1_cultural_macro_loader import Layer1Loader
-from kaldra_engine.kindras.layer2_semiotic_media_loader import Layer2Loader
-from kaldra_engine.kindras.layer3_structural_systemic_loader import Layer3Loader
-from kaldra_engine.kindras.layer1_cultural_macro_scoring import KindraLayer1CulturalMacroScoring as Layer1Scorer
-from kaldra_engine.kindras.layer2_semiotic_media_scoring import KindraLayer2SemioticMediaScoring as Layer2Scorer
-from kaldra_engine.kindras.layer3_structural_systemic_scoring import KindraLayer3StructuralSystemicScoring as Layer3Scorer
+from kaldra_engine.kindras.layer1_cultural_macro_scoring import (
+    KindraLayer1CulturalMacroScoring as Layer1Scorer,
+)
 from kaldra_engine.kindras.layer1_delta144_bridge import Layer1Delta144Bridge
 from kaldra_engine.kindras.layer2_delta144_bridge import Layer2Delta144Bridge
+from kaldra_engine.kindras.layer2_semiotic_media_loader import Layer2Loader
+from kaldra_engine.kindras.layer2_semiotic_media_scoring import (
+    KindraLayer2SemioticMediaScoring as Layer2Scorer,
+)
 from kaldra_engine.kindras.layer3_delta144_bridge import Layer3Delta144Bridge
+from kaldra_engine.kindras.layer3_structural_systemic_loader import Layer3Loader
+from kaldra_engine.kindras.layer3_structural_systemic_scoring import (
+    KindraLayer3StructuralSystemicScoring as Layer3Scorer,
+)
 
 
 class TestKindraIntegration:
@@ -69,9 +74,24 @@ class TestKindraIntegration:
 
         # Base Δ144 distribution (using archetype names)
         archetypes = [
-            "Innocent", "Orphan", "Hero", "Caregiver", "Explorer", "Rebel",
-            "Lover", "Creator", "Jester", "Sage", "Magician", "Ruler",
-            "Everyman", "Outlaw", "Trickster", "Judge", "Guardian", "Hermit"
+            "Innocent",
+            "Orphan",
+            "Hero",
+            "Caregiver",
+            "Explorer",
+            "Rebel",
+            "Lover",
+            "Creator",
+            "Jester",
+            "Sage",
+            "Magician",
+            "Ruler",
+            "Everyman",
+            "Outlaw",
+            "Trickster",
+            "Judge",
+            "Guardian",
+            "Hermit",
         ]
         base_dist = {arch: 1.0 for arch in archetypes}
 
@@ -79,7 +99,7 @@ class TestKindraIntegration:
         context = {
             "layer1_overrides": {"E01": 0.5, "S09": -0.3},
             "layer2_overrides": {"E01": 0.4, "S09": 0.2},
-            "layer3_overrides": {"E01": 0.6, "S09": -0.4}
+            "layer3_overrides": {"E01": 0.6, "S09": -0.4},
         }
 
         # Layer 1 application
@@ -129,7 +149,7 @@ class TestKindraIntegration:
             "Jester": 1.0,
             "Sage": 1.0,
             "Hermit": 1.0,
-            "Hero": 1.0
+            "Hero": 1.0,
         }
 
         # Apply positive score for E01
@@ -153,12 +173,7 @@ class TestKindraIntegration:
         """Test that negative scores invert boost/suppress."""
         l1_bridge = Layer1Delta144Bridge("schema/kindras/kindra_layer1_to_delta144_map.json")
 
-        base_dist = {
-            "Lover": 1.0,
-            "Jester": 1.0,
-            "Sage": 1.0,
-            "Hermit": 1.0
-        }
+        base_dist = {"Lover": 1.0, "Jester": 1.0, "Sage": 1.0, "Hermit": 1.0}
 
         # Apply negative score for E01 (should invert: suppress Lover/Jester, boost Sage/Hermit)
         scores = {"E01": -0.5}
@@ -182,8 +197,18 @@ class TestKindraIntegration:
 
         # Start with uniform distribution using real archetype names
         archetypes = [
-            "Innocent", "Orphan", "Hero", "Caregiver", "Explorer", "Rebel",
-            "Lover", "Creator", "Jester", "Sage", "Magician", "Ruler"
+            "Innocent",
+            "Orphan",
+            "Hero",
+            "Caregiver",
+            "Explorer",
+            "Rebel",
+            "Lover",
+            "Creator",
+            "Jester",
+            "Sage",
+            "Magician",
+            "Ruler",
         ]
         base_dist = {arch: 1.0 for arch in archetypes}
 
@@ -206,16 +231,34 @@ class TestKindraIntegration:
     def test_all_vectors_have_valid_archetypes(self):
         """Verify all boost/suppress entries reference valid archetypes."""
         valid_archetypes = {
-            "Innocent", "Orphan", "Hero", "Caregiver", "Explorer", "Rebel",
-            "Lover", "Creator", "Jester", "Sage", "Magician", "Ruler",
-            "Everyman", "Outlaw", "Trickster", "Judge", "Guardian", "Hermit"
+            "Innocent",
+            "Orphan",
+            "Hero",
+            "Caregiver",
+            "Explorer",
+            "Rebel",
+            "Lover",
+            "Creator",
+            "Jester",
+            "Sage",
+            "Magician",
+            "Ruler",
+            "Everyman",
+            "Outlaw",
+            "Trickster",
+            "Judge",
+            "Guardian",
+            "Hermit",
         }
 
-        for layer_num, path in enumerate([
-            "schema/kindras/kindra_layer1_to_delta144_map.json",
-            "schema/kindras/kindra_layer2_to_delta144_map.json",
-            "schema/kindras/kindra_layer3_to_delta144_map.json"
-        ], 1):
+        for layer_num, path in enumerate(
+            [
+                "schema/kindras/kindra_layer1_to_delta144_map.json",
+                "schema/kindras/kindra_layer2_to_delta144_map.json",
+                "schema/kindras/kindra_layer3_to_delta144_map.json",
+            ],
+            1,
+        ):
             if layer_num == 1:
                 bridge = Layer1Delta144Bridge(path)
             elif layer_num == 2:
@@ -225,11 +268,13 @@ class TestKindraIntegration:
 
             for entry in bridge.mapping.values():
                 for archetype in entry["boost"]:
-                    assert archetype in valid_archetypes, \
-                        f"Layer {layer_num} {entry['id']} has invalid boost: {archetype}"
+                    assert (
+                        archetype in valid_archetypes
+                    ), f"Layer {layer_num} {entry['id']} has invalid boost: {archetype}"
                 for archetype in entry["suppress"]:
-                    assert archetype in valid_archetypes, \
-                        f"Layer {layer_num} {entry['id']} has invalid suppress: {archetype}"
+                    assert (
+                        archetype in valid_archetypes
+                    ), f"Layer {layer_num} {entry['id']} has invalid suppress: {archetype}"
 
         print("✅ All archetypes are valid")
 
@@ -237,18 +282,18 @@ class TestKindraIntegration:
 if __name__ == "__main__":
     # Run tests
     test = TestKindraIntegration()
-    
-    print("\n" + "="*60)
+
+    print("\n" + "=" * 60)
     print("KINDRA 3×48 INTEGRATION TESTS")
-    print("="*60 + "\n")
-    
+    print("=" * 60 + "\n")
+
     test.test_all_mappings_populated()
     test.test_sequential_layer_application()
     test.test_boost_suppress_effects()
     test.test_negative_score_inversion()
     test.test_combined_layer_effects()
     test.test_all_vectors_have_valid_archetypes()
-    
-    print("\n" + "="*60)
+
+    print("\n" + "=" * 60)
     print("✅ ALL INTEGRATION TESTS PASSED")
-    print("="*60)
+    print("=" * 60)

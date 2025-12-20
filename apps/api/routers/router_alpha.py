@@ -13,6 +13,7 @@ Notes:
 """
 
 from fastapi import APIRouter
+
 from ..core.request_models import AlphaAnalyzeRequest
 
 router = APIRouter()
@@ -26,5 +27,5 @@ def analyze_alpha(payload: AlphaAnalyzeRequest):
     return {
         "status": "received",
         "ticker": payload.ticker,
-        "analysis": "PENDING_IMPLEMENTATION"
+        "analysis": "PENDING_IMPLEMENTATION",
     }

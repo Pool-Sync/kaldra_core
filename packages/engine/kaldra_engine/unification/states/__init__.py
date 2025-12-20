@@ -1,16 +1,17 @@
 """
 States module initialization.
 """
+
 from .unified_state import (
-    GlobalContext,
-    InputContext,
     ArchetypeContext,
     DriftContext,
-    MetaContext,
-    StoryContext,
-    RiskContext,
+    GlobalContext,
+    InputContext,
     KindraContext,
-    UnifiedContext
+    MetaContext,
+    RiskContext,
+    StoryContext,
+    UnifiedContext,
 )
 
 __all__ = [
@@ -22,5 +23,5 @@ __all__ = [
     "StoryContext",
     "RiskContext",
     "KindraContext",
-    "UnifiedContext"
+    "UnifiedContext",
 ]

@@ -1,5 +1,4 @@
 import numpy as np
-
 from kaldra_engine.core.core_story_aggregator import StoryAggregator, StoryTurnSignal
 from kaldra_engine.core.story_tracker import StoryTracker
 

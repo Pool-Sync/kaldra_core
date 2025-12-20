@@ -10,8 +10,8 @@ Codename: "One Engine, Many Minds"
 __version__ = "3.0.0"
 __codename__ = "One Engine, Many Minds"
 
-from .kernel import UnifiedKernel
 from .adapters.unified_api import UnifiedKaldra
+from .kernel import UnifiedKernel
 
 __all__ = [
     "UnifiedKernel",
